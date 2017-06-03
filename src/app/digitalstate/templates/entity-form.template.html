@@ -1,0 +1,27 @@
+<form #entityForm="ngForm" *ngIf="active" (ngSubmit)="onSubmit()">
+	<div *ngIf="entity" class="card entity-card animated fadeIn">
+		<div class="card-header">
+			<div class="row justify-content-between">
+				<div class="col-6">
+					<h3 class="card-title" translate="" ng-reflect-translate="">{{headerTitle}}</h3>
+				</div>
+				<div class="col-6">
+					<div class="container">
+						<ul class="row btn-list clearfix float-right">
+							<li class="col-12">
+								<button type="submit" [disabled]="!entityForm.form.valid" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-circled">{{'ds.microservices.entity.action.save' | translate}}</i></button>
+								<button type="button" (click)="cancelForm()" class="btn btn-secondary">{{'ds.microservices.entity.action.cancel' | translate}}</button>
+							</li>
+							<!--li class="col-6 align-right">
+								<button *ngIf="!isNew" (click)="deleteEntity()" type="button" class="btn btn-danger btn-with-icon"><i class="ion-android-delete">Delete</i></button>
+							</li-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<ng-content></ng-content>
+
+	</div>
+</form>

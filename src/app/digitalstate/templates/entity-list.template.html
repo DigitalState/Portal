@@ -1,0 +1,26 @@
+<div class="card entity-card">
+	<div class="card-header">
+		<div class="row justify-content-between">
+			<div class="col-6">
+				<!--<h3 class="card-title" translate="" ng-reflect-translate=""></h3>-->
+				<!--<div class="form-group">-->
+					<!--<input type="text" class="form-control" placeholder="Type to filter by title ..." (keyup)="updateFilter($event)" />-->
+				<!--</div>-->
+			</div>
+			<div class="col-6">
+				<div class="container">
+					<ul class="row btn-list clearfix float-right">
+						<li>
+							<button [routerLink]="['../create']" class="btn btn-primary btn-with-icon"><i class="ion-android-add-circle">{{'ds.microservices.entity.action.create' | translate}}</i></button>
+							<button (click)="refreshList()" class="btn btn-secondary btn-with-icon"><i class="ion-android-refresh">{{'ds.microservices.entity.action.refresh' | translate}}</i></button>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="card-block p-0">
+		<ng-content></ng-content>
+	</div>
+</div>

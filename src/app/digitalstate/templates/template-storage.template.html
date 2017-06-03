@@ -1,0 +1,21 @@
+<ng-template #datatableCellHeader let-column="column" let-sort="sortFn" >
+	<strong (click)="sort()">{{column.name}}</strong>
+	<div class="form-group">
+		<input type="text" class="form-control" placeholder="Type to filter by title ..." (keyup)="updateFilter($event)" />
+	</div>
+</ng-template>
+
+<ng-template #datatableCellText let-row="row" let-value="value">
+	{{value}}
+</ng-template>
+
+<ng-template #datatableCellActions let-column="column" let-row="row">
+	<ul class="btn-list clearfix">
+		<li>
+			<button [routerLink]="['../', row.uuid, 'show']" type="button" class="btn btn-default btn-with-icon"><i class="ion-eye">Show</i></button>
+		</li>
+		<li>
+			<button [routerLink]="['../', row.uuid, 'edit']" type="button" class="btn btn-default btn-with-icon"><i class="ion-edit">Edit</i></button>
+		</li>
+	</ul>
+</ng-template>

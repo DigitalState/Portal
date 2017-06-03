@@ -1,0 +1,20 @@
+<div class="card">
+	<div class="card-header">
+		<h3 class="card-title" translate="" ng-reflect-translate="">Service Activation</h3>
+	</div>
+
+	<div class="card-block">
+		<formio [form]="formioFormSchema"
+				(submit)="onFormioFormSubmit($event)">
+		</formio>
+	</div>
+</div>
+
+<!--<ng-template #modalSubmissionResult>-->
+	<!--<div class="modal-header">-->
+		<!--<h4 class="modal-title">Response</h4>-->
+	<!--</div>-->
+	<!--<div class="modal-body">-->
+		<!--<pre>{{ submissionResult }}</pre>-->
+	<!--</div>-->
+<!--</ng-template>-->

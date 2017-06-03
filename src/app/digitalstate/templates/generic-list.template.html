@@ -1,0 +1,23 @@
+<ds-entity-list (onRefreshList)="refreshList($event)">
+	<ngx-datatable #datatable
+				   [rows]="rows"
+				   [columns]="columns"
+				   [count]="pager.totalItems"
+				   [offset]="pager.pageNumber"
+				   [limit]="pager.size"
+				   (page)="setPage($event)"
+					class="material">
+	</ngx-datatable>
+</ds-entity-list>
+
+<ng-template #headerTpl let-column="column" let-sort="sortFn">
+	<ds-datatable-header [column]="column" (onFilterValueChange)="onFilterValueChange($event)"></ds-datatable-header>
+</ng-template>
+
+<ng-template #textCellTpl let-column="column" let-row="row" let-value="value">
+	<ds-datatable-cell [column]="column" [row]="row" [value]="value"></ds-datatable-cell>
+</ng-template>
+
+<ng-template #actionsTpl let-column="column" let-row="row">
+	<ds-datatable-cell-actions [row]="row"></ds-datatable-cell-actions>
+</ng-template>

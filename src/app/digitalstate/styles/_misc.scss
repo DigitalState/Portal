@@ -1,0 +1,16 @@
+.card.entity-card {
+  .card-header, .card-footer {
+    height: auto;
+    ul.btn-list {
+      padding-top: 0;
+
+      li {
+        margin: 0;
+      }
+    }
+  }
+
+  .card-footer {
+    border-bottom: none;
+  }
+}
