@@ -1,14 +1,26 @@
-FROM node:6.10.3-alpine
+FROM mhart/alpine-node:6.10.3
 
-#RUN git clone https://github.com/akveo/ng2-admin.git /var/www \
-#    && cd /var/www \
+RUN apk add --no-cache make gcc g++ python
+
+RUN apk add --update bash \
+                     git
+
+ADD ./ng2-admin /var/www
+
+RUN cd /var/www \
+#    && mkdir -p /root \
 #    && npm install --global rimraf \
 #    && npm run clean \
-#    && npm install --global webpack webpack-dev-server typescript@2.1.5 \
-#    && npm install \
-#    && npm run prebuild:prod && npm run build:prod
+    && npm install --global webpack webpack-dev-server typescript@2.1.5 \
+    && npm install
 
-#EXPOSE 8080
+RUN echo "App installation completed!"
 
 WORKDIR /var/www
-ENTRYPOINT ["npm", "run", "server:prod"]
+
+ADD ./ng2-admin/run-dev.sh /var/www
+RUN chmod 755 /var/www/run-dev.sh
+
+#EXPOSE 3000
+#ENTRYPOINT ["npm", "run", "server:prod"]
+#ENTRYPOINT ["npm", "run", "server:dev"]

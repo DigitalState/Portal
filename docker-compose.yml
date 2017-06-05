@@ -6,4 +6,6 @@ services:
     ports:
       - '3000:3000'
     volumes:
-      - './ng2-admin:/var/www'
+      - './ng2-admin/src:/var/www/src'
+    working_dir: '/var/www'
+    command: 'bash -c /var/www/run-dev.sh'

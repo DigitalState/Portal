@@ -13,3 +13,11 @@ Then point your browser to:
 http://localhost:3000/
 ```
 
+##### Docker
+```
+docker-compose up
+```
+
+Notes: 
+- The docker container takes a long time to download, build and compile dependencies.
+- All instructions above run the "dev" mode which syncs `src` directory changes with the browser sessoin.
