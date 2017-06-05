@@ -1,0 +1,9 @@
+version: '2.1'
+
+services:
+  ng2admin:
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - './ng2-admin:/var/www'

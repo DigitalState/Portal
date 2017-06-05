@@ -4,6 +4,7 @@ Frontend Administration based on Angular admin dashboard framework (ng2-admin) [
 Run the following command from the project directory:
 
 ```
+cd ng2-admin
 npm start
 ```
 
