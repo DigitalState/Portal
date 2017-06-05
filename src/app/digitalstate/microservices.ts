@@ -60,6 +60,7 @@ export const MICROSERVICES = {
                     'title': {
                         label: 'Title',
                         type: 'string',
+                        translated: true,
                         validation: {
                             'required': {message: 'Title is required.'},
                         },

@@ -2,6 +2,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TableColumn } from '@swimlane/ngx-datatable';
 
+import {TranslateService} from '@ngx-translate/core';
+import {DsEntityTranslationService} from '../../services/entity-translation.service';
+
 @Component({
     selector: 'ds-datatable-cell',
     template: `
@@ -13,18 +16,32 @@ export class DsDatatableCell {
     @Input() row: any;
     @Input() column: any;
 
-    outputValue: null;
+    outputValue: any;
+
+
+    constructor(protected entityTranslation: DsEntityTranslationService) {
+
+    }
 
     ngOnInit() {
+        let property = this.column.propertyMetadata;
+        let hasTranslation = this.entityTranslation.propertyHasTranslation(this.value, property);
+
         // Render the cell value according to the property type
-        if (this.column.propertyMetadata.field) {
+        if (property.field) {
             // For a property of type `select`, render the property's label instead of its value
-            if (this.column.propertyMetadata.field.type === 'select') {
-                this.outputValue = this.column.propertyMetadata.field.options[this.value];
+            if (property.field.type === 'select') {
+                this.outputValue = property.field.options[this.value];
             }
         }
         else {
             this.outputValue = this.value;
         }
+
+        if (property.translated) {
+            let translatedValue = this.entityTranslation.getTranslation(this.value, property);
+            this.outputValue = translatedValue
+        }
     }
+
 }

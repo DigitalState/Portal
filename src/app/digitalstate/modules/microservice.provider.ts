@@ -24,7 +24,15 @@ let microserviceRestangularFactory = (restangular: Restangular, auth: AuthServic
     return restangular.withConfig((restangularConfigurer) => {
         console.log(restangularConfigurer);
         restangularConfigurer.setBaseUrl(microserviceConfig.settings.entrypoint.url);
-        restangularConfigurer.setDefaultHeaders({'Authorization': 'Bearer ' + auth.getToken()});
+        // restangularConfigurer.setDefaultHeaders({'Authorization': 'Bearer ' + auth.getToken()});
+
+        // Intercept requests to microservices and add the JWT token
+        restangularConfigurer.addFullRequestInterceptor((element, operation, path, url, headers, params) => {
+            let token = auth.getToken();
+            return {
+                headers: Object.assign({}, headers, {Authorization: `Bearer ${token}`})
+            };
+        });
     });
 };
 

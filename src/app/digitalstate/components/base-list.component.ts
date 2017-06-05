@@ -76,6 +76,7 @@ export class DsBaseEntityListComponent implements AfterViewInit {
         // Subscribe to language-change events
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
             this.updateTranslations();
+            this.refreshList();
         });
 
         this.entityMetadata = this.microserviceConfig.settings.entities[this.entityUrlPrefix].properties;
@@ -127,9 +128,7 @@ export class DsBaseEntityListComponent implements AfterViewInit {
     /**
      * Called on subclasses to configure the Data-table columns when the component is initialized
      */
-    protected setupList() {
-
-    }
+    protected setupList() {}
 
     /**
      * Perform additional configurations on the Data-table settings after subcalsses complete their

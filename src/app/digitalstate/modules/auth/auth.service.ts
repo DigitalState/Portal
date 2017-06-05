@@ -24,7 +24,6 @@ export class AuthService {
     getToken() {
         // @todo: change this to the real token
         // const testToken = 'eyJhbGciOiJSUzI1NiJ9.eyJyb2xlcyI6WyJST0xFX0lORElWSURVQUwiLCJST0xFX1VTRVIiXSwidXNlcm5hbWUiOiJ1c2VyQGRzIiwiaXAiOiI6OjEiLCJjbGkiOiI0YzZjMGRhMyIsImlkZW4iOiJJbmRpdmlkdWFsIiwiaWRlbl91dWlkIjoiYzc1MDhlMDgtNWVhZC00MjhiLTgwMjItYTI1MzNlMDBhZGVkIiwiaWF0IjoxNDk2MTYwOTY1LCJleHAiOjE0OTYyNDczNjV9.BL0lk4R2C5qkFPAmIE2THggk27nQI_WZwCDBuhmnjpsZtVq0x4YtLWFO6-_ehGW1g42NAknSondx7D3KAj6wnKsTTZpPUw4NoOJOeUXQlxXeTenqNCjczEW7QOuZeXsz5KLrAYHN1V5YgXk0r6KfNldvp_b4KpTKxalldq7IO3uaO8Iv4C-cWMnnFb1XeSJLtyo5xqL5T4T7EJrH7avYD74zPpQ_5n3o7KnErcK1phc3LSMsxqVPtayzhfxU-GnQbSI1ZTT5KYR30h_Xcc1ja_xKLlClBDalSH9-1wz3eq66vjBwsSgKeA-E7lEOh_01J2vtyZBOgX8qFvIDIGKFM7i2L8UEW6H38lMj7T7ZP-IEpb_MOxwZmmhBXFtaxJEchcG4wcdGTEB6P6oswHLpmrz9aZHHkKji2IEiOaQCGhurt_ea_VBdDfH4qOQQcQOd-34s0gVpQ8evpSXF9tReKMxapntH2-e3MN55Otjobj4JzYlw0VoDwEoIUDBZ2Nh-_yY5zswfGgdAGAVwdETnRmnJm0KxD0dKblbmUvSpEdjs0bMK5ZNvxrTbOuqvy53yUZcN01smsRe1GGIYJLLPJK8BPbbYr3144jBmV2cFxXTo-3HivEDW-kv0nl5DKlHwS5VycTEQOHa1ovLyp_0zHCZ45RvdvUQy3sDh6tTmf8U';
-        // const token = this.appState.get('jwtTokenName', testToken);
         const tokenName = this.appState.get('jwtTokenName');
         return localStorage.getItem(tokenName);
     }

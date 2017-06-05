@@ -1,13 +1,15 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsManager } from 'ng2-toastr';
+import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
 
 import { DefaultModal } from './modals/default-modal/default-modal.component';
 import { DsBaseEntityApiService } from '../services/base-entity-api.service';
 import { MicroserviceConfig } from '../modules/microservice.provider';
 import 'rxjs/Rx';
+import {Subscriber} from 'rxjs/Subscriber';
 
-export abstract class DsBaseEntityShowComponent {
+export abstract class DsBaseEntityShowComponent  {
 
     protected entityUrlPrefix: string;
     protected headerTitle: string;
@@ -26,8 +28,11 @@ export abstract class DsBaseEntityShowComponent {
 
     protected id: number;
 
+    protected languageChangeSubscriber: Subscriber<LangChangeEvent>;
+
     constructor(protected route: ActivatedRoute,
                 protected router: Router,
+                protected translate: TranslateService,
                 protected microserviceConfig: MicroserviceConfig,
                 protected toastr: ToastsManager,
                 protected modal: NgbModal) {
@@ -35,8 +40,18 @@ export abstract class DsBaseEntityShowComponent {
     }
 
     ngOnInit() {
+        // Subscribe to language-change events
+        this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+            this.prepareEntity();
+        });
+
         this.entityMetadata = this.microserviceConfig.settings.entities[this.entityUrlPrefix].properties;
         this.prepareEntity();
+    }
+
+    ngOnDestroy() {
+        // Unsubscribe from language-change events
+        this.languageChangeSubscriber.unsubscribe();
     }
 
     protected prepareEntity() {
