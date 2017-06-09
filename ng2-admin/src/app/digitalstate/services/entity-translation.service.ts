@@ -11,7 +11,8 @@ export class DsEntityTranslationService {
     }
 
     propertyHasTranslation(value, property) {
-        return property.translated === true
+        return property.hasOwnProperty('translated')
+            && property.translated === true
             && isObject(value)
             && value.hasOwnProperty(this.translate.currentLang)
     }

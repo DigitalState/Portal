@@ -38,7 +38,7 @@ export class DsDatatableCell {
             this.outputValue = this.value;
         }
 
-        if (property.translated) {
+        if (property.hasOwnProperty('translated')) {
             let translatedValue = this.entityTranslation.getTranslation(this.value, property);
             this.outputValue = translatedValue
         }

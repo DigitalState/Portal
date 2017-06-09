@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Injector } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { ToastsManager } from 'ng2-toastr';
@@ -17,14 +17,15 @@ export class DsTaskCreateComponent extends DsBaseEntityFormComponent {
     headerTitle = 'Create Task';
     isNew = true;
 
-    constructor(route: ActivatedRoute,
+    constructor(injector: Injector,
+                route: ActivatedRoute,
                 router: Router,
                 location: Location,
                 toastr: ToastsManager,
                 microserviceConfig: MicroserviceConfig,
                 entityApiService: EntityApiService) {
 
-        super(route, router, location, microserviceConfig, toastr);
+        super(injector, route, router, location, microserviceConfig, toastr);
         this.entityApiService = entityApiService;
     }
 }

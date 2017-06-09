@@ -12,7 +12,7 @@
 			<div class="col-sm-6">
 				<div class="form-group">
 					<label for="title">{{ 'ds.microservices.entity.property.title' | translate }}</label>
-					<input id="title" name="title" type="text" [(ngModel)]="entity.title" class="form-control" placeholder="" required>
+					<input id="title" name="title" type="text" [(ngModel)]="entity.title[lang]" class="form-control" placeholder="" required minlength="4">
 					<div *ngIf="formErrors.title" class="alert alert-danger">
 						{{ formErrors.title }}
 					</div>

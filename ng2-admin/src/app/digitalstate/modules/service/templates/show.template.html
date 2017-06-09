@@ -10,21 +10,21 @@
 			<div class="col-sm-4 col-sm-offset-3">
 				<dl>
 					<dt>{{ 'ds.microservices.entity.property.title' | translate }}</dt>
-					<dd>{{entity.title}}</dd>
+					<dd>{{entity.title | entityTranslate}}</dd>
 				</dl>
 				<dl>
 					<dt>{{ 'ds.microservices.entity.property.presentation' | translate }}</dt>
-					<dd>{{entity.presentation}}</dd>
+					<dd>{{entity.presentation | entityTranslate}}</dd>
 				</dl>
-				<dl>
-					<dt>{{ 'ds.microservices.entity.property.form' | translate }}</dt>
-					<dd>{{entity.form}}</dd>
-				</dl>
+				<!--<dl>-->
+					<!--<dt>{{ 'ds.microservices.entity.property.form' | translate }}</dt>-->
+					<!--<dd>{{entity.form}}</dd>-->
+				<!--</dl>-->
 			</div>
 			<div class="col-sm-8 col-sm-offset-3">
 				<dl>
 					<dt>{{ 'ds.microservices.entity.property.description' | translate }}</dt>
-					<dd>{{entity.description}}</dd>
+					<dd>{{entity.description | entityTranslate}}</dd>
 				</dl>
 			</div>
 		</div>

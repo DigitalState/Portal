@@ -9,7 +9,7 @@ export const MICROSERVICES = {
     'services': {
         label: 'Services',
         entrypoint: {
-            url: 'http://localhost:8051/',
+            url: 'http://localhost:8051/app_dev.php/',
         },
         entities: {
             'services': {
@@ -17,34 +17,52 @@ export const MICROSERVICES = {
                     'title': {
                         label: 'Title',
                         type: 'string',
+                        default: '',
+                        translated: true,
                         validation: {
-                            'required': { message: 'Title is required.'},
-                            'minlength': { message: 'Title must be at least 4 characters long.'},
-                            'maxlength': { message: 'Title cannot be more than 24 characters long.'},
-                            'someCustomValidationDirective': { message: 'Someone named "Bob" cannot be a hero.'},
+                            'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
+                            'minlength': {
+                                message: 'minlength',
+                                params: { chars: 4 }
+                            },
+                            // 'maxlength': { message: 'Title cannot be more than 24 characters long.'},
+                            // 'someCustomValidationDirective': { message: 'Someone named "Bob" cannot be a hero.'},
                         },
                     },
                     'presentation': {
                         label: 'Presentation',
                         type: 'string',
+                        default: '',
+                        translated: true,
                         validation: {
-                            'required': { message: 'Presentation is required.'},
+                            'required': { message: 'required'},
                         },
-                    },
-                    'form': {
-                        label: 'Form',
-                        type: 'string',
-                        validation: {
-                            'required': { message: 'Form is required.'},
-                        }
                     },
                     'description': {
                         label: 'Description',
                         type: 'string',
+                        default: '',
+                        translated: true,
                         validation: {
-                            'required': { message: 'Description is required.'},
+                            'required': { message: 'required'},
                         },
                     },
+                    'enabled': {
+                        label: 'Enabled',
+                        type: 'boolean',
+                        default: true,
+                        validation: {
+                            'required': { message: 'required'},
+                        },
+                    },
+                    // 'form': {
+                    //     label: 'Form',
+                    //     type: 'string',
+                    default: '',
+                    //     validation: {
+                    //         'required': {message: 'required'},
+                    //     }
+                    // },
                 },
             },
         },
@@ -60,9 +78,14 @@ export const MICROSERVICES = {
                     'title': {
                         label: 'Title',
                         type: 'string',
+                        default: '',
                         translated: true,
                         validation: {
-                            'required': {message: 'Title is required.'},
+                            'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
+                            'minlength': {
+                                message: 'minlength',
+                                params: { chars: 4 }
+                            },
                         },
                     },
                 },
@@ -80,6 +103,7 @@ export const MICROSERVICES = {
                     'title': {
                         label: 'Title',
                         type: 'string',
+                        default: '',
                         validation: {
                             'required': {message: 'Title is required.'},
                         },
@@ -99,6 +123,7 @@ export const MICROSERVICES = {
                     'title': {
                         label: 'Title',
                         type: 'string',
+                        default: '',
                         validation: {
                             'required': {message: 'Title is required.'},
                         },
@@ -118,6 +143,7 @@ export const MICROSERVICES = {
                     'title': {
                         label: 'Title',
                         type: 'string',
+                        default: '',
                         validation: {
                             'required': {message: 'Title is required.'},
                         },
@@ -137,6 +163,7 @@ export const MICROSERVICES = {
                     'title': {
                         label: 'Title',
                         type: 'string',
+                        default: '',
                         validation: {
                             'required': {message: 'Title is required.'},
                         },
@@ -156,6 +183,7 @@ export const MICROSERVICES = {
                     'title': {
                         label: 'Title',
                         type: 'string',
+                        default: '',
                         validation: {
                             'required': {message: 'Title is required.'},
                         },
@@ -167,6 +195,7 @@ export const MICROSERVICES = {
                     'title': {
                         label: 'Title',
                         type: 'string',
+                        default: '',
                         validation: {
                             'required': {message: 'Title is required.'},
                         },
@@ -174,6 +203,7 @@ export const MICROSERVICES = {
                     'channel': {
                         label: 'Channel',
                         type: 'string',
+                        default: '',
                         field: {
                             type: 'select',
                             options: {
@@ -202,6 +232,7 @@ export const MICROSERVICES = {
                     'username': {
                         label: 'Username',
                         type: 'string',
+                        default: '',
                         validation: {
                             'required': {message: 'username is required.'},
                         },
@@ -221,6 +252,7 @@ export const MICROSERVICES = {
                     'title': {
                         label: 'Title',
                         type: 'string',
+                        default: '',
                         validation: {
                             'required': {message: 'Title is required.'},
                         },

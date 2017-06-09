@@ -1,3 +1,6 @@
+import {  } from '../auth/auth-guard.service';
+import {AuthGuardService} from '../digitalstate/modules/auth/auth-guard.service';
+
 export const PAGES_MENU = [
   {
     path: 'pages',

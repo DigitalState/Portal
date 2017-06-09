@@ -89,6 +89,15 @@ a.al-logo:hover {
   }
   a {
     display: block;
+
+    &#language-dd {
+      .language-name {
+        font: 16px/18px $font-family;
+      }
+    }
+  }
+  > a {
+    color: $primary;
   }
   img {
     width: 45px;

@@ -28,30 +28,30 @@ export class DsEntityFormComponent implements AfterContentInit, AfterViewChecked
     @ViewChild('entityForm') currentForm: NgForm;
     @ContentChildren(NgModel) public models: QueryList<NgModel>;
 
-    formErrors = {
-        'title': '',
-        'presentation': '',
-        'form': '',
-        'description': '',
-    };
-
-    validationMessages = {
-        'title': {
-            'required':      'Title is required.',
-            'minlength':     'Title must be at least 4 characters long.',
-            'maxlength':     'Title cannot be more than 24 characters long.',
-            'someCustomValidationDirective': 'Someone named "Bob" cannot be a hero.'
-        },
-        'presentation': {
-            'required': 'Presentation is required.'
-        },
-        'form': {
-            'required': 'Form is required.'
-        },
-        'description': {
-            'required': 'Description is required.'
-        },
-    };
+    // formErrors = {
+    //     'title': '',
+    //     'presentation': '',
+    //     'form': '',
+    //     'description': '',
+    // };
+    //
+    // validationMessages = {
+    //     'title': {
+    //         'required':      'Title is required.',
+    //         'minlength':     'Title must be at least 4 characters long.',
+    //         'maxlength':     'Title cannot be more than 24 characters long.',
+    //         'someCustomValidationDirective': 'Someone named "Bob" cannot be a hero.'
+    //     },
+    //     'presentation': {
+    //         'required': 'Presentation is required.'
+    //     },
+    //     'form': {
+    //         'required': 'Form is required.'
+    //     },
+    //     'description': {
+    //         'required': 'Description is required.'
+    //     },
+    // };
 
     submitted: boolean = false;
 

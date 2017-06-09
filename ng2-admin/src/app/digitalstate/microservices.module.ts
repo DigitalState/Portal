@@ -25,8 +25,8 @@ import { DsDatatableCellActions } from './components/datatable/datatable-cell-ac
 import { DSLanguageSwitcherComponent } from './components/language-switcher.component';
 import { DefaultModal } from './components/modals/default-modal/default-modal.component';
 import { KeyValuePipe } from './components/pipes/KeyValue.pipe';
-import {DsEntityTranslatePipe} from './components/pipes/EntityTranslate.pipe';
-import {DsEntityTranslationService} from './services/entity-translation.service';
+import { DsEntityTranslatePipe } from './components/pipes/EntityTranslate.pipe';
+import { DsEntityTranslationService } from './services/entity-translation.service';
 
 @NgModule({
     imports: [

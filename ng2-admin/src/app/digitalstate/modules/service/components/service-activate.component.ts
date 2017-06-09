@@ -14,8 +14,8 @@ import { EntityApiService } from '../entity-api.service';
     templateUrl: '../templates/activate.template.html',
 })
 export class DsServiceActivateComponent {
-    readonly ACTIVATION_REQUEST_URL_PREFIX = 'http://localhost:8014/activation/';
-    readonly SUBMISSION_REQUEST_URL_PREFIX = 'http://localhost:8014/submission/';
+    readonly ACTIVATION_REQUEST_URL_PREFIX = 'http://localhost:8051/app_dev.php/activation/';
+    readonly SUBMISSION_REQUEST_URL_PREFIX = 'http://localhost:8051/app_dev.php/submission/';
 
     public entity;
     public formioFormSchema;

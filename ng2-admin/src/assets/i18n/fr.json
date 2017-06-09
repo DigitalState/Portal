@@ -63,6 +63,7 @@
       "menu_level_1_2_1": "Menu Level 1.2.1",
       "external_link": "External Link",
 
+      "profile": "Profil",
       "services": "Services",
       "cases": "Affaires",
       "assets": "Atouts",
@@ -72,7 +73,9 @@
       "interactions": "Interactions",
       "communications": "Communications",
       "individuals": "Personnes",
-      "identities": "Identités"
+      "identities": "Identités",
+
+      "service_activation": "Activation du service"
     },
     "created_with": "Created with"
   },
@@ -147,6 +150,8 @@
           "presentation": "Présentation",
           "description": "Description",
           "username": "Nom d'utilisateur",
+          "identity": "Identité",
+          "identityUuid": "Identité UUID",
           "channel": "Canal"
         },
         "action": {
@@ -158,6 +163,9 @@
           "activate": "Activer",
           "save": "Enregistrer",
           "cancel": "Annuler"
+        },
+        "validation": {
+          "required": "Champs requis."
         }
       }
     }

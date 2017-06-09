@@ -59,6 +59,7 @@
       "menu_level_1_2_1": "Menu Level 1.2.1",
       "external_link": "External Link",
 
+      "profile": "Profile",
       "services": "Services",
       "cases": "Cases",
       "assets": "Assets",
@@ -68,7 +69,9 @@
       "interactions": "Interactions",
       "communications": "Communications",
       "individuals": "Individuals",
-      "identities": "Identities"
+      "identities": "Identities",
+
+      "service_activation": "Service Activation"
     },
     "created_with": "Created with"
   },
@@ -143,6 +146,8 @@
           "presentation": "Presentation",
           "description": "Description",
           "username": "Username",
+          "identity": "Identity",
+          "identityUuid": "Identity UUID",
           "channel": "Channel"
         },
         "action": {
@@ -154,6 +159,10 @@
           "activate": "Activate",
           "save": "Save",
           "cancel": "Cancel"
+        },
+        "validation": {
+          "required": "Required field.",
+          "minlength": "Minimum of {{chars}} characters."
         }
       }
     }

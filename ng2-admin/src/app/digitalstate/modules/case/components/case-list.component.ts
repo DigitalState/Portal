@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import 'rxjs/Rx';
+import { TranslateService } from '@ngx-translate/core';
 
+import { MicroserviceConfig } from '../../microservice.provider';
 import { EntityApiService } from '../entity-api.service';
 import { DsBaseEntityListComponent } from '../../../components/base-list.component';
-import { MicroserviceConfig } from '../../microservice.provider';
-import { TranslateService } from '@ngx-translate/core';
+import 'rxjs/Rx';
 
 @Component({
     selector: 'ds-case-list',

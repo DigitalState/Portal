@@ -40,12 +40,13 @@ export abstract class DsBaseEntityShowComponent  {
     }
 
     ngOnInit() {
+        this.entityMetadata = this.microserviceConfig.settings.entities[this.entityUrlPrefix].properties;
+
         // Subscribe to language-change events
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
             this.prepareEntity();
         });
 
-        this.entityMetadata = this.microserviceConfig.settings.entities[this.entityUrlPrefix].properties;
         this.prepareEntity();
     }
 

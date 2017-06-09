@@ -6,11 +6,11 @@ import {Observable} from 'rxjs';
     selector: 'ds-language-switcher',
     template: `
 		<div class="dropdown al-dropdown">
-			<a class="toggle-link dropdown-toggle fa fa-globe" id="language-dd" data-toggle="dropdown" aria-expanded="false">
-				{{currentLanguage.name}}
+			<a class="toggle-link dropdown-toggle fa fa-globe" id="language-dd" data-toggle="dropdown" aria-expanded="false" tabindex="0">
+                <span class="language-name">{{currentLanguage.name}}</span>
 			</a>
 			<ul class="dropdown-menu top-dropdown-menu language-dropdown" aria-labelledby="language-dd">
-				<li *ngFor="let lang of languages" class="dropdown-item">
+				<li *ngFor="let lang of getListedLanguages()" class="dropdown-item">
                     <a (click)="switchLang(lang.key)">
                         <i class="fa fa-flag"></i>
                         {{lang.name}}
@@ -23,7 +23,7 @@ import {Observable} from 'rxjs';
 export class DSLanguageSwitcherComponent {
 
     currentLanguage: object;
-    languages: object;
+    languages: object[];
 
     constructor(protected translate: TranslateService) {
 
@@ -46,6 +46,10 @@ export class DSLanguageSwitcherComponent {
             // window.changeTranslation(lang);
             return Observable.of({ lang: lang, translations: translationDocument });
         });
+    }
+
+    getListedLanguages() {
+        return this.languages.filter((language) => (language['key'] !== this.translate.currentLang));
     }
 
     protected loadCurrentLanguageTranslation() {

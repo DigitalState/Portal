@@ -14,16 +14,20 @@
   <div class="side-menu clearfix">
     <!--<ba-msg-center></ba-msg-center>-->
 
-    <!--<div class="dropdown al-dropdown">-->
-      <!--<a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">-->
-        <!--<img src="{{ ( 'Nasta' | baProfilePicture ) }}">-->
-      <!--</a>-->
-      <!--<ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">-->
-        <!--<li class="dropdown-item"><a href><i class="fa fa-user"></i>Profile</a></li>-->
+    <div class="dropdown al-dropdown">
+      <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
+        <img src="{{ ( 'Nasta' | baProfilePicture ) }}">
+      </a>
+      <ul class="dropdown-menu top-dropdown-menu profile-dropdown" aria-labelledby="user-profile-dd">
+        <li class="dropdown-item">
+          <a routerLink="/pages/profile" ><i class="fa fa-user"></i>Profile</a>
+        </li>
         <!--<li class="dropdown-item"><a href><i class="fa fa-cog"></i>Settings</a></li>-->
-        <!--<li class="dropdown-item"><a href class="signout"><i class="fa fa-power-off"></i>Sign out</a></li>-->
-      <!--</ul>-->
-    <!--</div>-->
+        <li class="dropdown-item">
+          <a (click)="logout()" class="signout"><i class="fa fa-power-off"></i>Sign out</a>
+        </li>
+      </ul>
+    </div>
 
     <ds-language-switcher></ds-language-switcher>
 
