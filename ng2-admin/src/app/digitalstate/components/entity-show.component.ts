@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Link } from '../models/Link';
+
 import 'rxjs/Rx';
 
 @Component({
@@ -7,8 +10,11 @@ import 'rxjs/Rx';
 })
 export class DsEntityShowComponent {
 
+    @Input() headerTitle: string;
+    @Input() headerSubtitle: string;
     @Input() entity: any;
-
+    @Input() backLink: Link;
+    @Input() actions: { [s: string]: boolean };
     @Output() onDelete = new EventEmitter<any>();
 
     constructor() {
@@ -16,7 +22,9 @@ export class DsEntityShowComponent {
     }
 
     ngOnInit() {
-
+        if (this.headerSubtitle == null) {
+            // this.headerSubtitle = this.entity.uuid;
+        }
     }
 
     onDeleteClick(event) {

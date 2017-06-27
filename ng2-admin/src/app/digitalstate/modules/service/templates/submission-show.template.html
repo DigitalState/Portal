@@ -3,6 +3,7 @@
 				[backLink]="backLink"
 				[headerTitle]="headerTitle"
 				[headerSubtitle]="headerSubtitle"
+				[actions]="actions"
 				(onDelete)="onDelete($event)">
 
 	<!-- begin: ng-content[select="button.entity-action"] -->
@@ -11,10 +12,20 @@
 	<!-- begin: ng-content[select=".entity-body"] -->
 	<div class="card-block entity-body entity-data">
 		<div class="row">
-			<div class="col-sm-4 col-sm-offset-3">
+			<div class="col-sm-12 col-sm-offset-3">
 				<dl>
-					<dt>{{ 'ds.microservices.entity.property.title' | translate }}</dt>
-					<dd>{{entity.title | entityTranslate}}</dd>
+					<dt>UUID</dt>
+					<dd>{{entity.uuid}}</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-12 col-sm-offset-3">
+				<dl>
+					<dt>{{ 'ds.microservices.entity.property.data' | translate }}</dt>
+					<dd>
+						<pre>{{entity.data | json}}</pre>
+					</dd>
 				</dl>
 			</div>
 		</div>

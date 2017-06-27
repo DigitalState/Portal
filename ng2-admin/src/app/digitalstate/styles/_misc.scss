@@ -1,3 +1,5 @@
+@import '../../theme/sass/conf/conf';
+
 .card.entity-card {
   .card-header, .card-footer {
     height: auto;
@@ -12,5 +14,29 @@
 
   .card-footer {
     border-bottom: none;
+  }
+}
+
+.back-link {
+  line-height: 1em;
+  //min-height: 1em;
+  padding-bottom: 13px;
+}
+
+.dropdown-item {
+  padding-top: 4px;
+  padding-bottom: 4px;
+
+  a {
+    display: block;
+    color: $dropdown-text;
+
+    &:hover {
+      color: $dropdown-text-hover;
+    }
+  }
+
+  &:hover {
+    background-color: $dropdown-background-hover;
   }
 }

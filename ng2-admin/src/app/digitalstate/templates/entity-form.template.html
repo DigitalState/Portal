@@ -3,7 +3,9 @@
 		<div class="card-header">
 			<div class="row justify-content-between">
 				<div class="col-6">
+					<back-link [link]="backLink"></back-link>
 					<h3 class="card-title" translate="" ng-reflect-translate="">{{headerTitle}}</h3>
+					<h4 class="card-subtitle" translate="" ng-reflect-translate="">{{headerSubtitle}}</h4>
 				</div>
 				<div class="col-6">
 					<div class="container">
@@ -15,6 +17,28 @@
 							<!--li class="col-6 align-right">
 								<button *ngIf="!isNew" (click)="deleteEntity()" type="button" class="btn btn-danger btn-with-icon"><i class="ion-android-delete">Delete</i></button>
 							</li-->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="card-block">
+			<div class="row">
+				<div class="col">
+					<!-- Form Language Switch -->
+					<div class="dropdown">
+						<a class="btn btn-outline-secondary dropdown-toggle" id="form-language-dd" data-toggle="dropdown" aria-expanded="false" tabindex="0">
+							<i class="fa fa-globe"></i>
+							<span class="form-language-name">{{formLanguage.name}}</span>
+						</a>
+						<ul class="dropdown-menu form-language-dropdown" aria-labelledby="form-language-dd">
+							<li *ngFor="let lang of getListedLanguages()" class="dropdown-item">
+								<a href="javascript:" (click)="switchLang(lang.key)">
+									<i class="fa fa-flag"></i>
+									{{lang.name}}
+								</a>
+							</li>
 						</ul>
 					</div>
 				</div>

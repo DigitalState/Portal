@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule }  from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { MdProgressBarModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { AppTranslationModule } from '../app.translation.module';
@@ -23,6 +24,7 @@ import { DsDatatableHeader } from './components/datatable/datatable-header.compo
 import { DsDatatableCell } from './components/datatable/datatable-cell.component';
 import { DsDatatableCellActions } from './components/datatable/datatable-cell-actions.component';
 import { DSLanguageSwitcherComponent } from './components/language-switcher.component';
+import { DsBackLink } from './components/back-link.component';
 import { DefaultModal } from './components/modals/default-modal/default-modal.component';
 import { KeyValuePipe } from './components/pipes/KeyValue.pipe';
 import { DsEntityTranslatePipe } from './components/pipes/EntityTranslate.pipe';
@@ -33,6 +35,7 @@ import { DsEntityTranslationService } from './services/entity-translation.servic
         CommonModule,
         RouterModule,
         FormsModule,
+        MdProgressBarModule,
         // AppTranslationModule,
         TranslateModule,
         DSAuthModule,
@@ -48,6 +51,7 @@ import { DsEntityTranslationService } from './services/entity-translation.servic
         DsDatatableCell,
         DsDatatableCellActions,
         DSLanguageSwitcherComponent,
+        DsBackLink,
         KeyValuePipe,
         DsEntityTranslatePipe,
     ],
@@ -59,6 +63,7 @@ import { DsEntityTranslationService } from './services/entity-translation.servic
         TemplateStorage,
     ],
     exports: [
+        MdProgressBarModule,
         DsMicroservicesComponent,
         DsEntityListComponent,
         DsEntityShowComponent,

@@ -1,8 +1,4 @@
-import { Component } from '@angular/core';
-import { ActivatedRoute, Params, Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ToastsManager } from 'ng2-toastr';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, Injector } from '@angular/core';
 
 import { DsBaseEntityShowComponent } from '../../../components/base-entity-show.component';
 import { MicroserviceConfig } from '../../microservice.provider';
@@ -11,21 +7,18 @@ import 'rxjs/Rx';
 
 @Component({
     selector: 'ds-service-show',
-    templateUrl: '../templates/show.template.html'
+    templateUrl: '../templates/service-show.template.html'
 })
 export class DsServiceShowComponent extends DsBaseEntityShowComponent {
 
     entityUrlPrefix = 'services';
+    headerTitle = 'Service Details';
 
-    constructor(route: ActivatedRoute,
-                router: Router,
-                translate: TranslateService,
-                toastr: ToastsManager,
-                modal: NgbModal,
+    constructor(injector: Injector,
                 microserviceConfig: MicroserviceConfig,
                 entityApiService: EntityApiService) {
 
-        super(route, router, translate, microserviceConfig, toastr, modal);
+        super(injector, microserviceConfig);
         this.entityApiService = entityApiService;
     }
 }

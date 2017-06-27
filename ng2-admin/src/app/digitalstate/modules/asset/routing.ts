@@ -8,7 +8,7 @@ import { DsAssetEditComponent } from './components/asset-edit.component';
 
 const routes: Routes = [
 
-    // Default route is `DsAssetListComponent`. See pages.routing.ts
+    // Default routerLink is `DsAssetListComponent`. See pages.routing.ts
     {
         path: '',
         component: DsAssetComponent,

@@ -16,7 +16,7 @@ import 'style-loader!./login.scss';
 export class Login {
 
     public form: FormGroup;
-    public email: AbstractControl;
+    public username: AbstractControl;
     public password: AbstractControl;
     public submitted: boolean = false;
 
@@ -27,11 +27,11 @@ export class Login {
                 protected toastr: ToastsManager,
                 protected auth: AuthService) {
         this.form = fb.group({
-            'email': ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-            'password': ['', Validators.compose([Validators.required, Validators.minLength(4)])]
+            'username': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
+            'password': ['', Validators.compose([Validators.required, Validators.minLength(1)])]
         });
 
-        this.email = this.form.controls['email'];
+        this.username = this.form.controls['username'];
         this.password = this.form.controls['password'];
     }
 
@@ -40,7 +40,7 @@ export class Login {
         this.inProgress = true;
 
         if (this.form.valid) {
-            this.auth.login(values.email, values.password)
+            this.auth.login(values.username, values.password)
                 .finally(() => {
                     this.inProgress = false;
                 })

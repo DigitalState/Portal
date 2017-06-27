@@ -6,13 +6,16 @@ import { EntityApiService } from '../entity-api.service';
 import 'rxjs/Rx';
 
 @Component({
-    selector: 'ds-case-show',
-    templateUrl: '../templates/show.template.html'
+    selector: 'ds-scenario-show',
+    templateUrl: '../templates/scenario-show.template.html'
 })
-export class DsCaseShowComponent extends DsBaseEntityShowComponent {
+export class DsScenarioShowComponent extends DsBaseEntityShowComponent {
 
-    entityUrlPrefix = 'cases';
-    headerTitle = 'Case Details';
+    entityUrlPrefix = 'scenarios';
+    entityParentUrlPrefix = 'services';
+    entityParentUrlParam = 'serviceUuid';
+    headerTitle = 'Scenario Details';
+    headerSubtitle = null;
 
     constructor(protected injector: Injector,
                 protected microserviceConfig: MicroserviceConfig,
@@ -20,5 +23,8 @@ export class DsCaseShowComponent extends DsBaseEntityShowComponent {
 
         super(injector, microserviceConfig);
         this.entityApiService = entityApiService;
+
+        // Create a place-holder for the back-link until it gets generated
+        this.backLink = this.getEmptyBackLink();
     }
 }

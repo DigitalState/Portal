@@ -1,19 +1,29 @@
+import { Injector } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsManager } from 'ng2-toastr';
-import {LangChangeEvent, TranslateService} from '@ngx-translate/core';
+import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
+import { Link } from '../models/Link';
 import { DefaultModal } from './modals/default-modal/default-modal.component';
 import { DsBaseEntityApiService } from '../services/base-entity-api.service';
 import { MicroserviceConfig } from '../modules/microservice.provider';
+import { DsEntityCrudComponent } from './base-entity-crud-component';
+
 import 'rxjs/Rx';
-import {Subscriber} from 'rxjs/Subscriber';
+import { Subscriber } from 'rxjs/Subscriber';
+import { Observable } from 'rxjs/Observable';
 
-export abstract class DsBaseEntityShowComponent  {
+export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
 
-    protected entityUrlPrefix: string;
-    protected headerTitle: string;
-    protected entity;
+    /**
+     * Determines the default visibilty of action buttons
+     * @type { [s: string]: boolean }
+     */
+    actions: { [s: string]: boolean } = {
+        edit: true,
+        delete: true,
+    };
 
     /**
      * A shortcut to the entity's metadata from the MicroserviceConfig.
@@ -21,22 +31,31 @@ export abstract class DsBaseEntityShowComponent  {
     protected entityMetadata = {};
 
     /**
+     * Language change observer
+     */
+    protected languageChangeSubscriber: Subscriber<LangChangeEvent>;
+
+    /**
      * The Enity API service is not injected into this base component class because
      * the API service configurations are Microservice-specific.
      */
     protected entityApiService: DsBaseEntityApiService<any>;
 
-    protected id: number;
+    /* Other injectable dependencies */
+    protected route: ActivatedRoute;
+    protected router: Router;
+    protected translate: TranslateService;
+    protected toastr: ToastsManager;
+    protected modal: NgbModal;
 
-    protected languageChangeSubscriber: Subscriber<LangChangeEvent>;
 
-    constructor(protected route: ActivatedRoute,
-                protected router: Router,
-                protected translate: TranslateService,
-                protected microserviceConfig: MicroserviceConfig,
-                protected toastr: ToastsManager,
-                protected modal: NgbModal) {
-
+    constructor(injector: Injector, protected microserviceConfig: MicroserviceConfig) {
+        super(injector);
+        this.router = this.injector.get(Router);
+        this.route = this.injector.get(ActivatedRoute);
+        this.translate = this.injector.get(TranslateService);
+        this.modal = this.injector.get(NgbModal);
+        this.toastr = this.injector.get(ToastsManager);
     }
 
     ngOnInit() {
@@ -44,10 +63,10 @@ export abstract class DsBaseEntityShowComponent  {
 
         // Subscribe to language-change events
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-            this.prepareEntity();
+            return this.prepareEntity().subscribe();
         });
 
-        this.prepareEntity();
+        this.prepareEntity().subscribe();
     }
 
     ngOnDestroy() {
@@ -55,20 +74,32 @@ export abstract class DsBaseEntityShowComponent  {
         this.languageChangeSubscriber.unsubscribe();
     }
 
-    protected prepareEntity() {
-        this.route.params.forEach((params: Params) => {
-            this.id = params['id'];
-            console.log(this.id);
+    protected prepareEntity(): Observable<{'entity': any, 'entityParent'?: any}> {
+        return this.route.params.flatMap((params: Params) => {
+            let uuid = params['id'];
+            let parentUuid = params[this.entityParentUrlParam];
+
+            return this.entityApiService.getOne(this.entityUrlPrefix, uuid).flatMap(entity => {
+                this.entity = entity;
+
+                return this.prepareEntityParent(this.entityParentUrlPrefix, parentUuid).flatMap(entityParent => {
+                    return Observable.of({'entity': entity, 'entityParent': entityParent});
+                });
+            });
         });
+    }
 
-        this.entityApiService.getOne(this.entityUrlPrefix, this.id).subscribe(res => {
-            this.entity = res;
-
-            if (this.headerTitle == null) {
-                this.headerTitle = this.entity.uuid;
-            }
-        });
-
+    protected prepareEntityParent(urlPrefix: string, urlParam: string): Observable<any> {
+        if (urlPrefix && urlParam) {
+            return this.entityApiService.getOne(urlPrefix, urlParam).flatMap(entityParent => {
+                this.entityParent = entityParent;
+                this.generateBackLink();
+                return Observable.of(entityParent);
+            });
+        }
+        else {
+            return Observable.empty();
+        }
     }
 
     onDelete(event) {

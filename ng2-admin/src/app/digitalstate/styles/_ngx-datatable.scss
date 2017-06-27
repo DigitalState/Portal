@@ -2,8 +2,37 @@
 
   .datatable-header {
 
-    .datatable-header-cell {
-      padding: 0 0.5em;
+    .datatable-header-inner {
+      height: 100%;
+
+      .datatable-header-cell {
+        padding: 0.5em 1em;
+        height: 100%;
+
+        .sort-btn {
+          //position: absolute;
+          //top: 0.25em;
+          //right: 2em;
+        }
+        & > div {
+          display: flex;
+          flex: 1;
+          height: 100%;
+
+          .ds-datatable-header {
+            .datatable-header-cell-label {
+              font-weight: bold;
+            }
+
+            .column-filter {
+              position: absolute;
+              bottom: 0;
+              left: 1em;
+              right: 1em;
+            }
+          }
+        }
+      }
     }
   }
 

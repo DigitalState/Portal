@@ -83,7 +83,7 @@ export class AuthService {
      * @return Observable
      */
     login(email: string, password: string) {
-        let url = this.authUrlPrefix + 'login_check';
+        let url = this.authUrlPrefix + 'security-check';
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers });
 
@@ -126,8 +126,8 @@ export class AuthService {
     protected createAuthUser(decodedToken: object) {
         this.authUser = new User;
         this.authUser.username = decodedToken['username'];
-        this.authUser.identity = decodedToken['iden'];
-        this.authUser.identityUuid = decodedToken['iden_uuid'];
+        this.authUser.identity = decodedToken['identity'];
+        this.authUser.identityUuid = decodedToken['identityUuid'];
         this.authUser.roles = decodedToken['roles'];
     }
 

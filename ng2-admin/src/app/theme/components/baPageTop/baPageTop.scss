@@ -107,11 +107,18 @@ a.al-logo:hover {
 }
 
 ul.language-dropdown {
-  right: -75%;
+  right: -30px;
   top: 41px;
 
   li {
     a {
+      padding: 4px 0px 4px 0px;
+      color: $dropdown-text;
+
+      &:hover {
+        color: $dropdown-text-hover;
+      }
+
       i.fa {
         margin-right: 8px;
       }

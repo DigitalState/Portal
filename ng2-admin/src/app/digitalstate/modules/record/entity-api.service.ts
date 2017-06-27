@@ -7,7 +7,7 @@ import 'rxjs/Rx';
 @Injectable()
 export class EntityApiService extends DsBaseEntityApiService<any> {
 
-    constructor(@Inject(MICROSERVICE_RESTANGULAR) protected restangular) {
+    constructor(@Inject(MICROSERVICE_RESTANGULAR) public restangular) {
         super(restangular);
     }
 

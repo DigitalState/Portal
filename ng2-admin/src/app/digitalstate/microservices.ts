@@ -58,11 +58,89 @@ export const MICROSERVICES = {
                     // 'form': {
                     //     label: 'Form',
                     //     type: 'string',
-                    default: '',
+                    // default: '',
                     //     validation: {
                     //         'required': {message: 'required'},
                     //     }
                     // },
+                },
+            },
+            'scenarios': {
+                properties: {
+                    'title': {
+                        label: 'Title',
+                        type: 'string',
+                        default: '',
+                        translated: true,
+                        validation: {
+                            'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
+                            'minlength': {
+                                message: 'minlength',
+                                params: { chars: 4 }
+                            },
+                            // 'maxlength': { message: 'Title cannot be more than 24 characters long.'},
+                            // 'someCustomValidationDirective': { message: 'Someone named "Bob" cannot be a hero.'},
+                        },
+                    },
+                    'presentation': {
+                        label: 'Presentation',
+                        type: 'string',
+                        default: '',
+                        translated: true,
+                        validation: {
+                            'required': { message: 'required'},
+                        },
+                    },
+                    'description': {
+                        label: 'Description',
+                        type: 'string',
+                        default: '',
+                        translated: true,
+                        validation: {
+                            'required': { message: 'required'},
+                        },
+                    },
+                    'type': {
+                        label: 'Description',
+                        type: 'string',
+                        default: 'bpm',
+                    },
+                    'data': {
+                        label: 'Data',
+                        type: 'json',
+                        default: {
+                            'bpm': 'camunda',
+                            'process_definition_key': ''
+                        },
+                    },
+                    'enabled': {
+                        label: 'Enabled',
+                        type: 'boolean',
+                        default: true,
+                        validation: {
+                            'required': { message: 'required'},
+                        },
+                    },
+                    // 'form': {
+                    //     label: 'Form',
+                    //     type: 'string',
+                    // default: '',
+                    //     validation: {
+                    //         'required': {message: 'required'},
+                    //     }
+                    // },
+                },
+            },
+            'submissions': {
+                properties: {
+                    'uuid': {
+                        label: 'Updated At',
+                        type: 'date',
+                    },
+                    'updatedAt': {
+                        label: 'Updated At',
+                        type: 'date',
+                    },
                 },
             },
         },

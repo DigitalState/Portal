@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
+import { Component, Injector } from '@angular/core';
 
 import { MicroserviceConfig } from '../../microservice.provider';
 import { EntityApiService } from '../entity-api.service';
@@ -14,12 +13,11 @@ export class DsServiceListComponent extends DsBaseEntityListComponent {
 
     entityUrlPrefix = 'services';
 
-    constructor(translate: TranslateService,
+    constructor(injector: Injector,
                 microserviceConfig: MicroserviceConfig,
                 entityApiService: EntityApiService) {
-        super(translate, microserviceConfig);
+        super(injector, microserviceConfig);
         this.entityApiService = entityApiService;
-
     }
 
     setupList() {

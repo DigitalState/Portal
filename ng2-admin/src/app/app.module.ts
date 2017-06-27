@@ -56,6 +56,7 @@ export function restangularConfigFactory(restangularProvider) {
         // Remove trailing slash to make Restangular working
         function populateHref(record) {
             if (!_.isEmpty(record) && record['@id']) {
+                record['@id'] = record['@id'].replace('app_dev.php/', '');
                 record.href = record['@id'].substring(1);
             }
         }

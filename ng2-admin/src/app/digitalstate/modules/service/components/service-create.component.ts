@@ -11,7 +11,7 @@ import 'rxjs/Rx';
 
 @Component({
     selector: 'ds-service-create',
-    templateUrl: '../templates/form.template.html'
+    templateUrl: '../templates/service-form.template.html'
 })
 export class DsServiceCreateComponent extends DsBaseEntityFormComponent {
 

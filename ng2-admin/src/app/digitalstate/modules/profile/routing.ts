@@ -9,7 +9,7 @@ const routes: Routes = [
         path: '',
         component: DsProfileComponent,
         children: [
-            // Uncomment the following to have the default EMPTY route redirect back to the dashboard
+            // Uncomment the following to have the default EMPTY routerLink redirect back to the dashboard
             // { path: '', redirectTo: '/pages/dashboard', pathMatch: 'full' },
 
             // { path: '', redirectTo: '/pages/profile/list', pathMatch: 'full' },

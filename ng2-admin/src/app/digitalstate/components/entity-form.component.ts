@@ -4,9 +4,13 @@ import {
 } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
-import {NgForm, NgModel} from '@angular/forms';
-import { Restangular } from 'ngx-restangular';
+import { NgForm, NgModel } from '@angular/forms';
+
+import { TranslateService } from '@ngx-translate/core';
 import { ToastsManager } from 'ng2-toastr/src/toast-manager';
+
+import { Link } from '../models/Link';
+
 import 'rxjs/Rx';
 
 @Component({
@@ -15,48 +19,26 @@ import 'rxjs/Rx';
 })
 export class DsEntityFormComponent implements AfterContentInit, AfterViewChecked {
 
-    @Input() entity: any;
     @Input() headerTitle: string;
+    @Input() headerSubtitle: string;
+    @Input() entity: any;
+    @Input() backLink: Link;
     @Input() isNew: boolean;
 
     @Output() onFormSubmit = new EventEmitter<any>();
     @Output() onFormCancel = new EventEmitter<any>();
     @Output() onFormInit = new EventEmitter<any>();
     @Output() onFormChange = new EventEmitter<any>();
+    @Output() onFormLanguageChange = new EventEmitter<any>();
 
-    entityForm: NgForm;
     @ViewChild('entityForm') currentForm: NgForm;
     @ContentChildren(NgModel) public models: QueryList<NgModel>;
 
-    // formErrors = {
-    //     'title': '',
-    //     'presentation': '',
-    //     'form': '',
-    //     'description': '',
-    // };
-    //
-    // validationMessages = {
-    //     'title': {
-    //         'required':      'Title is required.',
-    //         'minlength':     'Title must be at least 4 characters long.',
-    //         'maxlength':     'Title cannot be more than 24 characters long.',
-    //         'someCustomValidationDirective': 'Someone named "Bob" cannot be a hero.'
-    //     },
-    //     'presentation': {
-    //         'required': 'Presentation is required.'
-    //     },
-    //     'form': {
-    //         'required': 'Form is required.'
-    //     },
-    //     'description': {
-    //         'required': 'Description is required.'
-    //     },
-    // };
-
+    entityForm: NgForm;
+    languages: object[];
+    formLanguage: any;
     submitted: boolean = false;
-
     protected id: number;
-
 
     /*
      Reset the form with a new hero AND restore 'pristine' class state
@@ -69,11 +51,20 @@ export class DsEntityFormComponent implements AfterContentInit, AfterViewChecked
     constructor(protected route: ActivatedRoute,
                 protected router: Router,
                 protected location: Location,
+                protected translate: TranslateService,
                 protected toastr: ToastsManager) {
 
     }
 
     ngOnInit() {
+        this.languages = this.translate.getLangs().map((langKey) =>
+            ({
+                key: langKey,
+                name: this.translate.instant('ds.language-switcher.languages.' + langKey)
+            })
+        );
+
+        this.loadCurrentLanguageTranslation();
     }
 
     ngAfterViewInit() {
@@ -132,6 +123,22 @@ export class DsEntityFormComponent implements AfterContentInit, AfterViewChecked
 
     cancelForm() {
         this.onFormCancel.emit(this.currentForm);
+    }
+
+    switchLang(newLangKey: string) {
+        this.formLanguage = this.languages.find((language:any) => (language.key == newLangKey));
+        this.onFormLanguageChange.emit(this.formLanguage);
+    }
+
+    getListedLanguages() {
+        return this.languages.filter((language:any) => (language.key !== this.formLanguage.key));
+    }
+
+    protected loadCurrentLanguageTranslation() {
+        this.formLanguage = {
+            key: this.translate.currentLang,
+            name: this.translate.instant('ds.language-switcher.languages.' + this.translate.currentLang)
+        };
     }
 
 }

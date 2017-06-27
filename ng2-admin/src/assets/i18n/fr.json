@@ -4,8 +4,10 @@
     "signUpPrompt": "Vous n'avez pas de compte?",
     "signUpLink": "S'inscrire!",
     "email": "Email",
+    "username": "Nom d'utilisateur",
     "password": "Mot de passe",
     "signIn": "Se connecter",
+    "signOut": "Déconnexion",
     "forgotPassword": "mot de passe oublié?",
     "signFromAppText": "or Sign in with one click",
     "shareOnFacebook": "Share on Facebook",
@@ -64,7 +66,10 @@
       "external_link": "External Link",
 
       "profile": "Profil",
+      "serviceDirectory": "Répertoire des services",
       "services": "Services",
+      "scenarios": "Scenarios",
+      "submissions": "Submissions",
       "cases": "Affaires",
       "assets": "Atouts",
       "topics": "Sujets",
@@ -75,7 +80,7 @@
       "individuals": "Personnes",
       "identities": "Identités",
 
-      "service_activation": "Activation du service"
+      "scenario_activation": "Activation du scénario"
     },
     "created_with": "Created with"
   },
@@ -145,6 +150,8 @@
     "microservices": {
       "entity": {
         "property": {
+          "updatedAt": "Mis à jour",
+          "uuid": "UUID",
           "title": "Titre",
           "form": "Form",
           "presentation": "Présentation",
@@ -152,7 +159,9 @@
           "username": "Nom d'utilisateur",
           "identity": "Identité",
           "identityUuid": "Identité UUID",
-          "channel": "Canal"
+          "channel": "Canal",
+          "data": "Data",
+          "processDefinitionKey": "Clé de définition de processus"
         },
         "action": {
           "create": "Créer",
@@ -162,7 +171,8 @@
           "refresh": "Recharger",
           "activate": "Activer",
           "save": "Enregistrer",
-          "cancel": "Annuler"
+          "cancel": "Annuler",
+          "actions": "Actes"
         },
         "validation": {
           "required": "Champs requis."

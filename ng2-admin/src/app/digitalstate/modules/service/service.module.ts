@@ -15,8 +15,13 @@ import { DsServiceListComponent } from './components/service-list.component';
 import { DsServiceShowComponent } from './components/service-show.component';
 import { DsServiceCreateComponent } from './components/service-create.component';
 import { DsServiceEditComponent } from './components/service-edit.component';
-import { DsServiceActivateComponent } from './components/service-activate.component';
-import {AppTranslationModule} from '../../../app.translation.module';
+import { DsScenarioActivateComponent } from './components/scenario-activate.component';
+import { DsScenarioListComponent } from './components/scenario-list.component';
+import { DsScenarioShowComponent } from './components/scenario-show.component';
+import { DsScenarioCreateComponent } from './components/scenario-create.component';
+import { DsScenarioEditComponent } from './components/scenario-edit.component';
+import { DsSubmissionListComponent } from './components/submission-list.component';
+import { DsSubmissionShowComponent } from './components/submission-show.component';
 
 
 export const MICROSERVICE_NAME = 'services';
@@ -37,7 +42,15 @@ export const MICROSERVICE_NAME = 'services';
         DsServiceShowComponent,
         DsServiceCreateComponent,
         DsServiceEditComponent,
-        DsServiceActivateComponent,
+        DsScenarioActivateComponent,
+
+        DsScenarioListComponent,
+        DsScenarioShowComponent,
+        DsScenarioCreateComponent,
+        DsScenarioEditComponent,
+
+        DsSubmissionListComponent,
+        DsSubmissionShowComponent,
     ],
     providers: [
         EntityApiService,

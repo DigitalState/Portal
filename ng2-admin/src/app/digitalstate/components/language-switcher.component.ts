@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import {Observable} from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'ds-language-switcher',
     template: `
 		<div class="dropdown al-dropdown">
-			<a class="toggle-link dropdown-toggle fa fa-globe" id="language-dd" data-toggle="dropdown" aria-expanded="false" tabindex="0">
+			<a class="toggle-link dropdown-toggle" id="language-dd" data-toggle="dropdown" aria-expanded="false" tabindex="0">
+				<i class="fa fa-globe"></i>
                 <span class="language-name">{{currentLanguage.name}}</span>
 			</a>
 			<ul class="dropdown-menu top-dropdown-menu language-dropdown" aria-labelledby="language-dd">
 				<li *ngFor="let lang of getListedLanguages()" class="dropdown-item">
-                    <a (click)="switchLang(lang.key)">
+                    <a href="javascript:;" (click)="switchLang(lang.key)">
                         <i class="fa fa-flag"></i>
                         {{lang.name}}
                     </a>

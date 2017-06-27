@@ -19,7 +19,7 @@ export abstract class DsBaseEntityApiService<T> {
      * settings (such as Base URL) that are specific to the EntityApiService extending
      * this class.
      */
-    constructor(protected restangular: Restangular) {
+    constructor(public restangular: Restangular) {
 
     }
 
@@ -31,6 +31,16 @@ export abstract class DsBaseEntityApiService<T> {
     // public getList(query: ListQuery): Observable<PagedData<Service>> {
     public resource(resourceUrl: string): any {
         return this.restangular.all(resourceUrl);
+    }
+
+    /**
+     * Proxy method for Restangular.one(...)
+     * @param route
+     * @param id
+     * @returns {any} An observable Restangular object
+     */
+    public one(route: string, id: any): any {
+        return this.restangular.one(route, id);
     }
 
     /**

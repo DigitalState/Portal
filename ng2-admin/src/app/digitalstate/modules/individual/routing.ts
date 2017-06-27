@@ -8,7 +8,7 @@ import { DsIndividualEditComponent } from './components/individual-edit.componen
 
 const routes: Routes = [
 
-    // Default route is `DsIndividualListComponent`. See pages.routing.ts
+    // Default routerLink is `DsIndividualListComponent`. See pages.routing.ts
     {
         path: '',
         component: DsIndividualComponent,

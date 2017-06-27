@@ -1,0 +1,64 @@
+<ds-entity-form *ngIf="entity"
+				[entity]="entity"
+				[backLink]="backLink"
+				[headerTitle]="headerTitle"
+				[headerSubtitle]="headerSubtitle"
+				[isNew]="isNew"
+				(onFormInit)="onFormInit($event)"
+				(onFormChange)="onFormChange($event)"
+				(onFormSubmit)="onFormSubmit($event)"
+				(onFormCancel)="onFormCancel($event)"
+				(onFormLanguageChange)="onFormLanguageChange($event)"
+>
+	<div class="card-block">
+		<div *ngIf="!isNew" class="row">
+			<div class="col">
+				<div class="form-group">
+					<Label>UUID</Label>
+					<div class="entity-uuid form-control" disabled>{{entity.uuid}}</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="title">{{ 'ds.microservices.entity.property.title' | translate }}  [{{formLang}}]</label>
+					<input id="title" name="title" type="text" [(ngModel)]="entity.title[formLang]" class="form-control" placeholder="" required>
+					<div *ngIf="formErrors.title" class="alert alert-danger">
+						{{ formErrors.title }}
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="presentation">{{ 'ds.microservices.entity.property.presentation' | translate }}  [{{formLang}}]</label>
+					<input id="presentation" name="presentation" type="text" [(ngModel)]="entity.presentation[formLang]" class="form-control" placeholder="" required>
+					<div *ngIf="formErrors.presentation" class="alert alert-danger">
+						{{ formErrors.presentation }}
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="process-definition-key">{{ 'ds.microservices.entity.property.processDefinitionKey' | translate }}</label>
+					<input id="process-definition-key" name="process_definition_key" type="text" [(ngModel)]="entity.data.process_definition_key" class="form-control" required>
+					<div *ngIf="formErrors.data" class="alert alert-danger">
+						{{ formErrors.data }}
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-6">
+				<div class="form-group">
+					<label for="description">{{ 'ds.microservices.entity.property.description' | translate }}  [{{formLang}}]</label>
+					<textarea id="description" name="description" type="text" [(ngModel)]="entity.description[formLang]" class="form-control" placeholder="" required></textarea>
+					<div *ngIf="formErrors.description" class="alert alert-danger">
+						{{ formErrors.description }}
+					</div>
+				</div>
+				<!--<div class="form-group">-->
+					<!--<label for="data">{{ 'ds.microservices.entity.property.data' | translate }}</label>-->
+					<!--<textarea id="data" name="data" type="text" [(ngModel)]="entity.data" class="form-control" placeholder="" required></textarea>-->
+					<!--<div *ngIf="formErrors.data" class="alert alert-danger">-->
+						<!--{{ formErrors.data }}-->
+					<!--</div>-->
+				<!--</div>-->
+			</div>
+		</div>
+	</div>
+</ds-entity-form>

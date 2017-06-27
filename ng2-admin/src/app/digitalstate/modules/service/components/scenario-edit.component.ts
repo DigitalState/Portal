@@ -10,13 +10,17 @@ import { DsBaseEntityFormComponent } from '../../../components/base-entity-form.
 import 'rxjs/Rx';
 
 @Component({
-    selector: 'ds-service-edit',
-    templateUrl: '../templates/service-form.template.html'
+    selector: 'ds-scenario-edit',
+    templateUrl: '../templates/scenario-form.template.html'
 })
-export class DsServiceEditComponent extends DsBaseEntityFormComponent {
+export class DsScenarioEditComponent extends DsBaseEntityFormComponent {
 
-    entityUrlPrefix = 'services';
-    headerTitle = 'Edit Service';
+    entityUrlPrefix = 'scenarios';
+    entityParentUrlPrefix = 'services';
+    entityParentUrlParam = 'serviceUuid';
+    headerTitle = 'Edit Scenario';
+    // headerTitle = 'general.menu.scenarios';
+    headerSubtitle = null;
     isNew = false;
 
     constructor(injector: Injector,
@@ -30,7 +34,12 @@ export class DsServiceEditComponent extends DsBaseEntityFormComponent {
 
         super(injector, route, router, location, microserviceConfig, toastr);
 
-        this.entityApiService = entityApiService;
         this.translate = translate;
+        this.entityApiService = entityApiService;
+
+        // Create a place-holder for the back-link until it gets generated
+        this.backLink = this.getEmptyBackLink();
     }
+
+
 }

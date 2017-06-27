@@ -2,18 +2,17 @@
 	<div class="card-header">
 		<div class="row justify-content-between">
 			<div class="col-6">
-				<h3 class="card-title" translate="" ng-reflect-translate="">{{entity.uuid}}</h3>
+				<back-link [link]="backLink"></back-link>
+				<h3 class="card-title" translate="" ng-reflect-translate="">{{headerTitle}}</h3>
+				<h4 class="card-subtitle" translate="" ng-reflect-translate="">{{headerSubtitle}}</h4>
 			</div>
 
 			<div class="col-6">
 				<div class="container">
 					<ul class="row btn-list clearfix">
-						<li class="col-8">
-							<button [routerLink]="['../edit']" type="button" class="btn btn-primary btn-with-icon"><i class="ion-edit">{{'ds.microservices.entity.action.edit' | translate}}</i></button>
+						<li class="col-12 align-right">
+							<button [hidden]="!actions.edit" [routerLink]="['../edit']" type="button" class="btn btn-primary btn-with-icon"><i class="ion-edit">{{'ds.microservices.entity.action.edit' | translate}}</i></button>
 							<ng-content select="button.entity-action"></ng-content>
-						</li>
-						<li class="col-4 align-right">
-							<button (click)="onDeleteClick($event)" type="button" class="btn btn-danger btn-with-icon"><i class="ion-android-delete">{{'ds.microservices.entity.action.delete' | translate}}</i></button>
 						</li>
 					</ul>
 				</div>
@@ -22,4 +21,14 @@
 	</div>
 
 	<ng-content select=".entity-body"></ng-content>
+
+	<div class="card-footer">
+		<ul class="row btn-list clearfix">
+			<li class="col-8">
+			</li>
+			<li class="col-4 align-right">
+				<button [hidden]="!actions.delete" (click)="onDeleteClick($event)" type="button" class="btn btn-danger btn-with-icon"><i class="ion-android-delete">{{'ds.microservices.entity.action.delete' | translate}}</i></button>
+			</li>
+		</ul>
+	</div>
 </div>
