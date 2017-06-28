@@ -3,7 +3,7 @@ import { Component, Inject, TemplateRef, ViewChild, ContentChild, Output, EventE
 // import 'style-loader!../styles/style.scss';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { Service } from '../models/service';
-import { Link } from '../models/Link';
+import { Link } from '../models/link';
 
 import 'rxjs/Rx';
 

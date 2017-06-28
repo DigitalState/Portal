@@ -19,7 +19,7 @@ export abstract class DsBaseEntityApiService<T> {
      * settings (such as Base URL) that are specific to the EntityApiService extending
      * this class.
      */
-    constructor(public restangular: Restangular) {
+    constructor(public restangular?: Restangular) {
 
     }
 

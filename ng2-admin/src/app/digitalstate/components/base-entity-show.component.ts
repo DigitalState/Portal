@@ -4,7 +4,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsManager } from 'ng2-toastr';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
-import { Link } from '../models/Link';
+import { Link } from '../models/link';
 import { DefaultModal } from './modals/default-modal/default-modal.component';
 import { DsBaseEntityApiService } from '../services/base-entity-api.service';
 import { MicroserviceConfig } from '../modules/microservice.provider';

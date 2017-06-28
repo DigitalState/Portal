@@ -25,7 +25,7 @@ export class DsIdentityEditComponent extends DsBaseEntityFormComponent {
                 microserviceConfig: MicroserviceConfig,
                 entityApiService: EntityApiService) {
 
-        super(injector, route, router, location, microserviceConfig, toastr);
+        super(injector, microserviceConfig);
         this.entityApiService = entityApiService;
     }
 }

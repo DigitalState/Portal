@@ -15,6 +15,8 @@ import 'rxjs/Rx';
 export class AuthService {
 
     protected authUrlPrefix;
+    protected registrationPath;
+    protected loginPath;
     protected jwtHelper: JwtHelper;
     protected authUser;
 
@@ -23,7 +25,10 @@ export class AuthService {
                 protected http: Http,
                 protected authHttp: AuthHttp) {
 
-        this.authUrlPrefix = appState.get('microservices').authentication.entrypoint.url;
+        const config = appState.get('microservices').authentication;
+        this.authUrlPrefix = config.entrypoint.url;
+        this.registrationPath = this.authUrlPrefix + config.paths.registration;
+        this.loginPath = this.authUrlPrefix + config.paths.login;
         this.jwtHelper = new JwtHelper();
 
         // Initialize authUser if a valid token exists
@@ -62,7 +67,7 @@ export class AuthService {
      * @return Observable
      */
     register(registration: Registration) {
-        let url = this.authUrlPrefix + 'registration';
+        let url = this.registrationPath;
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers });
 
@@ -83,7 +88,7 @@ export class AuthService {
      * @return Observable
      */
     login(email: string, password: string) {
-        let url = this.authUrlPrefix + 'security-check';
+        let url = this.loginPath;
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers });
 

@@ -1,9 +1,11 @@
 import { Injector } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastsManager } from 'ng2-toastr';
 
 import { DsBaseEntityApiService } from '../services/base-entity-api.service';
-import { Link } from '../models/Link';
+import { Link } from '../models/link';
 
 import 'rxjs/Rx';
 import { Subscriber} from 'rxjs/Subscriber';
@@ -40,12 +42,17 @@ export abstract class DsEntityCrudComponent {
     protected entityApiService: DsBaseEntityApiService<any>;
 
     protected translate: TranslateService;
-
+    protected router: Router;
     protected route: ActivatedRoute;
+    protected location: Location;
+    protected toastr: ToastsManager;
 
     constructor(protected injector: Injector) {
+        this.router = injector.get(Router);
         this.route = injector.get(ActivatedRoute);
+        this.location = injector.get(Location);
         this.translate = injector.get(TranslateService);
+        this.toastr = injector.get(ToastsManager);
     }
 
     /**

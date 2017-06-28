@@ -1,3 +1,4 @@
+import { Persona } from './persona';
 
 export class User {
 
@@ -5,7 +6,7 @@ export class User {
     identity: string;
     identityUuid: string;
     roles: Array<string>;
-    protected data: Object;
+    persona: Array<Persona>;
 
     constructor() {
 

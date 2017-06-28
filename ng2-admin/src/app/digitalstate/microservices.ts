@@ -5,6 +5,10 @@ export const MICROSERVICES = {
         entrypoint: {
             url: 'http://localhost:8010/app_dev.php/',
         },
+        paths: {
+            registration: 'registration',
+            login: 'tokens/staff',
+        },
     },
     'services': {
         label: 'Services',
@@ -166,6 +170,16 @@ export const MICROSERVICES = {
                             },
                         },
                     },
+                    'identity': {
+                        label: 'Identity',
+                        type: 'string',
+                        default: 'Individual',
+                    },
+                    'identityUuid': {
+                        label: 'Identity UUID',
+                        type: 'string',
+                        default: '9be0af28-ef41-49b7-86d9-72a2d9beb051',
+                    },
                 },
             },
         },
@@ -322,18 +336,37 @@ export const MICROSERVICES = {
     'identities': {
         label: 'Identities',
         entrypoint: {
-            url: 'http://localhost:8054/',
+            url: 'http://localhost:8054/app_dev.php/',
         },
         entities: {
-            'identities': {
+            'individuals': {
                 properties: {
                     'title': {
                         label: 'Title',
                         type: 'string',
                         default: '',
+                        translated: true,
                         validation: {
                             'required': {message: 'Title is required.'},
                         },
+                    },
+                },
+            },
+            'staff-personas': {
+                properties: {
+                    'title': {
+                        label: 'Title',
+                        type: 'string',
+                        default: '',
+                        translated: true,
+                        validation: {
+                            'required': {message: 'Title is required.'},
+                        },
+                    },
+                    'data': {
+                        label: 'Data',
+                        type: 'json',
+                        default: {},
                     },
                 },
             },

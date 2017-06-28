@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { Link } from '../models/Link';
+import { Link } from '../models/link';
 
 @Component({
     'selector': 'back-link',

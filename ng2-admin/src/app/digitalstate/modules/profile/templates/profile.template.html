@@ -40,4 +40,51 @@
 			</div>
 		</div>
 	</div>
+
 </div>
+
+<form *ngIf="persona" class="card entity-card animated fadeIn">
+	<div class="card-header">
+		<div class="row justify-content-between">
+			<div class="col-6">
+				<h3 class="card-title" translate>Persona</h3>
+				<h4 class="card-subtitle">{{persona.title | entityTranslate}}</h4>
+			</div>
+			<div class="col-6">
+				<ul class="btn-list clearfix">
+					<li class="float-right">
+						<button (click)="savePersona($event)" type="button" class="btn btn-primary btn-with-icon"><i class="ion-edit">{{'ds.microservices.entity.action.save' | translate}}</i></button>
+						<ng-content select="button.entity-action"></ng-content>
+						<!--<button (click)="" type="button" class="btn btn-danger btn-with-icon"><i class="ion-android-delete">{{'ds.microservices.entity.action.delete' | translate}}</i></button>-->
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="card-block entity-body entity-data">
+		<div class="row">
+			<div class="col-sm-6">
+				<div class="form-group" *ngFor="let item of persona.data | keyValue">
+					<label [for]="item.key">{{ ('ds.microservices.entity.property.' + item.key) | translate }}</label>
+					<input [id]="item.key" [name]="item.key" type="text" [(ngModel)]="persona.data[item.key]" class="form-control" placeholder="" required>
+					<!--<label for="title">{{ 'ds.microservices.entity.property.title' | translate }}  [{{formLang}}]</label>-->
+					<!--<input id="title" name="title" type="text" [(ngModel)]="persona.title[formLang]" class="form-control" placeholder="" required>-->
+					<!--<div *ngIf="formErrors.title" class="alert alert-danger">-->
+						<!--{{ formErrors.title }}-->
+					<!--</div>-->
+				</div>
+			</div>
+			<!--<div class="col-sm-6">-->
+				<!--<div class="form-group">-->
+					<!--<label for="identity">{{ 'ds.microservices.entity.property.identity' | translate }}</label>-->
+					<!--<input disabled id="identity" name="identity" type="text" [(ngModel)]="user.identity" class="form-control">-->
+				<!--</div>-->
+				<!--<div class="form-group">-->
+					<!--<label for="identityUuid">{{ 'ds.microservices.entity.property.identityUuid' | translate }}</label>-->
+					<!--<input disabled id="identityUuid" name="identityUuid" type="text" [(ngModel)]="user.identityUuid" class="form-control">-->
+				<!--</div>-->
+			<!--</div>-->
+		</div>
+	</div>
+</form>

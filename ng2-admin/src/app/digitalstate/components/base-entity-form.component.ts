@@ -1,6 +1,5 @@
-import {Injector, Input} from '@angular/core';
+import { Injector } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { NgForm } from '@angular/forms';
 import { ToastsManager } from 'ng2-toastr/src/toast-manager';
 
@@ -13,6 +12,10 @@ import { DsEntityCrudComponent } from './base-entity-crud-component';
 import 'rxjs/Rx';
 import { Subscriber } from 'rxjs/Subscriber';
 import { Observable } from 'rxjs/Observable';
+
+import clone from 'lodash/clone';
+import isEmpty from 'lodash/isEmpty';
+import isString from 'lodash/isString';
 
 
 const VALIDATION_TRANS_PREFIX = 'ds.microservices.entity.validation.';
@@ -93,11 +96,7 @@ export abstract class DsBaseEntityFormComponent extends DsEntityCrudComponent {
     protected active = true;
 
     constructor(protected injector: Injector,
-                protected route: ActivatedRoute,
-                protected router: Router,
-                protected location: Location,
-                protected microserviceConfig: MicroserviceConfig,
-                protected toastr: ToastsManager) {
+                protected microserviceConfig: MicroserviceConfig) {
 
         super(injector);
         this.auth = injector.get(AuthService);
@@ -126,30 +125,6 @@ export abstract class DsBaseEntityFormComponent extends DsEntityCrudComponent {
         // Unsubscribe from language-change events
         this.languageChangeSubscriber.unsubscribe();
     }
-
-    // protected XprepareEntity(): Observable<{'entity': any, 'entityParent'?: any}> {
-    //     return this.route.params.flatMap((params: Params) => {
-    //         let uuid = params['id'];
-    //
-    //         return this.entityApiService.getOne(this.entityUrlPrefix, uuid).flatMap(entityResult => {
-    //             this.entity = entityResult;
-    //
-    //             // if (this.headerTitle == null) {
-    //             //     this.headerTitle = this.entity.uuid;
-    //             // }
-    //
-    //             if (this.entityParentUrlPrefix && this.entityParentUrlParam) {
-    //                 return this.entityApiService.getOne(this.entityParentUrlPrefix, params[this.entityParentUrlParam]).flatMap(entityParentResult => {
-    //                     this.entityParent = entityParentResult;
-    //                     this.generateBackLink();
-    //                     return Observable.of({'entity': this.entity, 'entityParent': this.entityParent});
-    //                 });
-    //             }
-    //
-    //             return Observable.of({'entity': this.entity});
-    //         });
-    //     });
-    // }
 
     protected prepareEntity(): Observable<{'entity': any, 'entityParent'?: any}> {
 
@@ -196,28 +171,6 @@ export abstract class DsBaseEntityFormComponent extends DsEntityCrudComponent {
         }
     }
 
-    // protected prepareEntity() {
-    //     if (this.isNew) {
-    //         this.entity = this.createBlankEntity();
-    //     }
-    //     else {
-    //         this.route.params.subscribe((params: Params) => {
-    //             let uuid = params['id'];
-    //
-    //             // this.entityApiService.one('services', uuid).get().subscribe(res => {
-    //             this.entityApiService.getOne(this.entityUrlPrefix, uuid).subscribe(res => {
-    //                 this.entity = res;
-    //                 this.headerTitle = this.entity.uuid;
-    //             });
-    //             // this.entityApiService.restangular.oneUrl(this.entityUrlPrefix, this.entityUrlPrefix + '/' + uuid).get().subscribe(res => {
-    //             //     this.entity = res;
-    //             //     this.headerTitle = this.entity.uuid;
-    //             // });
-    //         });
-    //
-    //     }
-    // }
-
     /**
      * Build a skeleton of an entity with all properties from its metadata.
      * Subclasses can override this method to customize the resulting entity.
@@ -228,6 +181,7 @@ export abstract class DsBaseEntityFormComponent extends DsEntityCrudComponent {
         let entity = {
             'owner': user.identity,
             'ownerUuid': user.identityUuid,
+            'version': 0,
         };
 
         Object.keys(this.entityMetadata).forEach((propertyName, prop) => {
@@ -306,7 +260,9 @@ export abstract class DsBaseEntityFormComponent extends DsEntityCrudComponent {
     }
 
     saveNewEntity(form?: NgForm) {
-        this.entityApiService.resource(this.entityUrlPrefix).post(this.entity).subscribe((response) => {
+        console.log('entity', this.entity);
+        let sanitizedEntity = this.preSave(clone(this.entity));
+        this.entityApiService.resource(this.entityUrlPrefix).post(sanitizedEntity).subscribe((response) => {
             this.onEntitySave(response);
         }, (error) => {
             this.onEntitySaveError(error);
@@ -314,11 +270,36 @@ export abstract class DsBaseEntityFormComponent extends DsEntityCrudComponent {
     }
 
     saveExistingEntity(form: NgForm) {
-        this.entity.put().subscribe((response) => {
+        let sanitizedEntity = this.preSave(clone(this.entity));
+        sanitizedEntity.put().subscribe((response) => {
             this.onEntitySave(response);
         }, (error) => {
             this.onEntitySaveError(error);
         });
+    }
+
+    /**
+     * Sanitizes the provided `entity` and returns it to the caller.
+     * It's best to pass a clone of the original `entity` to avoid data binding issues that me appear in the form.
+     *
+     * @param entity
+     * @returns {any}
+     */
+    preSave(entity): any {
+        // Strip out empty (yet required) language-based properties that may fail validation.
+        Object.keys(this.entityMetadata).forEach((propertyName, prop) => {
+            let property = this.entityMetadata[propertyName];
+
+            if (property.hasOwnProperty('translated') && property.translated === true) {
+                this.translate.langs.forEach((lang) => {
+                    if (isString(entity[propertyName][lang]) && isEmpty(entity[propertyName][lang])) {
+                        delete entity[propertyName][lang];
+                    }
+                });
+            }
+        });
+        console.log('sanitized entity', entity);
+        return entity;
     }
 
     onEntitySave(response) {

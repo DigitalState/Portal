@@ -35,7 +35,7 @@ export class DsScenarioCreateComponent extends DsBaseEntityFormComponent {
                 microserviceConfig: MicroserviceConfig,
                 entityApiService: EntityApiService) {
 
-        super(injector, route, router, location, microserviceConfig, toastr);
+        super(injector, microserviceConfig);
 
         this.translate = translate;
         this.entityApiService = entityApiService;

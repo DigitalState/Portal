@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Link } from '../models/Link';
+import { Link } from '../models/link';
 
 import 'rxjs/Rx';
 

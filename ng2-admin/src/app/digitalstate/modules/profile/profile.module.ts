@@ -5,9 +5,10 @@ import { FormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { routing } from './routing';
-// import { EntityApiService } from './entity-api.service';
+
+import { DsEntityTranslatePipe } from '../../components/pipes/EntityTranslate.pipe';
+import { EntityApiService, IdentityApiService } from './entity-api.service';
 import { MicroserviceConfig, MicroserviceRestangularProvider } from '../microservice.provider';
-import { DsBaseMicroserviceModule } from '../base-microservice.module';
 import { DsMicroservicesModule } from '../../microservices.module';
 import { DsProfileComponent } from './components/profile.component';
 
@@ -24,9 +25,11 @@ import { DsProfileComponent } from './components/profile.component';
         DsProfileComponent,
     ],
     providers: [
-        // EntityApiService,
+        EntityApiService,
+        IdentityApiService,
         MicroserviceConfig,
         MicroserviceRestangularProvider,
+        DsEntityTranslatePipe
     ]
 })
 export class DsProfileModule {

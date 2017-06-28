@@ -1,10 +1,9 @@
-import { Component } from '@angular/core';
-import 'rxjs/Rx';
+import { Component, Injector } from '@angular/core';
 
 import { EntityApiService } from '../entity-api.service';
 import { DsBaseEntityListComponent } from '../../../components/base-list.component';
 import { MicroserviceConfig } from '../../microservice.provider';
-import {TranslateService} from '@ngx-translate/core';
+import 'rxjs/Rx';
 
 @Component({
     selector: 'ds-identity-list',
@@ -14,10 +13,10 @@ export class DsIdentityListComponent extends DsBaseEntityListComponent {
 
     entityUrlPrefix = 'identities';
 
-    constructor(translate: TranslateService,
+    constructor(injector: Injector,
                 microserviceConfig: MicroserviceConfig,
                 entityApiService: EntityApiService) {
-        super(translate, microserviceConfig);
+        super(injector, microserviceConfig);
         this.entityApiService = entityApiService;
     }
 

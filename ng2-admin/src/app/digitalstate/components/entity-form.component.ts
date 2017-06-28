@@ -9,7 +9,7 @@ import { NgForm, NgModel } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastsManager } from 'ng2-toastr/src/toast-manager';
 
-import { Link } from '../models/Link';
+import { Link } from '../models/link';
 
 import 'rxjs/Rx';
 
