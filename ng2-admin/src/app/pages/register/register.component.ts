@@ -4,8 +4,8 @@ import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/fo
 import { ToastsManager } from 'ng2-toastr/src/toast-manager';
 
 import { EmailValidator, EqualPasswordsValidator } from '../../theme/validators';
-import { AuthService } from '../../digitalstate/modules/auth/auth.service';
-import { Registration } from '../../digitalstate/modules/auth/registration';
+import { AuthService } from '../../shared/modules/auth/auth.service';
+import { Registration } from '../../shared/modules/auth/registration';
 
 import 'style-loader!./register.scss';
 

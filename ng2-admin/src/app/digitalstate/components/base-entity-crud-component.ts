@@ -4,7 +4,7 @@ import { Location } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { ToastsManager } from 'ng2-toastr';
 
-import { DsBaseEntityApiService } from '../services/base-entity-api.service';
+import { DsBaseEntityApiService } from '../../shared/services/base-entity-api.service';
 import { Link } from '../models/link';
 
 import 'rxjs/Rx';

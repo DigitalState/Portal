@@ -3,7 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TableColumn } from '@swimlane/ngx-datatable';
 
 import {TranslateService} from '@ngx-translate/core';
-import {DsEntityTranslationService} from '../../services/entity-translation.service';
+import {DsEntityTranslationService} from '../../../shared/services/entity-translation.service';
 
 @Component({
     selector: 'ds-datatable-cell',

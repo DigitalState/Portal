@@ -1,7 +1,7 @@
 
 import { Restangular } from 'ngx-restangular';
 import { InjectionToken } from '@angular/core';
-import { AuthService } from './auth/auth.service';
+import { AuthService } from '../../shared/modules/auth/auth.service';
 
 /* * * Microservice configuration Provider * * * * * * * * * * * * */
 

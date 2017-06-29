@@ -3,8 +3,8 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { ToastsManager } from 'ng2-toastr/src/toast-manager';
 
-import { AuthService } from '../modules/auth/auth.service';
-import { DsBaseEntityApiService } from '../services/base-entity-api.service';
+import { AuthService } from '../../shared/modules/auth/auth.service';
+import { DsBaseEntityApiService } from '../../shared/services/base-entity-api.service';
 import { MicroserviceConfig } from '../modules/microservice.provider';
 import { LangChangeEvent, TranslateService} from '@ngx-translate/core';
 import { DsEntityCrudComponent } from './base-entity-crud-component';

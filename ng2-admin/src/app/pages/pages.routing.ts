@@ -1,7 +1,7 @@
 import { Routes, RouterModule }  from '@angular/router';
 import { Pages } from './pages.component';
 import { ModuleWithProviders } from '@angular/core';
-import {AuthGuardService} from '../digitalstate/modules/auth/auth-guard.service';
+import {AuthGuardService} from '../shared/modules/auth/auth-guard.service';
 // noinspection TypeScriptValidateTypes
 
 // export function loadChildren(path) { return System.import(path); };

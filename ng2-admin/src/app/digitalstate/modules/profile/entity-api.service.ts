@@ -7,8 +7,8 @@ import {
     microserviceRestangularFactory
 } from '../../modules/microservice.provider';
 import { AppState } from '../../../app.service';
-import { AuthService } from '../auth/auth.service';
-import { DsBaseEntityApiService } from '../../services/base-entity-api.service';
+import { AuthService } from '../../../shared/modules/auth/auth.service';
+import { DsBaseEntityApiService } from '../../../shared/services/base-entity-api.service';
 
 import 'rxjs/Rx';
 

@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 
-import { AuthGuardService } from '../auth/auth-guard.service';
+import { AuthGuardService } from '../../../shared/modules/auth/auth-guard.service';
 import { DsServiceComponent } from './service.component';
 import { DsServiceListComponent } from './components/service-list.component';
 import { DsServiceShowComponent } from './components/service-show.component';

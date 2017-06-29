@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormioModule } from 'ng2-formio';
 
+import { DsSharedModule } from '../../../shared/shared.module';
+
 import { routing } from './routing';
 import { EntityApiService } from './entity-api.service';
 import { MicroserviceConfig, MicroserviceRestangularProvider } from '../microservice.provider';
@@ -23,16 +25,15 @@ import { DsScenarioEditComponent } from './components/scenario-edit.component';
 import { DsSubmissionListComponent } from './components/submission-list.component';
 import { DsSubmissionShowComponent } from './components/submission-show.component';
 
-
 export const MICROSERVICE_NAME = 'services';
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
-        // AppTranslationModule,
         FormioModule,
         NgxDatatableModule,
+        DsSharedModule,
         DsMicroservicesModule,
         routing,
     ],

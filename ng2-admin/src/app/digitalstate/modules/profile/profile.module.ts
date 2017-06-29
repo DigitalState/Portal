@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
-import { routing } from './routing';
+import { DsSharedModule } from '../../../shared/shared.module';
 
-import { DsEntityTranslatePipe } from '../../components/pipes/EntityTranslate.pipe';
+import { routing } from './routing';
 import { EntityApiService, IdentityApiService } from './entity-api.service';
 import { MicroserviceConfig, MicroserviceRestangularProvider } from '../microservice.provider';
 import { DsMicroservicesModule } from '../../microservices.module';
@@ -18,6 +18,7 @@ import { DsProfileComponent } from './components/profile.component';
         CommonModule,
         FormsModule,
         NgxDatatableModule,
+        DsSharedModule,
         DsMicroservicesModule,
         routing,
     ],
@@ -29,7 +30,6 @@ import { DsProfileComponent } from './components/profile.component';
         IdentityApiService,
         MicroserviceConfig,
         MicroserviceRestangularProvider,
-        DsEntityTranslatePipe
     ]
 })
 export class DsProfileModule {

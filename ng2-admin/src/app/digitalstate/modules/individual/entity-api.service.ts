@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { MICROSERVICE_RESTANGULAR } from '../../modules/microservice.provider';
-import { DsBaseEntityApiService } from '../../services/base-entity-api.service';
+import { DsBaseEntityApiService } from '../../../shared/services/base-entity-api.service';
 
 import 'rxjs/Rx';
 

@@ -3,7 +3,7 @@ import {Component} from '@angular/core';
 import {GlobalState} from '../../../global.state';
 
 import 'style-loader!./baPageTop.scss';
-import {AuthService} from '../../../digitalstate/modules/auth/auth.service';
+import {AuthService} from '../../../shared/modules/auth/auth.service';
 
 @Component({
   selector: 'ba-page-top',

@@ -4,11 +4,11 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { ToastsManager } from 'ng2-toastr';
 
 import { GlobalState } from '../../../../global.state';
-import { AuthService } from '../../auth/auth.service';
+import { AuthService } from '../../../../shared/modules/auth/auth.service';
 import { MicroserviceConfig } from '../../microservice.provider';
 import { EntityApiService, IdentityApiService } from '../entity-api.service';
-import { User } from '../../auth/user';
-import { Persona } from '../../auth/persona';
+import { User } from '../../../../shared/modules/auth/user';
+import { Persona } from '../../../../shared/modules/auth/persona';
 
 import { Subscriber } from 'rxjs/Subscriber';
 
