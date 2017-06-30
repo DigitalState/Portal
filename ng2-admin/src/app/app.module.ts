@@ -4,6 +4,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Http, HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {createInputTransfer, createNewHosts, removeNgStyles} from '@angularclass/hmr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
@@ -110,7 +111,8 @@ const translationOptions = {
     ],
     imports: [ // import Angular's modules
         BrowserModule,
-        BrowserAnimationsModule,
+        // BrowserAnimationsModule,
+        NoopAnimationsModule,
         HttpModule,
         RouterModule,
         FormsModule,

@@ -67,10 +67,10 @@ export class DsProfileComponent{
 
     loadPersona() {
         // Load persona
-        const entityUrlPrefix = 'staff-personas';
+        const entityUrlPrefix = 'individual-personas';
 
         // Filter personas by Staff UUID which is the current user's IdentityUuid
-        this.identityApiService.resource(entityUrlPrefix).getList({'staff.uuid': this.user.identityUuid}).subscribe(personas => {
+        this.identityApiService.resource(entityUrlPrefix).getList({'individual.uuid': this.user.identityUuid}).subscribe(personas => {
             if (personas.length > 0) {
                 this.persona = personas[0];
                 console.log(this.persona);

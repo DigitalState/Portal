@@ -4,9 +4,9 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsManager } from 'ng2-toastr';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
-import { Link } from '../models/link';
-import { DefaultModal } from './modals/default-modal/default-modal.component';
 import { DsBaseEntityApiService } from '../../shared/services/base-entity-api.service';
+
+import { DefaultModal } from './modals/default-modal/default-modal.component';
 import { MicroserviceConfig } from '../modules/microservice.provider';
 import { DsEntityCrudComponent } from './base-entity-crud-component';
 
@@ -48,7 +48,6 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
     protected toastr: ToastsManager;
     protected modal: NgbModal;
 
-
     constructor(injector: Injector, protected microserviceConfig: MicroserviceConfig) {
         super(injector);
         this.router = this.injector.get(Router);
@@ -81,6 +80,7 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
 
             return this.entityApiService.getOne(this.entityUrlPrefix, uuid).flatMap(entity => {
                 this.entity = entity;
+                this.onEntityPrepared();
 
                 return this.prepareEntityParent(this.entityParentUrlPrefix, parentUuid).flatMap(entityParent => {
                     return Observable.of({'entity': entity, 'entityParent': entityParent});
@@ -98,7 +98,7 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
             });
         }
         else {
-            return Observable.empty();
+            return Observable.of({});
         }
     }
 
@@ -136,5 +136,14 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
     onEntityDeleteError(error) {
         console.error('Failed to delete entity', error);
         this.toastr.error('Failed to delete entity');
+    }
+
+    /**
+     * Stub called when the entity is fetched.
+     */
+    onEntityPrepared() {
+        if (this.entity.title && this.entity.title.hasOwnProperty(this.translate.currentLang)) {
+            this.applyPageTitle(this.entity.title[this.translate.currentLang]);
+        }
     }
 }

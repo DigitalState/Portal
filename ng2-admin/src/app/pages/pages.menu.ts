@@ -17,38 +17,38 @@ export const PAGES_MENU = [
             order: 0
           }
         },
-        children: [
-          {
-            path: ['services/list'],
-            data: {
-              menu: {
-                title: 'general.menu.services'
-              }
-            }
-          },
-          {
-            path: ['services/submissions/list'],
-            data: {
-              menu: {
-                title: 'general.menu.submissions'
-              }
-            }
-          },
-        ]
+        // children: [
+        //   {
+        //     path: ['services/list'],
+        //     data: {
+        //       menu: {
+        //         title: 'general.menu.services'
+        //       }
+        //     }
+        //   },
+        //   {
+        //     path: ['services/submissions/list'],
+        //     data: {
+        //       menu: {
+        //         title: 'general.menu.submissions'
+        //       }
+        //     }
+        //   },
+        // ]
       },
-      {
-        path: 'cases',
-        data: {
-          menu: {
-            title: 'general.menu.cases',
-            icon: 'ion-folder',
-            pathMatch: 'prefix', // use it if item children not displayed in menu
-            selected: false,
-            expanded: false,
-            order: 0
-          }
-        }
-      },
+      // {
+      //   path: 'cases',
+      //   data: {
+      //     menu: {
+      //       title: 'general.menu.cases',
+      //       icon: 'ion-folder',
+      //       pathMatch: 'prefix', // use it if item children not displayed in menu
+      //       selected: false,
+      //       expanded: false,
+      //       order: 0
+      //     }
+      //   }
+      // },
       // {
       //   path: 'assets',
       //   data: {
@@ -398,36 +398,36 @@ export const PAGES_MENU = [
       //     }
       //   ]
       // },
-      {
-        path: '',
-        data: {
-          menu: {
-            title: 'general.menu.pages',
-            icon: 'ion-document',
-            selected: false,
-            expanded: false,
-            order: 650,
-          }
-        },
-        children: [
-          {
-            path: ['/login'],
-            data: {
-              menu: {
-                title: 'general.menu.login'
-              }
-            }
-          },
-          {
-            path: ['/register'],
-            data: {
-              menu: {
-                title: 'general.menu.register'
-              }
-            }
-          }
-        ]
-      },
+      // {
+      //   path: '',
+      //   data: {
+      //     menu: {
+      //       title: 'general.menu.pages',
+      //       icon: 'ion-document',
+      //       selected: false,
+      //       expanded: false,
+      //       order: 650,
+      //     }
+      //   },
+      //   children: [
+      //     {
+      //       path: ['/login'],
+      //       data: {
+      //         menu: {
+      //           title: 'general.menu.login'
+      //         }
+      //       }
+      //     },
+      //     {
+      //       path: ['/register'],
+      //       data: {
+      //         menu: {
+      //           title: 'general.menu.register'
+      //         }
+      //       }
+      //     }
+      //   ]
+      // },
       // {
       //   path: '',
       //   data: {

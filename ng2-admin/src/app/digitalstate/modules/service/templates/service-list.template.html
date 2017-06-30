@@ -1,0 +1,58 @@
+<div class="card container-fluid">
+	<div class="row">
+		<div class="col p-0">
+			<div class="list-group simple-list">
+				<a *ngFor="let row of rows" [routerLink]="['..', row.uuid, 'show']" href="#" class="list-group-item justify-content-between has-left-icon">
+					<span class="left-icon pull-left"></span>
+					<h4>{{row.title | entityTranslate}}</h4>
+					<span>{{row.description | entityTranslate}}</span>
+					<span class="right-icon pull-right"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!--<ds-entity-show *ngIf="entity"-->
+				<!--[entity]="entity"-->
+				<!--[backLink]="backLink"-->
+				<!--[headerTitle]="headerTitle"-->
+				<!--[headerSubtitle]="headerSubtitle"-->
+				<!--[actions]="actions"-->
+				<!--(onDelete)="onDelete($event)">-->
+
+	<!--&lt;!&ndash; begin: ng-content[select="button.entity-action"] &ndash;&gt;-->
+	<!--<button [routerLink]="['../activate']" type="button" class="entity-action btn btn-secondary btn-with-icon"><i class="ion-power">{{ 'ds.microservices.entity.action.activate' | translate }}</i></button>-->
+	<!--&lt;!&ndash; end: ng-content[select="button.entity-action"] &ndash;&gt;-->
+
+	<!--&lt;!&ndash; begin: ng-content[select=".entity-body"] &ndash;&gt;-->
+	<!--<div class="card-block entity-body entity-data">-->
+		<!--<div class="row">-->
+			<!--<div class="col-sm-4 col-sm-offset-3">-->
+				<!--<dl>-->
+					<!--<dt>{{ 'ds.microservices.entity.property.title' | translate }}</dt>-->
+					<!--<dd>{{entity.title | entityTranslate}}</dd>-->
+				<!--</dl>-->
+				<!--<dl>-->
+					<!--<dt>{{ 'ds.microservices.entity.property.presentation' | translate }}</dt>-->
+					<!--<dd>{{entity.presentation | entityTranslate}}</dd>-->
+				<!--</dl>-->
+				<!--<dl>-->
+					<!--<dt>{{ 'ds.microservices.entity.property.processDefinitionKey' | translate }}</dt>-->
+					<!--<dd>{{entity.data.process_definition_key}}</dd>-->
+				<!--</dl>-->
+			<!--</div>-->
+			<!--<div class="col-sm-8 col-sm-offset-3">-->
+				<!--<dl>-->
+					<!--<dt>UUID</dt>-->
+					<!--<dd>{{entity.uuid}}</dd>-->
+				<!--</dl>-->
+				<!--<dl>-->
+					<!--<dt>{{ 'ds.microservices.entity.property.description' | translate }}</dt>-->
+					<!--<dd>{{entity.description | entityTranslate}}</dd>-->
+				<!--</dl>-->
+			<!--</div>-->
+		<!--</div>-->
+	<!--</div>-->
+	<!--&lt;!&ndash; end: ng-content[select=".entity-body"] &ndash;&gt;-->
+
+<!--</ds-entity-show>-->

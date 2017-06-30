@@ -2,7 +2,7 @@ import { AfterViewInit, Injector, TemplateRef, ViewChild } from '@angular/core';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 // import 'style-loader!../styles/style.scss';
-import { DatatableComponent } from '@swimlane/ngx-datatable';
+// import { DatatableComponent } from '@swimlane/ngx-datatable';
 import { Pager } from '../models/pager';
 
 import { ListQuery } from '../models/api-query';
@@ -16,10 +16,10 @@ import { forEach, isString } from 'lodash';
 
 export class DsBaseEntityListComponent extends DsEntityCrudComponent implements AfterViewInit {
 
-    @ViewChild(DatatableComponent) datatable: DatatableComponent;
-    @ViewChild('headerTpl') headerTpl: TemplateRef<any>;
-    @ViewChild('textCellTpl') textCellTpl: TemplateRef<any>;
-    @ViewChild('actionsTpl') actionsCellTpl: TemplateRef<any>;
+    // @ViewChild(DatatableComponent) datatable: DatatableComponent;
+    // @ViewChild('headerTpl') headerTpl: TemplateRef<any>;
+    // @ViewChild('textCellTpl') textCellTpl: TemplateRef<any>;
+    // @ViewChild('actionsTpl') actionsCellTpl: TemplateRef<any>;
 
     rows = [];
     columns = [];
@@ -31,20 +31,20 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
     loading: boolean;
 
     // Todo: fetch the default page size from the AppState
-    size = 10;
+    size = 1000;
 
-    /**
-     * Static Datatable attributes
-     * @type {object}
-     */
-    datatableAttributes = {
-        columnMode: 'force',
-        rowHeight: 'auto',
-        headerHeight: 90, // overriden in list components that don't have column filters
-        footerHeight: 50,
-        externalPaging: true,
-        externalSorting: true,
-    };
+    // /**
+    //  * Static Datatable attributes
+    //  * @type {object}
+    //  */
+    // datatableAttributes = {
+    //     columnMode: 'force',
+    //     rowHeight: 'auto',
+    //     headerHeight: 90, // overriden in list components that don't have column filters
+    //     footerHeight: 50,
+    //     externalPaging: true,
+    //     externalSorting: true,
+    // };
 
     /**
      * Determines the default visibilty of action buttons
@@ -142,9 +142,9 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
      * This can be overridden by subclasses to further configure the UI.
      */
     protected setupUi() {
-        forEach(this.datatableAttributes, (value, key) => {
-            this.datatable[key] = value;
-        });
+        // forEach(this.datatableAttributes, (value, key) => {
+        //     this.datatable[key] = value;
+        // });
     }
 
     /**
@@ -157,14 +157,14 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
      * own configurations in `setupList`;
      */
     protected postSetupList() {
-        this.columns.forEach((column) => {
-            column.propertyMetadata = this.entityMetadata[column.prop];
-        });
-
-        // Append the Actions column
-        this.columns.push(
-            { name: 'ds.microservices.entity.action.actions', cellTemplate: this.actionsCellTpl, headerTemplate: this.headerTpl, sortable: false }
-        );
+        // this.columns.forEach((column) => {
+        //     column.propertyMetadata = this.entityMetadata[column.prop];
+        // });
+        //
+        // // Append the Actions column
+        // this.columns.push(
+        //     { name: 'ds.microservices.entity.action.actions', cellTemplate: this.actionsCellTpl, headerTemplate: this.headerTpl, sortable: false }
+        // );
 
         this.updateTranslations(this.translate.currentLang);
     }
@@ -284,17 +284,17 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
      */
     protected updateTranslations(newLang: string): void {
         // Update the localization strings of ngx-datatable
-        this.datatable.messages = this.translate.instant('datatable');
+        // this.datatable.messages = this.translate.instant('datatable');
 
-        // Update the columns' headers
-        this.columns.forEach((column) => {
-            // For translation, use the column name if available; otherwise, construct the translation string
-            // from the column `prop` value
-            let columnLabel = column.name ? column.name : 'ds.microservices.entity.property.' + column.prop;
-            this.translate.get(columnLabel).subscribe((translatedString) => {
-                column.name = translatedString;
-            });
-        });
+        // // Update the columns' headers
+        // this.columns.forEach((column) => {
+        //     // For translation, use the column name if available; otherwise, construct the translation string
+        //     // from the column `prop` value
+        //     let columnLabel = column.name ? column.name : 'ds.microservices.entity.property.' + column.prop;
+        //     this.translate.get(columnLabel).subscribe((translatedString) => {
+        //         column.name = translatedString;
+        //     });
+        // });
 
     }
 }

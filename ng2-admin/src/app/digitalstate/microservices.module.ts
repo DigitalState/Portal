@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule }  from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { MdProgressBarModule } from '@angular/material';
+import { MdProgressBarModule, MdListModule, MdTabsModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { AppTranslationModule } from '../app.translation.module';
@@ -30,7 +30,9 @@ import { DefaultModal } from './components/modals/default-modal/default-modal.co
         CommonModule,
         RouterModule,
         FormsModule,
+        MdListModule,
         MdProgressBarModule,
+        MdTabsModule,
         // AppTranslationModule,
         TranslateModule,
         DSAuthModule,
@@ -55,7 +57,7 @@ import { DefaultModal } from './components/modals/default-modal/default-modal.co
         TemplateStorage,
     ],
     exports: [
-        MdProgressBarModule,
+        MdTabsModule,
         DsMicroservicesComponent,
         DsEntityListComponent,
         DsEntityShowComponent,

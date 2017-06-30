@@ -1,5 +1,5 @@
 $default: #ffffff;
-$body-bg: #F0F3F4;
+$body-bg: #f5f8f9;
 
 $default-text: #666666;
 $content-text: $default-text;
@@ -16,7 +16,7 @@ $dropdown-text: $default-text;
 $dropdown-text-hover: $content-text;
 $dropdown-background-hover: #eeeeee;
 
-$sidebar: #1C2B36;
+$sidebar: #716866;
 $sidebar-text: #ffffff;
 
 $mail-box: whitesmoke;
@@ -29,10 +29,11 @@ $bootstrap-panel-text: #7d7d7d;
 $bootstrap-panel-bg: #ffffff;
 $bootstrap-panel-header-bg: $bootstrap-panel-bg;
 $bootstrap-panel-header-border: 1px solid rgba(0, 0, 0, 0.12);
-$bootstrap-panel-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
+//$bootstrap-panel-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.25);
+$bootstrap-panel-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.075);
 
-$primary: #89d4eb !default;
-$info: #2dacd1 !default;
+$primary: #67a4c8 !default;
+$info: #88b4c1 !default;
 $success: #90b900 !default;
 $warning: #dfb81c !default;
 $danger: #e85656 !default;

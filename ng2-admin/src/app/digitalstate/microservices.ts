@@ -7,7 +7,7 @@ export const MICROSERVICES = {
         },
         paths: {
             registration: 'registration',
-            login: 'tokens/staff',
+            login: 'tokens/individual',
         },
     },
     'services': {

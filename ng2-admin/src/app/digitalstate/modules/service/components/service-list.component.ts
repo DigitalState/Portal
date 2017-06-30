@@ -7,11 +7,12 @@ import 'rxjs/Rx';
 
 @Component({
     selector: 'ds-service-list',
-    templateUrl: '../../../templates/generic-list.template.html'
+    templateUrl: '../templates/service-list.template.html'
 })
 export class DsServiceListComponent extends DsBaseEntityListComponent {
 
     entityUrlPrefix = 'services';
+    pageTitle = 'general.menu.serviceDirectory';
 
     constructor(injector: Injector,
                 microserviceConfig: MicroserviceConfig,
@@ -20,11 +21,11 @@ export class DsServiceListComponent extends DsBaseEntityListComponent {
         this.entityApiService = entityApiService;
     }
 
-    setupList() {
-        super.setupList();
-        this.columns = [
-            { prop: 'title', cellTemplate: this.textCellTpl, headerTemplate: this.headerTpl, filterable: true },
-            { prop: 'presentation', cellTemplate: this.textCellTpl, headerTemplate: this.headerTpl, filterable: true },
-        ];
-    }
+    // setupList() {
+    //     super.setupList();
+    //     this.columns = [
+    //         { prop: 'title', cellTemplate: this.textCellTpl, headerTemplate: this.headerTpl, filterable: true },
+    //         { prop: 'presentation', cellTemplate: this.textCellTpl, headerTemplate: this.headerTpl, filterable: true },
+    //     ];
+    // }
 }
