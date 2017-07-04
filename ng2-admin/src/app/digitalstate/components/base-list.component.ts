@@ -89,6 +89,8 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
     }
 
     ngOnInit() {
+        super.ngOnInit();
+
         // Subscribe to language-change events
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
             this.updateTranslations(event.lang);

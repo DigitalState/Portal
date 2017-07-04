@@ -58,6 +58,7 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
     }
 
     ngOnInit() {
+        super.ngOnInit();
         this.entityMetadata = this.microserviceConfig.settings.entities[this.entityUrlPrefix].properties;
 
         // Subscribe to language-change events

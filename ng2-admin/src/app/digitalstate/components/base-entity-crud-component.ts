@@ -15,9 +15,10 @@ import { Subscriber} from 'rxjs/Subscriber';
 export abstract class DsEntityCrudComponent {
 
     /**
-     * If the pageTitle is set
+     * The pageTitle and pageSubtitle.
      */
     protected pageTitle: string;
+    protected pageSubtitle: string;
 
     /**
      * The entity object.
@@ -67,6 +68,11 @@ export abstract class DsEntityCrudComponent {
         this.toastr = injector.get(ToastsManager);
     }
 
+    ngOnInit() {
+        if (this.pageTitle) {
+            this.applyPageTitle();
+        }
+    }
     /**
      * Update the page title via a global-state notification. The function looks for the provided title string
      * first, if not provided it tries to use the `pageTitle` property. If none of those is set it exists and the

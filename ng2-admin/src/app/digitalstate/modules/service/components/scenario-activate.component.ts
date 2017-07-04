@@ -28,6 +28,7 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
     entityParentUrlParam = 'serviceUuid';
     headerTitle = 'general.menu.scenarios';
     headerSubtitle = null;
+    pageTitle = '';
 
     protected formioFormSchema;
     protected submissionResult: string;
@@ -44,6 +45,7 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
                 protected modal: NgbModal,
                 protected toastr: ToastsManager) {
         super(injector, microserviceConfig);
+        this.applyPageTitle();
     }
 
     protected activate() {
