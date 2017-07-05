@@ -11,11 +11,11 @@
     <span class="auth-link">{{'login.signUpPrompt' | translate}} <a routerLink="/register" translate>{{'login.signUpLink'}}</a></span>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
-      <div class="form-group row" [ngClass]="{'has-error': (!email.valid && email.touched), 'has-success': (email.valid && email.touched)}">
-        <label for="inputemail" class="col-sm-3 control-label" translate>{{'login.email'}}</label>
+      <div class="form-group row" [ngClass]="{'has-error': (!username.valid && username.touched), 'has-success': (username.valid && username.touched)}">
+        <label for="inputusername" class="col-sm-3 control-label" translate>{{'login.username'}}</label>
 
         <div class="col-sm-9">
-          <input [formControl]="email" type="email" class="form-control" id="inputemail">
+          <input [formControl]="username" type="username" class="form-control" id="inputusername" placeholder="{{'login.username' | translate}} / {{'login.email' | translate}}">
         </div>
       </div>
       <div class="form-group row" [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
