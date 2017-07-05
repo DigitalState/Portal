@@ -20,7 +20,7 @@ export const routes: Routes = [
     component: Pages,
     canActivate: [AuthGuardService],
     children: [
-      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: 'services', pathMatch: 'full' },
       { path: 'profile', loadChildren: 'app/digitalstate/modules/profile/profile.module#DsProfileModule' },
       { path: 'services', loadChildren: 'app/digitalstate/modules/service/service.module#DsServiceModule' },
       { path: 'cases', loadChildren: 'app/digitalstate/modules/case/case.module#DsCaseModule' },
