@@ -26,7 +26,7 @@ import {Subject} from 'rxjs';
 })
 export class AppTranslationModule {
   constructor(translate: TranslateService) {
-    const defaultLang = 'en';
+    const defaultLang = localStorage.getItem('lang') || 'en';
     translate.addLangs(['en', 'fr']);
     translate.setDefaultLang(defaultLang);
     translate.use(defaultLang);

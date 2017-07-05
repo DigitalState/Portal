@@ -19,7 +19,10 @@ import { Observable } from 'rxjs';
                 </li>
 			</ul>
 		</div>
-    `
+    `,
+    host: {
+        class: 'ds-language-switcher'
+    }
 })
 export class DSLanguageSwitcherComponent {
 
@@ -43,8 +46,8 @@ export class DSLanguageSwitcherComponent {
 
     switchLang(lang: string) {
         this.translate.use(lang).subscribe((translationDocument) => {
+            localStorage.setItem('lang', lang);
             this.loadCurrentLanguageTranslation();
-            // window.changeTranslation(lang);
             return Observable.of({ lang: lang, translations: translationDocument });
         });
     }
