@@ -162,7 +162,8 @@
           "channel": "Canal",
           "data": "Data",
           "processDefinitionKey": "Clé de définition de processus",
-          "firstName": "Prénom"
+          "firstName": "Prénom",
+          "lastName": "Nom de famille"
         },
         "action": {
           "create": "Créer",

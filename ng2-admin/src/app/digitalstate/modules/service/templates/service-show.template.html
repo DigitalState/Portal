@@ -1,8 +1,12 @@
+<md-progress-spinner [hidden]="entity" mode="indeterminate"></md-progress-spinner>
+
 <div *ngIf="entity" class="pb-4">
 	{{entity.description | entityTranslate}}
 </div>
 
-<div *ngIf="entity && scenarios" class="card entity-card animated fadeIn">
+<md-progress-spinner [hidden]="!loadingScenarios" mode="indeterminate"></md-progress-spinner>
+
+<div *ngIf="entity && scenarios.length > 0" class="card entity-card animated fadeIn">
 	<!--<div class="card-header">-->
 		<!--<div class="row justify-content-between">-->
 			<!--<div class="col-6">-->

@@ -158,7 +158,8 @@
           "channel": "Channel",
           "data": "Data",
           "processDefinitionKey": "Process definition key",
-          "firstName": "First Name"
+          "firstName": "First Name",
+          "lastName": "Last Name"
         },
         "action": {
           "create": "Create",

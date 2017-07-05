@@ -17,7 +17,8 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent {
 
     entityUrlPrefix = 'services';
     headerTitle = 'Service Details';
-    scenarios: Array<any>;
+    scenarios: Array<any> = [];
+    loadingScenarios: boolean;
 
     constructor(injector: Injector,
                 microserviceConfig: MicroserviceConfig,
@@ -33,12 +34,17 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent {
     }
 
     protected prepareEntity(): Observable<{ entity: any, 'entityParent'?: any}> {
-        return super.prepareEntity().flatMap(preparedObject => {
+        return super.prepareEntity().flatMap(preparedObject => { // success
+            this.loadingScenarios = true;
             this.entityApiService.resource('scenarios').getList({'service.uuid': preparedObject.entity.uuid}).subscribe(scenariosData => {
                 this.scenarios = [];
                 scenariosData.forEach((scenario) => {
                     this.scenarios.push(scenario);
                 });
+            }, () => { // error
+
+            }, () => { // complete
+                this.loadingScenarios = false;
             });
 
             return Observable.of({'entity': preparedObject.entity, 'entityParent': preparedObject.entityParent});
