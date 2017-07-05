@@ -1,18 +1,75 @@
 @import 'conf/conf';
+@import '~bootstrap/scss/bootstrap';
 
 $text-color: #ffffff;
 
+$blocks-column-width: 570px;
 
 .auth-main {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
   width: 100%;
   position: absolute;
+
+}
+
+.header-block {
+  width: $blocks-column-width;
+  margin: 0 auto 16px;
+  border-radius: 5px;
+  background-color: $sidebar;
+  color: #fff;
+  padding: 32px;
+
+  a.al-logo {
+    text-align: center;
+    float: none;
+
+    img {
+      margin-left: 0;
+    }
+  }
+}
+
+.footer-block {
+  position: relative;
+  width: $blocks-column-width;
+  margin: 0 auto;
+  padding: 16px;
+  border-radius: 5px;
+  //@include bg-translucent-dark(0.55);
+  color: #fff;
+
+  .ds-language-switcher {
+    float: right;
+
+    .al-dropdown {
+      ul.dropdown-menu.language-dropdown {
+        max-width: 10rem;
+        top: 23px;
+        padding: 0.25rem 0;
+        @include border-radius(0);
+
+        &:after {
+          display: none;
+        }
+
+      }
+
+      > a {
+        color: $primary;
+        &:hover {
+          color: $primary-dark;
+        }
+      }
+    }
+  }
 }
 
 .auth-block {
-  width: 540px;
+  width: $blocks-column-width;
   margin: 0 auto;
   border-radius: 5px;
   @include bg-translucent-dark(0.55);

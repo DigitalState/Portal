@@ -18,6 +18,7 @@
     "title": "Sign Up",
     "loginPrompt": "Already have an account?",
     "loginLink": "Sign in!",
+    "repeat": "Repeat",
     "signUpButton": "Sign up"
   },
   "general": {

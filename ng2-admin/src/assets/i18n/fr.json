@@ -18,6 +18,7 @@
     "title": "Enregistrement",
     "loginPrompt": "Avez-vous déjà un compte ?",
     "loginLink": "Se connecter",
+    "repeat": "Répéter",
     "signUpButton": "S'inscrire"
   },
   "general": {

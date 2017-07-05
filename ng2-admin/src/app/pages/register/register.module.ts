@@ -4,6 +4,7 @@ import { AppTranslationModule } from '../../app.translation.module'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LaddaModule } from 'angular2-ladda';
 import { NgaModule } from '../../theme/nga.module';
+import { DsMicroservicesModule } from '../../digitalstate/microservices.module';
 
 import { Register } from './register.component';
 import { routing }       from './register.routing';
@@ -16,6 +17,7 @@ import { routing }       from './register.routing';
         FormsModule,
         LaddaModule,
         NgaModule,
+        DsMicroservicesModule,
         routing
     ],
     declarations: [
