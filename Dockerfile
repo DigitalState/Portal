@@ -21,6 +21,6 @@ WORKDIR /var/www
 ADD ./ng2-admin/run-dev.sh /var/www
 RUN chmod 755 /var/www/run-dev.sh
 
-#EXPOSE 3000
+#EXPOSE 2999
 #ENTRYPOINT ["npm", "run", "server:prod"]
 #ENTRYPOINT ["npm", "run", "server:dev"]

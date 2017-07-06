@@ -22,6 +22,15 @@ export class DsProfileComponent{
     persona: Persona | any; // Restangularized Entity
 
     /**
+     * Account information that can be updated such as e-mail, password, etc...
+     * These are submitted to the endpoint: authentication/users
+     */
+    identityFormData: {
+        'email'?: string,
+        'plainPassword'?: string
+    };
+
+    /**
      * Language-change stream subscriber
      */
     protected languageChangeSubscriber: Subscriber<LangChangeEvent>;
@@ -35,6 +44,9 @@ export class DsProfileComponent{
                 protected toastr: ToastsManager) {
 
         this.user = this.auth.getAuthUser();
+        this.identityFormData = {
+            'email': this.user.username
+        };
     }
 
     ngOnInit() {
@@ -76,7 +88,6 @@ export class DsProfileComponent{
                 console.log(this.persona);
             }
         });
-
     }
 
     savePersona() {
@@ -86,6 +97,19 @@ export class DsProfileComponent{
         }, (error) => {
             this.toastr.error('Failed to save the entity');
         });
+    }
+
+    /**
+     * Save user-related info such as e-mail and password
+     */
+    saveUser() {
+        this.toastr.success('Sample success response!');
+        // @todo: This is a stub implementation that has not been tested. Awaiting API requests on Authentication MS to be finalized.
+        // this.auth.updateUser(this.identityFormData).subscribe((response) => {
+        //     this.toastr.success('Identity information saved successfully');
+        // }, (error) => {
+        //     this.toastr.error('Failed to save identity information');
+        // });
     }
 
 }

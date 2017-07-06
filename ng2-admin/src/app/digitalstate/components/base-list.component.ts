@@ -17,9 +17,9 @@ import { forEach, isString } from 'lodash';
 export class DsBaseEntityListComponent extends DsEntityCrudComponent implements AfterViewInit {
 
     // @ViewChild(DatatableComponent) datatable: DatatableComponent;
-    // @ViewChild('headerTpl') headerTpl: TemplateRef<any>;
-    // @ViewChild('textCellTpl') textCellTpl: TemplateRef<any>;
-    // @ViewChild('actionsTpl') actionsCellTpl: TemplateRef<any>;
+    @ViewChild('headerTpl') headerTpl: TemplateRef<any>;
+    @ViewChild('textCellTpl') textCellTpl: TemplateRef<any>;
+    @ViewChild('actionsTpl') actionsCellTpl: TemplateRef<any>;
 
     rows = [];
     columns = [];
@@ -37,14 +37,14 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
     //  * Static Datatable attributes
     //  * @type {object}
     //  */
-    // datatableAttributes = {
-    //     columnMode: 'force',
-    //     rowHeight: 'auto',
-    //     headerHeight: 90, // overriden in list components that don't have column filters
-    //     footerHeight: 50,
-    //     externalPaging: true,
-    //     externalSorting: true,
-    // };
+    datatableAttributes = {
+        columnMode: 'force',
+        rowHeight: 'auto',
+        headerHeight: 90, // overriden in list components that don't have column filters
+        footerHeight: 50,
+        externalPaging: true,
+        externalSorting: true,
+    };
 
     /**
      * Determines the default visibilty of action buttons
