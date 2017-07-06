@@ -36,11 +36,11 @@
 					</div>
 					<div class="form-group">
 						<label for="email">{{ 'login.email' | translate }}</label>
-						<input id="email" name="email" type="email" [(ngModel)]="user.data.email" class="form-control">
+						<input id="email" name="email" type="email" [(ngModel)]="identityFormData.email" class="form-control">
 					</div>
 					<div class="form-group">
 						<label for="plainPassword">{{ 'login.password' | translate }}</label>
-						<input id="plainPassword" name="plainPassword" type="password" [(ngModel)]="user.data.plainPassword" class="form-control">
+						<input id="plainPassword" name="plainPassword" type="password" [(ngModel)]="identityFormData.plainPassword" class="form-control">
 					</div>
 				</div>
 			</form>

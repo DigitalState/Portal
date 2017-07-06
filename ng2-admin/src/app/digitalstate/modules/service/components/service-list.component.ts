@@ -17,6 +17,7 @@ export class DsServiceListComponent extends DsBaseEntityListComponent {
     constructor(injector: Injector,
                 microserviceConfig: MicroserviceConfig,
                 entityApiService: EntityApiService) {
+
         super(injector, microserviceConfig);
         this.entityApiService = entityApiService;
     }

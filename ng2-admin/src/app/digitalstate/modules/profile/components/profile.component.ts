@@ -93,9 +93,9 @@ export class DsProfileComponent{
     savePersona() {
         console.log(this.persona);
         this.persona.put().subscribe((response) => {
-            this.toastr.success('Entity saved successfully');
+            this.toastr.success('Persona information saved successfully');
         }, (error) => {
-            this.toastr.error('Failed to save the entity');
+            this.toastr.error('Failed to save persona information');
         });
     }
 
