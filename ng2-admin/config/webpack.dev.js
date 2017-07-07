@@ -22,7 +22,8 @@ const METADATA = webpackMerge(commonConfig({env: ENV}).metadata, {
   host: HOST,
   port: PORT,
   ENV: ENV,
-  HMR: HMR
+  HMR: HMR,
+  DS_ENV: process.env.DS_ENV || '{}'
 });
 
 const DllBundlesPlugin = require('webpack-dll-bundles-plugin').DllBundlesPlugin;
@@ -99,6 +100,7 @@ module.exports = function (options) {
       new DefinePlugin({
         'ENV': JSON.stringify(METADATA.ENV),
         'HMR': METADATA.HMR,
+        'DS_ENV': METADATA.DS_ENV,
         'process.env': {
           'ENV': JSON.stringify(METADATA.ENV),
           'NODE_ENV': JSON.stringify(METADATA.ENV),

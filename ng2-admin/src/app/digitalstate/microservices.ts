@@ -1,375 +1,388 @@
+import { DsEnvironmentConfig } from '../shared/providers/environment.provider';
 
-export const MICROSERVICES = {
-    'authentication': {
-        label: 'Authentication',
-        entrypoint: {
-            url: 'http://localhost:8010/app_dev.php/',
-        },
-        paths: {
-            registration: 'registration',
-            login: 'tokens/individual',
-        },
-    },
-    'services': {
-        label: 'Services',
-        entrypoint: {
-            url: 'http://localhost:8051/app_dev.php/',
-        },
-        entities: {
+export class MicroservicesDefinition {
+
+    constructor(protected dsEnv: DsEnvironmentConfig) {
+
+    }
+
+    getAll() {
+        let scheme = this.dsEnv.msUrlScheme;
+        let host = this.dsEnv.msHost;
+        
+        return {
+            'authentication': {
+                label: 'Authentication',
+                entrypoint: {
+                    url: `${scheme}://${host}:8010/app_dev.php/`,
+                },
+                paths: {
+                    registration: 'registration',
+                    login: 'tokens/individual',
+                },
+            },
             'services': {
-                properties: {
-                    'title': {
-                        label: 'Title',
-                        type: 'string',
-                        default: '',
-                        translated: true,
-                        validation: {
-                            'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
-                            'minlength': {
-                                message: 'minlength',
-                                params: { chars: 4 }
+                label: 'Services',
+                entrypoint: {
+                    url: `${scheme}://${host}:8051/app_dev.php/`,
+                },
+                entities: {
+                    'services': {
+                        properties: {
+                            'title': {
+                                label: 'Title',
+                                type: 'string',
+                                default: '',
+                                translated: true,
+                                validation: {
+                                    'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
+                                    'minlength': {
+                                        message: 'minlength',
+                                        params: { chars: 4 }
+                                    },
+                                    // 'maxlength': { message: 'Title cannot be more than 24 characters long.'},
+                                    // 'someCustomValidationDirective': { message: 'Someone named "Bob" cannot be a hero.'},
+                                },
                             },
-                            // 'maxlength': { message: 'Title cannot be more than 24 characters long.'},
-                            // 'someCustomValidationDirective': { message: 'Someone named "Bob" cannot be a hero.'},
-                        },
-                    },
-                    'presentation': {
-                        label: 'Presentation',
-                        type: 'string',
-                        default: '',
-                        translated: true,
-                        validation: {
-                            'required': { message: 'required'},
-                        },
-                    },
-                    'description': {
-                        label: 'Description',
-                        type: 'string',
-                        default: '',
-                        translated: true,
-                        validation: {
-                            'required': { message: 'required'},
-                        },
-                    },
-                    'enabled': {
-                        label: 'Enabled',
-                        type: 'boolean',
-                        default: true,
-                        validation: {
-                            'required': { message: 'required'},
-                        },
-                    },
-                    // 'form': {
-                    //     label: 'Form',
-                    //     type: 'string',
-                    // default: '',
-                    //     validation: {
-                    //         'required': {message: 'required'},
-                    //     }
-                    // },
-                },
-            },
-            'scenarios': {
-                properties: {
-                    'title': {
-                        label: 'Title',
-                        type: 'string',
-                        default: '',
-                        translated: true,
-                        validation: {
-                            'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
-                            'minlength': {
-                                message: 'minlength',
-                                params: { chars: 4 }
+                            'presentation': {
+                                label: 'Presentation',
+                                type: 'string',
+                                default: '',
+                                translated: true,
+                                validation: {
+                                    'required': { message: 'required'},
+                                },
                             },
-                            // 'maxlength': { message: 'Title cannot be more than 24 characters long.'},
-                            // 'someCustomValidationDirective': { message: 'Someone named "Bob" cannot be a hero.'},
+                            'description': {
+                                label: 'Description',
+                                type: 'string',
+                                default: '',
+                                translated: true,
+                                validation: {
+                                    'required': { message: 'required'},
+                                },
+                            },
+                            'enabled': {
+                                label: 'Enabled',
+                                type: 'boolean',
+                                default: true,
+                                validation: {
+                                    'required': { message: 'required'},
+                                },
+                            },
+                            // 'form': {
+                            //     label: 'Form',
+                            //     type: 'string',
+                            // default: '',
+                            //     validation: {
+                            //         'required': {message: 'required'},
+                            //     }
+                            // },
                         },
                     },
-                    'presentation': {
-                        label: 'Presentation',
-                        type: 'string',
-                        default: '',
-                        translated: true,
-                        validation: {
-                            'required': { message: 'required'},
+                    'scenarios': {
+                        properties: {
+                            'title': {
+                                label: 'Title',
+                                type: 'string',
+                                default: '',
+                                translated: true,
+                                validation: {
+                                    'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
+                                    'minlength': {
+                                        message: 'minlength',
+                                        params: { chars: 4 }
+                                    },
+                                    // 'maxlength': { message: 'Title cannot be more than 24 characters long.'},
+                                    // 'someCustomValidationDirective': { message: 'Someone named "Bob" cannot be a hero.'},
+                                },
+                            },
+                            'presentation': {
+                                label: 'Presentation',
+                                type: 'string',
+                                default: '',
+                                translated: true,
+                                validation: {
+                                    'required': { message: 'required'},
+                                },
+                            },
+                            'description': {
+                                label: 'Description',
+                                type: 'string',
+                                default: '',
+                                translated: true,
+                                validation: {
+                                    'required': { message: 'required'},
+                                },
+                            },
+                            'type': {
+                                label: 'Description',
+                                type: 'string',
+                                default: 'bpm',
+                            },
+                            'data': {
+                                label: 'Data',
+                                type: 'json',
+                                default: {
+                                    'bpm': 'camunda',
+                                    'process_definition_key': ''
+                                },
+                            },
+                            'enabled': {
+                                label: 'Enabled',
+                                type: 'boolean',
+                                default: true,
+                                validation: {
+                                    'required': { message: 'required'},
+                                },
+                            },
+                            // 'form': {
+                            //     label: 'Form',
+                            //     type: 'string',
+                            // default: '',
+                            //     validation: {
+                            //         'required': {message: 'required'},
+                            //     }
+                            // },
                         },
                     },
-                    'description': {
-                        label: 'Description',
-                        type: 'string',
-                        default: '',
-                        translated: true,
-                        validation: {
-                            'required': { message: 'required'},
+                    'submissions': {
+                        properties: {
+                            'uuid': {
+                                label: 'Updated At',
+                                type: 'date',
+                            },
+                            'updatedAt': {
+                                label: 'Updated At',
+                                type: 'date',
+                            },
                         },
                     },
-                    'type': {
-                        label: 'Description',
-                        type: 'string',
-                        default: 'bpm',
-                    },
-                    'data': {
-                        label: 'Data',
-                        type: 'json',
-                        default: {
-                            'bpm': 'camunda',
-                            'process_definition_key': ''
-                        },
-                    },
-                    'enabled': {
-                        label: 'Enabled',
-                        type: 'boolean',
-                        default: true,
-                        validation: {
-                            'required': { message: 'required'},
-                        },
-                    },
-                    // 'form': {
-                    //     label: 'Form',
-                    //     type: 'string',
-                    // default: '',
-                    //     validation: {
-                    //         'required': {message: 'required'},
-                    //     }
-                    // },
                 },
             },
-            'submissions': {
-                properties: {
-                    'uuid': {
-                        label: 'Updated At',
-                        type: 'date',
-                    },
-                    'updatedAt': {
-                        label: 'Updated At',
-                        type: 'date',
-                    },
-                },
-            },
-        },
-    },
-    'cases': {
-        label: 'Cases',
-        entrypoint: {
-            url: 'http://localhost:8050/app_dev.php/',
-        },
-        entities: {
             'cases': {
-                properties: {
-                    'title': {
-                        label: 'Title',
-                        type: 'string',
-                        default: '',
-                        translated: true,
-                        validation: {
-                            'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
-                            'minlength': {
-                                message: 'minlength',
-                                params: { chars: 4 }
+                label: 'Cases',
+                entrypoint: {
+                    url: `${scheme}://${host}:8050/app_dev.php/`,
+                },
+                entities: {
+                    'cases': {
+                        properties: {
+                            'title': {
+                                label: 'Title',
+                                type: 'string',
+                                default: '',
+                                translated: true,
+                                validation: {
+                                    'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
+                                    'minlength': {
+                                        message: 'minlength',
+                                        params: { chars: 4 }
+                                    },
+                                },
+                            },
+                            'identity': {
+                                label: 'Identity',
+                                type: 'string',
+                                default: 'Individual',
+                            },
+                            'identityUuid': {
+                                label: 'Identity UUID',
+                                type: 'string',
+                                default: '9be0af28-ef41-49b7-86d9-72a2d9beb051',
                             },
                         },
                     },
-                    'identity': {
-                        label: 'Identity',
-                        type: 'string',
-                        default: 'Individual',
-                    },
-                    'identityUuid': {
-                        label: 'Identity UUID',
-                        type: 'string',
-                        default: '9be0af28-ef41-49b7-86d9-72a2d9beb051',
-                    },
                 },
             },
-        },
-    },
-    'assets': {
-        label: 'Assets',
-        entrypoint: {
-            url: 'http://localhost:8053/',
-        },
-        entities: {
             'assets': {
-                properties: {
-                    'title': {
-                        label: 'Title',
-                        type: 'string',
-                        default: '',
-                        validation: {
-                            'required': {message: 'Title is required.'},
+                label: 'Assets',
+                entrypoint: {
+                    url: `${scheme}://${host}:8053/`,
+                },
+                entities: {
+                    'assets': {
+                        properties: {
+                            'title': {
+                                label: 'Title',
+                                type: 'string',
+                                default: '',
+                                validation: {
+                                    'required': {message: 'Title is required.'},
+                                },
+                            },
                         },
                     },
                 },
             },
-        },
-    },
-    'topics': {
-        label: 'Topics',
-        entrypoint: {
-            url: 'http://localhost:8016/',
-        },
-        entities: {
             'topics': {
-                properties: {
-                    'title': {
-                        label: 'Title',
-                        type: 'string',
-                        default: '',
-                        validation: {
-                            'required': {message: 'Title is required.'},
+                label: 'Topics',
+                entrypoint: {
+                    url: `${scheme}://${host}:8016/`,
+                },
+                entities: {
+                    'topics': {
+                        properties: {
+                            'title': {
+                                label: 'Title',
+                                type: 'string',
+                                default: '',
+                                validation: {
+                                    'required': {message: 'Title is required.'},
+                                },
+                            },
                         },
                     },
                 },
             },
-        },
-    },
-    'tasks': {
-        label: 'Tasks',
-        entrypoint: {
-            url: 'http://localhost:8019/',
-        },
-        entities: {
             'tasks': {
-                properties: {
-                    'title': {
-                        label: 'Title',
-                        type: 'string',
-                        default: '',
-                        validation: {
-                            'required': {message: 'Title is required.'},
+                label: 'Tasks',
+                entrypoint: {
+                    url: `${scheme}://${host}:8019/`,
+                },
+                entities: {
+                    'tasks': {
+                        properties: {
+                            'title': {
+                                label: 'Title',
+                                type: 'string',
+                                default: '',
+                                validation: {
+                                    'required': {message: 'Title is required.'},
+                                },
+                            },
                         },
                     },
                 },
             },
-        },
-    },
-    'records': {
-        label: 'Records',
-        entrypoint: {
-            url: 'http://localhost:8052/',
-        },
-        entities: {
             'records': {
-                properties: {
-                    'title': {
-                        label: 'Title',
-                        type: 'string',
-                        default: '',
-                        validation: {
-                            'required': {message: 'Title is required.'},
-                        },
-                    },
+                label: 'Records',
+                entrypoint: {
+                    url: `${scheme}://${host}:8052/`,
                 },
-            },
-        },
-    },
-    'interactions': {
-        label: 'Interactions',
-        entrypoint: {
-            url: 'http://localhost:8017/',
-        },
-        entities: {
-            'communications': {
-                properties: {
-                    'title': {
-                        label: 'Title',
-                        type: 'string',
-                        default: '',
-                        validation: {
-                            'required': {message: 'Title is required.'},
+                entities: {
+                    'records': {
+                        properties: {
+                            'title': {
+                                label: 'Title',
+                                type: 'string',
+                                default: '',
+                                validation: {
+                                    'required': {message: 'Title is required.'},
+                                },
+                            },
                         },
                     },
                 },
             },
             'interactions': {
-                properties: {
-                    'title': {
-                        label: 'Title',
-                        type: 'string',
-                        default: '',
-                        validation: {
-                            'required': {message: 'Title is required.'},
-                        },
-                    },
-                    'channel': {
-                        label: 'Channel',
-                        type: 'string',
-                        default: '',
-                        field: {
-                            type: 'select',
-                            options: {
-                                'sms': 'SMS',
-                                'email': 'Email',
-                                'in_person': 'In-Person',
-                                'inbox': 'Inbox',
+                label: 'Interactions',
+                entrypoint: {
+                    url: `${scheme}://${host}:8017/`,
+                },
+                entities: {
+                    'communications': {
+                        properties: {
+                            'title': {
+                                label: 'Title',
+                                type: 'string',
+                                default: '',
+                                validation: {
+                                    'required': {message: 'Title is required.'},
+                                },
                             },
                         },
-                        validation: {
-                            'required': {message: 'Inbox is required.'},
+                    },
+                    'interactions': {
+                        properties: {
+                            'title': {
+                                label: 'Title',
+                                type: 'string',
+                                default: '',
+                                validation: {
+                                    'required': {message: 'Title is required.'},
+                                },
+                            },
+                            'channel': {
+                                label: 'Channel',
+                                type: 'string',
+                                default: '',
+                                field: {
+                                    type: 'select',
+                                    options: {
+                                        'sms': 'SMS',
+                                        'email': 'Email',
+                                        'in_person': 'In-Person',
+                                        'inbox': 'Inbox',
+                                    },
+                                },
+                                validation: {
+                                    'required': {message: 'Inbox is required.'},
+                                },
+                            },
                         },
                     },
                 },
             },
-        },
-    },
-    'individuals': {
-        label: 'Individuals',
-        entrypoint: {
-            url: 'http://localhost:8013/',
-        },
-        entities: {
             'individuals': {
-                properties: {
-                    'username': {
-                        label: 'Username',
-                        type: 'string',
-                        default: '',
-                        validation: {
-                            'required': {message: 'username is required.'},
+                label: 'Individuals',
+                entrypoint: {
+                    url: `${scheme}://${host}:8013/`,
+                },
+                entities: {
+                    'individuals': {
+                        properties: {
+                            'username': {
+                                label: 'Username',
+                                type: 'string',
+                                default: '',
+                                validation: {
+                                    'required': {message: 'username is required.'},
+                                },
+                            },
                         },
                     },
                 },
             },
-        },
-    },
-    'identities': {
-        label: 'Identities',
-        entrypoint: {
-            url: 'http://localhost:8054/app_dev.php/',
-        },
-        entities: {
-            'individuals': {
-                properties: {
-                    'title': {
-                        label: 'Title',
-                        type: 'string',
-                        default: '',
-                        translated: true,
-                        validation: {
-                            'required': {message: 'Title is required.'},
+            'identities': {
+                label: 'Identities',
+                entrypoint: {
+                    url: `${scheme}://${host}:8054/app_dev.php/`,
+                },
+                entities: {
+                    'individuals': {
+                        properties: {
+                            'title': {
+                                label: 'Title',
+                                type: 'string',
+                                default: '',
+                                translated: true,
+                                validation: {
+                                    'required': {message: 'Title is required.'},
+                                },
+                            },
+                        },
+                    },
+                    'staff-personas': {
+                        properties: {
+                            'title': {
+                                label: 'Title',
+                                type: 'string',
+                                default: '',
+                                translated: true,
+                                validation: {
+                                    'required': {message: 'Title is required.'},
+                                },
+                            },
+                            'data': {
+                                label: 'Data',
+                                type: 'json',
+                                default: {},
+                            },
                         },
                     },
                 },
             },
-            'staff-personas': {
-                properties: {
-                    'title': {
-                        label: 'Title',
-                        type: 'string',
-                        default: '',
-                        translated: true,
-                        validation: {
-                            'required': {message: 'Title is required.'},
-                        },
-                    },
-                    'data': {
-                        label: 'Data',
-                        type: 'json',
-                        default: {},
-                    },
-                },
-            },
-        },
-    },
-};
+        };
+    }
+}

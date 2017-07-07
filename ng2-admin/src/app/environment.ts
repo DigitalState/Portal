@@ -2,9 +2,15 @@
 // rc2 workaround
 import { enableDebugTools, disableDebugTools } from '@angular/platform-browser';
 import { enableProdMode, ApplicationRef } from '@angular/core';
+import { DsEnvironmentConfig, dsEnvironmentFactory } from './shared/providers/environment.provider';
+
 // Environment Providers
 let PROVIDERS: any[] = [
   // common env directives
+    {
+        provide: DsEnvironmentConfig,
+        useFactory: dsEnvironmentFactory,
+    },
 ];
 
 // Angular debug tools in the dev console
