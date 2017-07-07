@@ -22,14 +22,14 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label for="title">{{ 'ds.microservices.entity.property.title' | translate }}  [{{formLang}}]</label>
+					<label for="title">{{ 'ds.microservices.entity.property.title' | translate }}</label>
 					<input id="title" name="title" type="text" [(ngModel)]="entity.title[formLang]" class="form-control" placeholder="" required>
 					<div *ngIf="formErrors.title" class="alert alert-danger">
 						{{ formErrors.title }}
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="presentation">{{ 'ds.microservices.entity.property.presentation' | translate }} [{{formLang}}]</label>
+					<label for="presentation">{{ 'ds.microservices.entity.property.presentation' | translate }}</label>
 					<input id="presentation" name="presentation" type="text" [(ngModel)]="entity.presentation[formLang]" class="form-control" placeholder="" required>
 					<div *ngIf="formErrors.presentation" class="alert alert-danger">
 						{{ formErrors.presentation }}
@@ -45,7 +45,7 @@
 			</div>
 			<div class="col-sm-6">
 				<div class="form-group">
-					<label for="description">{{ 'ds.microservices.entity.property.description' | translate }} [{{formLang}}]</label>
+					<label for="description">{{ 'ds.microservices.entity.property.description' | translate }}</label>
 					<textarea id="description" name="description" type="text" [(ngModel)]="entity.description[formLang]" class="form-control" placeholder="" required></textarea>
 					<div *ngIf="formErrors.description" class="alert alert-danger">
 						{{ formErrors.description }}
