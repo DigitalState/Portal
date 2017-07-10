@@ -194,6 +194,10 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
                     'actions': this.actions
                 };
                 return row;
+            }).filter((row) => {
+                // Filter out lists with missing title translation
+                let condition = row.hasOwnProperty('title') && row.title.hasOwnProperty(this.translate.currentLang);
+                return condition;
             });
         }
 
