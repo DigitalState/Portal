@@ -50,11 +50,15 @@ declare var ENV: string;
 declare var HMR: boolean;
 declare var System: SystemJS;
 
+// DigitalState environment variables
+declare var DS_ENV: any;
+
 interface SystemJS {
   import: (path?: string) => Promise<any>;
 }
 
 interface GlobalEnvironment {
+  DS_ENV: any;
   ENV: string;
   HMR: boolean;
   SystemJS: SystemJS;
