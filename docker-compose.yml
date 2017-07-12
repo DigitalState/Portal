@@ -4,8 +4,9 @@ services:
   ng2admin:
     build: .
     ports:
-      - '2999:2999'
+      - '8000:8080'
+#      - '3000:3000'
     volumes:
       - './ng2-admin/src:/var/www/src'
     working_dir: '/var/www'
-    command: 'bash -c /var/www/run-dev.sh'
+    command: 'bash -c /var/www/run-prod.sh'
