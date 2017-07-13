@@ -57,7 +57,7 @@
 						<div class="col-6">
 							<ul class="btn-list clearfix">
 								<li class="float-right">
-									<button (click)="savePersona($event)" type="button" class="btn btn-primary btn-with-icon"><i class="ion-edit">{{'ds.microservices.entity.action.save' | translate}}</i></button>
+									<button (click)="savePersona($event)" type="button" [disabled]="personaSaveInProgress" [ladda]="personaSaveInProgress" class="btn btn-primary btn-with-icon"><i class="ion-edit">{{'ds.microservices.entity.action.save' | translate}}</i></button>
 									<ng-content select="button.entity-action"></ng-content>
 									<!--<button (click)="" type="button" class="btn btn-danger btn-with-icon"><i class="ion-android-delete">{{'ds.microservices.entity.action.delete' | translate}}</i></button>-->
 								</li>

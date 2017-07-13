@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { LaddaModule } from 'angular2-ladda';
 
 import { DsSharedModule } from '../../../shared/shared.module';
 
@@ -18,6 +19,7 @@ import { DsProfileComponent } from './components/profile.component';
         CommonModule,
         FormsModule,
         NgxDatatableModule,
+        LaddaModule,
         DsSharedModule,
         DsMicroservicesModule,
         routing,

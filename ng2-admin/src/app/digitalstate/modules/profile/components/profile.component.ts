@@ -11,6 +11,7 @@ import { User } from '../../../../shared/modules/auth/user';
 import { Persona } from '../../../../shared/modules/auth/persona';
 
 import { Subscriber } from 'rxjs/Subscriber';
+import assign from 'lodash/assign';
 
 @Component({
     selector: 'ds-profile',
@@ -34,6 +35,11 @@ export class DsProfileComponent{
      * Language-change stream subscriber
      */
     protected languageChangeSubscriber: Subscriber<LangChangeEvent>;
+
+    /*
+    * Template variables
+    */
+    personaSaveInProgress: boolean = false;
 
     constructor(protected injector: Injector,
                 protected globalState: GlobalState,
@@ -85,17 +91,30 @@ export class DsProfileComponent{
         this.identityApiService.resource(entityUrlPrefix).getList({'individual.uuid': this.user.identityUuid}).subscribe(personas => {
             if (personas.length > 0) {
                 this.persona = personas[0];
+                this.persona.route += '/' + this.persona.uuid;
                 console.log(this.persona);
             }
         });
     }
 
     savePersona() {
-        console.log(this.persona);
-        this.persona.put().subscribe((response) => {
+        this.personaSaveInProgress = true;
+        // @Todo Use PATCH instead of PUT to prevent Restangular from sending all properties in PUT request
+        // Copy the Restangular Persona object and omit properties that are redundant for the PUT request
+        // const outPersona:any = omit(clone(this.persona), ['uuid', 'title']);
+        // console.log('this.persona before save', this.persona);
+        // console.log('outPersona', outPersona);
+        // outPersona.put().subscribe((response) => {
+
+        this.persona.put().subscribe((responsePersona) => {
+            // Assign received properties to the current Persona object
+            assign(this.persona, responsePersona);
+            // console.log('this.persona after save', this.persona);
             this.toastr.success('Persona information saved successfully');
         }, (error) => {
             this.toastr.error('Failed to save persona information');
+        }, () => { // finally
+            this.personaSaveInProgress = false;
         });
     }
 
