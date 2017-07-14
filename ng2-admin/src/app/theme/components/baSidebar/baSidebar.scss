@@ -19,7 +19,7 @@ $angle-right: "\f101";
 .al-sidebar-list {
   margin: 0;
   overflow: hidden;
-  padding: 18px 0 0 0;
+  padding: 30px 0 0 0;
   list-style: none;
 }
 
@@ -39,7 +39,7 @@ $angle-right: "\f101";
   float: none;
   padding: 0;
   &.selected:not(.with-sub-menu) {
-    background-color: $primary;
+    background-color: $primary-bg-light;
     a.al-sidebar-list-link {
       color: $sidebar-text;
       b {
@@ -75,7 +75,7 @@ a.al-sidebar-list-link {
   height: 42px;
   padding-left: 18px;
   text-shadow: none;
-  font-size: 16px;
+  font-size: 18px;
   text-decoration: none;
   color: $sidebar-text;
   line-height: 42px;
@@ -90,7 +90,7 @@ a.al-sidebar-list-link {
   }
   i {
     margin-right: 18px;
-    width: 16px;
+    width: 18px;
     display: inline-block;
   }
   b {

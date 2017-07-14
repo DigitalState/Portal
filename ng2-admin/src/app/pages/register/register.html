@@ -2,13 +2,12 @@
 
   <div class="header-block">
     <a routerLink="/pages/services/list" class="al-logo clearfix">
-      <img src="{{ ( 'app/digitalstate-logo.png' | baAppPicture ) }}" />
+      <img src="{{ ( 'app/digitalstate-logo-dark.png' | baAppPicture ) }}" />
     </a>
   </div>
 
   <div class="auth-block">
     <h1>{{'register.title' | translate}}</h1>
-    <span class="auth-link">{{'register.loginPrompt' | translate}} <a routerLink="/login">{{'register.loginLink' | translate}}</a></span>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
       <div class="form-group row" [ngClass]="{'has-error': (!firstName.valid && firstName.touched), 'has-success': (firstName.valid && firstName.touched)}">
@@ -49,7 +48,7 @@
       </div>
       <div class="form-group row">
         <div class="offset-sm-3 col-sm-9">
-          <button [disabled]="!form.valid || inProgress" [ladda]="inProgress" type="submit" class="btn btn-default btn-auth">{{'register.signUpButton' | translate}}</button>
+          <button [disabled]="!form.valid || inProgress" [ladda]="inProgress" type="submit" class="btn btn-primary btn-auth">{{'register.signUpButton' | translate}}</button>
         </div>
       </div>
     </form>
@@ -66,7 +65,15 @@
   </div>
 
   <div class="footer-block">
-    <ds-language-switcher></ds-language-switcher>
+    <div class="row">
+      <div class="col-8">
+        <span class="auth-link">{{'register.loginPrompt' | translate}} <a routerLink="/login">{{'register.loginLink' | translate}}</a></span>
+      </div>
+      <div class="col-4">
+        <ds-language-switcher></ds-language-switcher>
+      </div>
+    </div>
   </div>
+
 </div>
 

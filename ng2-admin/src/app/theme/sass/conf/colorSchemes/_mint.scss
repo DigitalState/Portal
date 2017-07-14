@@ -1,5 +1,5 @@
 $default: #ffffff;
-$body-bg: #f5f8f9;
+$body-bg: #ffffff;
 
 $default-text: #666666;
 $content-text: $default-text;
@@ -16,8 +16,10 @@ $dropdown-text: $default-text;
 $dropdown-text-hover: $content-text;
 $dropdown-background-hover: #eeeeee;
 
-$sidebar: #716866;
-$sidebar-text: #ffffff;
+$sidebar: #ffffff;
+$sidebar-text: $content-text;
+
+$page-top-background: #eeeeee;
 
 $mail-box: whitesmoke;
 $auth-panel-background: #ffffff;
@@ -37,6 +39,8 @@ $info: #88b4c1 !default;
 $success: #90b900 !default;
 $warning: #dfb81c !default;
 $danger: #e85656 !default;
+
+$primary-bg-light: desaturate(tint($primary, 80%), 20%);
 
 $primary-light: tint($primary, 30%);
 $info-light: tint($info, 30%);

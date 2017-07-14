@@ -1,7 +1,7 @@
 <md-progress-spinner [hidden]="entity" mode="indeterminate"></md-progress-spinner>
 
 <div *ngIf="entity" class="pb-4">
-	{{entity.description | entityTranslate}}
+	<p class="lead">{{entity.description | entityTranslate}}</p>
 </div>
 
 <md-progress-spinner [hidden]="!loadingScenarios" mode="indeterminate"></md-progress-spinner>
@@ -31,7 +31,7 @@
 	<div class="card-block entity-body entity-data">
 		<md-tab-group disableRipple="true">
 			<md-tab *ngFor="let scenario of scenarios" label="{{scenario.title | entityTranslate}}">
-				<div class="description p-1">{{scenario.description | entityTranslate}}</div>
+				<p class="lead mt-2 p-1">{{scenario.description | entityTranslate}}</p>
 				<div class="actions btn-group p-1 pt-4">
 					<button class="btn btn-primary" [routerLink]="['..', 'scenarios', scenario.uuid, 'activate']">
 						{{'ds.microservices.entity.action.activate' | translate}}

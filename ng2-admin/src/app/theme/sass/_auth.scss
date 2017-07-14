@@ -1,9 +1,9 @@
 @import 'conf/conf';
-@import '~bootstrap/scss/bootstrap';
 
-$text-color: #ffffff;
-
+$white: #fff;
+$text-color: $content-text;
 $blocks-column-width: 570px;
+$font-size-default: 18px;
 
 .auth-main {
   display: flex;
@@ -12,15 +12,13 @@ $blocks-column-width: 570px;
   height: 100%;
   width: 100%;
   position: absolute;
-
 }
 
 .header-block {
   width: $blocks-column-width;
   margin: 0 auto 16px;
   border-radius: 5px;
-  background-color: $sidebar;
-  color: #fff;
+  background-color: $white;
   padding: 32px;
 
   a.al-logo {
@@ -36,11 +34,10 @@ $blocks-column-width: 570px;
 .footer-block {
   position: relative;
   width: $blocks-column-width;
-  margin: 0 auto;
+  margin: 1rem auto 0;
   padding: 16px;
   border-radius: 5px;
   //@include bg-translucent-dark(0.55);
-  color: #fff;
 
   .ds-language-switcher {
     float: right;
@@ -50,7 +47,7 @@ $blocks-column-width: 570px;
         max-width: 10rem;
         top: 23px;
         padding: 0.25rem 0;
-        @include border-radius(0);
+        border-radius: 0px;
 
         &:after {
           display: none;
@@ -60,9 +57,14 @@ $blocks-column-width: 570px;
 
       > a {
         color: $primary;
+
         &:hover {
           color: $primary-dark;
         }
+      }
+
+      a#language-dd .language-name {
+        font-size: $font-size-default;
       }
     }
   }
@@ -72,8 +74,8 @@ $blocks-column-width: 570px;
   width: $blocks-column-width;
   margin: 0 auto;
   border-radius: 5px;
-  @include bg-translucent-dark(0.55);
-  color: #fff;
+  @include bg-translucent-dark(0.05);
+  color: $content-text;
   padding: 32px;
   h1 {
     font-weight: $font-light;
@@ -81,7 +83,7 @@ $blocks-column-width: 570px;
     text-align: center;
   }
   p {
-    font-size: 16px;
+    font-size: $font-size-default;
   }
   a {
     text-decoration: none;
@@ -102,7 +104,7 @@ $blocks-column-width: 570px;
   }
 
   .form-group {
-    margin-bottom: 12px;
+    margin-bottom: 18px;
   }
 }
 
@@ -113,7 +115,7 @@ $blocks-column-width: 570px;
     display: block;
     width: 100%;
     border: none;
-    font-size: 16px;
+    font-size: $font-size-default;
     padding: 4px 10px;
     outline: none;
   }
@@ -130,8 +132,7 @@ a.forgot-pass {
 
 .auth-link {
   display: block;
-  font-size: 16px;
-  text-align: center;
+  font-size: $font-size-default;
   margin-bottom: 33px;
 }
 
@@ -139,7 +140,7 @@ a.forgot-pass {
   margin-top: 36px;
   margin-bottom: 24px;
   line-height: 20px;
-  font-size: 16px;
+  font-size: $font-size-default;
   text-align: center;
   display: block;
   position: relative;
@@ -176,7 +177,7 @@ a.forgot-pass {
         margin-left: 0;
       }
       i {
-        font-size: 24px;
+        font-size: $font-size-default * 2;
       }
     }
   }

@@ -18,7 +18,7 @@ html, body {
 main {
   min-height: 100%;
   position: relative;
-  font: 16px/18px $font-family;
+  font: 18px/1.5em $font-family;
   color: $default-text;
 
   @include body-bg();

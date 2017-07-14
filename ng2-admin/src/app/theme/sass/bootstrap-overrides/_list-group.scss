@@ -1,11 +1,14 @@
 .list-group.simple-list {
+
+  $list-item-spacing: 1.75rem;
+
   border-width: 0;
 
   .list-group-item {
     position: relative;
     border-width: 0 0 1px 0;
-    padding: 1.25rem 0;
-    margin: 0 1.25rem;
+    padding: $list-item-spacing 0;
+    margin: 0 $list-item-spacing;
     color: $default-text;
 
     &:hover {
@@ -33,8 +36,9 @@
       > .left-icon {
         @include fa-icon();
         @extend .fa-dot-circle-o;
-        font-size: 200%;
+        font-size: 175%;
         position: absolute;
+        top: $list-item-spacing;
         left: 0px;
       }
     }
