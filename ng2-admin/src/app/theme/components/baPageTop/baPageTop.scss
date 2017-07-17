@@ -54,17 +54,41 @@ a.al-logo:hover {
   @include align-items(center);
 
   margin-left: auto;
+  height: 100%;
 
   > * {
 
   }
 
   .al-dropdown {
+    display: table;
+    height: 100%;
     margin-right: 80px;
 
     &:last-child {
       //margin-right: 0px;
     }
+
+    &.show {
+      .dropdown-toggle {
+        background-color: $primary-bg-light;
+      }
+    }
+
+    .dropdown-toggle {
+      display: table-cell;
+      vertical-align: middle;
+      padding: 0 15px;
+    }
+
+    ul.dropdown-menu {
+      background-color: $primary-bg-light;
+      border: 0;
+    }
+  }
+
+  .ds-language-switcher {
+    height: 100%;
   }
 }
 
@@ -110,27 +134,30 @@ a.al-logo:hover {
   }
 }
 
-ul.language-dropdown {
-  right: -45px;
-  top: 46px;
-  left: auto;
+.ds-language-switcher {
 
-  &:after {
-    display: none;
-  }
+  ul.language-dropdown {
+    right: -27px;
+    top: 64px;
+    left: auto;
 
-  li {
-    a {
-      padding: 4px 0px 4px 0px;
-      color: $dropdown-text;
-      font: inherit $font-family;
+    &:after {
+      display: none;
+    }
 
-      &:hover {
-        color: $dropdown-text-hover;
-      }
+    li {
+      a {
+        padding: 4px 0px 4px 0px;
+        color: $dropdown-text;
+        font: inherit $font-family;
 
-      i.fa {
-        margin-right: 8px;
+        &:hover {
+          color: $dropdown-text-hover;
+        }
+
+        i.fa {
+          margin-right: 8px;
+        }
       }
     }
   }
