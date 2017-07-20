@@ -90,12 +90,10 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
         console.log(submitEvent);
         console.log(this.entity);
         let submission = {
-            'scenario': this.entity['@id'],
             'data': submitEvent.data,
-            'version': 0,
         };
 
-        this.entityApiService.resource('submissions').post(submission).subscribe((result) => {
+        this.entityApiService.one('scenarios', this.entity.uuid).all('submissions').post(submission).subscribe((result) => {
             this.status = 'success';
             this.statusMessage = 'ds.microservices.entity.scenario.submissionSuccess';
 
