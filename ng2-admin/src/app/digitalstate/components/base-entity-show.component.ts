@@ -8,7 +8,7 @@ import { DsBaseEntityApiService } from '../../shared/services/base-entity-api.se
 
 import { DefaultModal } from './modals/default-modal/default-modal.component';
 import { MicroserviceConfig } from '../modules/microservice.provider';
-import { DsEntityCrudComponent } from './base-entity-crud-component';
+import { DsEntityCrudComponent } from '../../shared/components/base-entity-crud-component';
 
 import 'rxjs/Rx';
 import { Subscriber } from 'rxjs/Subscriber';

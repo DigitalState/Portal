@@ -7,7 +7,7 @@ import { AuthService } from '../../shared/modules/auth/auth.service';
 import { DsBaseEntityApiService } from '../../shared/services/base-entity-api.service';
 import { MicroserviceConfig } from '../modules/microservice.provider';
 import { LangChangeEvent, TranslateService} from '@ngx-translate/core';
-import { DsEntityCrudComponent } from './base-entity-crud-component';
+import { DsEntityCrudComponent } from '../../shared/components/base-entity-crud-component';
 
 import 'rxjs/Rx';
 import { Subscriber } from 'rxjs/Subscriber';
