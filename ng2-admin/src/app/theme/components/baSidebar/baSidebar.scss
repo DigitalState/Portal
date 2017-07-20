@@ -128,7 +128,7 @@ a.al-sidebar-list-link {
 }
 
 @mixin default-sublist() {
-  padding: 0;
+  padding: 0 0 1rem 0;
   list-style: none;
   position: relative;
   display: none;
@@ -144,12 +144,12 @@ a.al-sidebar-list-link {
     a {
       display: block;
       text-shadow: none;
-      font-size: 13px;
+      font-size: 16px;
       text-decoration: none;
       color: $sidebar-text;
-      padding-left: 52px;
+      padding-left: 55px;
       height: auto;
-      line-height: 29px;
+      line-height: 30px;
       &:hover {
         color: $primary;
       }
