@@ -11,7 +11,7 @@ export const PAGES_MENU = [
           menu: {
             title: 'Dashboard',
             icon: 'ion-ios-speedometer',
-            url: '#'
+            path: ['dashboard'],
           }
         },
       },
@@ -54,7 +54,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Notifications',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-android-notifications-none',
             url: '#'
           }
         },
@@ -64,7 +64,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Reminders',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-android-alarm-clock',
             url: '#'
           }
         },
@@ -74,7 +74,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'My Identities',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-ios-people',
             url: '#'
           }
         },
@@ -84,7 +84,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Calendar',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-ios-calendar-outline',
             url: '#'
           }
         },
@@ -94,7 +94,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Tasks',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-ios-list-outline',
             url: '#'
           }
         },
@@ -104,7 +104,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Cases',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-ios-list-outline',
             url: '#'
           }
         },
@@ -114,7 +114,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Records',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-ios-briefcase-outline',
             url: '#'
           }
         },
@@ -124,7 +124,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Assets',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-card',
             url: '#'
           }
         },
@@ -134,7 +134,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Interactions',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-android-textsms',
             url: '#'
           }
         },
@@ -144,7 +144,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'News',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-ios-paper-outline',
             url: '#'
           }
         },
@@ -154,7 +154,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Events',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-android-calendar',
             url: '#'
           }
         },
@@ -164,7 +164,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'APIs',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-ios-cloud-outline',
             url: '#'
           }
         },
@@ -174,7 +174,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Open Data',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-ios-analytics-outline',
             url: '#'
           }
         },
@@ -184,7 +184,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Settings',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-settings',
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: true,
@@ -217,7 +217,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Support',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-help-buoy',
             url: '#'
           }
         },
@@ -227,7 +227,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Contact',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-ios-chatboxes-outline',
             url: '#'
           }
         },
@@ -237,7 +237,7 @@ export const PAGES_MENU = [
         data: {
           menu: {
             title: 'Admin',
-            icon: 'ion-android-arrow-dropright-circle',
+            icon: 'ion-hammer',
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
             expanded: true,
