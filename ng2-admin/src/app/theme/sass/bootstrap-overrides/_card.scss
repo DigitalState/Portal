@@ -12,6 +12,10 @@ $card-header-font-size: inherit;
   }
 }
 
+.card.no-shadow {
+  box-shadow: none;
+}
+
 .card {
   @include scrollbars(.4em, rgba(0, 0, 0, 0.6), rgba(255, 255, 255, 0.7));
   color: $content-text;
