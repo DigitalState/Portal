@@ -1,7 +1,7 @@
 <div class="page-top clearfix" baScrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)"
      [ngClass]="{scrolled: isScrolled}">
   <a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
-  <a routerLink="/pages/services/list" class="al-logo clearfix">
+  <a routerLink="/pages/dashboard" class="al-logo clearfix">
     <!--<span>ng2-</span>admin-->
     <img src="{{ ( 'app/digitalstate-logo-dark.png' | baAppPicture ) }}" />
   </a>
@@ -13,6 +13,8 @@
 
   <div class="side-menu clearfix">
     <!--<ba-msg-center></ba-msg-center>-->
+
+    <ds-language-switcher></ds-language-switcher>
 
     <div class="dropdown al-dropdown">
       <a class="profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown" aria-expanded="false">
@@ -34,8 +36,6 @@
         </li>
       </ul>
     </div>
-
-    <ds-language-switcher></ds-language-switcher>
 
   </div>
 </div>
