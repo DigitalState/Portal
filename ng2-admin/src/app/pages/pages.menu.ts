@@ -6,36 +6,266 @@ export const PAGES_MENU = [
     path: 'pages',
     children: [
       {
+        path: '',
+        data: {
+          menu: {
+            title: 'Dashboard',
+            icon: 'ion-ios-speedometer',
+            url: '#'
+          }
+        },
+      },
+
+      {
         path: 'services',
         data: {
           menu: {
-            title: 'general.menu.serviceDirectory',
+            title: 'general.menu.services',
             icon: 'ion-ios-keypad',
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
-            expanded: false,
+            expanded: true,
             order: 0
           }
         },
-        // children: [
-        //   {
-        //     path: ['services/list'],
-        //     data: {
-        //       menu: {
-        //         title: 'general.menu.services'
-        //       }
-        //     }
-        //   },
-        //   {
-        //     path: ['services/submissions/list'],
-        //     data: {
-        //       menu: {
-        //         title: 'general.menu.submissions'
-        //       }
-        //     }
-        //   },
-        // ]
+        children: [
+          {
+            path: ['services/list'],
+            data: {
+              menu: {
+                title: 'general.menu.directory'
+              }
+            }
+          },
+          {
+            path: '',
+            data: {
+              menu: {
+                title: 'Life Events',
+                url: '#'
+              }
+            }
+          },
+        ]
       },
+
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Notifications',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Reminders',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'My Identities',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Calendar',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Tasks',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Cases',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Records',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Assets',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Interactions',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'News',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Events',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'APIs',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Open Data',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Settings',
+            icon: 'ion-android-arrow-dropright-circle',
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: true,
+            order: 0
+          }
+        },
+        children: [
+          {
+            path: '',
+            data: {
+              menu: {
+                title: 'Account',
+                url: '#'
+              }
+            }
+          },
+          {
+            path: '',
+            data: {
+              menu: {
+                title: 'Privacy Settings',
+                url: '#'
+              }
+            }
+          },
+        ]
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Support',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Contact',
+            icon: 'ion-android-arrow-dropright-circle',
+            url: '#'
+          }
+        },
+      },
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Admin',
+            icon: 'ion-android-arrow-dropright-circle',
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: true,
+            order: 0
+          }
+        },
+        children: [
+          {
+            path: '',
+            data: {
+              menu: {
+                title: 'Systems',
+                url: '#'
+              }
+            }
+          },
+          {
+            path: '',
+            data: {
+              menu: {
+                title: 'Demo',
+                url: '#'
+              }
+            }
+          },
+        ]
+      },
+
       // {
       //   path: 'cases',
       //   data: {

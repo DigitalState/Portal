@@ -64,6 +64,7 @@
 
       "profile": "Profile",
       "serviceDirectory": "Service Directory",
+      "directory": "Directory",
       "services": "Services",
       "scenarios": "Scenarios",
       "submissions": "Submissions",
