@@ -1,7 +1,7 @@
 
 <div class="">
 	<div class="row">
-		<div [ngClass]="{'col-sm-12': !persona, 'col-sm-6': persona}">
+		<div class="col">
 			<form class="card entity-card animated fadeIn">
 				<div class="card-header">
 					<div class="row justify-content-between">
@@ -44,10 +44,8 @@
 					</div>
 				</div>
 			</form>
-		</div>
 
-		<div *ngIf="persona" class="col-sm-6">
-			<form class="card entity-card animated fadeIn">
+			<form *ngIf="persona" class="card entity-card animated fadeIn">
 				<div class="card-header">
 					<div class="row justify-content-between">
 						<div class="col-6">
