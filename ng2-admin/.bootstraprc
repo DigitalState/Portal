@@ -33,7 +33,8 @@ extractStyles: false
 # See the Bootstrap _variables.scss file for examples of derived Bootstrap variables.
 #
 # preBootstrapCustomizations: ./path/to/bootstrap/pre-customizations.scss
-preBootstrapCustomizations: ./src/app/theme/sass/bootswatch/_variables.scss
+# preBootstrapCustomizations: ./src/app/theme/sass/bootswatch/_variables.scss
+preBootstrapCustomizations: ./src/app/theme/sass/bootstrap-overrides/_variables.scss
 
 # This gets loaded after bootstrap/variables is loaded
 # Thus, you may customize Bootstrap variables
@@ -46,7 +47,7 @@ preBootstrapCustomizations: ./src/app/theme/sass/bootswatch/_variables.scss
 # Usually this endpoint-file contains list of @imports of your application styles
 #
 # appStyles: ./path/to/your/app/styles/endpoint.scss
-appStyles: ./src/app/theme/sass/bootswatch/bootswatch_theme.scss
+# appStyles: ./src/app/theme/sass/bootswatch/bootswatch_theme.scss
 
 ### Bootstrap styles
 styles:
