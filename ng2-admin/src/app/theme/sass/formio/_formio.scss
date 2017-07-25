@@ -1,0 +1,42 @@
+@import "formio-table";
+@import "formio-buttons";
+@import "formio-icons";
+
+/*
+ * Form.io styles reset and override.
+ */
+
+.formio-component {
+
+  .help-block {
+    font-size: 0.85em;
+    line-height: 1.2em;
+    margin-top: 0.5em;
+  }
+
+}
+
+.formio-component-radio,
+.formio-component-checkbox {
+  .input-group {
+    display: block;
+  }
+
+  label {
+    span {
+      padding-left: 0.5em;
+    }
+  }
+}
+
+
+.formio-component-signature {
+  &.required {
+    .signature-pad-footer {
+      &:after {
+        content: ' *';
+        color: $danger;
+      }
+    }
+  }
+}

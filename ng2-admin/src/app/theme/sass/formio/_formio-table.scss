@@ -1,0 +1,38 @@
+.formio-component {
+  .table {
+    margin-bottom: inherit;
+
+    & > thead {
+      & > tr {
+        & > th {
+          border-bottom: inherit;
+          white-space: inherit;
+          &:first-child {
+            text-align: inherit;
+          }
+          &:last-child {
+            padding-right: inherit;
+          }
+        }
+      }
+    }
+    & > tbody {
+      & > tr {
+        & > tr:first-child {
+          padding-top: inherit;
+        }
+        & > td {
+          padding: 8px;
+          line-height: inherit;
+          border-top: inherit;
+          &:first-child {
+            text-align: inherit;
+          }
+          &:last-child {
+            padding-right: inherit !important;
+          }
+        }
+      }
+    }
+}
+}

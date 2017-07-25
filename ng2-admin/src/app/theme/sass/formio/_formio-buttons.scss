@@ -1,0 +1,15 @@
+.formio-component {
+  .btn {
+    &:hover {
+      //transform: none;
+    }
+    &.btn-default, &.btn-default:hover {
+      @extend button.btn.btn-default;
+      background-color: $gray-lighter;
+    }
+    &.btn-primary, &.btn-primary:hover {
+      @extend button.btn.btn-primary;
+      color: $default;
+    }
+  }
+}

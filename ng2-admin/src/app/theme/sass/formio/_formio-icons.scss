@@ -1,0 +1,15 @@
+.formio-component {
+  .glyphicon {
+    @include fa-icon();
+
+    &.glyphicon-remove-circle {
+      @extend .fa-times-circle-o;
+    }
+    &.glyphicon-plus {
+      @extend .fa-plus;
+    }
+    &.glyphicon-refresh {
+      @extend .fa-refresh;
+    }
+  }
+}
