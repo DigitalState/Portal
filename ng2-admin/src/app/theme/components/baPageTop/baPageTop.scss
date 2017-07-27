@@ -1,6 +1,8 @@
 @import '../../sass/conf/conf';
 @import '../../components/baMsgCenter/baMsgCenter';
 
+$menu-button-trigger-width: 50px;
+
 .page-top {
   @include display(flex);
   @include align-items(center);
@@ -78,6 +80,7 @@ a.al-logo:hover {
     .dropdown-toggle {
       display: table-cell;
       vertical-align: middle;
+      text-align: center;
       padding: 0 15px;
     }
 
@@ -257,7 +260,7 @@ a.collapse-menu-link {
 
 @media screen and (max-width: $resXS) {
   .page-top {
-    padding: 0 20px;
+    padding: 0;
   }
 }
 
@@ -265,15 +268,68 @@ a.collapse-menu-link {
   .side-menu{
     //min-width: 136px;
   }
+
   a.refresh-data {
     margin-right: 10px;
-  }
-  a.collapse-menu-link {
-    margin-left: 10px;
   }
 
   .al-skin-dropdown {
     display: none;
+  }
+
+  .page-top {
+    a.collapse-menu-link {
+      display: table;
+      width: $menu-button-trigger-width;
+      height: $top-height;
+      margin-left: 0;
+      text-align: center;
+
+      &:before {
+        vertical-align: middle;
+        display: table-cell;
+      }
+    }
+
+
+    a.al-logo {
+      position: absolute;
+      margin-left: 15%;
+      margin-right: 15%;
+
+      img {
+        width: 100%;
+        height: auto;
+        margin-left: 0;
+      }
+    }
+  }
+
+  .side-menu {
+    position: absolute;
+    top: 0px;
+    right: 0px;
+
+    .profile-dropdown {
+      display: none;
+    }
+
+    .ds-language-switcher {
+      > .dropdown {
+        margin-right: 0;
+        min-width: $menu-button-trigger-width;
+      }
+      ul.language-dropdown {
+        right: 0px;
+      }
+      a {
+        &#language-dd {
+          .language-name {
+            display: none;
+          }
+        }
+      }
+    }
   }
 }
 
