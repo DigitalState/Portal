@@ -6,6 +6,9 @@ import {Component} from '@angular/core';
       <template-storage></template-storage>
       <router-outlet></router-outlet>
   `,
+  host: {
+    class: 'd-flex col p-0'
+  },
   styleUrls: [
     '../styles/_index.scss',
   ]
