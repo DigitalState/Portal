@@ -12,6 +12,9 @@ import 'style-loader!./register.scss';
 @Component({
     selector: 'register',
     templateUrl: './register.html',
+    host: {
+        id: 'login',
+    }
 })
 export class Register {
 

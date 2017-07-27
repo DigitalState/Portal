@@ -1,1 +1,6 @@
 @import '../../theme/sass/auth';
+
+#login {
+  @include display(flex);
+  @include flex(1 auto);
+}

@@ -5,18 +5,25 @@ $text-color: $content-text;
 $blocks-column-width: 570px;
 $font-size-default: 18px;
 
+@mixin auth-block() {
+  width: auto;
+
+  @include media-breakpoint-up(sm) {
+    width: $blocks-column-width;
+  }
+}
+
 .auth-main {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 100%;
+  @include display(flex);
+  @include flex-direction(column);
+  @include align-self(center);
   width: 100%;
-  position: absolute;
+  //position: absolute;
 }
 
 .header-block {
-  width: $blocks-column-width;
-  margin: 0 auto 16px;
+  @include auth-block();
+  margin: 0 auto;
   border-radius: 5px;
   background-color: $white;
   padding: 32px;
@@ -32,8 +39,8 @@ $font-size-default: 18px;
 }
 
 .footer-block {
+  @include auth-block();
   position: relative;
-  width: $blocks-column-width;
   margin: 1rem auto 0;
   padding: 16px;
   border-radius: 5px;
@@ -71,7 +78,7 @@ $font-size-default: 18px;
 }
 
 .auth-block {
-  width: $blocks-column-width;
+  @include auth-block();
   margin: 0 auto;
   border-radius: 5px;
   @include bg-translucent-dark(0.05);

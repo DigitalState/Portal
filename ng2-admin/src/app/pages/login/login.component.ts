@@ -12,6 +12,9 @@ import 'style-loader!./login.scss';
 @Component({
     selector: 'login',
     templateUrl: './login.html',
+    host: {
+        id: 'login',
+    }
 })
 export class Login {
 
