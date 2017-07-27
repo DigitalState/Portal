@@ -13,7 +13,7 @@ import 'style-loader!./register.scss';
     selector: 'register',
     templateUrl: './register.html',
     host: {
-        id: 'login',
+        id: 'register',
     }
 })
 export class Register {
