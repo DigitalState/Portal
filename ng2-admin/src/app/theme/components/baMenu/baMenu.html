@@ -1,6 +1,7 @@
 <ul id="al-sidebar-list" class="al-sidebar-list" baSlimScroll [baSlimScrollOptions]="{height: menuHeight}"
     (mouseleave)="hoverElemTop=outOfArea">
   <ba-menu-item
+    [ngClass]="item.class"
     [menuItem]="item"
     (itemHover)="hoverItem($event)"
     (toggleSubMenu)="toggleSubMenu($event)"
