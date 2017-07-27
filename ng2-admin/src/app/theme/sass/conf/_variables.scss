@@ -1,13 +1,16 @@
+@import '../bootstrap-overrides/variables';
+
 $fa-font-path : '/assets/fonts';
 $font-family: 'Roboto', sans-serif;
 
 $resXXL: 1280px;
-$resXL: 1170px;
-$resL: 991px;
-$resM: 768px;
-$resS: 660px;
-$resXS: 500px;
-$resXXS: 435px;
+$resXL: map-get($grid-breakpoints, xl);
+$resL: map-get($grid-breakpoints, lg);
+$resM: map-get($grid-breakpoints, md);
+$resS: map-get($grid-breakpoints, sm);
+$resXS: map-get($grid-breakpoints, xs);
+//$resXXS: 435px;
+$resXXS: map-get($grid-breakpoints, xs);
 $resMin: 320px;
 
 $top-height: 66px;
