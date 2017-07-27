@@ -1,5 +1,7 @@
 import { Component, Injector } from '@angular/core';
 
+import Tabs from '../../../../shared/components/tabs'
+
 import { DsBaseEntityShowComponent } from '../../../components/base-entity-show.component';
 import { MicroserviceConfig } from '../../microservice.provider';
 import { EntityApiService } from '../entity-api.service';
@@ -45,6 +47,11 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent {
 
             }, () => { // complete
                 this.loadingScenarios = false;
+
+                // Transform scenarios markup into tabs
+                setTimeout(() => {
+                    let scenariosTabs = new Tabs($('#scenarios-tabs'));
+                }, 0);
             });
 
             return Observable.of({'entity': preparedObject.entity, 'entityParent': preparedObject.entityParent});

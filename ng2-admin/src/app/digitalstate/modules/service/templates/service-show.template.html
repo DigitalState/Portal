@@ -7,92 +7,25 @@
 <md-progress-spinner [hidden]="!loadingScenarios" mode="indeterminate"></md-progress-spinner>
 
 <div *ngIf="entity && scenarios.length > 0" class="card entity-card animated fadeIn">
-	<!--<div class="card-header">-->
-		<!--<div class="row justify-content-between">-->
-			<!--<div class="col-6">-->
-				<!--&lt;!&ndash;<back-link [link]="backLink"></back-link>&ndash;&gt;-->
-				<!--<h3 class="card-title" translate="" ng-reflect-translate="">{{headerTitle}}</h3>-->
-				<!--<h4 class="card-subtitle" translate="" ng-reflect-translate="">{{headerSubtitle}}</h4>-->
-			<!--</div>-->
-
-			<!--<div class="col-6">-->
-				<!--<div class="container">-->
-					<!--<ul class="row btn-list clearfix">-->
-						<!--<li class="col-12 align-right">-->
-							<!--<button [hidden]="!actions.edit" [routerLink]="['../edit']" type="button" class="btn btn-primary btn-with-icon"><i class="ion-edit">{{'ds.microservices.entity.action.edit' | translate}}</i></button>-->
-							<!--<ng-content select="button.entity-action"></ng-content>-->
-						<!--</li>-->
-					<!--</ul>-->
-				<!--</div>-->
-			<!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
 
 	<div class="card-block entity-body entity-data">
-		<md-tab-group disableRipple="true">
-			<md-tab *ngFor="let scenario of scenarios" label="{{scenario.title | entityTranslate}}">
-				<p class="lead mt-2 p-1">{{scenario.description | entityTranslate}}</p>
-				<div class="actions btn-group p-1 pt-4">
-					<button class="btn btn-primary" [routerLink]="['..', 'scenarios', scenario.uuid, 'activate']">
-						{{'ds.microservices.entity.action.activate' | translate}}
-					</button>
-				</div>
-			</md-tab>
-		</md-tab-group>
+		<div id="scenarios-tabs" class="tabs-container">
+			<div class='accordion-wrapper'>
+				<ng-container *ngFor="let scenario of scenarios">
+					<h2 id="tab-panel-title-{{scenario.uuid}}" class="tabs-container__title">
+						{{scenario.title | entityTranslate}}
+					</h2>
+					<div id="tab-{{scenario.uuid}}" class="tabs-container__panel">
+						<p class="lead mt-2">{{scenario.description | entityTranslate}}</p>
+						<div class="actions btn-group p-1 pt-4">
+							<button class="btn btn-primary" [routerLink]="['..', 'scenarios', scenario.uuid, 'activate']">
+								{{'ds.microservices.entity.action.activate' | translate}}
+							</button>
+						</div>
+					</div>
+				</ng-container>
+			</div>
+		</div>
 	</div>
 
-	<!--<div class="card-footer">-->
-		<!--<ul class="row btn-list clearfix">-->
-			<!--<li class="col-8">-->
-			<!--</li>-->
-			<!--<li class="col-4 align-right">-->
-				<!--<button [hidden]="!actions.delete" (click)="onDeleteClick($event)" type="button" class="btn btn-danger btn-with-icon"><i class="ion-android-delete">{{'ds.microservices.entity.action.delete' | translate}}</i></button>-->
-			<!--</li>-->
-		<!--</ul>-->
-	<!--</div>-->
 </div>
-<!--<ds-entity-show *ngIf="entity"-->
-				<!--[entity]="entity"-->
-				<!--[backLink]="backLink"-->
-				<!--[headerTitle]="headerTitle"-->
-				<!--[headerSubtitle]="headerSubtitle"-->
-				<!--[actions]="actions"-->
-				<!--(onDelete)="onDelete($event)">-->
-
-	<!--&lt;!&ndash; begin: ng-content[select="button.entity-action"] &ndash;&gt;-->
-	<!--&lt;!&ndash;<button [routerLink]="['../activate']" type="button" class="entity-action btn btn-secondary btn-with-icon"><i class="ion-power">{{ 'ds.microservices.entity.action.activate' | translate }}</i></button>&ndash;&gt;-->
-	<!--<button [routerLink]="['../scenarios/list']" type="button" class="entity-action btn btn-secondary btn-with-icon"><i class="ion-ios-list">{{ 'general.menu.scenarios' | translate }}</i></button>-->
-	<!--&lt;!&ndash; end: ng-content[select="button.entity-action"] &ndash;&gt;-->
-
-	<!--&lt;!&ndash; begin: ng-content[select=".entity-body"] &ndash;&gt;-->
-	<!--<div class="card-block entity-body entity-data">-->
-		<!--<div class="row">-->
-			<!--<div class="col-sm-4 col-sm-offset-3">-->
-				<!--<dl>-->
-					<!--<dt>{{ 'ds.microservices.entity.property.title' | translate }}</dt>-->
-					<!--<dd>{{entity.title | entityTranslate}}</dd>-->
-				<!--</dl>-->
-				<!--<dl>-->
-					<!--<dt>{{ 'ds.microservices.entity.property.presentation' | translate }}</dt>-->
-					<!--<dd>{{entity.presentation | entityTranslate}}</dd>-->
-				<!--</dl>-->
-				<!--&lt;!&ndash;<dl>&ndash;&gt;-->
-					<!--&lt;!&ndash;<dt>{{ 'ds.microservices.entity.property.form' | translate }}</dt>&ndash;&gt;-->
-					<!--&lt;!&ndash;<dd>{{entity.form}}</dd>&ndash;&gt;-->
-				<!--&lt;!&ndash;</dl>&ndash;&gt;-->
-			<!--</div>-->
-			<!--<div class="col-sm-8 col-sm-offset-3">-->
-				<!--<dl>-->
-					<!--<dt>UUID</dt>-->
-					<!--<dd>{{entity.uuid}}</dd>-->
-				<!--</dl>-->
-				<!--<dl>-->
-					<!--<dt>{{ 'ds.microservices.entity.property.description' | translate }}</dt>-->
-					<!--<dd>{{entity.description | entityTranslate}}</dd>-->
-				<!--</dl>-->
-			<!--</div>-->
-		<!--</div>-->
-	<!--</div>-->
-	<!--&lt;!&ndash; end: ng-content[select=".entity-body"] &ndash;&gt;-->
-
-<!--</ds-entity-show>-->
