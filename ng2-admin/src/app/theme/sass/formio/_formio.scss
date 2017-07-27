@@ -6,36 +6,45 @@
  * Form.io styles reset and override.
  */
 
-.formio-component {
+.formio-form {
 
-  .help-block {
-    font-size: 0.85em;
-    line-height: 1.2em;
-    margin-top: 0.5em;
+  // Responsive Layout
+  .col {
+    @include flex-basis(inherit);
   }
 
-}
+  // Components
+  .formio-component {
 
-.formio-component-radio,
-.formio-component-checkbox {
-  .input-group {
-    display: block;
+    .help-block {
+      font-size: 0.85em;
+      line-height: 1.2em;
+      margin-top: 0.5em;
+    }
+
   }
 
-  label {
-    span {
-      padding-left: 0.5em;
+  .formio-component-radio,
+  .formio-component-checkbox {
+    .input-group {
+      display: block;
+    }
+
+    label {
+      span {
+        padding-left: 0.5em;
+      }
     }
   }
-}
 
 
-.formio-component-signature {
-  &.required {
-    .signature-pad-footer {
-      &:after {
-        content: ' *';
-        color: $danger;
+  .formio-component-signature {
+    &.required {
+      .signature-pad-footer {
+        &:after {
+          content: ' *';
+          color: $danger;
+        }
       }
     }
   }
