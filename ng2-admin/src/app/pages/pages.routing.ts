@@ -1,7 +1,10 @@
 import { Routes, RouterModule }  from '@angular/router';
 import { Pages } from './pages.component';
 import { ModuleWithProviders } from '@angular/core';
-import {AuthGuardService} from '../shared/modules/auth/auth-guard.service';
+
+import { AuthGuardService } from '../shared/modules/auth/auth-guard.service';
+import { LogoutComponent } from '../shared/modules/auth/logout.component';
+
 // noinspection TypeScriptValidateTypes
 
 // export function loadChildren(path) { return System.import(path); };
@@ -25,6 +28,7 @@ export const routes: Routes = [
       { path: 'profile', loadChildren: 'app/digitalstate/modules/profile/profile.module#DsProfileModule' },
       { path: 'services', loadChildren: 'app/digitalstate/modules/service/service.module#DsServiceModule' },
       { path: 'cases', loadChildren: 'app/digitalstate/modules/case/case.module#DsCaseModule' },
+      { path: 'logout', component: LogoutComponent },
       // { path: 'assets', loadChildren: 'app/digitalstate/modules/asset/asset.module#DsAssetModule' },
       // { path: 'topics', loadChildren: 'app/digitalstate/modules/topic/topic.module#DsTopicModule' },
       // { path: 'tasks', loadChildren: 'app/digitalstate/modules/task/task.module#DsTaskModule' },

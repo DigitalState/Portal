@@ -9,6 +9,39 @@ export const PAGES_MENU = [
         path: '',
         data: {
           menu: {
+            title: 'My Account',
+            icon: 'ion-person',
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: true,
+            order: 0,
+            class: 'my-account hidden-xs-up'
+          }
+        },
+        children: [
+          {
+            path: ['profile'],
+            data: {
+              menu: {
+                title: 'Profile',
+                class: 'profile'
+              }
+            }
+          },
+          {
+            path: ['logout'],
+            data: {
+              menu: {
+                title: 'Sign out',
+              }
+            }
+          },
+        ]
+      },
+      {
+        path: '',
+        data: {
+          menu: {
             title: 'Dashboard',
             icon: 'ion-ios-speedometer',
             path: ['dashboard'],
