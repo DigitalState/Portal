@@ -16,9 +16,6 @@ html, body {
 }
 
 main {
-  @include display(flex);
-  @include flex-direction(column);
-
   min-height: 100%;
   position: relative;
   font: 18px/1.5em $font-family;

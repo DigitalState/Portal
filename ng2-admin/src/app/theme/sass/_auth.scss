@@ -6,10 +6,10 @@ $blocks-column-width: 570px;
 $font-size-default: 18px;
 
 @mixin auth-block() {
-  width: auto;
+  width: $blocks-column-width;
 
-  @include media-breakpoint-up(sm) {
-    width: $blocks-column-width;
+  @include media-breakpoint-down(xs) {
+    width: 100%;
   }
 }
 
@@ -64,6 +64,7 @@ $font-size-default: 18px;
 
       > a {
         color: $primary;
+        white-space: nowrap;
 
         &:hover {
           color: $primary-dark;
