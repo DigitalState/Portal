@@ -5,11 +5,11 @@
 			<form class="card entity-card animated fadeIn">
 				<div class="card-header">
 					<div class="row justify-content-between">
-						<div class="col-6">
+						<div class="col-sm-6">
 							<h3 class="card-title" translate>{{'ds.microservices.entity.property.identity'}}</h3>
 							<h4 class="card-subtitle">{{user.username}}</h4>
 						</div>
-						<div class="col-6">
+						<div class="col-sm-6 mt-3 mt-sm-0">
 							<ul class="btn-list clearfix">
 								<li class="float-right">
 									<button disabled (click)="saveUser($event)" type="button" class="btn btn-primary btn-with-icon"><i class="ion-edit">{{'ds.microservices.entity.action.save' | translate}}</i></button>
@@ -48,11 +48,11 @@
 			<form *ngIf="persona" class="card entity-card animated fadeIn">
 				<div class="card-header">
 					<div class="row justify-content-between">
-						<div class="col-6">
+						<div class="col-sm-6">
 							<h3 class="card-title" translate>Persona</h3>
 							<h4 class="card-subtitle">{{persona.title | entityTranslate}}</h4>
 						</div>
-						<div class="col-6">
+						<div class="col-sm-6 mt-3 mt-sm-0">
 							<ul class="btn-list clearfix">
 								<li class="float-right">
 									<button (click)="savePersona($event)" type="button" [disabled]="personaSaveInProgress" [ladda]="personaSaveInProgress" class="btn btn-primary btn-with-icon"><i class="ion-edit">{{'ds.microservices.entity.action.save' | translate}}</i></button>
