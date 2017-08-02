@@ -5,9 +5,11 @@
 
 	<div class="card-block">
 		<formio *ngIf="status == null"
+				class="formio"
 				[form]="formioFormSchema"
 				(submit)="onFormioFormSubmit($event)"
-				(invalid)="onFormioFormInvalid($event)">
+				(invalid)="onFormioFormInvalid($event)"
+				(error)="onFormioFormError($event)">
 		</formio>
 
 		<div *ngIf="status"

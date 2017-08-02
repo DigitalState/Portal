@@ -1,4 +1,4 @@
-import { Component, Injector, TemplateRef, ViewChild } from '@angular/core';
+import { Component, Injector, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Http } from '@angular/http';
@@ -16,8 +16,13 @@ import { Observable } from 'rxjs/Observable';
 import { isFunction } from 'rxjs/util/isFunction';
 
 @Component({
-    selector: 'ds-service-activate',
+    selector: 'ds-scenario-activate',
     templateUrl: '../templates/scenario-activate.template.html',
+    styleUrls: ['../styles/scenario-activate.scss'],
+    host: {
+        'class': 'ds-scenario-activate'
+    },
+    encapsulation: ViewEncapsulation.None
 })
 export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
 
@@ -87,8 +92,8 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
      * @param event
      */
     protected onFormioFormSubmit(submitEvent) {
-        console.log(submitEvent);
-        console.log(this.entity);
+        // console.log(submitEvent);
+        // console.log(this.entity);
         let submission = {
             'data': submitEvent.data,
         };
@@ -132,6 +137,10 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
 
     protected onFormioFormInvalid(event) {
         console.log('onFormioFormInvalid: ', event);
+    }
+
+    protected onFormioFormError(event) {
+        console.log('onFormioFormError: ', event);
     }
 
     // protected onFormioFormChange(event) {
