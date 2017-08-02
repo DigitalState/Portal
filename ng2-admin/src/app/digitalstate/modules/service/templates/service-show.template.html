@@ -6,26 +6,30 @@
 
 <md-progress-spinner [hidden]="!loadingScenarios" mode="indeterminate"></md-progress-spinner>
 
-<div *ngIf="entity && scenarios.length > 0" class="card entity-card animated fadeIn">
+<div *ngIf="entity && scenarios.length > 0" class="animated fadeIn">
 
-	<div class="card-block entity-body entity-data">
+	<!--<div class="card-block entity-body entity-data">-->
 		<div id="scenarios-tabs" class="tabs-container">
-			<div class='accordion-wrapper'>
+			<div class="accordion-wrapper">
 				<ng-container *ngFor="let scenario of scenarios">
 					<h2 id="tab-panel-title-{{scenario.uuid}}" class="tabs-container__title">
+						<i class="icon icon-closed fa fa-caret-right float-right"></i>
+						<i class="icon icon-open fa fa-caret-down float-right"></i>
 						{{scenario.title | entityTranslate}}
 					</h2>
-					<div id="tab-{{scenario.uuid}}" class="tabs-container__panel">
-						<p class="lead mt-2">{{scenario.description | entityTranslate}}</p>
-						<div class="actions btn-group p-1 pt-4">
-							<button class="btn btn-primary" [routerLink]="['..', 'scenarios', scenario.uuid, 'activate']">
-								{{'ds.microservices.entity.action.activate' | translate}}
-							</button>
+					<div id="tab-{{scenario.uuid}}" class="card p-0 tabs-container__panel">
+						<div class="card-block">
+							<p class="lead mt-2">{{scenario.description | entityTranslate}}</p>
+							<div class="actions btn-group pt-4">
+								<button class="btn btn-primary" [routerLink]="['..', 'scenarios', scenario.uuid, 'activate']">
+									{{'ds.microservices.entity.action.activate' | translate}}
+								</button>
+							</div>
 						</div>
 					</div>
 				</ng-container>
 			</div>
 		</div>
-	</div>
+	<!--</div>-->
 
 </div>

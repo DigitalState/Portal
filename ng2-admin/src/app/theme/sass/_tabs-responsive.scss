@@ -6,8 +6,8 @@ $tab-title-background-clear: $default;
 $tab-hover-background: $primary-bg-light;
 
 @mixin tab-selection-focus {
-  outline: thin dotted $tab-title-background-solid;
-  outline-offset: -1px;
+  //outline: thin dotted $tab-title-background-solid;
+  //outline-offset: -1px;
 }
 
 .tabs-container__panel {
@@ -42,6 +42,10 @@ $tab-hover-background: $primary-bg-light;
   &:hover {
     background-color: $tab-hover-background;
   }
+
+  &:focus {
+    color: inherit;
+  }
 }
 
 // Tabs mode
@@ -66,6 +70,7 @@ $tab-hover-background: $primary-bg-light;
 
   .tabs-navigation li {
     display:table-cell;
+    padding: 0 1px 0 0;
   }
 
   .tabs-navigation__button {
@@ -73,7 +78,7 @@ $tab-hover-background: $primary-bg-light;
   }
 
   .tabs-navigation__button[aria-selected="true"] {
-    background-color: transparent;
+    background-color: $tab-title-background-clear;
     border: solid $border-color;
     border-width: 3px 1px 0px;
     border-bottom: 1px solid $tab-title-background-clear;
@@ -99,22 +104,38 @@ $tab-hover-background: $primary-bg-light;
       font-weight: normal;
       display: block;
       padding: 1em;
+      margin: 0.5rem 0;
 
       &:hover {
         background-color: $tab-hover-background;
+      }
+
+      .icon {
+        &.icon-closed {
+          display: inherit;
+        }
+        &.icon-open {
+          display: none;
+        }
       }
     }
   }
 
   .accordion--closed .tabs-container__title,
   .tabs-init .tabs-container__title {
+
     background: $tab-title-background-solid;
-    border: solid $border-color;
-    border-width: 1px;
+    //border: solid $border-color;
+    border-radius: $bootstrap-panel-radius;
+    border-width: 0px;
   }
 
   .tabs-container__panel[aria-hidden="false"] {
     display: block;
+    padding: 0;
+    margin-top: $bootstrap-panel-radius * -3; // To negate the box-shadow by making the body slip under the title
+    margin-bottom: 0.5em;
+    z-index: 0;
 
     &:last-child {
       padding-bottom: 0;
@@ -122,19 +143,31 @@ $tab-hover-background: $primary-bg-light;
   }
 
   .tabs-container__title[aria-selected="true"] {
-    background: $tab-title-background-clear;
     border-bottom: solid 1px $border-color;
-    padding: 1em 0 0;
+    border-radius: $bootstrap-panel-radius $bootstrap-panel-radius 0 0;
     border: 0;
+    //box-shadow: inset 0 -15px 15px -15px rgba(0, 0, 0, 0.075);
+    position: relative;
+    z-index: 1;
 
     &:hover {
-      background-color: $tab-title-background-clear;
+      background: $tab-title-background-solid;
     }
     &:focus {
       @include tab-selection-focus();
+      //color: $link-color;
     }
     &:first-child {
-      padding: 1px;
+
+    }
+
+    .icon {
+      &.icon-closed {
+        display: none;
+      }
+      &.icon-open {
+        display: inherit;
+      }
     }
   }
 
