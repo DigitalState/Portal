@@ -38,7 +38,13 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent {
     protected prepareEntity(): Observable<{ entity: any, 'entityParent'?: any}> {
         return super.prepareEntity().flatMap(preparedObject => { // success
             this.loadingScenarios = true;
-            this.entityApiService.resource('scenarios').getList({'service.uuid': preparedObject.entity.uuid}).subscribe(scenariosData => {
+
+            let requestParams = {
+                'service.uuid': preparedObject.entity.uuid,
+                'order[weight]': 'asc'
+            };
+
+            this.entityApiService.resource('scenarios').getList(requestParams).subscribe(scenariosData => {
                 this.scenarios = [];
                 scenariosData.forEach((scenario) => {
                     this.scenarios.push(scenario);
