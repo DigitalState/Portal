@@ -7,7 +7,7 @@ import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { DsBaseEntityApiService } from '../../shared/services/base-entity-api.service';
 
 import { DefaultModal } from './modals/default-modal/default-modal.component';
-import { MicroserviceConfig } from '../modules/microservice.provider';
+import { MicroserviceConfig } from '../../shared/providers/microservice.provider';
 import { DsEntityCrudComponent } from '../../shared/components/base-entity-crud-component';
 
 import 'rxjs/Rx';

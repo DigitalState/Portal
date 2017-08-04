@@ -6,7 +6,7 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { Pager } from '../models/pager';
 
 import { ListQuery } from '../models/api-query';
-import { MicroserviceConfig } from '../modules/microservice.provider';
+import { MicroserviceConfig } from '../../shared/providers/microservice.provider';
 import { DsEntityCrudComponent } from '../../shared/components/base-entity-crud-component';
 
 import 'rxjs/Rx';
