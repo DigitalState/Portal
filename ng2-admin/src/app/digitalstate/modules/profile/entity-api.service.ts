@@ -5,7 +5,7 @@ import { Restangular } from 'ngx-restangular';
 import {
     MICROSERVICE_RESTANGULAR, MicroserviceConfig,
     microserviceRestangularFactory
-} from '../../modules/microservice.provider';
+} from '../../../shared/providers/microservice.provider';
 import { AppState } from '../../../app.service';
 import { AuthService } from '../../../shared/modules/auth/auth.service';
 import { DsBaseEntityApiService } from '../../../shared/services/base-entity-api.service';

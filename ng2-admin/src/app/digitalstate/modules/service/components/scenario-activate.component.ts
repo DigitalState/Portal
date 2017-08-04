@@ -7,7 +7,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 
 import { DefaultModal } from '../../../components/modals/default-modal/default-modal.component';
-import { MicroserviceConfig } from '../../microservice.provider';
+import { MicroserviceConfig } from '../../../../shared/providers/microservice.provider';
 import { EntityApiService } from '../entity-api.service';
 import { DsBaseEntityShowComponent } from '../../../components/base-entity-show.component';
 

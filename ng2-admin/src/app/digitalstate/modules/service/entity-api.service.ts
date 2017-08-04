@@ -5,7 +5,7 @@ import { Restangular } from 'ngx-restangular';
 import { Pager } from '../../models/pager';
 import { PagedData } from '../../models/paged-data';
 import { ListQuery } from '../../models/api-query';
-import { MICROSERVICE_RESTANGULAR } from '../../modules/microservice.provider';
+import { MICROSERVICE_RESTANGULAR } from '../../../shared/providers/microservice.provider';
 import { DsBaseEntityApiService } from '../../../shared/services/base-entity-api.service';
 
 import 'rxjs/Rx';

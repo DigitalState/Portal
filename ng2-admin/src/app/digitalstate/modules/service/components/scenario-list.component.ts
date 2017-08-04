@@ -1,7 +1,7 @@
 import { Component, Injector } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
-import { MicroserviceConfig } from '../../microservice.provider';
+import { MicroserviceConfig } from '../../../../shared/providers/microservice.provider';
 import { EntityApiService } from '../entity-api.service';
 import { DsBaseEntityListComponent } from '../../../components/base-list.component';
 

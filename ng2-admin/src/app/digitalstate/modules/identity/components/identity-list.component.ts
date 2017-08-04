@@ -2,7 +2,7 @@ import { Component, Injector } from '@angular/core';
 
 import { EntityApiService } from '../entity-api.service';
 import { DsBaseEntityListComponent } from '../../../components/base-list.component';
-import { MicroserviceConfig } from '../../microservice.provider';
+import { MicroserviceConfig } from '../../../../shared/providers/microservice.provider';
 import 'rxjs/Rx';
 
 @Component({

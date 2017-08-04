@@ -8,7 +8,7 @@ import { LaddaModule } from 'angular2-ladda';
 import { DsSharedModule } from '../../../shared/shared.module';
 
 import { routing } from './routing';
-import { MicroserviceConfig, MicroserviceRestangularProvider } from '../microservice.provider';
+import { MicroserviceConfig, MicroserviceRestangularProvider } from '../../../shared/providers/microservice.provider';
 import { DsMicroservicesModule } from '../../microservices.module';
 import { DsDashboardComponent } from './components/dashboard.component';
 

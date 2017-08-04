@@ -6,7 +6,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import { routing } from './routing';
 import { EntityApiService } from './entity-api.service';
-import { MicroserviceConfig, MicroserviceRestangularProvider } from '../microservice.provider';
+import { MicroserviceConfig, MicroserviceRestangularProvider } from '../../../shared/providers/microservice.provider';
 import { DsBaseMicroserviceModule } from '../base-microservice.module';
 import { DsMicroservicesModule } from '../../microservices.module';
 import { DsTaskComponent } from './task.component';

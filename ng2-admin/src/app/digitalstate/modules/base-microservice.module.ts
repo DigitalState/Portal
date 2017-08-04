@@ -7,7 +7,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormioModule } from 'ng2-formio';
 
-import { MicroserviceConfig, MicroserviceRestangularProvider } from './microservice.provider';
+import { MicroserviceConfig, MicroserviceRestangularProvider } from '../../shared/providers/microservice.provider';
 
 @NgModule({
     imports: [

@@ -5,7 +5,7 @@ import { ToastsManager } from 'ng2-toastr';
 import { TranslateService } from '@ngx-translate/core';
 
 import { DsBaseEntityShowComponent } from '../../../components/base-entity-show.component';
-import { MicroserviceConfig } from '../../microservice.provider';
+import { MicroserviceConfig } from '../../../../shared/providers/microservice.provider';
 import { EntityApiService } from '../entity-api.service';
 import 'rxjs/Rx';
 

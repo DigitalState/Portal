@@ -5,7 +5,7 @@ import { ToastsManager } from 'ng2-toastr';
 
 import { GlobalState } from '../../../../global.state';
 import { AuthService } from '../../../../shared/modules/auth/auth.service';
-import { MicroserviceConfig } from '../../microservice.provider';
+import { MicroserviceConfig } from '../../../../shared/providers/microservice.provider';
 import { EntityApiService, IdentityApiService } from '../entity-api.service';
 import { User } from '../../../../shared/modules/auth/user';
 import { Persona } from '../../../../shared/modules/auth/persona';

@@ -3,7 +3,7 @@ import 'rxjs/Rx';
 
 import { EntityApiService } from '../entity-api.service';
 import { DsBaseEntityListComponent } from '../../../components/base-list.component';
-import { MicroserviceConfig } from '../../microservice.provider';
+import { MicroserviceConfig } from '../../../../shared/providers/microservice.provider';
 import {TranslateService} from '@ngx-translate/core';
 
 @Component({
