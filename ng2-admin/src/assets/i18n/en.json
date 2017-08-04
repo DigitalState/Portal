@@ -159,6 +159,7 @@
           "identityUuid": "Identity UUID",
           "channel": "Channel",
           "data": "Data",
+          "status": "Status",
           "processDefinitionKey": "Process definition key",
           "firstName": "First Name",
           "lastName": "Last Name"
