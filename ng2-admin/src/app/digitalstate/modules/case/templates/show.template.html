@@ -1,25 +1,8 @@
-<ds-entity-show *ngIf="entity"
-				[entity]="entity"
-				[backLink]="backLink"
-				[headerTitle]="headerTitle"
-				[headerSubtitle]="headerSubtitle"
-				[actions]="actions"
-				(onDelete)="onDelete($event)">
+<md-progress-spinner [hidden]="entity" mode="indeterminate"></md-progress-spinner>
 
-	<!-- begin: ng-content[select="button.entity-action"] -->
-	<!-- end: ng-content[select="button.entity-action"] -->
-
-	<!-- begin: ng-content[select=".entity-body"] -->
-	<div class="card-block entity-body entity-data">
-		<div class="row">
-			<div class="col-sm-4 col-sm-offset-3">
-				<dl>
-					<dt>{{ 'ds.microservices.entity.property.title' | translate }}</dt>
-					<dd>{{entity.title | entityTranslate}}</dd>
-				</dl>
-			</div>
-		</div>
-	</div>
-	<!-- end: ng-content[select=".entity-body"] -->
-
-</ds-entity-show>
+<div *ngIf="entity" class="pb-4">
+	<dl>
+		<dt>{{ 'ds.microservices.entity.property.status' | translate }}</dt>
+		<dd><pre>{{entity.statuses | json}}</pre></dd>
+	</dl>
+</div>

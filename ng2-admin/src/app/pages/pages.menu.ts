@@ -133,12 +133,11 @@ export const PAGES_MENU = [
         },
       },
       {
-        path: '',
+        path: ['cases'],
         data: {
           menu: {
             title: 'Cases',
             icon: 'ion-ios-list-outline',
-            url: '#'
           }
         },
       },

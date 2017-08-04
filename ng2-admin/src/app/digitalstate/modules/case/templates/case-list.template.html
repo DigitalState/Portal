@@ -1,0 +1,15 @@
+<div class="card container-fluid">
+	<div class="row">
+		<div class="col p-0">
+			<md-progress-spinner [hidden]="!loading" mode="indeterminate"></md-progress-spinner>
+			<div class="list-group simple-list">
+				<a *ngFor="let row of rows" [routerLink]="['..', row.uuid, 'show']" href="#" class="list-group-item justify-content-between has-left-icon">
+					<span class="left-icon pull-left"></span>
+					<h2 class="font-weight-normal mb-0">{{row.title | entityTranslate}}</h2>
+					<!--<p class="lead mt-3 mb-0 pr-5">{{row.description | entityTranslate}}</p>-->
+					<span class="right-icon pull-right"></span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
