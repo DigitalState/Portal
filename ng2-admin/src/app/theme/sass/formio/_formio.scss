@@ -9,6 +9,10 @@
 .formio-form {
 
   // Responsive Layout
+  .row {
+    flex-wrap: initial;
+  }
+
   .col {
     @include flex-basis(inherit);
   }
