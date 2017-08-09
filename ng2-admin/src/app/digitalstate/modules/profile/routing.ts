@@ -1,5 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuardService } from '../../../shared/modules/auth/auth-guard.service';
 import { DsProfileComponent } from './components/profile.component';
 
 const routes: Routes = [
@@ -8,6 +9,7 @@ const routes: Routes = [
     {
         path: '',
         component: DsProfileComponent,
+        canActivate: [AuthGuardService],
         children: [
             // Uncomment the following to have the default EMPTY routerLink redirect back to the dashboard
             // { path: '', redirectTo: '/pages/dashboard', pathMatch: 'full' },
