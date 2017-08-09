@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { ToastsManager } from 'ng2-toastr/src/toast-manager';
@@ -18,14 +18,16 @@ import 'style-loader!./login.scss';
 })
 export class Login {
 
-    public form: FormGroup;
-    public username: AbstractControl;
-    public password: AbstractControl;
-    public submitted: boolean = false;
+    form: FormGroup;
+    username: AbstractControl;
+    password: AbstractControl;
+    redirectUrl: string;
 
-    public inProgress: boolean = false;
+    submitted: boolean = false;
+    inProgress: boolean = false;
 
     constructor(protected router: Router,
+                protected route: ActivatedRoute,
                 protected fb: FormBuilder,
                 protected toastr: ToastsManager,
                 protected auth: AuthService) {
@@ -36,6 +38,22 @@ export class Login {
 
         this.username = this.form.controls['username'];
         this.password = this.form.controls['password'];
+
+        console.log('ActivatedRoute: ', router.url);
+        router.events
+            .filter(event => event instanceof NavigationStart)
+            .subscribe((navStartEvent: NavigationStart) => {
+                if (!navStartEvent.url.startsWith('/login')) {
+                    console.log('NavigationStart URL:', navStartEvent.url);
+                    this.redirectUrl = navStartEvent.url;
+                }
+            });
+    }
+
+    ngOnInit() {
+        // get redirect url from route parameters or default to '/'
+        this.redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/';
+        console.log('Redirect URL', this.redirectUrl);
     }
 
     public onSubmit(values):void {
@@ -51,7 +69,7 @@ export class Login {
                     isSuccess => {
                         if (isSuccess) {
                             this.toastr.success('You have been successfully signed in.');
-                            this.router.navigate(['/']);
+                            this.router.navigateByUrl(this.redirectUrl);
                         }
                     },
                     errorJson => {
