@@ -110,9 +110,9 @@ export class DsProfileComponent{
             // Assign received properties to the current Persona object
             assign(this.persona, responsePersona);
             // console.log('this.persona after save', this.persona);
-            this.toastr.success('Persona information saved successfully');
+            this.toastr.success(this.translate.instant('ds.messages.personaSaveSucceeded'));
         }, (error) => {
-            this.toastr.error('Failed to save persona information');
+            this.toastr.error(this.translate.instant('ds.messages.personaSaveFailed'));
         }, () => { // finally
             this.personaSaveInProgress = false;
         });
@@ -122,12 +122,11 @@ export class DsProfileComponent{
      * Save user-related info such as e-mail and password
      */
     saveUser() {
-        this.toastr.success('Sample success response!');
         // @todo: This is a stub implementation that has not been tested. Awaiting API requests on Authentication MS to be finalized.
         // this.auth.updateUser(this.identityFormData).subscribe((response) => {
-        //     this.toastr.success('Identity information saved successfully');
+        //     this.toastr.success(this.translate.instant('ds.messages.identitySaveSucceeded'));
         // }, (error) => {
-        //     this.toastr.error('Failed to save identity information');
+        //     this.toastr.error(this.translate.instant('ds.messages.identitySaveFailed'));
         // });
     }
 

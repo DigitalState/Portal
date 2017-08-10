@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
+
+import { TranslateService } from '@ngx-translate/core';
 import { ToastsManager } from 'ng2-toastr/src/toast-manager';
 
 import { EmailValidator, EqualPasswordsValidator } from '../../theme/validators';
@@ -34,7 +36,8 @@ export class Register {
     constructor(protected router: Router,
                 protected fb: FormBuilder,
                 protected toastr: ToastsManager,
-                protected auth: AuthService) {
+                protected auth: AuthService,
+                protected translate: TranslateService) {
 
         this.registration = new Registration();
 
@@ -71,13 +74,13 @@ export class Register {
                 .subscribe(
                     isSuccess => {
                         if (isSuccess) {
-                            this.toastr.success('You have been registered successfully.');
+                            this.toastr.success(this.translate.instant('ds.messages.registrationSucceeded'));
                             this.router.navigate(['/login']);
                         }
                     },
                     errorJson => {
                         // console.error('Registration error response', errorJson)
-                        this.toastr.error(errorJson.message);
+                        this.toastr.error(this.translate.instant('ds.messages.registrationFailed') + ' ' + errorJson.message);
                     }
                 );
         }

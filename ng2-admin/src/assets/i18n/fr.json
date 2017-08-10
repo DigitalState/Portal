@@ -190,6 +190,21 @@
           "submissionSuccess": "<h4>Soumission réussie!</h4> <div>Vous recevrez bientôt un e-mail de suivi.</div>"
         }
       }
+    },
+    "messages": {
+      "registrationSucceeded": "Vous avez été enregistré avec succès.",
+      "registrationFailed": "Échec de l'enregistrement",
+      "loginSucceeded": "Vous avez été connecté avec succès.",
+      "loginFailed": "Échec de la connexion.",
+      "formInvalid": "Le formulaire contient des champs non valides.",
+      "entitySaveSucceeded": "Entité enregistrée avec succès",
+      "entitySaveFailed": "Impossible d'enregistrer l'entité",
+      "entityDeletionSucceeded": "Entité supprimée avec succès",
+      "entityDeletionFailed": "Échec de la suppression de l'entité",
+      "personaSaveSucceeded": "Les informations personnalisées ont été enregistrées avec succès.",
+      "personaSaveFailed": "Échec de l'enregistrement des informations personnelles.",
+      "identitySaveSucceeded": "Les informations d'identité ont été enregistrées avec succès.",
+      "identitySaveFailed": "Échec de l'enregistrement des informations d'identité."
     }
   }
 }

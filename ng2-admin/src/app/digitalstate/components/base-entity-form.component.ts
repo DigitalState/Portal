@@ -304,7 +304,7 @@ export abstract class DsBaseEntityFormComponent extends DsEntityCrudComponent {
 
     onEntitySave(response) {
         console.log('Entity saved successfully, server response: ', response);
-        this.toastr.success('Entity saved successfully');
+        this.toastr.success(this.translate.instant('ds.messages.entitySaveSucceeded'));
 
         const routerLink = this.isNew ? '../list' : '../show';
         this.router.navigate([routerLink], {relativeTo: this.route});
@@ -312,6 +312,6 @@ export abstract class DsBaseEntityFormComponent extends DsEntityCrudComponent {
 
     onEntitySaveError(error) {
         console.error('There was an error saving entity', error);
-        this.toastr.error('Failed to save the entity');
+        this.toastr.error(this.translate.instant('ds.messages.entitySaveFailed'));
     }
 }

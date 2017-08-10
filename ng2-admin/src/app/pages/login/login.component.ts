@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
+import { TranslateService } from '@ngx-translate/core';
 import { ToastsManager } from 'ng2-toastr/src/toast-manager';
 
 import { AuthService } from '../../shared/modules/auth/auth.service';
@@ -30,7 +31,9 @@ export class Login {
                 protected route: ActivatedRoute,
                 protected fb: FormBuilder,
                 protected toastr: ToastsManager,
-                protected auth: AuthService) {
+                protected auth: AuthService,
+                protected translate: TranslateService) {
+
         this.form = fb.group({
             'username': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
             'password': ['', Validators.compose([Validators.required, Validators.minLength(1)])]
@@ -68,13 +71,13 @@ export class Login {
                 .subscribe(
                     isSuccess => {
                         if (isSuccess) {
-                            this.toastr.success('You have been successfully signed in.');
+                            this.toastr.success(this.translate.instant('ds.messages.loginSucceeded'));
                             this.router.navigateByUrl(this.redirectUrl);
                         }
                     },
                     errorJson => {
                         // console.error('Login error response', errorJson)
-                        this.toastr.error(errorJson.message);
+                        this.toastr.error(this.translate.instant('ds.messages.loginFailed') + ' ' + errorJson.message);
                     }
                 );
         }

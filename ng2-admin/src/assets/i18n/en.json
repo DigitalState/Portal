@@ -186,6 +186,21 @@
           "submissionSuccess": "<h4>Submission succeeded!</h4> <div>You will receive a follow-up e-mail soon.</div>"
         }
       }
+    },
+    "messages": {
+      "registrationSucceeded": "You have been registered successfully.",
+      "registrationFailed": "Registration failed.",
+      "loginSucceeded": "You have been successfully signed in.",
+      "loginFailed": "Sign in failed.",
+      "formInvalid": "The form contains invalid fields.",
+      "entitySaveSucceeded": "Entity saved successfully.",
+      "entitySaveFailed": "Unable to save the entity.",
+      "entityDeletionSucceeded": "Entity deleted successfully.",
+      "entityDeletionFailed": "Failed to delete entity!",
+      "personaSaveSucceeded": "Persona information saved successfully.",
+      "personaSaveFailed": "Failed to save persona information.",
+      "identitySaveSucceeded": "Identity information saved successfully.",
+      "identitySaveFailed": "Failed to save identity information."
     }
   }
 }
