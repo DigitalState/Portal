@@ -102,13 +102,9 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
             this.status = 'success';
             this.statusMessage = 'ds.microservices.entity.scenario.submissionSuccess';
 
-            const modal = this.modal.open(DefaultModal, {size: 'lg'});
-            modal.componentInstance.modalHeader = 'Response';
-            modal.componentInstance.modalContent = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
-
-            // this.toastr.success('Form submitted successfully');
-            // const modal = this.modal.open(this.modalSubmissionResultTpl, {size: 'lg'})
-            // this.submissionResult = JSON.stringify(response.json(), null, 2);
+            // const modal = this.modal.open(DefaultModal, {size: 'lg'});
+            // modal.componentInstance.modalHeader = 'Response';
+            // modal.componentInstance.modalContent = `<pre>${JSON.stringify(result, null, 2)}</pre>`;
 
             // this.router.navigate(['../show'], { relativeTo: this.route });
         }, (error) => { // error handling
