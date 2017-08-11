@@ -54,9 +54,7 @@ $card-header-font-size: inherit;
       flex: 1;
     }
   }
-}
 
-.card {
   > .card-body {
     padding: 15px 22px;
     height: 100%;
@@ -164,4 +162,15 @@ $card-header-font-size: inherit;
 
 .light-text {
   font-weight: $font-light;
+}
+
+@include media-breakpoint-down(nl) {
+  .card {
+    box-shadow: none;
+  }
+
+  .card-block {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
