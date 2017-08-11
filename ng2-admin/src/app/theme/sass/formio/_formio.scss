@@ -10,11 +10,18 @@
 
   // Responsive Layout
   .row {
-    flex-wrap: initial;
+    //flex-wrap: initial;
   }
 
   .col {
-    @include flex-basis(inherit);
+    //@include flex-basis(unset);
+    min-width: 100%;
+  }
+
+  @include media-breakpoint-up(sm) {
+    .col-sm-6 {
+      min-width: 50%;
+    }
   }
 
   // Components
