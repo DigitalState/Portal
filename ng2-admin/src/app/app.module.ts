@@ -30,6 +30,8 @@ import {DsMicroservicesModule} from './digitalstate/microservices.module';
 
 import * as _ from 'lodash';
 
+import APP_CONFIG from './app.config';
+
 // Application wide providers
 const APP_PROVIDERS = [
     AppState,
@@ -165,6 +167,8 @@ export class AppModule {
     constructor(public appRef: ApplicationRef,
                 public appState: AppState) {
 
+        // Add the static app configurations to the app state
+        appState.set('config', APP_CONFIG);
     }
 
     hmrOnInit(store: StoreType) {
