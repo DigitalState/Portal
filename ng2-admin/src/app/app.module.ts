@@ -8,6 +8,8 @@ import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {createInputTransfer, createNewHosts, removeNgStyles} from '@angularclass/hmr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import { LockerModule, DRIVERS } from 'angular-safeguard';
+
 /*
  * Platform and Environment providers/directives/pipes
  */
@@ -103,6 +105,14 @@ const translationOptions = {
     }
 };
 
+// Storage (Locker) configurations
+// @see https://github.com/MikaAK/angular-safeguard
+const storageLockerConfig = {
+    driverNamespace: 'ds',
+    defaultDriverType: DRIVERS.LOCAL,
+    namespaceSeperator: '-'
+};
+
 /**
  * `AppModule` is the main entry point into Angular2's bootstraping process
  */
@@ -124,6 +134,7 @@ const translationOptions = {
         NgaModule.forRoot(),
         NgbModule.forRoot(),
         TranslateModule.forRoot(translationOptions), // @See AppTranslationModule for default language setting
+        LockerModule.withConfig(storageLockerConfig),
         LaddaModule,
         PagesModule,
         DsSharedModule,
