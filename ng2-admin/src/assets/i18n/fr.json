@@ -152,6 +152,7 @@
     "microservices": {
       "entity": {
         "property": {
+          "createdAt": "Créé à",
           "updatedAt": "Mis à jour",
           "uuid": "UUID",
           "title": "Titre",
@@ -159,6 +160,7 @@
           "presentation": "Présentation",
           "description": "Description",
           "username": "Nom d'utilisateur",
+          "customId": "ID personnalisé",
           "identity": "Identité",
           "identityUuid": "Identité UUID",
           "channel": "Canal",
