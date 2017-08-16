@@ -59,7 +59,7 @@ export class Login {
         console.log('Redirect URL', this.redirectUrl);
     }
 
-    public onSubmit(values):void {
+    onSubmit(values):void {
         this.submitted = true;
         this.inProgress = true;
 
