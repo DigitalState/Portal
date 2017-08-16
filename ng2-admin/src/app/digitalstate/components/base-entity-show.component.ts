@@ -36,6 +36,11 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
     protected languageChangeSubscriber: Subscriber<LangChangeEvent>;
 
     /**
+     * Alias for the current interface language. Ex: `en`, `fr`, ec...
+     */
+    protected lang: string;
+
+    /**
      * The Enity API service is not injected into this base component class because
      * the API service configurations are Microservice-specific.
      */
@@ -59,7 +64,9 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
 
     ngOnInit() {
         super.ngOnInit();
+
         this.entityMetadata = this.microserviceConfig.settings.entities[this.entityUrlPrefix].properties;
+        this.lang = this.translate.currentLang;
 
         // Subscribe to language-change events
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
