@@ -145,7 +145,7 @@ a.forgot-pass {
 }
 
 .auth-sep {
-  margin-top: 36px;
+  margin-top: 60px;
   margin-bottom: 24px;
   line-height: 20px;
   font-size: $font-size-default;
@@ -164,7 +164,7 @@ a.forgot-pass {
     }
   }
   &:before, &:after {
-    border-top: solid 1px $text-color;
+    border-top: solid 1px lightgray;
     content: "";
     height: 1px;
     width: 35%;
@@ -186,6 +186,7 @@ a.forgot-pass {
       }
       i {
         font-size: $font-size-default * 2;
+        border-radius: 5px;
       }
     }
   }

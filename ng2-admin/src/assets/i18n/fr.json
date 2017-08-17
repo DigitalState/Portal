@@ -9,10 +9,11 @@
     "signIn": "Se connecter",
     "signOut": "Déconnexion",
     "forgotPassword": "mot de passe oublié?",
-    "signFromAppText": "or Sign in with one click",
-    "shareOnFacebook": "Share on Facebook",
-    "shareOnTwitter": "Share on Twitter",
-    "shareOnGooglePlus": "Share on Google Plus"
+    "signInSocialPrompt": "Ou connectez-vous avec",
+    "signInFacebook": "Connectez-vous avec Facebook",
+    "signInTwitter": "Connectez-vous avec Twitter",
+    "signInGooglePlus": "Connectez-vous avec Google Plus",
+    "signInLinkedIn": "Connectez-vous avec LinkedIn"
   },
   "register": {
     "title": "Enregistrement",

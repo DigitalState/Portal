@@ -9,10 +9,11 @@
     "signIn": "Sign in",
     "signOut": "Sign out",
     "forgotPassword": "Forgot password?",
-    "signFromAppText": "or Sign in with one click",
-    "shareOnFacebook": "Share on Facebook",
-    "shareOnTwitter": "Share on Twitter",
-    "shareOnGooglePlus": "Share on Google Plus"
+    "signInSocialPrompt": "Or sign in with",
+    "signInFacebook": "Sign in with Facebook",
+    "signInGooglePlus": "Sign in with Google Plus",
+    "signInTwitter": "Sign in with Twitter",
+    "signInLinkedIn": "Sign in with LinkedIn"
   },
   "register": {
     "title": "Sign Up",
