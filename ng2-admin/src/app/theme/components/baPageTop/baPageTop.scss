@@ -16,6 +16,19 @@ $menu-button-trigger-width: 50px;
   min-width: $resMin;
   padding: 0 32px 0 10px;
 
+  a.al-logo {
+    @include centerer(false, true);
+    left: 0px;
+    margin-left: 15%;
+    margin-right: 15%;
+
+    img {
+      width: 100%;
+      height: auto;
+      margin-left: 0;
+    }
+  }
+
   .dropdown-toggle::after {
     display: none;
   }
@@ -41,10 +54,10 @@ a.al-logo {
     color: $primary;
   }
 
-  img {
-    height: 26px;
-    margin-left: 16px;
-  }
+  //img {
+  //  height: 26px;
+  //  margin-left: 16px;
+  //}
 }
 
 a.al-logo:hover {
@@ -252,6 +265,25 @@ a.collapse-menu-link {
   }
 }
 
+@include media-breakpoint-up(xs) {
+  .page-top {
+    a.al-logo {
+      position: relative;
+      transform: none;
+      top: unset;
+      left: unset;
+      margin-right: 0;
+      margin-left: inherit;
+
+      img {
+        width: auto;
+        height: 26px;
+        margin-left: 16px;
+      }
+    }
+  }
+}
+
 @media screen and (max-width: $resS) {
   .search {
     display: none;
@@ -288,19 +320,6 @@ a.collapse-menu-link {
       &:before {
         vertical-align: middle;
         display: table-cell;
-      }
-    }
-
-
-    a.al-logo {
-      position: absolute;
-      margin-left: 15%;
-      margin-right: 15%;
-
-      img {
-        width: 100%;
-        height: auto;
-        margin-left: 0;
       }
     }
   }

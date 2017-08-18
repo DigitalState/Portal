@@ -112,3 +112,25 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='$color-1', endColorstr='$color-3',GradientType=1); /* IE6-9 fallback on horizontal gradient */
 
 }
+
+@mixin centerer($horizontal: true, $vertical: true) {
+  position: absolute;
+  @if ($horizontal and $vertical) {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if ($horizontal) {
+    left: 50%;
+    transform: translate(-50%, 0);
+  } @else if ($vertical) {
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+
+.h-center {
+  @include centerer(true, false);
+}
+.v-center {
+  @include centerer(false, true);
+}
