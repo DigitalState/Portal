@@ -28,6 +28,7 @@ export class DsCaseListComponent extends DsBaseEntityListComponent {
 
     setupQuery() {
         super.setupQuery();
+        this.query.setFilter('order[updatedAt]', 'desc');
 
         // Filter the list by Case Owner UUID in order to avoid the Access Denied error.
         // The Owner is assumed to be the first Business Unit that is stored in the User session object.
@@ -41,8 +42,8 @@ export class DsCaseListComponent extends DsBaseEntityListComponent {
                 this.query.setFilter('ownerUuid', ownerUuid);
             }
             else {
-                console.warn('No Business Units available under AuthUser');
-                this.toastr.warning('No Business Units available under AuthUser'); // @TranslateMe
+                console.warn('No Business Units available for current AuthUser');
+                // this.toastr.warning('No Business Units available for current AuthUser'); // @TranslateMe
             }
         }
         else {
