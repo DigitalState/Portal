@@ -370,6 +370,10 @@ a.learn-more {
   }
 }
 
+.text-grayed-out {
+  color: tint($content-text, 50%) !important;
+}
+
 @media (max-width: 600px) {
   .banner-text {
     padding: 55px 60px 30px;
