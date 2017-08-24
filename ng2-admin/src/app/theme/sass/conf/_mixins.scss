@@ -121,16 +121,37 @@
     transform: translate(-50%, -50%);
   } @else if ($horizontal) {
     left: 50%;
-    transform: translate(-50%, 0);
+    transform: translateX(-50%);
   } @else if ($vertical) {
     top: 50%;
-    transform: translate(0, -50%);
+    transform: translateY(-50%);
   }
 }
 
 .h-center {
   @include centerer(true, false);
 }
-.v-center {
-  @include centerer(false, true);
+// Deprecated: this is now being generated in the loop below
+//.v-center {
+//  @include centerer(false, true);
+//}
+
+/**
+ * Centerer per breakpoint.
+ */
+@each $breakpoint in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    .v-center#{$infix} {
+      @include centerer(false, true);
+    }
+
+  }
+}
+
+.disable-v-center {
+  position: relative;
+  top: unset;
+  left: unset;
+  transform: none;
 }

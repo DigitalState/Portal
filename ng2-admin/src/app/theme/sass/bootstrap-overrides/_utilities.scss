@@ -1,0 +1,68 @@
+.overflow-x-hide    { overflow-x: hidden !important;}
+.overflow-y-hide    { overflow-y: hidden !important;}
+.overflow-hide    { overflow: hidden !important;}
+.overflow-x-show    { overflow-x: visible !important;}
+.overflow-y-show    { overflow-y: visible !important;}
+.overflow-show    { overflow: visible !important;}
+.overflow-x-scroll    { overflow-x: scroll !important;}
+.overflow-y-scroll    { overflow-y: scroll !important;}
+.overflow-scroll    { overflow: scroll !important;}
+.overflow-x-auto    { overflow-x: auto !important;}
+.overflow-y-auto    { overflow-y: auto !important;}
+.overflow-auto    { overflow: auto !important;}
+
+.decoration-underline { text-decoration: underline }
+
+.border-b-dotted { border-bottom: 1px dotted $content-text; }
+
+.cursor-pointer { cursor: pointer; }
+
+// Position Utilities
+$positions: static, relative, absolute, fixed, sticky;
+
+@each $position in $positions {
+  .position-#{$position} { position: $position !important; }
+}
+
+// Per-breakpoint positioning
+@each $breakpoint in map-keys($grid-breakpoints) {
+  /**
+   * Position
+   * Set relative and absolution position values per breakpoint.
+   */
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $prefix: 'position';
+
+    @each $prop in (relative, absolute) {
+      .#{$prefix}#{$infix}-#{$prop} { #{$prefix}: $prop !important; }
+    }
+  }
+
+  /**
+   * Absolution position
+   * Set top, right, bottom and left properties to $spacer values per breakpoint.
+   */
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $prefix: 'position';
+
+    @each $prop in (top, right, bottom, left) {
+      @each $size, $lengths in $spacers {
+        $length-x: map-get($lengths, x);
+        .#{$prefix}-#{$prop}#{$infix}-#{$size} { #{$prop}: $length-x !important; }
+      }
+    }
+  }
+
+  //
+  ///**
+  // * Transform
+  // * Disable `transform` value per breakpoint.
+  // */
+  //@include media-breakpoint-up($breakpoint) {
+  //  $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+  //  $prefix: 'no-transform';
+  //  .#{$prefix}#{$infix} { transform: none !important; }
+  //}
+}
