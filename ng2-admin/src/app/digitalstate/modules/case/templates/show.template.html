@@ -12,15 +12,15 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-6">
-				<dl>
+				<dl translate>
 					<dt>{{ 'ds.microservices.entity.property.createdAt' | translate }}</dt>
-					<dd>{{ entity.createdAt | amLocal | amDateFormat: config.date.format.long }}</dd>
+					<dd><relative-time [timeInput]="entity.createdAt"></relative-time></dd>
 				</dl>
 			</div>
 			<div class="col-sm-6">
 				<dl>
 					<dt>{{ 'ds.microservices.entity.property.updatedAt' | translate }}</dt>
-					<dd>{{ entity.updatedAt | amLocal | amDateFormat: config.date.format.long }}</dd>
+					<dd><relative-time [timeInput]="entity.updatedAt"></relative-time></dd>
 				</dl>
 			</div>
 		</div>
@@ -47,11 +47,11 @@
 
 	<md-progress-spinner [hidden]="!loadingStatuses" mode="indeterminate"></md-progress-spinner>
 
-	<div *ngIf="statuses.length" class="card entity-card additional-card animated fadeIn">
+	<div *ngIf="statuses.length" [hidden]="loadingStatuses" class="card entity-card additional-card animated fadeIn">
 		<div class="card-header">
 			<div class="row justify-content-between">
 				<div class="col-sm-12">
-					<h3 class="card-title mb-0">{{ 'ds.microservices.entity.property.status' | translate }}</h3>
+					<h3 class="card-title mb-0">{{ 'general.statusUpdates' | translate }}</h3>
 				</div>
 			</div>
 		</div>
@@ -60,9 +60,38 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<div *ngFor="let status of statuses" class="well">
-						<div class="small">{{ status.updatedAt | amLocal }}</div>
-						<h4>{{ status.title | entityTranslate }}</h4>
-						<div class="lead">{{ status.description | entityTranslate }}</div>
+						<div class="row">
+							<div class="col-sm-8">
+								<h4>{{ status.title | entityTranslate }}</h4>
+							</div>
+							<div class="col-sm-4">
+								<div class="small float-sm-right mb-2 mb-sm-0">
+									<relative-time [timeInput]="status.updatedAt"></relative-time>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-12">
+								<p class="lead mb-0">{{ status.description | entityTranslate }}</p>
+
+								<div *ngIf="status.data && (status.data[lang] | isNotEmpty)" class="mt-2">
+									<a class="" data-toggle="collapse" href="#collapse-status-{{status.uuid}}" aria-expanded="false" aria-controls="collapse">
+										{{ 'ds.microservices.entity.property.data' | translate }}
+									</a>
+									<div id="collapse-status-{{status.uuid}}" class="well collapse mb-0 pb-0">
+										<!--<pre>-->
+											<!--{{ status.data | entityTranslate | json }}-->
+										<!--</pre>-->
+										<div class="row prop-set">
+											<dl *ngFor="let item of (status.data | entityTranslate) | keyValue" class="col-sm-12">
+												<dt>{{ item.key }}</dt>
+												<dd>{{ item.value }}</dd>
+											</dl>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
