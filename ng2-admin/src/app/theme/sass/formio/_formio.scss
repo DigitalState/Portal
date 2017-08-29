@@ -8,20 +8,13 @@
 
 .formio-form {
 
-  // Responsive Layout
-  .row {
-    //flex-wrap: initial;
-  }
+  //// Responsive Layout
+  //.row {
+  //  flex-wrap: initial;
+  //}
 
   .col {
-    //@include flex-basis(unset);
-    min-width: 100%;
-  }
-
-  @include media-breakpoint-up(sm) {
-    .col-sm-6 {
-      min-width: 50%;
-    }
+    @include flex-basis(inherit);
   }
 
   // Components
@@ -32,7 +25,18 @@
       line-height: 1.2em;
       margin-top: 0.5em;
     }
+  }
 
+  .formio-component-day {
+    .form-control {
+      display: block;
+      width: 100%;
+      padding-right: 0;
+      flex: unset;
+      flex-direction: unset;
+      border-bottom-left-radius: $border-radius;
+      border-top-left-radius: $border-radius;
+    }
   }
 
   .formio-component-radio,
@@ -48,6 +52,7 @@
     }
   }
 
+
   .formio-component-signature {
     &.required {
       .signature-pad-footer {
@@ -56,6 +61,12 @@
           color: $danger;
         }
       }
+    }
+  }
+
+  @include media-breakpoint-up(xs) {
+    .row {
+      flex-wrap: initial;
     }
   }
 }
