@@ -19,6 +19,17 @@ export class MicroservicesDefinition {
                 paths: {
                     registration: 'registration',
                     login: 'tokens/individual',
+                    anonymous: 'tokens/anonymous',
+                },
+            },
+            'cms': {
+                label: 'CMS',
+                entrypoint: {
+                    url: `${scheme}://${host}:8056/app_dev.php/`,
+                },
+                paths: {
+                    content: 'content',
+                    datas: 'datas',
                 },
             },
             'services': {
