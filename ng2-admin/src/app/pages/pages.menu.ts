@@ -42,7 +42,7 @@ export const PAGES_MENU = [
         path: '',
         data: {
           menu: {
-            title: 'Dashboard',
+            title: 'general.menu.dashboard',
             icon: 'ion-ios-speedometer',
             path: ['dashboard'],
           }
