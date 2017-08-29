@@ -1,4 +1,5 @@
 {
+  "test": "This is a translation test from fr.json",
   "login": {
     "title": "Se connecter",
     "signUpPrompt": "Vous n'avez pas de compte?",
