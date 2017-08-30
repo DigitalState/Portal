@@ -31,6 +31,7 @@ export class MicroservicesDefinition {
                     content: 'content',
                     datas: 'datas',
                 },
+                translationSlugs: [ 'translation', 'portal-translation' ], // Order matters; latter overrides former
             },
             'services': {
                 label: 'Services',
