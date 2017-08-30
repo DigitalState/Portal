@@ -9,7 +9,7 @@ export const PAGES_MENU = [
         path: '',
         data: {
           menu: {
-            title: 'My Account',
+            title: 'general.menu.myAccount',
             icon: 'ion-person',
             pathMatch: 'prefix', // use it if item children not displayed in menu
             selected: false,
@@ -23,7 +23,7 @@ export const PAGES_MENU = [
             path: ['profile'],
             data: {
               menu: {
-                title: 'Profile',
+                title: 'general.menu.profile',
                 class: 'profile'
               }
             }
@@ -32,7 +32,7 @@ export const PAGES_MENU = [
             path: ['logout'],
             data: {
               menu: {
-                title: 'Sign out',
+                title: 'login.signOut',
               }
             }
           },
@@ -136,7 +136,7 @@ export const PAGES_MENU = [
         path: ['cases'],
         data: {
           menu: {
-            title: 'Cases',
+            title: 'general.menu.cases',
             icon: 'ion-ios-list-outline',
           }
         },
