@@ -22,9 +22,8 @@ import {GlobalState} from './global.state';
 import {NgaModule} from './theme/nga.module';
 import {PagesModule} from './pages/pages.module';
 //
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import {RestangularModule} from 'ngx-restangular';
-import {FormioAppConfig} from 'ng2-formio';
+import {FormioAppConfig} from 'angular-formio';
 import {ToastModule, ToastOptions} from 'ng2-toastr/ng2-toastr';
 import {LaddaModule} from 'angular2-ladda';
 import { DsSharedModule } from './shared/shared.module';
@@ -94,10 +93,6 @@ export function restangularConfigFactory(restangularProvider) {
         return data;
     });
 }
-
-// export function createTranslateLoader(http: Http) {
-//     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
-// }
 
 export function createTranslateLoader(http: Http, cms: CmsApiService) {
     return new CmsTranslateLoader(http, cms, './assets/i18n/', '.json');

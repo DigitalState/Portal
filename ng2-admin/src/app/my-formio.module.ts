@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormioComponent } from 'ng2-formio/dist/formio.component';
-import { FormioAlertsComponent, FormioAlerts } from 'ng2-formio/dist/formio.alerts';
-import { FormioLoader, FormioLoaderComponent } from 'ng2-formio/dist/formio.loader';
+import { FormioComponent } from 'angular-formio/dist/formio.component';
+import { FormioAlertsComponent, FormioAlerts } from 'angular-formio/dist/formio.alerts';
+import { FormioLoader, FormioLoaderComponent } from 'angular-formio/dist/formio.loader';
 @NgModule({
     imports: [
         CommonModule
@@ -23,5 +23,5 @@ import { FormioLoader, FormioLoaderComponent } from 'ng2-formio/dist/formio.load
     ]
 })
 export class FormioModule {}
-export { FormioAppConfig } from 'ng2-formio/dist/formio.config';
-export { FormioLoader } from 'ng2-formio/dist/formio.loader';
+export { FormioAppConfig } from 'angular-formio/dist/formio.config';
+export { FormioLoader } from 'angular-formio/dist/formio.loader';

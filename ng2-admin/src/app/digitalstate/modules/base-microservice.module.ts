@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { AppState } from '../../app.service';
 import { NgaModule } from '../../theme/nga.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { FormioModule } from 'ng2-formio';
+import { FormioModule } from 'angular-formio';
 
 import { MicroserviceConfig, MicroserviceRestangularProvider } from '../../shared/providers/microservice.provider';
 

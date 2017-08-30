@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { FormioModule } from 'ng2-formio';
+import { FormioModule } from 'angular-formio';
 
 import { DsSharedModule } from '../../../shared/shared.module';
 
