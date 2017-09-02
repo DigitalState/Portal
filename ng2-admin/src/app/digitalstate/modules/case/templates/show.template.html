@@ -9,6 +9,14 @@
 					<dd>{{ entity.customId }}</dd>
 				</dl>
 			</div>
+			<div class="col-sm-6">
+				<dl>
+					<dt>{{ 'ds.microservices.entity.property.state' | translate }}</dt>
+					<dd [ngClass]="{'text-success': entity.state == 'opened', 'text-danger': entity.state == 'closed'}">
+						{{ 'ds.microservices.entity.property.' + entity.state | translate }}
+					</dd>
+				</dl>
+			</div>
 		</div>
 		<div class="row">
 			<div class="col-sm-6">

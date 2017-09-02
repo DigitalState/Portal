@@ -201,6 +201,18 @@ export class MicroservicesDefinition {
                                 label: 'Custom ID',
                                 type: 'string',
                             },
+                            'state': {
+                                label: 'State',
+                                type: 'string',
+                                default: 'opened',
+                                field: {
+                                    type: 'select',
+                                    options: {
+                                        'opened': 'Opened',
+                                        'closed': 'Closed',
+                                    },
+                                },
+                            },
                             'identity': {
                                 label: 'Identity',
                                 type: 'string',
