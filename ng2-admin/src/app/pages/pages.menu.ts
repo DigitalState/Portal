@@ -5,39 +5,39 @@ export const PAGES_MENU = [
   {
     path: 'pages',
     children: [
-      {
-        path: '',
-        data: {
-          menu: {
-            title: 'general.menu.myAccount',
-            icon: 'ion-person',
-            pathMatch: 'prefix', // use it if item children not displayed in menu
-            selected: false,
-            expanded: true,
-            order: 0,
-            class: 'my-account hidden-xs-up'
-          }
-        },
-        children: [
-          {
-            path: ['profile'],
-            data: {
-              menu: {
-                title: 'general.menu.profile',
-                class: 'profile'
-              }
-            }
-          },
-          {
-            path: ['logout'],
-            data: {
-              menu: {
-                title: 'login.signOut',
-              }
-            }
-          },
-        ]
-      },
+      // {
+      //   path: '',
+      //   data: {
+      //     menu: {
+      //       title: 'general.menu.myAccount',
+      //       icon: 'ion-person',
+      //       pathMatch: 'prefix', // use it if item children not displayed in menu
+      //       selected: false,
+      //       expanded: true,
+      //       order: 0,
+      //       class: 'my-account hidden-xs-up'
+      //     }
+      //   },
+      //   children: [
+      //     {
+      //       path: ['profile'],
+      //       data: {
+      //         menu: {
+      //           title: 'general.menu.profile',
+      //           class: 'profile'
+      //         }
+      //       }
+      //     },
+      //     {
+      //       path: ['logout'],
+      //       data: {
+      //         menu: {
+      //           title: 'login.signOut',
+      //         }
+      //       }
+      //     },
+      //   ]
+      // },
       {
         path: '',
         data: {
@@ -70,28 +70,104 @@ export const PAGES_MENU = [
               }
             }
           },
-          // {
-          //   path: '',
-          //   data: {
-          //     menu: {
-          //       title: 'Life Events',
-          //       url: '#'
-          //     }
-          //   }
-          // },
+          {
+            path: '',
+            data: {
+              menu: {
+                title: 'general.menu.lifeEvents',
+                url: '#'
+              }
+            }
+          },
+          {
+            path: '',
+            data: {
+              menu: {
+                title: 'general.menu.secureDocuments',
+                url: '#'
+              }
+            }
+          },
         ]
       },
 
-      // {
-      //   path: '',
-      //   data: {
-      //     menu: {
-      //       title: 'Notifications',
-      //       icon: 'ion-android-notifications-none',
-      //       url: '#'
-      //     }
-      //   },
-      // },
+      {
+        path: ['cases'],
+        data: {
+          menu: {
+            title: 'general.menu.cases',
+            icon: 'ion-ios-list-outline',
+          }
+        },
+      },
+
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'general.menu.tasks',
+            icon: 'ion-clipboard',
+            url: '#'
+          }
+        },
+      },
+
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'Notifications',
+            icon: 'ion-android-notifications-none',
+            url: '#'
+          }
+        },
+      },
+
+      {
+        path: '',
+        data: {
+          menu: {
+            title: 'general.menu.messages',
+            icon: 'ion-email',
+            url: '#'
+          }
+        },
+      },
+
+      {
+        path: ['profile'],
+        data: {
+          menu: {
+            title: 'general.menu.profile',
+            icon: 'ion-person',
+          }
+        },
+      },
+
+      {
+        path: ['profile'],
+        data: {
+          menu: {
+            title: 'general.menu.settings',
+            icon: 'ion-settings',
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: true,
+            order: 0
+          }
+        },
+      },
+
+      {
+        path: ['logout'],
+        data: {
+          menu: {
+            title: 'login.signOut',
+            icon: 'ion-log-out',
+          }
+        }
+      },
+
       // {
       //   path: '',
       //   data: {
@@ -122,25 +198,7 @@ export const PAGES_MENU = [
       //     }
       //   },
       // },
-      // {
-      //   path: '',
-      //   data: {
-      //     menu: {
-      //       title: 'Tasks',
-      //       icon: 'ion-ios-list-outline',
-      //       url: '#'
-      //     }
-      //   },
-      // },
-      {
-        path: ['cases'],
-        data: {
-          menu: {
-            title: 'general.menu.cases',
-            icon: 'ion-ios-list-outline',
-          }
-        },
-      },
+
       // {
       //   path: '',
       //   data: {
