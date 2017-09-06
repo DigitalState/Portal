@@ -12,7 +12,7 @@
 			<div class="col-sm-6">
 				<dl>
 					<dt>{{ 'ds.microservices.entity.property.state' | translate }}</dt>
-					<dd [ngClass]="{'text-success': entity.state == 'opened', 'text-danger': entity.state == 'closed'}">
+					<dd [ngClass]="{'text-success': entity.state == 'open', 'text-danger': entity.state == 'closed'}">
 						{{ 'ds.microservices.entity.property.' + entity.state | translate }}
 					</dd>
 				</dl>
@@ -87,15 +87,13 @@
 										{{ 'ds.microservices.entity.property.data' | translate }}
 									</a>
 									<div id="collapse-status-{{status.uuid}}" class="well collapse mb-0 pb-0">
-										<!--<pre>-->
-											<!--{{ status.data | entityTranslate | json }}-->
-										<!--</pre>-->
-										<div class="row prop-set">
-											<dl *ngFor="let item of (status.data | entityTranslate) | keyValue" class="col-sm-12">
-												<dt>{{ item.key }}</dt>
-												<dd>{{ item.value }}</dd>
-											</dl>
-										</div>
+										<pre>{{ status.data | entityTranslate | json }}</pre>
+										<!--<div class="row prop-set">-->
+											<!--<dl *ngFor="let item of (status.data | entityTranslate) | keyValue" class="col-sm-12">-->
+												<!--<dt>{{ item.key }}</dt>-->
+												<!--<dd>{{ item.value }}</dd>-->
+											<!--</dl>-->
+										<!--</div>-->
 									</div>
 								</div>
 							</div>

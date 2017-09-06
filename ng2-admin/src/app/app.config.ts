@@ -22,6 +22,7 @@ function config() {
         'date': {
             'format': {
                 'short': 'MMMM Do YY',
+                'medium': 'DD/MM/YYYY HH:mm:ss',
                 'long': 'MMMM Do YYYY, h:mm:ss a',
             }
         }
