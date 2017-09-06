@@ -87,6 +87,7 @@ styles:
   responsive-embed: true
   close: true
   transitions: true
+  badge: true
 
   # Components w/ JavaScript
   modal: true
