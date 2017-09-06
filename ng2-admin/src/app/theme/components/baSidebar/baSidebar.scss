@@ -187,6 +187,20 @@ a.al-sidebar-list-link {
   top: 94px;
 }
 
+.sidebar-footer {
+  color: $text-muted;
+  font-size: 0.8em;
+  line-height: 1em;
+  overflow: hidden;
+  padding: 0 1em;
+  white-space: nowrap;
+  text-align: right;
+
+  .menu-collapsed & {
+    display: none;
+  }
+}
+
 @mixin sidebar-collapsed() {
   .al-sidebar {
     width: 52px;
