@@ -84,6 +84,10 @@
       "communications": "Communications",
       "individuals": "Personnes",
       "identities": "Identités",
+      "lifeEvents": "Evénements de la vie",
+      "secureDocuments": "Documents sécurisés",
+      "messages": "Messages",
+      "settings": "Paramètres",
 
       "scenario_activation": "Activation du scénario"
     },
@@ -165,7 +169,7 @@
           "username": "Nom d'utilisateur",
           "customId": "ID personnalisé",
           "state": "State",
-          "opened": "Ouvert",
+          "open": "Ouvert",
           "closed": "Fermé",
           "identity": "Identité",
           "identityUuid": "Identité UUID",
@@ -174,7 +178,12 @@
           "status": "Statut",
           "processDefinitionKey": "Clé de définition de processus",
           "firstName": "Prénom",
-          "lastName": "Nom de famille"
+          "lastName": "Nom de famille",
+          "subffix": "Subffix",
+          "address": "Adresse",
+          "phone": "Téléphone",
+          "email": "Email",
+          "birthDate": "Date de naissance"
         },
         "action": {
           "create": "Créer",
