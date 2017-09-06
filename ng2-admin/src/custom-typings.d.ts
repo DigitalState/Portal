@@ -124,3 +124,13 @@ interface ErrorConstructor extends ErrorStackTraceLimit {}
 interface NodeRequireFunction extends Es6PromiseLoader  {}
 interface NodeModule extends WebpackModule {}
 interface Global extends GlobalEnvironment  {}
+
+
+
+// Custom DS typings
+
+interface DsError {
+  title: string;
+  message: string;
+  type: string;
+}
