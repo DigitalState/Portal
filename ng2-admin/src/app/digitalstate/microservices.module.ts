@@ -26,6 +26,7 @@ import { DsDatatableCellActions } from './components/datatable/datatable-cell-ac
 import { DsLanguageSwitcherComponent } from './components/language-switcher.component';
 import { DsBackLink } from './components/back-link.component';
 import { DefaultModal } from './components/modals/default-modal/default-modal.component';
+import { DsTimelineComponent } from './components/timeline.component';
 
 @NgModule({
     imports: [
@@ -47,6 +48,7 @@ import { DefaultModal } from './components/modals/default-modal/default-modal.co
         DsEntityListComponent,
         DsEntityShowComponent,
         DsEntityFormComponent,
+        DsTimelineComponent,
         DsDatatableHeader,
         DsDatatableCell,
         DsDatatableCellActions,
@@ -66,6 +68,7 @@ import { DefaultModal } from './components/modals/default-modal/default-modal.co
         DsEntityListComponent,
         DsEntityShowComponent,
         DsEntityFormComponent,
+        DsTimelineComponent,
         DsDatatableHeader,
         DsDatatableCell,
         DsDatatableCellActions,
