@@ -11,11 +11,15 @@
 .overflow-y-auto    { overflow-y: auto !important;}
 .overflow-auto    { overflow: auto !important;}
 
-.decoration-underline { text-decoration: underline }
-
 .border-b-dotted { border-bottom: 1px dotted $content-text; }
 
 .cursor-pointer { cursor: pointer; }
+
+.decoration-underline { text-decoration: underline }
+
+.line-height-1 {
+  line-height: 1em !important;
+}
 
 .zindex-auto {  z-index: auto !important;  }
 .zindex-0 {  z-index: 0 !important;  }
@@ -69,4 +73,21 @@ $positions: static, relative, absolute, fixed, sticky;
   //  $prefix: 'no-transform';
   //  .#{$prefix}#{$infix} { transform: none !important; }
   //}
+}
+
+// Text-align Utilities
+// Per-breakpoint text alignment
+@each $breakpoint in map-keys($grid-breakpoints) {
+  /**
+   * Position
+   * Set relative and absolution position values per breakpoint.
+   */
+  @include media-breakpoint-up($breakpoint) {
+    $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+    $prefix: 'text-align';
+
+    @each $prop in (right) {
+      .#{$prefix}#{$infix}-#{$prop} { #{$prefix}: $prop !important; }
+    }
+  }
 }
