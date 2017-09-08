@@ -45,11 +45,16 @@
 
 		<div class="card-block entity-body entity-data">
 			<div class="row prop-set">
-				<dl *ngFor="let item of (entity.data | entityTranslate) | keyValue" class="col-sm-6">
-					<dt>{{ item.key }}</dt>
-					<dd>{{ item.value }}</dd>
-				</dl>
+				<div class="col-sm-12">
+					<pre>{{ entity.data | entityTranslate | json }}</pre>
+				</div>
 			</div>
+			<!--<div class="row prop-set">-->
+				<!--<dl *ngFor="let item of (entity.data | entityTranslate) | keyValue" class="col-sm-6">-->
+					<!--<dt>{{ item.key }}</dt>-->
+					<!--<dd>{{ item.value }}</dd>-->
+				<!--</dl>-->
+			<!--</div>-->
 		</div>
 	</div>
 
