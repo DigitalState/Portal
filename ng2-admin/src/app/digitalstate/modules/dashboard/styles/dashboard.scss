@@ -1,0 +1,37 @@
+@import '../../../../theme/sass/conf/conf';
+
+.card-title {
+  font-weight: $font-bold;
+}
+
+.list-of-events {
+  list-style: none;
+  padding: 0px;
+  margin-bottom: 0;
+  overflow: hidden;
+
+  .item {
+    @include border-radius(4px);
+    background-color: $list-item-background;
+    padding: 8px;
+
+    &.odd {
+      background-color: $list-item-background;
+    }
+    &.even {
+      background-color: $body-bg;
+    }
+
+    .date {
+
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding: 0 ($grid-gutter-width-base/2);
+
+    .item {
+      padding: 16px 0;
+    }
+  }
+}
