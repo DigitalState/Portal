@@ -22,6 +22,8 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent {
     scenarios: Array<any> = [];
     loadingScenarios: boolean;
 
+    scenariosTabs: Tabs;
+
     constructor(injector: Injector,
                 microserviceConfig: MicroserviceConfig,
                 entityApiService: EntityApiService) {
@@ -33,6 +35,12 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent {
     ngOnInit() {
         super.ngOnInit();
         this.applyPageTitle();
+    }
+
+    ngOnDestroy() {
+        if (this.scenariosTabs) {
+            this.scenariosTabs.destroy();
+        }
     }
 
     protected prepareEntity(): Observable<{ entity: any, 'entityParent'?: any}> {
@@ -56,7 +64,7 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent {
 
                 // Transform scenarios markup into tabs
                 setTimeout(() => {
-                    let scenariosTabs = new Tabs($('#scenarios-tabs'));
+                    this.scenariosTabs = new Tabs($('#scenarios-tabs'));
                 }, 0);
             });
 
