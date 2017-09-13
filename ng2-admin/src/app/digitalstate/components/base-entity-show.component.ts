@@ -70,7 +70,7 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
 
         // Subscribe to language-change events
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
-            return this.prepareEntity().subscribe();
+            this.prepareEntity().subscribe();
         });
 
         this.prepareEntity().subscribe();
@@ -78,7 +78,10 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
 
     ngOnDestroy() {
         // Unsubscribe from language-change events
-        this.languageChangeSubscriber.unsubscribe();
+        if (this.languageChangeSubscriber) {
+            this.languageChangeSubscriber.unsubscribe();
+            this.languageChangeSubscriber = undefined;
+        }
     }
 
     protected prepareEntity(): Observable<{'entity': any, 'entityParent'?: any}> {
