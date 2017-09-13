@@ -64,14 +64,14 @@ $hover: 24;
   }
 }
 
-button.btn.btn-primary {
+.btn.btn-primary {
   @include buttonColor($primary, $primary);
   &:active, &:target {
     background-color: $primary-dark;
   }
 }
 
-button.btn.btn-default {
+.btn.btn-default {
   border-width: 1px;
   color: $content-text;
   @include buttonColor(transparent, $border);
@@ -81,35 +81,35 @@ button.btn.btn-default {
   }
 }
 
-button.btn.btn-success {
+.btn.btn-success {
   @include buttonColor($success, $success);
   &:active, &:target {
     background-color: $success-dark;
   }
 }
 
-button.btn.btn-info {
+.btn.btn-info {
   @include buttonColor($info, $info);
   &:active, &:target {
     background-color: $info-dark;
   }
 }
 
-button.btn.btn-warning {
+.btn.btn-warning {
   @include buttonColor($warning, $warning);
   &:active, &:target {
     background-color: $warning-dark;
   }
 }
 
-button.btn.btn-danger {
+.btn.btn-danger {
   @include buttonColor($danger, $danger);
   &:active, &:target {
     background-color: $danger-dark;
   }
 }
 
-button.btn.btn-inverse {
+.btn.btn-inverse {
   @include buttonColor($help-text, $help-text);
   color: $label-text;
   &:active, &:target, &:hover {
