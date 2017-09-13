@@ -69,6 +69,10 @@ $hover: 24;
   &:active, &:target {
     background-color: $primary-dark;
   }
+  &:focus {
+    color: $primary-dark;
+    background-color: $primary-bg-light;
+  }
 }
 
 .btn.btn-default {
