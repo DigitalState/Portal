@@ -1,5 +1,6 @@
 import { Injector } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { Response } from '@angular/http';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ToastsManager } from 'ng2-toastr';
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
@@ -96,6 +97,13 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
                 return this.prepareEntityParent(this.entityParentUrlPrefix, parentUuid).flatMap(entityParent => {
                     return Observable.of({'entity': entity, 'entityParent': entityParent});
                 });
+            }).catch(error => {
+                if (error instanceof Response) {
+                    this.onPrepareEntityError(error);
+                } else {
+                    console.warn('Unexpected error occurred while fetching entity: ' + error);
+                }
+                throw error;
             });
         });
     }
@@ -111,6 +119,11 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
         else {
             return Observable.of({});
         }
+    }
+
+    onPrepareEntityError(response: Response) {
+        const message = this.translate.instant('ds.messages.http.' + response.status);
+        this.toastr.error(message);
     }
 
     onDelete(event) {
