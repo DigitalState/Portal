@@ -301,18 +301,69 @@ export class MicroservicesDefinition {
             'tasks': {
                 label: 'Tasks',
                 entrypoint: {
-                    url: `${scheme}://${host}:8019/`,
+                    url: `${scheme}://${host}:8060/app_dev.php/`,
                 },
                 entities: {
                     'tasks': {
                         properties: {
+                            'uuid': {
+                                label: 'UUID',
+                                type: 'string',
+                            },
                             'title': {
                                 label: 'Title',
                                 type: 'string',
-                                default: '',
+                            },
+                            'form': {
+                                label: 'Form',
+                                type: 'string',
+                            },
+                            'identity': {
+                                label: 'Identity',
+                                type: 'string',
                                 validation: {
-                                    'required': {message: 'Title is required.'},
+                                    'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
                                 },
+                                default: 'Individual',
+                            },
+                            'identityUuid': {
+                                label: 'Identity UUID',
+                                type: 'string',
+                                validation: {
+                                    'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
+                                },
+                            },
+                            'owner': {
+                                label: 'Owner',
+                                type: 'string',
+                                validation: {
+                                    'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
+                                },
+                                default: 'BusinessUnit',
+                            },
+                            'ownerUuid': {
+                                label: 'Owner UUID',
+                                type: 'string',
+                                validation: {
+                                    'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
+                                },
+                                default: '8454c987-cbc5-4a24-ba1a-d420283caabd',
+                            },
+                        },
+                    },
+                    'submissions': {
+                        properties: {
+                            'uuid': {
+                                label: 'UUID',
+                                type: 'string',
+                            },
+                            'updatedAt': {
+                                label: 'Updated At',
+                                type: 'date',
+                            },
+                            'createdAt': {
+                                label: 'Updated At',
+                                type: 'date',
                             },
                         },
                     },

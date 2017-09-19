@@ -102,12 +102,11 @@ export const PAGES_MENU = [
       },
 
       {
-        path: '',
+        path: ['tasks'],
         data: {
           menu: {
             title: 'general.menu.tasks',
             icon: 'ion-clipboard',
-            url: '#'
           }
         },
       },
@@ -390,19 +389,6 @@ export const PAGES_MENU = [
       //     menu: {
       //       title: 'general.menu.topics',
       //       icon: 'ion-pound',
-      //       pathMatch: 'prefix', // use it if item children not displayed in menu
-      //       selected: false,
-      //       expanded: false,
-      //       order: 0
-      //     }
-      //   }
-      // },
-      // {
-      //   path: 'tasks',
-      //   data: {
-      //     menu: {
-      //       title: 'general.menu.tasks',
-      //       icon: 'ion-clipboard',
       //       pathMatch: 'prefix', // use it if item children not displayed in menu
       //       selected: false,
       //       expanded: false,

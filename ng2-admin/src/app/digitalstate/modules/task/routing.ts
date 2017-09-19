@@ -2,9 +2,10 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DsTaskComponent } from './task.component';
 import { DsTaskListComponent } from './components/task-list.component';
-import { DsTaskShowComponent } from './components/task-show.component';
-import { DsTaskCreateComponent } from './components/task-create.component';
-import { DsTaskEditComponent } from './components/task-edit.component';
+import { DsTaskActivateComponent } from './components/task-activate.component';
+// import { DsTaskShowComponent } from './components/task-show.component';
+// import { DsTaskCreateComponent } from './components/task-create.component';
+// import { DsTaskEditComponent } from './components/task-edit.component';
 
 const routes: Routes = [
 
@@ -17,9 +18,10 @@ const routes: Routes = [
             // { path: '', redirectTo: '/pages/dashboard', pathMatch: 'full' },
             { path: '', redirectTo: '/pages/tasks/list', pathMatch: 'full' },
             { path: 'list', component: DsTaskListComponent  },
-            { path: 'create', component: DsTaskCreateComponent },
-            { path: ':id/show', component: DsTaskShowComponent },
-            { path: ':id/edit', component: DsTaskEditComponent },
+            { path: ':id/activate', component: DsTaskActivateComponent },
+            // { path: 'create', component: DsTaskCreateComponent },
+            // { path: ':id/show', component: DsTaskShowComponent },
+            // { path: ':id/edit', component: DsTaskEditComponent },
         ]
     }
 ];

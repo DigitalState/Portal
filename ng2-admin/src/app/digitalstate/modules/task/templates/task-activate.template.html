@@ -1,0 +1,36 @@
+<div class="card">
+	<!--<div class="card-header">-->
+		<!--<h3 class="card-title" translate>general.menu.scenario_activation</h3>-->
+	<!--</div>-->
+
+	<div class="card-block">
+		<formio *ngIf="status == null"
+				class="formio"
+				[form]="formioFormSchema"
+				(submit)="onFormioFormSubmit($event)"
+				(invalid)="onFormioFormInvalid($event)"
+				(error)="onFormioFormError($event)">
+		</formio>
+
+		<div *ngIf="status"
+			 class="status"
+			 [ngClass]="status"
+			 [innerHtml]="statusMessage | translate"></div>
+
+	</div>
+</div>
+
+<div>
+	<button class="btn btn-secondary" [routerLink]="['../../list']"><!-- back to the Service and Scenarios list -->
+		{{'ds.microservices.entity.action.back' | translate}}
+	</button>
+</div>
+
+<!--<ng-template #modalSubmissionResult>-->
+	<!--<div class="modal-header">-->
+		<!--<h4 class="modal-title">Response</h4>-->
+	<!--</div>-->
+	<!--<div class="modal-body">-->
+		<!--<pre>{{ submissionResult }}</pre>-->
+	<!--</div>-->
+<!--</ng-template>-->
