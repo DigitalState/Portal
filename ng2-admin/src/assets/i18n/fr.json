@@ -78,6 +78,7 @@
       "cases": "Affaires",
       "assets": "Atouts",
       "topics": "Sujets",
+      "taskDirectory": "Répertoire des tâches",
       "tasks": "Tâches",
       "records": "Enregistrements",
       "interactions": "Interactions",
@@ -205,10 +206,15 @@
           "activationFailure": "<h4>Activation echouée</h4> <div>Please try again later.</div>",
           "submissionFailure": "<h4>Submission failed!</h4> <div>Please try again later or use a different method.</div>",
           "submissionSuccess": "<h4>Soumission réussie!</h4> <div>Vous recevrez bientôt un e-mail de suivi.</div>"
-        }
+        },
+
       }
     },
     "messages": {
+      "http": {
+        "404": "Entité introuvable"
+      },
+      "emptyList": "Aucun élément trouvé",
       "registrationSucceeded": "Vous avez été enregistré avec succès.",
       "registrationFailed": "Échec de l'enregistrement",
       "loginSucceeded": "Vous avez été connecté avec succès.",

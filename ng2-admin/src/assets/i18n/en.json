@@ -74,6 +74,7 @@
       "cases": "Cases",
       "assets": "Assets",
       "topics": "Topics",
+      "taskDirectory": "Task Directory",
       "tasks": "Tasks",
       "records": "Records",
       "interactions": "Interactions",
@@ -201,10 +202,23 @@
           "activationFailure": "<h4>Activation failed!</h4> <div>Please try again later.</div>",
           "submissionFailure": "<h4>Submission failed!</h4> <div>Please try again later or use a different method.</div>",
           "submissionSuccess": "<h4>Submission succeeded!</h4> <div>You will receive a follow-up e-mail soon.</div>"
+        },
+        "task": {
+          "activationFailure": "<h4>Activation failed!</h4>",
+          "submissionFailure": "<h4>Submission failed!</h4>",
+          "submissionSuccess": "<h4>Submission succeeded!</h4>",
+          "claimSuccess": "Task claimed successfully",
+          "claimFailure": "Failed to claim Task",
+          "unclaimSuccess": "Task unclaimed successfully",
+          "unclaimFailure": "Failed to unclaim Task"
         }
       }
     },
     "messages": {
+      "http": {
+        "404": "Entity not found"
+      },
+      "emptyList": "No items found",
       "registrationSucceeded": "You have been registered successfully.",
       "registrationFailed": "Registration failed.",
       "loginSucceeded": "You have been successfully signed in.",
