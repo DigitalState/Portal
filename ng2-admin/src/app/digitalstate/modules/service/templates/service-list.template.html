@@ -1,3 +1,5 @@
+<div *ngIf="!loading && (rows.length === 0)" class="list-empty">{{ 'ds.messages.emptyList' | translate }}</div>
+
 <div class="card container-fluid">
 	<div class="row">
 		<div class="col p-0">
