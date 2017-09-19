@@ -9,6 +9,13 @@ export class ListQuery {
     filters: any = {};
     orders: any = {};
 
+    /**
+     * Use this to control the sending of the URL parameter `itemsPerPage` in the list query.
+     * @type {boolean}
+     */
+    enableParamItemsPerPage: boolean = true;
+
+
     static forUrl(urlPrefix: string, path?: string): ListQuery {
         let listQuery = new ListQuery(path);
         listQuery.urlPrefix = urlPrefix;
@@ -76,8 +83,11 @@ export class ListQuery {
         if (this.pager) {
             Object.assign(params, {
                 page: this.pager.pageNumber + 1, // the API page numbering starts from page one (1).
-                itemsPerPage: this.pager.size
             });
+
+            if (this.enableParamItemsPerPage) {
+                params['itemsPerPage'] = this.pager.size;
+            }
         }
 
         if (this.filters) {
