@@ -4,10 +4,19 @@
 	<!--</div>-->
 
 	<div class="card-block">
-		<formio *ngIf="status == null"
+		<ds-language-switcher-tabs
+				(onLanguageChange)="switchFormLanguage($event)"
+				[hidden]="status">
+		</ds-language-switcher-tabs>
+
+		<formio
 				class="formio"
 				[form]="formioFormSchema"
+				[options]="formioOptions"
+				[language]="formioLanguageEmitter"
+				[hidden]="status"
 				(submit)="onFormioFormSubmit($event)"
+				(render)="onFormioFormRender($event)"
 				(invalid)="onFormioFormInvalid($event)"
 				(error)="onFormioFormError($event)">
 		</formio>

@@ -6,6 +6,12 @@
  * Form.io styles reset and override.
  */
 
+.formio {
+  .alert.alert-success {
+    display: none;
+  }
+}
+
 .formio-form {
 
   //// Responsive Layout
