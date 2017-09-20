@@ -72,6 +72,7 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
         // Subscribe to language-change events
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
             this.prepareEntity().subscribe();
+            this.updateTranslations(event.lang);
         });
 
         this.prepareEntity().subscribe();
@@ -150,6 +151,12 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
         });
 
     }
+
+    /**
+     * Override this in subclasses to receive interface translation updates.
+     * @param lang Language key
+     */
+    protected updateTranslations(lang: string): void {}
 
     onEntityDeleteSuccess(response) {
         console.log('Entity deleted successfully, server response: ', response);
