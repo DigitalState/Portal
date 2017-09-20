@@ -24,6 +24,7 @@ import { DsDatatableHeader } from './components/datatable/datatable-header.compo
 import { DsDatatableCell } from './components/datatable/datatable-cell.component';
 import { DsDatatableCellActions } from './components/datatable/datatable-cell-actions.component';
 import { DsLanguageSwitcherComponent } from './components/language-switcher.component';
+import { DsLanguageSwitcherTabsComponent } from './components/language-switcher-tabs.component';
 import { DsBackLink } from './components/back-link.component';
 import { DefaultModal } from './components/modals/default-modal/default-modal.component';
 import { DsTimelineComponent } from './components/timeline.component';
@@ -53,6 +54,7 @@ import { DsTimelineComponent } from './components/timeline.component';
         DsDatatableCell,
         DsDatatableCellActions,
         DsLanguageSwitcherComponent,
+        DsLanguageSwitcherTabsComponent,
         DsBackLink,
     ],
     entryComponents: [
@@ -73,6 +75,7 @@ import { DsTimelineComponent } from './components/timeline.component';
         DsDatatableCell,
         DsDatatableCellActions,
         DsLanguageSwitcherComponent,
+        DsLanguageSwitcherTabsComponent,
         // AppTranslationModule,
         TranslateModule,
     ]
