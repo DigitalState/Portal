@@ -1,5 +1,9 @@
 {
   "test": "This is a translation test from en.json",
+  "languages": {
+    "en": "English",
+    "fr": "French"
+  },
   "login": {
     "title": "Sign In",
     "signUpPrompt": "Don't have an account?",

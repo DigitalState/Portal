@@ -1,5 +1,9 @@
 {
   "test": "This is a translation test from fr.json",
+  "languages": {
+    "en": "Anglais",
+    "fr": "Français"
+  },
   "login": {
     "title": "Se connecter",
     "signUpPrompt": "Vous n'avez pas de compte?",
@@ -207,7 +211,15 @@
           "submissionFailure": "<h4>Submission failed!</h4> <div>Please try again later or use a different method.</div>",
           "submissionSuccess": "<h4>Soumission réussie!</h4> <div>Vous recevrez bientôt un e-mail de suivi.</div>"
         },
-
+        "task": {
+          "activationFailure": "<h4>Activation echouée</h4>",
+          "submissionFailure": "<h4>Submission echouée</h4>",
+          "submissionSuccess": "<h4>Soumission réussie</h4>",
+          "claimSuccess": "Tâche réclamée avec succès",
+          "claimFailure": "Échec de la réclamation de la tâche",
+          "unclaimSuccess": "Tâche non réclamée avec succès",
+          "unclaimFailure": "Échec de la non-responsabilité de la tâche"
+        }
       }
     },
     "messages": {
