@@ -81,6 +81,7 @@ import { DsTimelineComponent } from './components/timeline.component';
         DsLanguageSwitcherDropdownComponent,
         // AppTranslationModule,
         TranslateModule,
+        DsBackLink,
     ]
 })
 export class DsMicroservicesModule {
