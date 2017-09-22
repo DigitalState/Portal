@@ -62,6 +62,9 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
         super(injector, microserviceConfig);
         this.applyPageTitle();
 
+        // Create a place-holder for the back-link until it gets generated
+        this.backLink = this.getEmptyBackLink();
+
         this.formioLanguageEmitter = new EventEmitter();
     }
 
