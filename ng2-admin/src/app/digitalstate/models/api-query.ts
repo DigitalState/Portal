@@ -86,7 +86,7 @@ export class ListQuery {
             });
 
             if (this.enableParamItemsPerPage) {
-                params['itemsPerPage'] = this.pager.size;
+                params['limit'] = this.pager.size;
             }
         }
 
