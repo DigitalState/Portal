@@ -188,7 +188,7 @@
           "address": "Adresse",
           "phone": "Téléphone",
           "email": "Email",
-          "birthDate": "Date de naissance"
+          "birth_date": "Date de naissance"
         },
         "action": {
           "create": "Créer",

@@ -184,7 +184,7 @@
           "address": "Address",
           "phone": "Phone",
           "email": "E-mail",
-          "birthDate": "Date of Birth"
+          "birth_date": "Date of Birth"
         },
         "action": {
           "create": "Create",
