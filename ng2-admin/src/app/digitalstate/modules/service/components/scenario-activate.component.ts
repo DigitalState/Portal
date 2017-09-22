@@ -47,6 +47,7 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
     protected statusMessage: string;
     protected id: number;
     protected isActivated: boolean = false;
+    protected isFormRendered: boolean = false;
 
     constructor(protected injector: Injector,
                 protected route: ActivatedRoute,
@@ -69,21 +70,6 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
             this.activate();
             return Observable.empty();
         });
-
-        // this.entityApiService.getOne('scenarios', this.id).subscribe(res => {
-        //     this.entity = res;
-        //
-        //     let activationRequestUrl = this.ACTIVATION_REQUEST_URL_PREFIX + this.id;
-        //     this.http.get(activationRequestUrl)
-        //         .toPromise()
-        //         .then(response => {
-        //             this.formioFormSchema = response.json();
-        //         })
-        //         .catch((error) => {
-        //             this.handleActivationRequestError(error);
-        //         }
-        //     );
-        // });
     }
 
     protected activate() {
@@ -129,6 +115,7 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
      * @param renderEvent
      */
     protected onFormioFormRender(renderEvent) {
+        this.isFormRendered = true;
         this.switchFormLanguage(this.translate.currentLang);
     }
 

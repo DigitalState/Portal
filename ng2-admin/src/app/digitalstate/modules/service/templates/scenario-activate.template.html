@@ -4,10 +4,15 @@
 	<!--</div>-->
 
 	<div class="card-block">
-		<ds-language-switcher-tabs
-				(onLanguageChange)="switchFormLanguage($event)"
-				[hidden]="status">
-		</ds-language-switcher-tabs>
+		<div class="switcher-container clearfix">
+			<ds-language-switcher-dropdown
+					*ngIf="isFormRendered && !status"
+					class="float-right"
+					(onLanguageChange)="switchFormLanguage($event)">
+			</ds-language-switcher-dropdown>
+		</div>
+
+		<md-progress-spinner [hidden]="isFormRendered" mode="indeterminate"></md-progress-spinner>
 
 		<formio
 				class="formio"
@@ -24,8 +29,8 @@
 		<div *ngIf="status"
 			 class="status"
 			 [ngClass]="status"
-			 [innerHtml]="statusMessage | translate"></div>
-
+			 [innerHtml]="statusMessage | translate">
+		</div>
 	</div>
 </div>
 

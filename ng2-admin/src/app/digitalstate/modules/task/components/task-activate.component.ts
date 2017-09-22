@@ -28,6 +28,7 @@ export class DsTaskActivateComponent extends DsBaseEntityShowComponent {
     entityUrlPrefix = 'tasks';
     headerTitle = 'general.menu.tasks';
     headerSubtitle = null;
+    pageTitle = 'general.menu.taskDirectory';
 
     protected formioOptions: FormioOptions;
     protected formioFormSchema;
@@ -37,6 +38,7 @@ export class DsTaskActivateComponent extends DsBaseEntityShowComponent {
     protected statusMessage: string;
     protected id: number;
     protected isActivated: boolean = false;
+    protected isFormRendered: boolean = false;
 
     constructor(protected injector: Injector,
                 protected route: ActivatedRoute,
@@ -108,6 +110,7 @@ export class DsTaskActivateComponent extends DsBaseEntityShowComponent {
      * @param renderEvent
      */
     protected onFormioFormRender(renderEvent) {
+        this.isFormRendered = true;
         this.switchFormLanguage(this.translate.currentLang);
     }
 
