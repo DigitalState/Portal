@@ -14,22 +14,12 @@ export class DsTaskListComponent extends DsBaseEntityListComponent {
     entityUrlPrefix = 'tasks';
     pageTitle = 'general.menu.taskDirectory';
 
-    defaultOwnerUuid = '8454c987-cbc5-4a24-ba1a-d420283caabd';
-
     constructor(injector: Injector,
                 microserviceConfig: MicroserviceConfig,
                 entityApiService: EntityApiService) {
 
         super(injector, microserviceConfig);
         this.entityApiService = entityApiService;
-    }
-
-    protected setupQuery(): void {
-        super.setupQuery();
-
-        // @Fixme Disabling page size because `itemsPerPage` query param causes an error in the Tasks MS (error: `Task criterion does not exist`)
-        this.query.enableParamItemsPerPage = false;
-        this.query.setFilter('ownerUuid', this.defaultOwnerUuid);
     }
 
     /**
