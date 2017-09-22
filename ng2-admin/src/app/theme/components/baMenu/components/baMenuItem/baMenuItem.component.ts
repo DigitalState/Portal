@@ -1,5 +1,7 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 
+import { GlobalState } from '../../../../../global.state';
+
 import 'style-loader!./baMenuItem.scss';
 
 @Component({
@@ -13,6 +15,14 @@ export class BaMenuItem {
 
   @Output() itemHover = new EventEmitter<any>();
   @Output() toggleSubMenu = new EventEmitter<any>();
+
+  constructor(private _state: GlobalState) {
+
+  }
+
+  public onClickItem($event):void {
+    this._state.notifyDataChanged('menu.isCollapsed', true);
+  }
 
   public onHoverItem($event):void {
     this.itemHover.emit($event);
