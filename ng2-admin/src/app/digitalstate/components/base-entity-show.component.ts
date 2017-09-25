@@ -71,6 +71,7 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
 
         // Subscribe to language-change events
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+            this.lang = event.lang;
             this.prepareEntity().subscribe();
             this.updateTranslations(event.lang);
         });
