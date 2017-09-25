@@ -20,22 +20,22 @@
 					<div id="tab-{{scenario.uuid}}" class="card p-0 tabs-container__panel">
 						<div class="card-block">
 							<p class="lead mt-2">{{scenario.description | entityTranslate}}</p>
-							<div *ngIf="scenario.data && scenario.data.button_text" class="actions btn-group pt-4">
+							<div *ngIf="scenario.data && scenario.data[lang].button_text" class="actions btn-group pt-4">
 								<!--<button class="btn btn-primary" [routerLink]="['..', 'scenarios', scenario.uuid, 'activate']">-->
 									<!--{{'ds.microservices.entity.action.activate' | translate}}-->
 								<!--</button>-->
 								<a *ngIf="scenario.type === 'bpm'"
 								   class="btn btn-primary"
 								   [routerLink]="['..', 'scenarios', scenario.uuid, 'activate']"
-								   title="{{ scenario.data.button_text | entityTranslate }}">
-									{{ scenario.data.button_text | translate }}
+								   title="{{ scenario.data[lang].button_text | entityTranslate }}">
+									{{ scenario.data[lang].button_text | translate }}
 								</a>
-								<a *ngIf="['url', 'api'].indexOf(scenario.type) >= 0"
-								   class="btn btn-primary"
-								   href="{{ scenario.data.url }}" target="_blank"
-								   title="{{ scenario.data.button_text | entityTranslate }}">
-									{{ scenario.data.button_text | translate }}
-								</a>
+								<!--<a *ngIf="['url', 'api'].indexOf(scenario.type) >= 0"-->
+								   <!--class="btn btn-primary"-->
+								   <!--href="{{ scenario.config.url }}" target="_blank"-->
+								   <!--title="{{ scenario.data[lang].button_text | entityTranslate }}">-->
+									<!--{{ scenario.data[lang].button_text | translate }}-->
+								<!--</a>-->
 							</div>
 						</div>
 					</div>

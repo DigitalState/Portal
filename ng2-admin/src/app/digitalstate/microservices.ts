@@ -82,14 +82,16 @@ export class MicroservicesDefinition {
                                     'required': { message: 'required'},
                                 },
                             },
-                            // 'form': {
-                            //     label: 'Form',
-                            //     type: 'string',
-                            // default: '',
-                            //     validation: {
-                            //         'required': {message: 'required'},
-                            //     }
-                            // },
+                            'data': {
+                                label: 'Data',
+                                type: 'json',
+                                default: {},
+                                translated: true,
+                                validation: {
+                                    'json': { message: 'json' },
+                                    'required': { message: 'required'},
+                                },
+                            },
                         },
                     },
                     'scenarios': {
@@ -132,12 +134,21 @@ export class MicroservicesDefinition {
                                 type: 'string',
                                 default: 'bpm',
                             },
+                            'config': {
+                                label: 'Config',
+                                type: 'json',
+                                default: {},
+                                validation: {
+                                    'json': { message: 'json' },
+                                },
+                            },
                             'data': {
                                 label: 'Data',
                                 type: 'json',
-                                default: {
-                                    'bpm': 'camunda',
-                                    'process_definition_key': ''
+                                default: {},
+                                translated: true,
+                                validation: {
+                                    'json': { message: 'json' },
                                 },
                             },
                             'enabled': {
