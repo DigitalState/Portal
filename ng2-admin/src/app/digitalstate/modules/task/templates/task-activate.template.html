@@ -12,7 +12,7 @@
 			</ds-language-switcher-dropdown>
 		</div>
 
-		<md-progress-spinner [hidden]="isFormRendered" mode="indeterminate"></md-progress-spinner>
+		<md-progress-spinner [hidden]="isFormRendered || status" mode="indeterminate"></md-progress-spinner>
 
 		<formio
 				class="formio"
