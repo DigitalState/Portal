@@ -174,8 +174,14 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
      * Stub called when the entity is fetched.
      */
     onEntityPrepared() {
-        if (this.entity.title && this.entity.title.hasOwnProperty(this.translate.currentLang)) {
-            this.applyPageTitle(this.entity.title[this.translate.currentLang]);
+        if (this.pageTitle !== null && this.entity.title) {
+            // If title is translated, show it in current language
+            if (this.entity.title.hasOwnProperty(this.translate.currentLang)) {
+                this.applyPageTitle(this.entity.title[this.translate.currentLang]);
+            }
+            else {
+                this.applyPageTitle(this.entity.title);
+            }
         }
     }
 }
