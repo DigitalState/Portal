@@ -92,21 +92,29 @@ export const PAGES_MENU = [
       },
 
       {
-        path: ['cases'],
+        path: 'cases',
         data: {
           menu: {
             title: 'general.menu.cases',
             icon: 'ion-ios-list-outline',
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0,
           }
         },
       },
 
       {
-        path: ['tasks'],
+        path: 'tasks',
         data: {
           menu: {
             title: 'general.menu.tasks',
             icon: 'ion-clipboard',
+            pathMatch: 'prefix', // use it if item children not displayed in menu
+            selected: false,
+            expanded: false,
+            order: 0,
           }
         },
       },
