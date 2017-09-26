@@ -12,7 +12,7 @@ import { MicroserviceConfig } from '../../../../shared/providers/microservice.pr
 export class DsTaskListComponent extends DsBaseEntityListComponent {
 
     entityUrlPrefix = 'tasks';
-    pageTitle = 'general.menu.taskDirectory';
+    pageTitle = 'general.menu.tasks';
 
     constructor(injector: Injector,
                 microserviceConfig: MicroserviceConfig,

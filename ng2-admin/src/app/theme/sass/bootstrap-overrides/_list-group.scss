@@ -37,6 +37,10 @@
 
         &.state-open { @extend .fa-circle-o; }
         &.state-closed { @extend .fa-check-circle-o; }
+        &.priority-high {
+          @extend .fa-exclamation-circle;
+          color: red;
+        }
 
         @include fa-icon();
         @extend .fa-dot-circle-o;
