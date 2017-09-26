@@ -11,7 +11,7 @@ import 'rxjs/Rx';
 
 @Component({
     selector: 'ds-task-show',
-    templateUrl: '../templates/show.template.html'
+    templateUrl: '../templates/task-show.template.html'
 })
 export class DsTaskShowComponent extends DsBaseEntityShowComponent {
 

@@ -325,6 +325,10 @@ export class MicroservicesDefinition {
                                 label: 'Title',
                                 type: 'string',
                             },
+                            'description': {
+                                label: 'Description',
+                                type: 'string',
+                            },
                             'form': {
                                 label: 'Form',
                                 type: 'string',
@@ -359,6 +363,22 @@ export class MicroservicesDefinition {
                                     'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
                                 },
                                 default: '8454c987-cbc5-4a24-ba1a-d420283caabd',
+                            },
+                            'createdAt': {
+                                label: 'Created At',
+                                type: 'date',
+                            },
+                            'dueAt': {
+                                label: 'Due At',
+                                type: 'date',
+                            },
+                            'followUpAt': {
+                                label: 'Follow-up At',
+                                type: 'date',
+                            },
+                            'priority': {
+                                label: 'Priority',
+                                type: 'number',
                             },
                         },
                     },

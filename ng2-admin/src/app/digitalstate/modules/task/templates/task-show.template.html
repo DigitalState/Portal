@@ -1,0 +1,59 @@
+<back-link *ngIf="backLink" [link]="backLink"></back-link>
+
+<md-progress-spinner [hidden]="entity" mode="indeterminate"></md-progress-spinner>
+
+<div *ngIf="entity" class="pb-4">
+	<div class="prop-set primary-props mb-4">
+		<div class="row">
+			<div class="col-sm-12">
+				<dl>
+					<dt>{{ 'ds.microservices.entity.property.title' | translate }}</dt>
+					<dd>{{ entity.title }}</dd>
+				</dl>
+			</div>
+		</div>
+		<div *ngIf="entity.description" class="row">
+			<div class="col-sm-12">
+				<dl>
+					<dt>{{ 'ds.microservices.entity.property.description' | translate }}</dt>
+					<dd>{{ entity.description }}</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm-6">
+				<dl translate>
+					<dt>{{ 'ds.microservices.entity.property.createdAt' | translate }}</dt>
+					<dd><relative-time [timeInput]="entity.createdAt"></relative-time></dd>
+				</dl>
+			</div>
+			<div class="col-sm-6">
+				<dl>
+					<dt>{{ 'ds.microservices.entity.property.followUpAt' | translate }}</dt>
+					<dd><relative-time [timeInput]="entity.followUpAt"></relative-time></dd>
+				</dl>
+			</div>
+			<div class="col-sm-6">
+				<dl>
+					<dt>{{ 'ds.microservices.entity.property.dueAt' | translate }}</dt>
+					<dd><relative-time [timeInput]="entity.dueAt"></relative-time></dd>
+				</dl>
+			</div>
+			<div class="col-sm-6">
+				<dl>
+					<dt>{{ 'ds.microservices.entity.property.priority' | translate }}</dt>
+					<dd>{{ entity.priority }}</dd>
+				</dl>
+			</div>
+		</div>
+		<div class="row mt-4">
+			<div class="col-sm-6">
+				<a class="btn btn-primary"
+				   [routerLink]="['..', 'activate']"
+				   title="{{ 'ds.microservices.entity.action.activate' | translate }}">
+					{{ 'ds.microservices.entity.action.activate' | translate }}
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
