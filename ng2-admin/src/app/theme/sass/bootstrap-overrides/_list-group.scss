@@ -42,8 +42,8 @@
           color: red;
         }
 
-        @include fa-icon();
-        @extend .fa-dot-circle-o;
+        //@include fa-icon();
+        //@extend .fa-dot-circle-o;
         @extend .text-grayed-out;
         font-size: 175%;
         position: absolute;

@@ -82,6 +82,11 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
 
     protected languageChangeSubscriber: Subscriber<LangChangeEvent>;
 
+    /**
+     * Interface language holder.
+     */
+    lang: string;
+
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
     constructor(injector: Injector, protected microserviceConfig: MicroserviceConfig) {
@@ -91,8 +96,11 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
     ngOnInit() {
         super.ngOnInit();
 
+        this.lang = this.translate.currentLang;
+
         // Subscribe to language-change events
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+            this.lang = event.lang;
             this.updateTranslations(event.lang);
             this.refreshList();
         });
