@@ -96,7 +96,9 @@
 
       "scenario_activation": "Activation du scénario"
     },
-    "created_with": "Created with"
+    "created_with": "Created with",
+    "created": "Créé",
+    "due": "Dû"
   },
   "dashboard": {
     "acquisition_channels": "Acquisition Channels",
@@ -163,9 +165,26 @@
     },
     "microservices": {
       "entity": {
+        "types": {
+          "service": "Service",
+          "scenario": "Scénario",
+          "submission": "Soumission",
+          "case": "Cas",
+          "caseStatus": "État de cas",
+          "identity": "Identité",
+          "task": "Tâche",
+          "user": "Utilisateur",
+          "individual": "Individuel",
+          "staff": "Personnel",
+          "anonymous": "Anonyme",
+          "persona": "Persona"
+        },
         "property": {
           "createdAt": "Créé à",
           "updatedAt": "Mis à jour",
+          "dueAt": "Dû à",
+          "followUpAt": "Suivi à",
+          "priority": "Priorité",
           "uuid": "UUID",
           "title": "Titre",
           "form": "Form",
