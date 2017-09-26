@@ -40,7 +40,7 @@ $angle-right: "\f101";
   float: none;
   padding: 0;
   &.selected:not(.with-sub-menu) {
-    background-color: $primary-bg-light;
+    //background-color: $primary-bg-light;
     a.al-sidebar-list-link {
       color: $sidebar-text;
       b {
@@ -157,7 +157,7 @@ a.al-sidebar-list-link {
     }
     &.selected:not(.with-sub-menu) > a {
       border: none;
-      background-color: $primary;
+      //background-color: $primary;
       &:hover {
         color: $sidebar-text;
       }

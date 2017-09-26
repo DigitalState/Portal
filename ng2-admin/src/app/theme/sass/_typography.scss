@@ -371,7 +371,7 @@ a.learn-more {
 }
 
 .text-grayed-out {
-  color: tint($content-text, 50%) !important;
+  color: tint($content-text, 50%);
 }
 
 @media (max-width: 600px) {
