@@ -1,3 +1,5 @@
+<back-link *ngIf="backLink" [link]="backLink"></back-link>
+
 <md-progress-spinner [hidden]="entity" mode="indeterminate"></md-progress-spinner>
 
 <div *ngIf="entity" class="pb-4">

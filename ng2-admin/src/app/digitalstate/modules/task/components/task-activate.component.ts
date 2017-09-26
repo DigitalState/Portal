@@ -18,6 +18,7 @@ import { Observable } from 'rxjs/Observable';
 import { isFunction } from 'rxjs/util/isFunction';
 
 import isEmpty from 'lodash/isEmpty';
+import { Link } from '../../../models/link';
 
 @Component({
     selector: 'ds-task-activate',
@@ -28,7 +29,6 @@ export class DsTaskActivateComponent extends DsBaseEntityShowComponent {
     entityUrlPrefix = 'tasks';
     headerTitle = 'general.menu.tasks';
     headerSubtitle = null;
-    pageTitle = 'general.menu.taskDirectory';
 
     protected formioOptions: FormioOptions;
     protected formioFormSchema;
@@ -53,6 +53,7 @@ export class DsTaskActivateComponent extends DsBaseEntityShowComponent {
         super(injector, microserviceConfig);
         this.applyPageTitle();
 
+        this.backLink = new Link(['..', 'show'], 'ds.microservices.entity.types.task');
         this.formioLanguageEmitter = new EventEmitter();
     }
 

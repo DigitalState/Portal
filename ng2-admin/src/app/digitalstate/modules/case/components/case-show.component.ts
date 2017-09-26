@@ -3,6 +3,7 @@ import { Component, Injector } from '@angular/core';
 import { DsBaseEntityShowComponent } from '../../../components/base-entity-show.component';
 import { MicroserviceConfig } from '../../../../shared/providers/microservice.provider';
 import { EntityApiService } from '../entity-api.service';
+import { Link } from '../../../models/link';
 
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
@@ -11,7 +12,7 @@ import isEmpty from 'lodash/isEmpty';
 
 @Component({
     selector: 'ds-case-show',
-    templateUrl: '../templates/show.template.html'
+    templateUrl: '../templates/case-show.template.html'
 })
 export class DsCaseShowComponent extends DsBaseEntityShowComponent {
 
@@ -27,6 +28,11 @@ export class DsCaseShowComponent extends DsBaseEntityShowComponent {
 
         super(injector, microserviceConfig);
         this.entityApiService = entityApiService;
+    }
+
+    ngOnInit() {
+        super.ngOnInit();
+        this.backLink = new Link(['/pages/cases'], 'general.menu.cases');
     }
 
     protected prepareEntity(): Observable<{ entity: any, 'entityParent'?: any}> {

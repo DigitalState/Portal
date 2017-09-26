@@ -9,6 +9,7 @@ import { ListQuery } from '../../../models/api-query';
 
 import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
+import { Link } from '../../../models/link';
 
 @Component({
     selector: 'ds-service-show',
@@ -34,7 +35,7 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent {
 
     ngOnInit() {
         super.ngOnInit();
-        this.applyPageTitle();
+        this.backLink = new Link(['/pages/services'], 'general.menu.serviceDirectory');
     }
 
     ngOnDestroy() {
