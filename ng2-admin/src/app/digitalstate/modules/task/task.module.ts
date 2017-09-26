@@ -15,7 +15,7 @@ import { DsMicroservicesModule } from '../../microservices.module';
 import { DsTaskComponent } from './task.component';
 import { DsTaskListComponent } from './components/task-list.component';
 import { DsTaskActivateComponent } from './components/task-activate.component';
-// import { DsTaskShowComponent } from './components/task-show.component';
+import { DsTaskShowComponent } from './components/task-show.component';
 // import { DsTaskCreateComponent } from './components/task-create.component';
 // import { DsTaskEditComponent } from './components/task-edit.component';
 
@@ -35,7 +35,7 @@ export const MICROSERVICE_NAME = 'tasks';
         DsTaskComponent,
         DsTaskListComponent,
         DsTaskActivateComponent,
-        // DsTaskShowComponent,
+        DsTaskShowComponent,
         // DsTaskCreateComponent,
         // DsTaskEditComponent,
     ],

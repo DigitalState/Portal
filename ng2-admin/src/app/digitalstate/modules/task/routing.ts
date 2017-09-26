@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { DsTaskComponent } from './task.component';
 import { DsTaskListComponent } from './components/task-list.component';
 import { DsTaskActivateComponent } from './components/task-activate.component';
-// import { DsTaskShowComponent } from './components/task-show.component';
+import { DsTaskShowComponent } from './components/task-show.component';
 // import { DsTaskCreateComponent } from './components/task-create.component';
 // import { DsTaskEditComponent } from './components/task-edit.component';
 
@@ -19,8 +19,8 @@ const routes: Routes = [
             { path: '', redirectTo: '/pages/tasks/list', pathMatch: 'full' },
             { path: 'list', component: DsTaskListComponent  },
             { path: ':id/activate', component: DsTaskActivateComponent },
+            { path: ':id/show', component: DsTaskShowComponent },
             // { path: 'create', component: DsTaskCreateComponent },
-            // { path: ':id/show', component: DsTaskShowComponent },
             // { path: ':id/edit', component: DsTaskEditComponent },
         ]
     }
