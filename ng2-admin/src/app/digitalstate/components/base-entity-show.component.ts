@@ -72,7 +72,6 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
         // Subscribe to language-change events
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
             this.lang = event.lang;
-            this.prepareEntity().subscribe();
             this.updateTranslations(event.lang);
         });
 
@@ -157,7 +156,14 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
      * Override this in subclasses to receive interface translation updates.
      * @param lang Language key
      */
-    protected updateTranslations(lang: string): void {}
+    protected updateTranslations(lang: string): void {
+        this.onEntityPrepared();
+
+        // Update the BackLink translation
+        if (this.entityParent) {
+            this.generateBackLink();
+        }
+    }
 
     onEntityDeleteSuccess(response) {
         console.log('Entity deleted successfully, server response: ', response);
@@ -174,13 +180,22 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
      * Stub called when the entity is fetched.
      */
     onEntityPrepared() {
-        if (this.pageTitle !== null && this.entity.title) {
+        // if (this.pageTitle !== null && this.entity && this.entity.title) {
+        //     // If title is translated, show it in current language
+        //     if (this.entity.title.hasOwnProperty(this.translate.currentLang)) {
+        //         this.applyPageTitle(this.entity.title[this.translate.currentLang]);
+        //     }
+        //     else {
+        //         this.applyPageTitle(this.entity.title);
+        //     }
+        // }
+        if (this.pageTitle !== '' && this.entity && this.entity.title) {
             // If title is translated, show it in current language
             if (this.entity.title.hasOwnProperty(this.translate.currentLang)) {
-                this.applyPageTitle(this.entity.title[this.translate.currentLang]);
+                this.pageTitle = this.entity.title[this.translate.currentLang];
             }
             else {
-                this.applyPageTitle(this.entity.title);
+                this.pageTitle = this.entity.title;
             }
         }
     }

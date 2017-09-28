@@ -37,7 +37,7 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
     entityParentUrlParam = 'serviceUuid';
     headerTitle = 'general.menu.scenarios';
     headerSubtitle = null;
-    pageTitle = '';
+    // pageTitle = '';
 
     protected formioOptions: FormioOptions;
     protected formioFormSchema;
@@ -60,7 +60,6 @@ export class DsScenarioActivateComponent extends DsBaseEntityShowComponent {
                 protected toastr: ToastsManager) {
 
         super(injector, microserviceConfig);
-        this.applyPageTitle();
 
         // Create a place-holder for the back-link until it gets generated
         this.backLink = this.getEmptyBackLink();

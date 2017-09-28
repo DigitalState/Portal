@@ -46,30 +46,42 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent {
 
     protected prepareEntity(): Observable<{ entity: any, 'entityParent'?: any}> {
         return super.prepareEntity().flatMap(preparedObject => { // success
-            this.loadingScenarios = true;
-
-            let requestParams = {
-                'service.uuid': preparedObject.entity.uuid,
-                'order[weight]': 'asc'
-            };
-
-            this.entityApiService.resource('scenarios').getList(requestParams).subscribe(scenariosData => {
-                this.scenarios = [];
-                scenariosData.forEach((scenario) => {
-                    this.scenarios.push(scenario);
-                });
-            }, () => { // error
-
-            }, () => { // complete
-                this.loadingScenarios = false;
-
-                // Transform scenarios markup into tabs
-                setTimeout(() => {
-                    this.scenariosTabs = new Tabs($('#scenarios-tabs'));
-                }, 0);
-            });
-
+            this.loadScenarios();
             return Observable.of({'entity': preparedObject.entity, 'entityParent': preparedObject.entityParent});
+        });
+    }
+
+
+    protected updateTranslations(lang: string): void {
+        super.updateTranslations(lang);
+
+        if (this.entity) {
+            this.loadScenarios();
+        }
+    }
+
+    protected loadScenarios() {
+        this.loadingScenarios = true;
+
+        let requestParams = {
+            'service.uuid': this.entity.uuid,
+            'order[weight]': 'asc'
+        };
+
+        this.entityApiService.resource('scenarios').getList(requestParams).subscribe(scenariosData => {
+            this.scenarios = [];
+            scenariosData.forEach((scenario) => {
+                this.scenarios.push(scenario);
+            });
+        }, () => { // error
+
+        }, () => { // complete
+            this.loadingScenarios = false;
+
+            // Transform scenarios markup into tabs
+            setTimeout(() => {
+                this.scenariosTabs = new Tabs($('#scenarios-tabs'));
+            }, 0);
         });
     }
 }
