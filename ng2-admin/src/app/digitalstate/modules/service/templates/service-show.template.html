@@ -30,16 +30,17 @@
 								<!--</button>-->
 								<a *ngIf="scenario.type === 'bpm'"
 								   class="btn btn-primary"
-								   [routerLink]="['..', 'scenarios', scenario.uuid, 'activate']"
+								   href="javascript:;"
+								   (click)="activateFormioForm(scenario.uuid)"
 								   title="{{ scenario.data[lang].button_text | entityTranslate }}">
 									{{ scenario.data[lang].button_text | translate }}
 								</a>
-								<!--<a *ngIf="['url', 'api'].indexOf(scenario.type) >= 0"-->
-								   <!--class="btn btn-primary"-->
-								   <!--href="{{ scenario.config.url }}" target="_blank"-->
-								   <!--title="{{ scenario.data[lang].button_text | entityTranslate }}">-->
-									<!--{{ scenario.data[lang].button_text | translate }}-->
-								<!--</a>-->
+								<a *ngIf="['url', 'api'].indexOf(scenario.type) >= 0"
+								   class="btn btn-primary"
+								   [href]="getScenarioLinkUrl(scenario.uuid)" target="_blank"
+								   title="{{ scenario.data[lang].button_text | entityTranslate }}">
+									{{ scenario.data[lang].button_text | translate }}
+								</a>
 							</div>
 						</div>
 					</div>
