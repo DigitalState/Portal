@@ -43,7 +43,8 @@
 		<div class="row mt-4">
 			<div class="col-sm-6">
 				<a class="btn btn-primary"
-				   [routerLink]="['..', 'activate']"
+				   (click)="activateFormioForm()"
+				   href="javascript:;"
 				   title="{{ 'ds.microservices.entity.action.activate' | translate }}">
 					{{ 'ds.microservices.entity.action.activate' | translate }}
 				</a>

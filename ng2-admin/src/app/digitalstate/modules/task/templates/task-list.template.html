@@ -8,15 +8,18 @@
 	<div class="row">
 		<div class="col p-0">
 			<div class="list-group simple-list">
-				<a *ngFor="let row of rows" [routerLink]="['..', row.uuid, 'show']" href="#" class="list-group-item justify-content-between has-left-icon m-0 mr-xs-4 ml-xs-4">
+				<a *ngFor="let row of rows" (click)="activateFormioForm(row)" href="javascript:;" class="list-group-item justify-content-between has-left-icon m-0 mr-xs-4 ml-xs-4">
 					<span class="left-icon pull-left fa fa-dot-circle-o" [ngClass]="{'priority-high': row.priority >= 80 }"></span>
 					<div class="data-container d-inline-block w-100 pr-5">
 						<div class="row">
 							<div class="col-md-8">
 								<h2 class="font-weight-normal mb-0">{{ row.title }}</h2>
-								<div class="mt-2 small text-grayed-out">
-									{{ 'general.created' | translate }}
-									<relative-time [timeInput]="row.createdAt"></relative-time>
+								<div class="mt-2 text-grayed-out">
+									<a class="fa fa-info-circle" [routerLink]="['..', row.uuid, 'show']"></a>
+									<span class="small">
+										{{ 'general.created' | translate }}
+										<relative-time [timeInput]="row.createdAt"></relative-time>
+									</span>
 								</div>
 							</div>
 							<div class="col-md-4">
