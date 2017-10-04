@@ -190,7 +190,7 @@ module.exports = function (options) {
         {
           test: /\.html$/,
           use: 'raw-loader',
-          exclude: [helpers.root('src/index.html')]
+          exclude: [helpers.root('src/index.html'), helpers.root('src/formio.html')]
         },
 
         /* File loader for supporting images, for example, in CSS files.
@@ -269,6 +269,8 @@ module.exports = function (options) {
        * See: https://www.npmjs.com/package/copy-webpack-plugin
        */
       new CopyWebpackPlugin([
+        {from: 'src/formio.html'},
+        {from: 'src/formio', to: 'formio'},
         {from: 'src/assets', to: 'assets'},
         {from: 'src/meta'}
       ]),
@@ -283,11 +285,23 @@ module.exports = function (options) {
        */
       new HtmlWebpackPlugin({
         template: 'src/index.html',
+        // filename: 'index.html',
         title: METADATA.title,
+        // chunks: ['polyfills', 'vendor', 'main'],
         chunksSortMode: 'dependency',
         metadata: METADATA,
         inject: 'head'
       }),
+
+      // new HtmlWebpackPlugin({
+      //   template: 'src/formio.html',
+      //   filename: 'formio.html',
+      //   metadata: METADATA,
+      //   title: METADATA.title,
+      //   chunks: ['simplex', 'formio'],
+      //   chunksSortMode: 'dependency',
+      //   inject: false,
+      // }),
 
       /*
        * Plugin: ScriptExtHtmlWebpackPlugin
