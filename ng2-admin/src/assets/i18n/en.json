@@ -239,13 +239,17 @@
     },
     "messages": {
       "http": {
-        "404": "Entity not found"
+        "400": "Invalid data",
+        "404": "Entity not found",
+        "500": "Server error"
       },
       "emptyList": "No items found",
       "registrationSucceeded": "You have been registered successfully.",
       "registrationFailed": "Registration failed.",
       "loginSucceeded": "You have been successfully signed in.",
       "loginFailed": "Sign in failed.",
+      "formActivationError": "Form activation error",
+      "formSubmissionError": "Form submission error",
       "formInvalid": "The form contains invalid fields.",
       "entitySaveSucceeded": "Entity saved successfully.",
       "entitySaveFailed": "Unable to save the entity.",

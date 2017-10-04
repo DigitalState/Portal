@@ -243,13 +243,17 @@
     },
     "messages": {
       "http": {
-        "404": "Entité introuvable"
+        "400": "Données invalides",
+        "404": "Entité introuvable",
+        "500": "Erreur du serveur"
       },
       "emptyList": "Aucun élément trouvé",
       "registrationSucceeded": "Vous avez été enregistré avec succès.",
       "registrationFailed": "Échec de l'enregistrement",
       "loginSucceeded": "Vous avez été connecté avec succès.",
       "loginFailed": "Échec de la connexion.",
+      "formActivationError": "Erreur d'activation de formulaire",
+      "formSubmissionError": "Erreur de soumission de formulaire",
       "formInvalid": "Le formulaire contient des champs non valides.",
       "entitySaveSucceeded": "Entité enregistrée avec succès",
       "entitySaveFailed": "Impossible d'enregistrer l'entité",
