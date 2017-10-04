@@ -132,5 +132,5 @@ interface Global extends GlobalEnvironment  {}
 interface DsError {
   title: string;
   message: string;
-  type: string;
+  type: any;
 }
