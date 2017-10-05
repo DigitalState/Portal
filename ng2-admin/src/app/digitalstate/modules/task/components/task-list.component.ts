@@ -37,6 +37,14 @@ export class DsTaskListComponent extends DsBaseEntityListComponent implements Fo
         this.formioApiService.setEntityApiService(entityApiService);
     }
 
+    ngOnDestroy() {
+        if (this.formioModal) {
+            this.formioModal.close();
+        }
+
+        super.ngOnDestroy();
+    }
+
     /**
      * Overriding `preprocessRowsData` to skip the filtering of entities without translated `title` properties.
      * @param fetchedData

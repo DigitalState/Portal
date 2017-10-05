@@ -55,6 +55,12 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
         if (this.scenariosTabs) {
             this.scenariosTabs.destroy();
         }
+
+        if (this.formioModal) {
+            this.formioModal.close();
+        }
+
+        super.ngOnDestroy();
     }
 
     protected prepareEntity(): Observable<{ entity: any, 'entityParent'?: any}> {

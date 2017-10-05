@@ -40,6 +40,13 @@ export class DsTaskShowComponent extends DsBaseEntityShowComponent implements Fo
         this.backLink = new Link(['/pages/tasks'], 'general.menu.tasks');
     }
 
+    ngOnDestroy() {
+        if (this.formioModal) {
+            this.formioModal.close();
+        }
+
+        super.ngOnDestroy();
+    }
 
     // // // Formio // // // // // // // // // // // // // // // // // // // // // // // //
 
