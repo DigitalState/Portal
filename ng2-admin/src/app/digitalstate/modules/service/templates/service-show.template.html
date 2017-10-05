@@ -31,7 +31,7 @@
 								<a *ngIf="scenario.type === 'bpm'"
 								   class="btn btn-primary"
 								   href="javascript:;"
-								   (click)="activateFormioForm(scenario.uuid)"
+								   (click)="activateFormioForm(scenario)"
 								   title="{{ scenario.data[lang].button_text | entityTranslate }}">
 									{{ scenario.data[lang].button_text | translate }}
 								</a>

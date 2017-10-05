@@ -33,7 +33,7 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
 
     formioModal: NgbModalRef;
     iFrameModalComponent: FormioModalFrameComponent;
-    selectedScenarioUuid: string; // set upon clicking `Activate` on a scenario
+    selectedScenario: any; // set upon clicking `Activate` on a scenario
 
     constructor(injector: Injector,
                 protected microserviceConfig: MicroserviceConfig,
@@ -114,12 +114,13 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
 
     // // // Formio // // // // // // // // // // // // // // // // // // // // // // // //
 
-    protected activateFormioForm(scenarioUuid) {
-        this.selectedScenarioUuid = scenarioUuid;
-        this.openModalIFrame();
+    protected activateFormioForm(scenario: any) {
+        this.openModalIFrame(scenario);
     }
 
-    protected openModalIFrame() {
+    protected openModalIFrame(scenario: any) {
+        this.selectedScenario = scenario;
+
         const modalOptions: NgbModalOptions = {
             size: 'lg',
             windowClass: 'formio-modal-frame',
@@ -127,15 +128,16 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
 
         this.formioModal = this.modal.open(FormioModalFrameComponent, modalOptions);
         this.iFrameModalComponent = this.formioModal.componentInstance;
+        this.iFrameModalComponent.modalHeader = this.getTranslatedPropertyValue(this.selectedScenario, 'title');
         this.iFrameModalComponent.setFormioController(this);
     }
 
     requestFormioForm(): Observable<any> {
-        return this.formioApiService.getForm('scenarios', this.selectedScenarioUuid);
+        return this.formioApiService.getForm('scenarios', this.selectedScenario.uuid);
     }
 
     submitFormioForm(formData: any): Observable<any> {
-        return this.formioApiService.submitFormUsingPost('scenarios', this.selectedScenarioUuid, formData).flatMap(submissionResult => {
+        return this.formioApiService.submitFormUsingPost('scenarios', this.selectedScenario.uuid, formData).flatMap(submissionResult => {
             this.formioModal.close();
             this.toastr.success(this.translate.instant('ds.microservices.entity.scenario.submissionSuccess'));
             return Observable.of(submissionResult);

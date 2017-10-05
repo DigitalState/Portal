@@ -62,6 +62,7 @@ export class DsTaskShowComponent extends DsBaseEntityShowComponent implements Fo
 
         this.formioModal = this.modal.open(FormioModalFrameComponent, modalOptions);
         this.iFrameModalComponent = this.formioModal.componentInstance;
+        this.iFrameModalComponent.modalHeader = this.getTranslatedPropertyValue(this.entity, 'title');
         this.iFrameModalComponent.setFormioController(this);
     }
 
