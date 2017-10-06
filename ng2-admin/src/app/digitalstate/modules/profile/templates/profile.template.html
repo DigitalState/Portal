@@ -67,26 +67,12 @@
 				<div class="card-block entity-body entity-data">
 					<div class="row">
 						<div class="col">
-							<div class="form-group" *ngFor="let item of persona.data | keyValue">
+							<div class="form-group" *ngFor="let item of persona.data | keyValue" [ngSwitch]="item.key">
 								<label [for]="item.key">{{ ('ds.microservices.entity.property.' + item.key) | translate }}</label>
-								<input [id]="item.key" [name]="item.key" type="text" [(ngModel)]="persona.data[item.key]" class="form-control" placeholder="" required>
-								<!--<label for="title">{{ 'ds.microservices.entity.property.title' | translate }}  [{{formLang}}]</label>-->
-								<!--<input id="title" name="title" type="text" [(ngModel)]="persona.title[formLang]" class="form-control" placeholder="" required>-->
-								<!--<div *ngIf="formErrors.title" class="alert alert-danger">-->
-								<!--{{ formErrors.title }}-->
-								<!--</div>-->
+								<input *ngSwitchDefault [id]="item.key" [name]="item.key" type="text" [(ngModel)]="persona.data[item.key]" class="form-control" placeholder="">
+								<textarea *ngSwitchCase="'address'" [id]="item.key" [name]="item.key" [(ngModel)]="persona.data[item.key]" class="form-control" placeholder=""></textarea>
 							</div>
 						</div>
-						<!--<div class="col-sm-6">-->
-						<!--<div class="form-group">-->
-						<!--<label for="identity">{{ 'ds.microservices.entity.property.identity' | translate }}</label>-->
-						<!--<input disabled id="identity" name="identity" type="text" [(ngModel)]="user.identity" class="form-control">-->
-						<!--</div>-->
-						<!--<div class="form-group">-->
-						<!--<label for="identityUuid">{{ 'ds.microservices.entity.property.identityUuid' | translate }}</label>-->
-						<!--<input disabled id="identityUuid" name="identityUuid" type="text" [(ngModel)]="user.identityUuid" class="form-control">-->
-						<!--</div>-->
-						<!--</div>-->
 					</div>
 				</div>
 			</form>
