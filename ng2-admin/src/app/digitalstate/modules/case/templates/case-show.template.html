@@ -90,7 +90,7 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-12">
-								<p class="lead mb-0">{{ status.description | entityTranslate }}</p>
+								<p class="lead ws-pre-line mb-0">{{ status.description | entityTranslate }}</p>
 
 								<div *ngIf="status.data && (status.data[lang] | isNotEmpty)" class="mt-2">
 									<a class="" data-toggle="collapse" href="#collapse-status-{{status.uuid}}" aria-expanded="false" aria-controls="collapse">

@@ -5,7 +5,7 @@
 <md-progress-spinner [hidden]="entity" mode="indeterminate"></md-progress-spinner>
 
 <div *ngIf="entity" class="pb-4">
-	<p class="lead">{{entity.description | entityTranslate}}</p>
+	<p class="lead ws-pre-line">{{entity.description | entityTranslate}}</p>
 </div>
 
 <md-progress-spinner [hidden]="!loadingScenarios" mode="indeterminate"></md-progress-spinner>
@@ -23,7 +23,7 @@
 					</h2>
 					<div id="tab-{{scenario.uuid}}" class="card p-0 tabs-container__panel">
 						<div class="card-block">
-							<p class="lead mt-2">{{scenario.description | entityTranslate}}</p>
+							<p class="lead ws-pre-line mt-2">{{scenario.description | entityTranslate}}</p>
 							<div *ngIf="scenario.data && scenario.data[lang].button_text" class="actions btn-group pt-4">
 								<!--<button class="btn btn-primary" [routerLink]="['..', 'scenarios', scenario.uuid, 'activate']">-->
 									<!--{{'ds.microservices.entity.action.activate' | translate}}-->
