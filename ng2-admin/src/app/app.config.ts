@@ -8,7 +8,7 @@ const MEDIA_BREAKPOINTS = {
     'sm': '660',
     'md': '768',
     'lg': '991',
-    'xl': '1170',
+    'xl': '1200',
 };
 
 function config() {

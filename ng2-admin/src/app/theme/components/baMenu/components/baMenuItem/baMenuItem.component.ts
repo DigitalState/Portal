@@ -1,6 +1,7 @@
 import {Component, Input, Output, EventEmitter} from '@angular/core';
 
 import { GlobalState } from '../../../../../global.state';
+import { AppState } from '../../../../../app.service';
 
 import 'style-loader!./baMenuItem.scss';
 
@@ -16,12 +17,16 @@ export class BaMenuItem {
   @Output() itemHover = new EventEmitter<any>();
   @Output() toggleSubMenu = new EventEmitter<any>();
 
-  constructor(private _state: GlobalState) {
-
+  constructor(private _state: GlobalState,
+              private appState: AppState) {
   }
 
   public onClickItem($event):void {
-    this._state.notifyDataChanged('menu.isCollapsed', true);
+    const xl = this.appState.get('config').breakpoints.xl;
+
+    if (window.matchMedia(`(max-width: ${xl}px)`).matches) {
+      this._state.notifyDataChanged('menu.isCollapsed', true);
+    }
   }
 
   public onHoverItem($event):void {
