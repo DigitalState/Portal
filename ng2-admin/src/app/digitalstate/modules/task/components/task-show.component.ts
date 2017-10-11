@@ -60,10 +60,14 @@ export class DsTaskShowComponent extends DsBaseEntityShowComponent implements Fo
             windowClass: 'formio-modal-frame',
         };
 
+        const modalBreadcrumbsTitles = [
+            this.getTranslatedPropertyValue(this.entity, 'title'),
+        ];
+
         this.formioModal = this.modal.open(FormioModalFrameComponent, modalOptions);
         this.iFrameModalComponent = this.formioModal.componentInstance;
-        this.iFrameModalComponent.modalHeader = this.getTranslatedPropertyValue(this.entity, 'title');
         this.iFrameModalComponent.setFormioController(this);
+        this.iFrameModalComponent.setBreadcrumbs(modalBreadcrumbsTitles);
     }
 
     requestFormioForm(): Observable<any> {

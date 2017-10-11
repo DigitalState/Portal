@@ -30,6 +30,7 @@
   "general": {
     "statusUpdates": "Status updates",
     "home": "Home",
+    "form": "Form",
     "forms": {
       "option1": "Option 1",
       "passwordsDoNotMatch": "Passwords don't match."

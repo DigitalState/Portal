@@ -30,10 +30,7 @@
   "general": {
     "statusUpdates": "Mises à jour de statut",
     "home": "Accueil",
-    "languages": {
-      "en": "English",
-      "fr": "Français"
-    },
+    "form": "Form",
     "forms": {
       "option1": "Option 1",
       "passwordsDoNotMatch": "Les mots de passe ne correspondent pas"
