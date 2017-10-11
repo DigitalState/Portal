@@ -66,3 +66,7 @@ npm-debug.log
 *.css.shim.ts
 *.ngsummary.json
 *.shim.ngstyle.ts
+
+# SASS Cache #
+.sass-cache
+
