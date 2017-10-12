@@ -21,7 +21,7 @@
 						<i class="icon icon-open fa fa-caret-down float-right"></i>
 						{{scenario.title | entityTranslate}}
 					</h2>
-					<div id="tab-{{scenario.uuid}}" class="card p-0 tabs-container__panel">
+					<div id="tab-{{scenario.uuid}}" class="card p-0 tabs-container__panel animated fadeIn">
 						<div class="card-block">
 							<p class="lead ws-pre-line mt-2">{{scenario.description | entityTranslate}}</p>
 							<div *ngIf="scenario.data && scenario.data[lang].button_text" class="actions btn-group pt-4">

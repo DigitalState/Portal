@@ -30,6 +30,7 @@ const routes: Routes = [
             { path: 'list', component: DsServiceListComponent },
             { path: 'create', component: DsServiceCreateComponent },
             { path: ':id/show', component: DsServiceShowComponent },
+            { path: ':id/show/scenarios/:scenarioUuid', component: DsServiceShowComponent },
             { path: ':id/edit', component: DsServiceEditComponent },
 
             { path: ':serviceUuid/scenarios/list', component: DsScenarioListComponent },
