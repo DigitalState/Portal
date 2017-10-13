@@ -8,10 +8,7 @@
 	<p class="lead ws-pre-line">{{ entity.description[lang] }}</p>
 </div>
 
-<md-progress-spinner [hidden]="!loadingScenarios" mode="indeterminate"></md-progress-spinner>
-
 <div *ngIf="entity && scenarios.length > 0" class="animated fadeIn">
-
 	<!--<div class="card-block entity-body entity-data">-->
 		<div id="scenarios-tabs" class="tabs-container">
 			<div class="accordion-wrapper">
@@ -48,5 +45,6 @@
 			</div>
 		</div>
 	<!--</div>-->
-
 </div>
+
+<md-progress-spinner [hidden]="!loadingScenarios" mode="indeterminate"></md-progress-spinner>

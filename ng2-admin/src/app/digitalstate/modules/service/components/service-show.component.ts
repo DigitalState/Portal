@@ -69,16 +69,18 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
 
     protected prepareEntity(): Observable<{ entity: any, 'entityParent'?: any}> {
         return super.prepareEntity().flatMap(preparedObject => { // success
-            this.loadScenarios();
+            if (this.scenarios.length === 0) {
+                this.loadScenarios();
+            }
             return Observable.of({'entity': preparedObject.entity, 'entityParent': preparedObject.entityParent});
         });
     }
-
 
     protected updateTranslations(lang: string): void {
         super.updateTranslations(lang);
 
         if (this.entity) {
+            // this.createTabs();
             this.loadScenarios();
         }
     }
@@ -104,26 +106,33 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
 
             }, () => { // complete
                 this.loadingScenarios = false;
-
                 // Pick default scenario index based on the scenario UUID passed in the URL
                 const defaultScenarioIndex = findIndex(this.scenarios, { 'uuid': defaultScenarioUuid });
 
-                // Transform scenarios markup into tabs
-                setTimeout(() => {
-                    let tabsOptions = {};
-                    let tabsCallbacks = {
-                        'onTabChange': this.onTabChange.bind(this)
-                    };
-
-                    if (this.defaultTabIndex == null) {
-                        this.defaultTabIndex = defaultScenarioIndex >= 0 ? defaultScenarioIndex : 0;
-                    }
-
-                    tabsOptions['default_tab'] = this.defaultTabIndex;
-                    this.scenariosTabs = new Tabs($('#scenarios-tabs'), tabsOptions, tabsCallbacks);
-                }, 0);
+                this.createTabs(defaultScenarioIndex);
             });
-        });
+        }).unsubscribe();
+    }
+
+    /**
+     *
+     * @param defaultScenarioIndex
+     */
+    protected createTabs(defaultScenarioIndex?: number) {
+        if (this.defaultTabIndex == null) {
+            this.defaultTabIndex = defaultScenarioIndex >= 0 ? defaultScenarioIndex : 0;
+        }
+
+        // Transform scenarios markup into tabs
+        setTimeout(() => {
+            let tabsOptions = {};
+            let tabsCallbacks = {
+                'onTabChange': this.onTabChange.bind(this)
+            };
+
+            tabsOptions['default_tab'] = this.defaultTabIndex;
+            this.scenariosTabs = new Tabs($('#scenarios-tabs'), tabsOptions, tabsCallbacks);
+        }, 0);
     }
 
     /**
@@ -132,6 +141,12 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
      * @param tabIndex
      */
     protected onTabChange(tabIndex: number) {
+        // Update URL in address bar to show currently selected scenario
+        if (tabIndex != this.defaultTabIndex && tabIndex < this.scenarios.length) {
+            const currentScenarioUuid = this.scenarios[tabIndex].uuid;
+            this.location.go(`/pages/services/${this.entity.uuid}/show/scenarios/${currentScenarioUuid}`);
+        }
+
         this.defaultTabIndex = tabIndex;
     }
 
