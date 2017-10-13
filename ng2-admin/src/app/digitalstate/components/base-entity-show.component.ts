@@ -88,24 +88,29 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
 
     protected prepareEntity(): Observable<{'entity': any, 'entityParent'?: any}> {
         return this.route.params.flatMap((params: Params) => {
-            let uuid = params['id'];
-            let parentUuid = params[this.entityParentUrlParam];
+            if (this.entity) {
+                return Observable.of({'entity': this.entity, 'entityParent': this.entityParent});
+            }
+            else {
+                let uuid = params['id'];
+                let parentUuid = params[this.entityParentUrlParam];
 
-            return this.entityApiService.getOne(this.entityUrlPrefix, uuid).flatMap(entity => {
-                this.entity = entity;
-                this.onEntityPrepared();
+                return this.entityApiService.getOne(this.entityUrlPrefix, uuid).flatMap(entity => {
+                    this.entity = entity;
+                    this.onEntityPrepared();
 
-                return this.prepareEntityParent(this.entityParentUrlPrefix, parentUuid).flatMap(entityParent => {
-                    return Observable.of({'entity': entity, 'entityParent': entityParent});
+                    return this.prepareEntityParent(this.entityParentUrlPrefix, parentUuid).flatMap(entityParent => {
+                        return Observable.of({'entity': entity, 'entityParent': entityParent});
+                    });
+                }).catch(error => {
+                    if (error instanceof Response) {
+                        this.onPrepareEntityError(error);
+                    } else {
+                        console.warn('Unexpected error occurred while fetching entity: ' + error);
+                    }
+                    throw error;
                 });
-            }).catch(error => {
-                if (error instanceof Response) {
-                    this.onPrepareEntityError(error);
-                } else {
-                    console.warn('Unexpected error occurred while fetching entity: ' + error);
-                }
-                throw error;
-            });
+            }
         });
     }
 
