@@ -5,7 +5,7 @@
 <md-progress-spinner [hidden]="entity" mode="indeterminate"></md-progress-spinner>
 
 <div *ngIf="entity" class="pb-4">
-	<p class="lead ws-pre-line">{{entity.description | entityTranslate}}</p>
+	<p class="lead ws-pre-line">{{ entity.description[lang] }}</p>
 </div>
 
 <md-progress-spinner [hidden]="!loadingScenarios" mode="indeterminate"></md-progress-spinner>
