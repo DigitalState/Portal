@@ -102,14 +102,16 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
                 scenariosData.forEach((scenario) => {
                     this.scenarios.push(scenario);
                 });
-            }, () => { // error
-
+            }, (error) => { // error
+                console.log('Unable to fetch scenarios', error);
             }, () => { // complete
                 this.loadingScenarios = false;
-                // Pick default scenario index based on the scenario UUID passed in the URL
-                const defaultScenarioIndex = findIndex(this.scenarios, { 'uuid': defaultScenarioUuid });
 
-                this.createTabs(defaultScenarioIndex);
+                if (this.scenarios.length > 0) {
+                    // Pick default scenario index based on the scenario UUID passed in the URL
+                    const defaultScenarioIndex = findIndex(this.scenarios, { 'uuid': defaultScenarioUuid });
+                    this.createTabs(defaultScenarioIndex);
+                }
             });
         }).unsubscribe();
     }
