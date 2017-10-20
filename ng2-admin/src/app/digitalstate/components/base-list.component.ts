@@ -275,6 +275,22 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
     }
 
     /**
+     * Remove from the list one or more items that match the provided criteria.
+     * @param criteria An object of property criteria to filter the list by.
+     *        Example: {'uuid': '52d4797d-aeba-4933-8775-e44901cf5f2d'}
+     */
+    protected removeItem(criteria: any) {
+        remove(this.rows, criteria);
+    }
+
+    protected fetchNextPage() {
+        if (this.pager.pageNumber < this.pager.totalPages) {
+            console.log('fetchNextPage: new pager page number', this.pager.pageNumber);
+            this.setPage({ offset: this.pager.pageNumber + 1 });
+        }
+    }
+
+    /**
      *
      * @param {object} sortEvent The sort event object provided by ngx-datatable. It looks as follows:
      *  {
