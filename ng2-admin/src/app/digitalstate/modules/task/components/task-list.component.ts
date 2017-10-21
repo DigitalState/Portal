@@ -97,7 +97,9 @@ export class DsTaskListComponent extends DsBaseEntityListComponent implements Fo
         return this.formioApiService.submitFormUsingPut('tasks', this.selectedRow.uuid, formData, 'submission').flatMap(submissionResult => {
             this.formioModal.close();
             this.toastr.success(this.translate.instant('ds.microservices.entity.task.submissionSuccess'));
-            this.refreshList();
+
+            // Instead forcing a list-refresh, remove the affected task from the list
+            this.removeItem({ 'uuid': this.selectedRow.uuid });
             return Observable.of(submissionResult);
         });
     }
