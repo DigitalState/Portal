@@ -82,7 +82,7 @@ export class ListQuery {
 
         if (this.pager) {
             Object.assign(params, {
-                page: this.pager.pageNumber + 1, // the API page numbering starts from page one (1).
+                page: this.pager.pageNumber, // the API page numbering starts from page one (1).
             });
 
             if (this.enableParamItemsPerPage) {

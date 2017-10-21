@@ -132,7 +132,7 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
             .subscribe(() => this.doFilter());
 
         // Run the initial fetch query
-        this.setPage({offset: 0});
+        this.setPage({offset: 1});
     }
 
     ngOnDestroy() {
@@ -272,7 +272,7 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
         console.log(this.filters);
 
         // Reset query to the first page before refreshing the list
-        this.query.pager.pageNumber = 0; // remember page numbers are zero-based
+        // this.query.pager.pageNumber = 0; // remember page numbers are zero-based
 
         // Whenever the filter changes, always go back to the first page
         // this.datatable.offset = 0;
@@ -301,7 +301,7 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
 
     protected fetchNextPage() {
         if (this.pager.pageNumber < this.pager.totalPages) {
-            console.log('fetchNextPage: new pager page number', this.pager.pageNumber);
+            // console.log('fetchNextPage: new pager page number', this.pager.pageNumber);
             this.setPage({ offset: this.pager.pageNumber + 1 });
         }
     }
