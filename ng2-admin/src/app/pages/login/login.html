@@ -7,6 +7,7 @@
   </div>
 
   <div class="auth-block">
+    <h2 *ngIf="appTitle" class="text-center">{{ appTitle[lang] }}</h2>
     <h1 translate>{{'login.title'}}</h1>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">

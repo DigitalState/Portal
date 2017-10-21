@@ -1,12 +1,13 @@
+import { Injector } from '@angular/core';
 import { Component } from '@angular/core';
-import { ActivatedRoute, NavigationStart, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { FormGroup, AbstractControl, FormBuilder, Validators } from '@angular/forms';
 
 import { TranslateService } from '@ngx-translate/core';
 import { ToastsManager } from 'ng2-toastr/src/toast-manager';
 
 import { AuthService } from '../../shared/modules/auth/auth.service';
-import { Registration } from '../../shared/modules/auth/registration';
+import { DsCmsContentSubscriber } from '../../shared/components/cms-content-subscriber.component';
 
 import 'style-loader!./login.scss';
 
@@ -17,7 +18,7 @@ import 'style-loader!./login.scss';
         id: 'login',
     }
 })
-export class Login {
+export class Login extends DsCmsContentSubscriber {
 
     form: FormGroup;
     username: AbstractControl;
@@ -27,12 +28,17 @@ export class Login {
     submitted: boolean = false;
     inProgress: boolean = false;
 
-    constructor(protected router: Router,
+    protected appTitle: any; // Translated String
+
+    constructor(protected injector: Injector,
+                protected router: Router,
                 protected route: ActivatedRoute,
                 protected fb: FormBuilder,
                 protected toastr: ToastsManager,
                 protected auth: AuthService,
                 protected translate: TranslateService) {
+
+        super(injector);
 
         this.form = fb.group({
             'username': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
@@ -54,9 +60,20 @@ export class Login {
     }
 
     ngOnInit() {
+        super.ngOnInit();
+
         // get redirect url from route parameters or default to '/'
         this.redirectUrl = this.route.snapshot.queryParams['redirectUrl'] || '/';
         console.log('Redirect URL', this.redirectUrl);
+    }
+
+    ngOnDestroy() {
+        super.ngOnDestroy();
+    }
+
+    protected onAppCmsContent() {
+        console.log('appCmsContent: ', this.appState.get('appCmsContent'));
+        this.appTitle = this.appState.get('appCmsContent', {})['texts']['portal-title'];
     }
 
     onSubmit(values):void {
