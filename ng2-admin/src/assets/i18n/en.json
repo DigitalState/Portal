@@ -95,7 +95,8 @@
     },
     "created_with": "Created with",
     "created": "Created",
-    "due": "Due"
+    "due": "Due",
+    "more": "More"
   },
   "dashboard": {
     "acquisition_channels": "Acquisition Channels",
