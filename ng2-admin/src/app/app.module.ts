@@ -9,6 +9,7 @@ import {createInputTransfer, createNewHosts, removeNgStyles} from '@angularclass
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import { LockerModule, DRIVERS } from 'angular-safeguard';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 /*
  * Platform and Environment providers/directives/pipes
@@ -136,6 +137,7 @@ const storageLockerConfig = {
         NgbModule.forRoot(),
         TranslateModule.forRoot(translationOptions), // @See AppTranslationModule for default language setting
         LockerModule.withConfig(storageLockerConfig),
+        InfiniteScrollModule,
         LaddaModule,
         PagesModule,
         DsSharedModule,

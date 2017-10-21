@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { MdProgressBarModule, MdListModule, MdTabsModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { FilterByPipe } from 'ngx-pipes/src/app/pipes/object/filter-by';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
 import { AppTranslationModule } from '../app.translation.module';
 import { AppState } from '../app.service';
@@ -76,6 +77,7 @@ import { DsTimelineComponent } from './components/timeline.component';
         DsLanguageSwitcherTabsComponent,
         // AppTranslationModule,
         TranslateModule,
+        InfiniteScrollModule,
         DsBackLink,
     ]
 })
