@@ -11,3 +11,8 @@ export class Pager {
     // The current pager number
     pageNumber: number = 0;
 }
+
+export enum PagingMode {
+    REPLACE,
+    APPEND,
+}

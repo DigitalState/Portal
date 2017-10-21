@@ -3,7 +3,7 @@ import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 // import 'style-loader!../styles/style.scss';
 // import { DatatableComponent } from '@swimlane/ngx-datatable';
-import { Pager } from '../models/pager';
+import { Pager, PagingMode } from '../models/pager';
 
 import { ListQuery } from '../models/api-query';
 import { MicroserviceConfig } from '../../shared/providers/microservice.provider';
@@ -12,7 +12,7 @@ import { DsEntityCrudComponent } from '../../shared/components/base-entity-crud-
 import 'rxjs/Rx';
 import { Subject, Subscriber } from 'rxjs';
 import { ObservableInput } from 'rxjs/Observable';
-import { forEach, isString } from 'lodash';
+import { forEach, isString, remove } from 'lodash';
 
 export class DsBaseEntityListComponent extends DsEntityCrudComponent implements AfterViewInit {
 
@@ -21,22 +21,28 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
     @ViewChild('textCellTpl') textCellTpl: TemplateRef<any>;
     @ViewChild('actionsTpl') actionsCellTpl: TemplateRef<any>;
 
-    rows = [];
+    rows: Array<any> = [];
     columns = [];
     sorts = [];
     query: ListQuery;
     pager = new Pager();
+    pagingMode: PagingMode = PagingMode.APPEND;
 
     // progress bar bindings
     loading: boolean;
 
     // Todo: fetch the default page size from the AppState
-    size = 1000;
+    size = 10; // list page size
+
+    // infinite scroll settings
+    scrollDebounceTime: number = 1000;
+    timeSinceLastScroll: number = 0;
 
     // /**
     //  * Static Datatable attributes
     //  * @type {object}
     //  */
+    /** @deprecated */
     datatableAttributes = {
         columnMode: 'force',
         rowHeight: 'auto',
@@ -188,7 +194,17 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
 
         list.subscribe((pagedData) => {
             this.pager = pagedData.pager;
-            this.rows = this.preprocessRowsData(pagedData.data);
+
+            switch (this.pagingMode) {
+                case PagingMode.REPLACE:
+                    this.rows = this.preprocessRowsData(pagedData.data);
+                    break;
+
+                case PagingMode.APPEND:
+                    this.rows = this.rows.concat(this.preprocessRowsData(pagedData.data));
+                    break;
+            }
+
             this.loading = false;
         });
     }
@@ -305,6 +321,29 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
             this.query.unsetOrder();
             this.query.setOrder(sortEvent.column.prop, sortEvent.newValue);
             this.refreshList();
+        }
+    }
+
+    /**
+     * Infinite scroll (scroll-down) handler that is triggered when the list is scrolled down.
+     * Based on window scrollPosition, it determines whether the user has scrolled to the bottom of the page.
+     * A debounce guard is used to abort further processing if triggered multiple times within the debounce time.
+     * A loading guard is also employed.
+     *
+     * @param scrollEvent
+     */
+    onScrollDown(scrollEvent: any) {
+        const timeNow = new Date().getTime();
+
+        if (!this.loading && (timeNow > (this.timeSinceLastScroll + this.scrollDebounceTime))) {
+            const scrollHeight = jQuery(document).height();
+            const scrollPosition = jQuery(window).height() + jQuery(window).scrollTop();
+
+            if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+                // When scroll hits bottom of the page
+                this.timeSinceLastScroll = timeNow;
+                this.fetchNextPage();
+            }
         }
     }
 
