@@ -108,7 +108,7 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
             this.lang = event.lang;
             this.updateTranslations(event.lang);
-            this.refreshList();
+            // this.refreshList();
         });
 
         this.entityMetadata = this.microserviceConfig.settings.entities[this.entityUrlPrefix].properties;
