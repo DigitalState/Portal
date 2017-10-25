@@ -13,6 +13,7 @@ const MEDIA_BREAKPOINTS = {
 
 function config() {
     let conf = {
+        'spaId': 'portal',
         // CSS
         'breakpoints': MEDIA_BREAKPOINTS,
         'mediaQueryAliases': {
