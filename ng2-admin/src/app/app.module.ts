@@ -1,6 +1,7 @@
 import {ApplicationRef, NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { MdCheckboxModule } from '@angular/material';
 import {Http, HttpModule} from '@angular/http';
 import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -130,6 +131,7 @@ const storageLockerConfig = {
         HttpModule,
         RouterModule,
         FormsModule,
+        MdCheckboxModule,
         ReactiveFormsModule,
         RestangularModule.forRoot(restangularConfigFactory),
         ToastModule.forRoot(),
@@ -173,7 +175,10 @@ const storageLockerConfig = {
             }
         }
     ],
-    exports: [TranslateModule],
+    exports: [
+        MdCheckboxModule,
+        TranslateModule,
+    ],
 })
 
 export class AppModule {

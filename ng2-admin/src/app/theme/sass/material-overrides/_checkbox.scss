@@ -1,0 +1,11 @@
+/*
+ * Workaround for bug https://github.com/angular/material2/issues/4720
+ * Fixing will probably require an upgrade to @angular/material 2.0.0-beta.12+
+ * which will require upgrading Angular to 4.2.6+
+ * @see https://stackoverflow.com/questions/46712309/cant-resolve-all-parameters-for-matprogressspinner
+ */
+.mat-checkbox {
+  .mat-checkbox-inner-container-no-side-margin {
+    margin-right: 8px;
+  }
+}
