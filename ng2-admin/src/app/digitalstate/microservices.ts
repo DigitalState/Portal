@@ -18,8 +18,9 @@ export class MicroservicesDefinition {
                 },
                 paths: {
                     registration: 'registration',
-                    login: 'tokens/individual',
+                    individual: 'tokens/individual',
                     anonymous: 'tokens/anonymous',
+                    orgnaization: 'tokens/orgnaization',
                 },
             },
             'cms': {

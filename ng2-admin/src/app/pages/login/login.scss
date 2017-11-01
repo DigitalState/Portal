@@ -4,3 +4,11 @@
   @include display(flex);
   @include flex(1 auto);
 }
+
+// Styles specific to the Organization Login component
+
+.organization-login {
+  #organiztion-link-container {
+    display: none;
+  }
+}

@@ -7,6 +7,7 @@ import { NgaModule } from '../../theme/nga.module';
 import { DsMicroservicesModule } from '../../digitalstate/microservices.module';
 
 import { Login } from './login.component';
+import { OrganizationLogin } from './organization-login.component';
 import { routing }       from './login.routing';
 
 
@@ -22,7 +23,8 @@ import { routing }       from './login.routing';
     routing
   ],
   declarations: [
-    Login
+    Login,
+    OrganizationLogin
   ]
 })
 export class LoginModule {}

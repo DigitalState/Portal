@@ -8,7 +8,7 @@
 
   <div class="auth-block">
     <h2 *ngIf="appTitle" class="text-center">{{ appTitle[lang] }}</h2>
-    <h1 translate>{{'login.title'}}</h1>
+    <h1 translate>{{ formTitle }}</h1>
 
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
       <div class="form-group row" [ngClass]="{'has-error': (!username.valid && username.touched), 'has-success': (username.valid && username.touched)}">
@@ -58,6 +58,15 @@
         <ds-language-switcher></ds-language-switcher>
       </div>
     </div>
+
+    <div id="organiztion-link-container" class="auth-sep mt-0">
+      <span>
+        <span translate>
+          <a routerLink="/login/organization">{{ 'login.organizationLoginLink' | translate }}</a>
+        </span>
+      </span>
+    </div>
+
 
     <!--<div class="auth-sep"><span><span translate>{{'login.signFromAppText'}}</span></span></div>-->
 

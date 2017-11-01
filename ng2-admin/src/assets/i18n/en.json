@@ -6,6 +6,8 @@
   },
   "login": {
     "title": "Sign In",
+    "organizationFormTitle": "Organization Sign In",
+    "organizationLoginLink": "Organization Login",
     "signUpPrompt": "Don't have an account?",
     "signUpLink": "Sign up!",
     "email": "Email",

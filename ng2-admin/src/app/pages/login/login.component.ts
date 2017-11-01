@@ -23,24 +23,33 @@ export class Login extends DsCmsContentSubscriber {
     form: FormGroup;
     username: AbstractControl;
     password: AbstractControl;
+    authEndpoint: string;
     redirectUrl: string;
 
     submitted: boolean = false;
     inProgress: boolean = false;
 
-    protected appTitle: any; // Translated String
+    protected formTitle: string = 'login.title'; // Translation key
+    protected appTitle: any; // Translation Object
 
-    constructor(protected injector: Injector,
-                protected router: Router,
-                protected route: ActivatedRoute,
-                protected fb: FormBuilder,
-                protected toastr: ToastsManager,
-                protected auth: AuthService,
-                protected translate: TranslateService) {
+    protected router: Router;
+    protected route: ActivatedRoute;
+    protected fb: FormBuilder;
+    protected toastr: ToastsManager;
+    protected auth: AuthService;
+    protected translate: TranslateService;
 
+    constructor(protected injector: Injector) {
         super(injector);
 
-        this.form = fb.group({
+        this.router = injector.get(Router);
+        this.route = injector.get(ActivatedRoute);
+        this.fb = injector.get(FormBuilder);
+        this.toastr = injector.get(ToastsManager);
+        this.auth = injector.get(AuthService);
+        this.translate = injector.get(TranslateService);
+
+        this.form = this.fb.group({
             'username': ['', Validators.compose([Validators.required, Validators.minLength(1)])],
             'password': ['', Validators.compose([Validators.required, Validators.minLength(1)])]
         });
@@ -48,8 +57,10 @@ export class Login extends DsCmsContentSubscriber {
         this.username = this.form.controls['username'];
         this.password = this.form.controls['password'];
 
-        console.log('ActivatedRoute: ', router.url);
-        router.events
+        // Initialize the Authentication endpoint
+        this.authEndpoint = this.appState.get('microservices').authentication.paths.individual;
+
+        this.router.events
             .filter(event => event instanceof NavigationStart)
             .subscribe((navStartEvent: NavigationStart) => {
                 if (!navStartEvent.url.startsWith('/login')) {
@@ -81,7 +92,7 @@ export class Login extends DsCmsContentSubscriber {
         this.inProgress = true;
 
         if (this.form.valid) {
-            this.auth.login(values.username, values.password)
+            this.auth.login(this.authEndpoint, values.username, values.password)
                 .finally(() => {
                     this.inProgress = false;
                 })
