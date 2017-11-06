@@ -27,6 +27,7 @@
     "loginPrompt": "Already have an account?",
     "loginLink": "Sign in!",
     "repeat": "Repeat",
+    "isOrgnization": "Register as organization",
     "signUpButton": "Sign up"
   },
   "general": {

@@ -27,6 +27,7 @@
     "loginPrompt": "Avez-vous déjà un compte ?",
     "loginLink": "Se connecter",
     "repeat": "Répéter",
+    "isOrgnization": "Register as organization",
     "signUpButton": "S'inscrire"
   },
   "general": {
