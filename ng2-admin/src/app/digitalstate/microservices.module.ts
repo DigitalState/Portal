@@ -7,12 +7,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FilterByPipe } from 'ngx-pipes/src/app/pipes/object/filter-by';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import { AppTranslationModule } from '../app.translation.module';
 import { AppState } from '../app.service';
 import { NgaModule } from '../../theme/nga.module';
 
 import { DsEnvironmentConfig } from '../shared/providers/environment.provider';
-import { DSAuthModule } from '../shared/modules/auth/auth.module';
+import { DsSharedModule } from '../shared/shared.module';
 
 import { MicroservicesDefinition } from './microservices';
 import { TemplateStorage } from './services/template-storage.service';
@@ -32,15 +31,14 @@ import { DsTimelineComponent } from './components/timeline.component';
 
 @NgModule({
     imports: [
+        DsSharedModule,
         CommonModule,
         RouterModule,
         FormsModule,
         MdListModule,
         MdProgressBarModule,
         MdTabsModule,
-        // AppTranslationModule,
         TranslateModule,
-        DSAuthModule,
     ],
     declarations: [
         DefaultModal,
@@ -64,6 +62,7 @@ import { DsTimelineComponent } from './components/timeline.component';
         TemplateStorage,
     ],
     exports: [
+        DsSharedModule,
         MdTabsModule,
         DsMicroservicesComponent,
         DsEntityListComponent,
@@ -75,7 +74,6 @@ import { DsTimelineComponent } from './components/timeline.component';
         DsDatatableCellActions,
         DsLanguageSwitcherComponent,
         DsLanguageSwitcherTabsComponent,
-        // AppTranslationModule,
         TranslateModule,
         InfiniteScrollModule,
         DsBackLink,
