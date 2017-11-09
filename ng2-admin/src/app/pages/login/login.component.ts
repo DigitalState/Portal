@@ -10,6 +10,7 @@ import { AuthService } from '../../shared/modules/auth/auth.service';
 import { DsCmsContentSubscriber } from '../../shared/components/cms-content-subscriber.component';
 
 import 'style-loader!./login.scss';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'login',
@@ -39,6 +40,8 @@ export class Login extends DsCmsContentSubscriber {
     protected auth: AuthService;
     protected translate: TranslateService;
 
+    protected routerNavigationSubscription: Subscription;
+
     constructor(protected injector: Injector) {
         super(injector);
 
@@ -60,7 +63,7 @@ export class Login extends DsCmsContentSubscriber {
         // Initialize the Authentication endpoint
         this.authEndpoint = this.appState.get('microservices').authentication.paths.individual;
 
-        this.router.events
+        this.routerNavigationSubscription = this.router.events
             .filter(event => event instanceof NavigationStart)
             .subscribe((navStartEvent: NavigationStart) => {
                 if (!navStartEvent.url.startsWith('/login')) {
@@ -79,6 +82,10 @@ export class Login extends DsCmsContentSubscriber {
     }
 
     ngOnDestroy() {
+        if (this.routerNavigationSubscription) {
+            this.routerNavigationSubscription.unsubscribe();
+        }
+
         super.ngOnDestroy();
     }
 
