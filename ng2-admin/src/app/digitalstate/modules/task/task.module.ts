@@ -5,8 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { FormioModule } from 'angular-formio';
 
-import { DsSharedModule } from '../../../shared/shared.module';
-
 import { routing } from './routing';
 import { EntityApiService } from './entity-api.service';
 import { MicroserviceConfig, MicroserviceRestangularProvider } from '../../../shared/providers/microservice.provider';
@@ -27,7 +25,6 @@ export const MICROSERVICE_NAME = 'tasks';
         FormsModule,
         FormioModule,
         NgxDatatableModule,
-        DsSharedModule,
         DsMicroservicesModule,
         routing,
     ],

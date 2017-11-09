@@ -14,7 +14,6 @@ import { DsCaseListComponent } from './components/case-list.component';
 import { DsCaseShowComponent } from './components/case-show.component';
 import { DsCaseCreateComponent } from './components/case-create.component';
 import { DsCaseEditComponent } from './components/case-edit.component';
-import { DsSharedModule } from '../../../shared/shared.module';
 
 export const MICROSERVICE_NAME = 'cases';
 
@@ -23,7 +22,6 @@ export const MICROSERVICE_NAME = 'cases';
         CommonModule,
         FormsModule,
         NgxDatatableModule,
-        DsSharedModule,
         DsMicroservicesModule,
         routing,
     ],
