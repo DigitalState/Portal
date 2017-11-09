@@ -41,16 +41,20 @@ export class BaAmChart {
   }
 
   private _loadChartsLib():void {
-    BaThemePreloader.registerLoader(new Promise((resolve, reject) => {
-      let amChartsReadyMsg = 'AmCharts ready';
+    let amChartsReadyMsg = 'AmCharts ready';
 
-      if (AmCharts.isReady) {
-        resolve(amChartsReadyMsg);
-      } else {
-        AmCharts.ready(function () {
-          resolve(amChartsReadyMsg);
-        });
-      }
-    }));
+    // Since charts are not being used anyway, disable their loading hook in the preloader for the time being
+
+    // BaThemePreloader.registerLoader(new Promise((resolve, reject) => {
+    //   let amChartsReadyMsg = 'AmCharts ready';
+    //
+    //   if (AmCharts.isReady) {
+    //     resolve(amChartsReadyMsg);
+    //   } else {
+    //     AmCharts.ready(function () {
+    //       resolve(amChartsReadyMsg);
+    //     });
+    //   }
+    // }));
   }
 }
