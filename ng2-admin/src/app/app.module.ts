@@ -1,4 +1,4 @@
-import {ApplicationRef, NgModule} from '@angular/core';
+import { ApplicationRef, NgModule } from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MdCheckboxModule } from '@angular/material';
@@ -142,7 +142,7 @@ const storageLockerConfig = {
         InfiniteScrollModule,
         LaddaModule,
         PagesModule,
-        DsSharedModule,
+        DsSharedModule.forRoot(),
         DsMicroservicesModule,
         routing
     ],
