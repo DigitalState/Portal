@@ -1,32 +1,25 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class BaThemePreloader {
 
-  private static _loaders:Array<Promise<any>> = [];
+    private static loaders:Array<Observable<any>> = [];
 
-  public static registerLoader(method:Promise<any>):void {
-    BaThemePreloader._loaders.push(method);
-  }
+    public static registerLoader(loader: Observable<any>): void {
+        BaThemePreloader.loaders.push(loader);
+    }
 
-  public static clear():void {
-    BaThemePreloader._loaders = [];
-  }
+    public static clear(): void {
+        BaThemePreloader.loaders = [];
+    }
 
-  public static load():Promise<any> {
-    return new Promise((resolve, reject) => {
-      BaThemePreloader._executeAll(resolve);
-    });
-  }
-
-  private static _executeAll(done:Function):void {
-    setTimeout(() => {
-      Promise.all(BaThemePreloader._loaders).then((values) => {
-        done.call(null, values);
-
-      }).catch((error) => {
-        console.error(error);
-      });
-    });
-  }
+    /**
+     * Begins processing the loaders (observables) and waits for results in the same
+     * sequence in which there were registered.
+     * @return Observable<any> An observable with all results
+     */
+    public static load(): Observable<any> {
+        return Observable.forkJoin(BaThemePreloader.loaders);
+    }
 }
