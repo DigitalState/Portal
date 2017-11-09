@@ -1,4 +1,5 @@
 import { Component, ViewContainerRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { GlobalState } from './global.state';
 import { AppState } from './app.service';
@@ -20,63 +21,76 @@ import 'style-loader!./theme/initial.scss';
  * Top Level Component
  */
 @Component({
-  selector: 'app',
-  template: `      
-      <main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
-          <div class="additional-bg"></div>
-          <ds-microservices></ds-microservices>
-          <router-outlet></router-outlet>
-      </main>
-  `
+    selector: 'app',
+    template: `
+		<main [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
+			<div class="additional-bg"></div>
+			<ds-microservices></ds-microservices>
+			<router-outlet></router-outlet>
+		</main>
+    `
 })
 export class App {
 
-  isMenuCollapsed: boolean = false;
+    isMenuCollapsed: boolean = false;
 
-  constructor(private _state: GlobalState,
-              private appState: AppState,
-              private _imageLoader: BaImageLoaderService,
-              private _spinner: BaThemeSpinner,
-              private viewContainerRef: ViewContainerRef,
-              private themeConfig: BaThemeConfig,
-              private toastr: ToastsManager,
-              private cms: CmsApiService) {
+    constructor(private router: Router,
+                private _state: GlobalState,
+                private appState: AppState,
+                private _imageLoader: BaImageLoaderService,
+                private _spinner: BaThemeSpinner,
+                private viewContainerRef: ViewContainerRef,
+                private themeConfig: BaThemeConfig,
+                private toastr: ToastsManager,
+                private cms: CmsApiService) {
 
-      this.toastr.setRootViewContainerRef(viewContainerRef);
-      themeConfig.config();
-      this.loadImages();
-      this.loadContent();
+        this.toastr.setRootViewContainerRef(viewContainerRef);
+        themeConfig.config();
+        this.loadImages();
+        this.loadContent();
 
-      this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
-          this.isMenuCollapsed = isCollapsed;
-      });
-  }
+        this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
+            this.isMenuCollapsed = isCollapsed;
+        });
+    }
 
-  public ngAfterViewInit(): void {
-    // hide spinner once all loaders are completed
-    BaThemePreloader.load().then((values) => {
-      this._spinner.hide();
-    });
-  }
+    public ngAfterViewInit(): void {
+        // hide spinner once all loaders are completed
+        // The parameter `results` contains all results of observables
+        // in the order in which they registered in the preloader
+        BaThemePreloader.load().subscribe((results: Array<any>) => {
+            // console.log('Results', results);
+            this._spinner.hide();
+            this.router.initialNavigation();
+        }, (error) => {
+            console.error('Theme preloading error', error);
+        }, () => {
+            console.log('Theme preloading completed');
+        });
+    }
 
-  private loadImages(): void {
-    // register some loaders
-    // BaThemePreloader.registerLoader(this._imageLoader.load(layoutPaths.images.root + 'sky-bg.jpg'));
-  }
+    /**
+     * Preload images (if any)
+     */
+    private loadImages(): void {
+        // register some loaders
+        // BaThemePreloader.registerLoader(this._imageLoader.load(layoutPaths.images.root + 'sky-bg.jpg'));
+    }
 
+    /**
+     * Preload initial CMS content (texts, etc...)
+     */
     private loadContent(): void {
         const contentSlugs = {
             'texts[]': ['portal-title']
         };
 
-        let loaderPromise: Promise<any> = this.cms.getContentBySlugs(contentSlugs).flatMap(content => {
+        let cmsContentLoader: Observable<any> = this.cms.getContentBySlugs(contentSlugs).flatMap(content => {
+            // console.log('AppState in loadContent', this.appState);
             this.appState.set('appCmsContent', content);
-            console.log('AppState in loadContent', this.appState);
             return Observable.of(true);
-        }).toPromise().catch((rejectionReason: any) => {
-            console.warn('Unable to load initial SPA content from CMS. Reason: ', rejectionReason);
         });
 
-        BaThemePreloader.registerLoader(loaderPromise);
+        BaThemePreloader.registerLoader(cmsContentLoader);
     }
 }
