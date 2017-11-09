@@ -1,16 +1,19 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class BaImageLoaderService {
 
-  public load(src):Promise<any> {
+    public load(src: string): Observable<any> {
 
-    return new Promise((resolve, reject) => {
-      let img = new Image();
-      img.src = src;
-      img.onload = function() {
-        resolve('Image with src ' + src + ' loaded successfully.');
-      };
-    });
-  }
+        let img = new Image();
+        let onImageLoad = () => {
+            return Observable.of('Image with src ' + src + ' loaded successfully.');
+        };
+
+        img.src = src;
+        img.onload = onImageLoad;
+
+        return Observable.defer(onImageLoad);
+    }
 }
