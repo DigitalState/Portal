@@ -65,7 +65,7 @@
 
 	<md-progress-spinner [hidden]="!loadingStatuses" mode="indeterminate"></md-progress-spinner>
 
-	<div *ngIf="statuses.length" [hidden]="loadingStatuses" class="card entity-card additional-card animated fadeIn">
+	<div [hidden]="loadingStatuses" class="card entity-card additional-card animated fadeIn">
 		<div class="card-header">
 			<div class="row justify-content-between">
 				<div class="col-sm-12">
@@ -77,6 +77,11 @@
 		<div class="card-block entity-body entity-data">
 			<div class="row">
 				<div class="col-sm-12">
+
+					<div *ngIf="statuses.length === 0">
+						{{ 'ds.messages.emptyList' | translate }}
+					</div>
+
 					<div *ngFor="let status of statuses" class="well">
 						<div class="row">
 							<div class="col-sm-8">
