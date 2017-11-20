@@ -45,6 +45,11 @@ export class DsTaskListComponent extends DsBaseEntityListComponent implements Fo
         super.ngOnDestroy();
     }
 
+    setupQuery() {
+        super.setupQuery();
+        this.query.setFilter('order[priority]', 'desc');
+    }
+
     /**
      * Overriding `preprocessRowsData` to skip the filtering of entities without translated `title` properties.
      * @param fetchedData
