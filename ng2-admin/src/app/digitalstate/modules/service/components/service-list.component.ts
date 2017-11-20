@@ -21,4 +21,9 @@ export class DsServiceListComponent extends DsBaseEntityListComponent {
         super(injector, microserviceConfig);
         this.entityApiService = entityApiService;
     }
+
+    setupQuery() {
+        super.setupQuery();
+        this.query.setFilter('order[weight]', 'asc');
+    }
 }
