@@ -263,7 +263,9 @@
       "personaSaveSucceeded": "Persona information saved successfully.",
       "personaSaveFailed": "Failed to save persona information.",
       "identitySaveSucceeded": "Identity information saved successfully.",
-      "identitySaveFailed": "Failed to save identity information."
+      "identitySaveFailed": "Failed to save identity information.",
+      "copyUrlToClipboard": "Copy URL to clipboard",
+      "clipboardCopySucceeded": "Text copied to clipboard successfully"
     }
   }
 }

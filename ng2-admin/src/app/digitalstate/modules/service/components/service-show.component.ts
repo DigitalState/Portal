@@ -1,7 +1,9 @@
-import { Component, Injector } from '@angular/core';
+import { Component, Injector, Renderer } from '@angular/core';
 import { Params } from '@angular/router';
+import { DOCUMENT } from '@angular/platform-browser';
 
 import { NgbModalOptions, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
+import { ClipboardService } from 'ngx-clipboard';
 
 import Tabs from '../../../../shared/components/tabs'
 import { MicroserviceConfig } from '../../../../shared/providers/microservice.provider';
@@ -39,13 +41,18 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
     iFrameModalComponent: FormioModalFrameComponent;
     selectedScenario: any; // set upon clicking `Activate` on a scenario
 
+    protected document: any;
+
     constructor(injector: Injector,
+                protected renderer: Renderer,
+                protected clipboard: ClipboardService,
                 protected microserviceConfig: MicroserviceConfig,
                 entityApiService: EntityApiService,
                 protected formioApiService: FormioApiService) {
 
+        super(injector, microserviceConfig);
 
-    super(injector, microserviceConfig);
+        this.document = injector.get(DOCUMENT);
         this.entityApiService = entityApiService;
         this.formioApiService.setEntityApiService(entityApiService);
     }
@@ -166,6 +173,18 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
      */
     protected getScenarioLinkUrl(uuid: string): string {
         return this.microserviceConfig.settings.entrypoint.url + 'scenarios/' + uuid + '/url';
+    }
+
+    /**
+     * Copy a Scenario's absolute URL to clipboard.
+     * This is a click handler for the scenario's link button in the template.
+     * @param scenarioUuid String
+     */
+    protected copyScenarioUrlToClipboard(scenarioUuid: string): void {
+        const currentUrl = this.document.location.href;
+        const scenarioUrl = currentUrl.substr(0, currentUrl.indexOf('/show')) + '/show/scenarios/' + scenarioUuid;
+        this.clipboard.copyFromContent(scenarioUrl, this.renderer);
+        this.toastr.success(this.translate.instant('ds.messages.clipboardCopySucceeded'));
     }
 
     // // // Formio // // // // // // // // // // // // // // // // // // // // // // // //

@@ -21,6 +21,13 @@
 					<div id="tab-{{scenario.uuid}}" class="card p-0 tabs-container__panel animated fadeIn">
 						<div class="card-block">
 							<p class="lead ws-pre-line mt-2">{{scenario.description | entityTranslate}}</p>
+							<div class="actions btn-group pt-4">
+								<a class="btn btn-default"
+								   (click)="copyScenarioUrlToClipboard(scenario.uuid)"
+								   title="{{ 'ds.messages.copyUrlToClipboard' | translate }}">
+									<i class="fa fa-link"></i>
+								</a>
+							</div>
 							<div *ngIf="scenario.data && scenario.data[lang].button_text" class="actions btn-group pt-4">
 								<!--<button class="btn btn-primary" [routerLink]="['..', 'scenarios', scenario.uuid, 'activate']">-->
 									<!--{{'ds.microservices.entity.action.activate' | translate}}-->

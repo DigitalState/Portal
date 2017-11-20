@@ -263,7 +263,9 @@
       "personaSaveSucceeded": "Les informations personnalisées ont été enregistrées avec succès.",
       "personaSaveFailed": "Échec de l'enregistrement des informations personnelles.",
       "identitySaveSucceeded": "Les informations d'identité ont été enregistrées avec succès.",
-      "identitySaveFailed": "Échec de l'enregistrement des informations d'identité."
+      "identitySaveFailed": "Échec de l'enregistrement des informations d'identité.",
+      "copyUrlToClipboard": "Copier l'URL dans le presse-papiers",
+      "clipboardCopySucceeded": "Texte copié dans le presse-papiers avec succès"
     }
   }
 }
