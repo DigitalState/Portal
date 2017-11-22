@@ -1,0 +1,271 @@
+{
+  "test": "This is a translation test from fr.json",
+  "languages": {
+    "en": "Anglais",
+    "fr": "Français"
+  },
+  "login": {
+    "title": "Se connecter",
+    "organizationFormTitle": "Organisation Connexion",
+    "organizationLoginLink": "Connexion à l'organisation",
+    "signUpPrompt": "Vous n'avez pas de compte?",
+    "signUpLink": "S'inscrire!",
+    "email": "Email",
+    "username": "Nom d'utilisateur",
+    "password": "Mot de passe",
+    "signIn": "Se connecter",
+    "signOut": "Déconnexion",
+    "forgotPassword": "mot de passe oublié?",
+    "signInSocialPrompt": "Ou connectez-vous avec",
+    "signInFacebook": "Connectez-vous avec Facebook",
+    "signInTwitter": "Connectez-vous avec Twitter",
+    "signInGooglePlus": "Connectez-vous avec Google Plus",
+    "signInLinkedIn": "Connectez-vous avec LinkedIn"
+  },
+  "register": {
+    "title": "Enregistrement",
+    "loginPrompt": "Avez-vous déjà un compte ?",
+    "loginLink": "Se connecter",
+    "repeat": "Répéter",
+    "isOrgnization": "Register as organization",
+    "signUpButton": "S'inscrire"
+  },
+  "general": {
+    "statusUpdates": "Mises à jour de statut",
+    "home": "Accueil",
+    "form": "Form",
+    "forms": {
+      "option1": "Option 1",
+      "passwordsDoNotMatch": "Les mots de passe ne correspondent pas"
+    },
+    "menu": {
+      "dashboard": "Tableau",
+      "editors": "Editors",
+      "ck_editor": "CKEditor",
+      "components": "Components",
+      "tree_view": "Tree View",
+      "charts": "Charts",
+      "chartist_js": "Chartist.Js",
+      "ui_features": "UI Features",
+      "typography": "Typography",
+      "buttons": "Buttons",
+      "icons": "Icons",
+      "modals": "Modals",
+      "grid": "Grid",
+      "form_elements": "Form Elements",
+      "form_inputs": "Form Inputs",
+      "form_layouts": "Form Layouts",
+      "tables": "Tables",
+      "basic_tables": "Basic Tables",
+      "smart_tables": "Smart Tables",
+      "maps": "Maps",
+      "google_maps": "Google Maps",
+      "leaflet_maps": "Leaflet Maps",
+      "bubble_maps": "Bubble Maps",
+      "line_maps": "Line Maps",
+      "pages": "Pages",
+      "login": "Login",
+      "register": "Register",
+      "menu_level_1": "Menu Level 1",
+      "menu_level_1_1": "Menu Level 1.1",
+      "menu_level_1_2": "Menu Level 1.2",
+      "menu_level_1_2_1": "Menu Level 1.2.1",
+      "external_link": "External Link",
+
+      "myAccount": "Mon compte",
+      "profile": "Profil",
+      "serviceDirectory": "Répertoire des services",
+      "directory": "Directoire A-Z",
+      "services": "Services",
+      "scenarios": "Scenarios",
+      "submissions": "Submissions",
+      "cases": "Affaires",
+      "assets": "Atouts",
+      "topics": "Sujets",
+      "taskDirectory": "Répertoire des tâches",
+      "tasks": "Tâches",
+      "records": "Enregistrements",
+      "interactions": "Interactions",
+      "communications": "Communications",
+      "individuals": "Personnes",
+      "identities": "Identités",
+      "lifeEvents": "Evénements de la vie",
+      "secureDocuments": "Documents sécurisés",
+      "messages": "Messages",
+      "settings": "Paramètres",
+
+      "scenario_activation": "Activation du scénario"
+    },
+    "created_with": "Created with",
+    "created": "Créé",
+    "due": "Dû",
+    "more": "Plus"
+  },
+  "dashboard": {
+    "acquisition_channels": "Acquisition Channels",
+    "users_by_country": "Users by Country",
+    "revenue": "Revenue",
+    "feed": "Feed",
+    "todo_list": "To Do List",
+    "calendar": "Calendar",
+    "new_visits": "New Visits",
+    "purchases": "Purchases",
+    "active_users": "Active Users",
+    "returned": "Returned",
+    "popular_app": {
+      "super_app": "Super App",
+      "most_popular_app": "Most Popular App",
+      "total_visits": "Total Visits",
+      "new_visits": "New Visits",
+      "sales": "Sales"
+    },
+    "todo": {
+      "task_todo": "Task to do.."
+    },
+    "traffic_chart": {
+      "view_total": "Views Total"
+    }
+  },
+  "tree_view": {
+    "title": "basic",
+    "programming": "Programming languages by programming paradigm",
+    "oop": "Object-oriented programming",
+    "java": "Java",
+    "c_plus_plus": "C++",
+    "c_sharp": "C#",
+    "prototype": "Prototype-based programming",
+    "java_script": "JavaScript",
+    "coffee_script": "CoffeeScript",
+    "lua": "Lua"
+  },
+  "chart": {
+    "lines": "Lines",
+    "bars": "Bars",
+    "simple_line_chart": "Simple line chart",
+    "line_chart": "Line chart with area",
+    "bi_polar_line_chart": "Bi-polar line chart with area only",
+    "simple_bar_chart": "Simple bar chart",
+    "multi_line_labels_bar_chart": "Multi-line labels bar chart",
+    "stacked_bar_chart": "Stacked bar chart",
+    "pies_and_donuts": "Pies & Donuts",
+    "simple_pie": "Simple Pie",
+    "pie_with_labels": "Pie with labels",
+    "donut": "Donut"
+  },
+  "datatable": {
+    "emptyMessage": "Aucune donnée à afficher",
+    "totalMessage": "total",
+    "selectedMessage": "sélectionné"
+  },
+  "ds": {
+    "language-switcher": {
+      "languages": {
+        "en": "English",
+        "fr": "Français"
+      }
+    },
+    "microservices": {
+      "entity": {
+        "types": {
+          "service": "Service",
+          "scenario": "Scénario",
+          "submission": "Soumission",
+          "case": "Cas",
+          "caseStatus": "État de cas",
+          "identity": "Identité",
+          "task": "Tâche",
+          "user": "Utilisateur",
+          "individual": "Individuel",
+          "staff": "Personnel",
+          "anonymous": "Anonyme",
+          "persona": "Persona"
+        },
+        "property": {
+          "createdAt": "Créé à",
+          "updatedAt": "Mis à jour",
+          "dueAt": "Dû à",
+          "followUpAt": "Suivi à",
+          "priority": "Priorité",
+          "uuid": "UUID",
+          "title": "Titre",
+          "form": "Form",
+          "presentation": "Présentation",
+          "description": "Description",
+          "username": "Nom d'utilisateur",
+          "customId": "ID personnalisé",
+          "state": "State",
+          "open": "Ouvert",
+          "closed": "Fermé",
+          "identity": "Identité",
+          "identityUuid": "Identité UUID",
+          "channel": "Canal",
+          "data": "Data",
+          "status": "Statut",
+          "processDefinitionKey": "Clé de définition de processus",
+          "first_name": "Prénom",
+          "last_name": "Nom de famille",
+          "suffix": "Suffixe",
+          "address": "Adresse",
+          "phone": "Téléphone",
+          "email": "Email",
+          "birth_date": "Date de naissance"
+        },
+        "action": {
+          "create": "Créer",
+          "show": "Afficher",
+          "edit": "Modifier",
+          "delete": "Supprimez",
+          "refresh": "Recharger",
+          "activate": "Activer",
+          "save": "Enregistrer",
+          "cancel": "Annuler",
+          "back": "Retour",
+          "actions": "Actes"
+        },
+        "validation": {
+          "required": "Champs requis.",
+          "minlength": "Minimum of {{chars}} characters."
+        },
+        "scenario": {
+          "activationFailure": "<h4>Activation echouée</h4> <div>Please try again later.</div>",
+          "submissionFailure": "<h4>Submission failed!</h4> <div>Please try again later or use a different method.</div>",
+          "submissionSuccess": "<h4>Soumission réussie!</h4> <div>Vous recevrez bientôt un e-mail de suivi.</div>"
+        },
+        "task": {
+          "activationFailure": "<h4>Activation echouée</h4>",
+          "submissionFailure": "<h4>Submission echouée</h4>",
+          "submissionSuccess": "<h4>Soumission réussie</h4>",
+          "claimSuccess": "Tâche réclamée avec succès",
+          "claimFailure": "Échec de la réclamation de la tâche",
+          "unclaimSuccess": "Tâche non réclamée avec succès",
+          "unclaimFailure": "Échec de la non-responsabilité de la tâche"
+        }
+      }
+    },
+    "messages": {
+      "http": {
+        "400": "Données invalides",
+        "404": "Entité introuvable",
+        "500": "Erreur du serveur"
+      },
+      "emptyList": "Aucun élément trouvé",
+      "registrationSucceeded": "Vous avez été enregistré avec succès.",
+      "registrationFailed": "Échec de l'enregistrement",
+      "loginSucceeded": "Vous avez été connecté avec succès.",
+      "loginFailed": "Échec de la connexion.",
+      "formActivationError": "Erreur d'activation de formulaire",
+      "formSubmissionError": "Erreur de soumission de formulaire",
+      "formInvalid": "Le formulaire contient des champs non valides.",
+      "entitySaveSucceeded": "Entité enregistrée avec succès",
+      "entitySaveFailed": "Impossible d'enregistrer l'entité",
+      "entityDeletionSucceeded": "Entité supprimée avec succès",
+      "entityDeletionFailed": "Échec de la suppression de l'entité",
+      "personaSaveSucceeded": "Les informations personnalisées ont été enregistrées avec succès.",
+      "personaSaveFailed": "Échec de l'enregistrement des informations personnelles.",
+      "identitySaveSucceeded": "Les informations d'identité ont été enregistrées avec succès.",
+      "identitySaveFailed": "Échec de l'enregistrement des informations d'identité.",
+      "copyUrlToClipboard": "Copier l'URL dans le presse-papiers",
+      "clipboardCopySucceeded": "Texte copié dans le presse-papiers avec succès"
+    }
+  }
+}

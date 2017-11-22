@@ -1,0 +1,32 @@
+label {
+  font-size: $font-size-small;
+  font-weight: normal;
+}
+
+.form-control {
+  color: #666666;
+  border: 1px solid #cbcbcb;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-shadow: none;
+  font-size: 1.0rem;
+  padding: 0.75rem 0.75rem;
+}
+
+.form-control.textarea {
+  height: 96px;
+}
+
+.choices {
+  .form-control {
+    padding-top: 0.25rem;
+  }
+}
+
+.radio label, .checkbox label {
+  font-size: $font-size-base;
+}
+
+.help-block {
+  font-size: $font-size-small;
+}

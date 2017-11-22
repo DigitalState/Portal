@@ -1,0 +1,25 @@
+
+//.choices__list {
+//  line-height: 2.25rem;
+//}
+
+.choices__input {
+  font-size: inherit;
+}
+
+.choices__list--multiple {
+  .choices__item {
+    font-size: inherit;
+    background-color: $brand-primary;
+    border-color: $btn-primary-border;
+
+    &.is-highlighted {
+      background-color: $brand-primary-darker;
+    }
+  }
+}
+
+
+.choices__list--dropdown .choices__item {
+  font-size: $font-size-small;
+}
