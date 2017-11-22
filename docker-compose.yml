@@ -1,12 +1,16 @@
 version: '2.1'
 
 services:
-  ng2admin:
-    build: .
-    ports:
-      - '8000:8080'
-#      - '3000:3000'
-    volumes:
-      - './ng2-admin/src:/var/www/src'
-    working_dir: '/var/www'
-    command: 'bash -c /var/www/run-prod.sh'
+    portal_ng2admin:
+        build: .
+        volumes:
+            - '${DIRECTORY}/ng2-admin/src:/var/www/src'
+        environment:
+            - VIRTUAL_HOST
+        working_dir: /var/www
+        command: bash -c /var/www/run-prod.sh
+
+networks:
+    default:
+        external:
+          name: '${PROXY_NETWORK}'
