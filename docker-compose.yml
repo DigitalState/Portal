@@ -8,6 +8,21 @@ services:
         environment:
             - VIRTUAL_HOST
             - DISCOVERY
+        extra_hosts:
+            - 'api.assets.ds:${PROXY_HOST}'
+            - 'api.authentication.ds:${PROXY_HOST}'
+            - 'api.camunda.ds:${PROXY_HOST}'
+            - 'api.cases.ds:${PROXY_HOST}'
+            - 'api.cms.ds:${PROXY_HOST}'
+            - 'api.discovery.ds:${PROXY_HOST}'
+            - 'api.formio.ds:${PROXY_HOST}'
+            - 'api.identities.ds:${PROXY_HOST}'
+            - 'api.interactions.ds:${PROXY_HOST}'
+            - 'api.logs.ds:${PROXY_HOST}'
+            - 'api.records.ds:${PROXY_HOST}'
+            - 'api.services.ds:${PROXY_HOST}'
+            - 'api.tasks.ds:${PROXY_HOST}'
+            - 'api.topics.ds:${PROXY_HOST}'
         working_dir: /var/www
 #        command: bash -c /var/www/run-prod.sh
 
