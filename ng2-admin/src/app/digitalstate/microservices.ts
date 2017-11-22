@@ -7,18 +7,15 @@ export class MicroservicesDefinition {
     }
 
     getAll() {
-        let scheme = this.dsEnv.msUrlScheme;
-        let host = this.dsEnv.msHost;
-        let pathPrefix = 'app_dev.php';
-
-        // host = 'localhost';
+        const scheme = this.dsEnv.msUrlScheme;
+        const dsDiscoveryEnv = this.dsEnv.dsDiscoveryEnv;
+        const pathPrefix = 'app_dev.php';
 
         return {
             'authentication': {
                 label: 'Authentication',
                 entrypoint: {
-                    url: `${scheme}://api.authentication.ds/${pathPrefix}/`, // Formerly `:8010`
-                    host: 'api.authentication.ds',
+                    url: scheme + '://' + (dsDiscoveryEnv['authentication'] ? dsDiscoveryEnv['authentication'].host : '') + '/' + pathPrefix + '/', // Formerly `:8010`
                 },
                 paths: {
                     registration: 'registrations',
@@ -30,8 +27,7 @@ export class MicroservicesDefinition {
             'cms': {
                 label: 'CMS',
                 entrypoint: {
-                    url: `${scheme}://api.cms.ds/${pathPrefix}/`, // Formerly `:8056`
-                    host: 'api.cms.ds',
+                    url: scheme + '://' + (dsDiscoveryEnv['cms'] ? dsDiscoveryEnv['cms'].host : '') + '/' + pathPrefix + '/', // Formerly `:8056`
                 },
                 paths: {
                     content: 'content',
@@ -42,8 +38,7 @@ export class MicroservicesDefinition {
             'services': {
                 label: 'Services',
                 entrypoint: {
-                    url: `${scheme}://api.services.ds/${pathPrefix}/`, // Formerly `:8051`
-                    host: 'api.services.ds',
+                    url: scheme + '://' + (dsDiscoveryEnv['services'] ? dsDiscoveryEnv['services'].host : '') + '/' + pathPrefix + '/', // Formerly `:8051`
                 },
                 entities: {
                     'services': {
@@ -193,8 +188,7 @@ export class MicroservicesDefinition {
             'cases': {
                 label: 'Cases',
                 entrypoint: {
-                    url: `${scheme}://api.cases.ds/${pathPrefix}/`, // Formerly `:8050`
-                    host: 'api.cases.ds',
+                    url: scheme + '://' + (dsDiscoveryEnv['cases'] ? dsDiscoveryEnv['cases'].host : '') + '/' + pathPrefix + '/', // Formerly `:8050`
                 },
                 entities: {
                     'cases': {
@@ -280,8 +274,7 @@ export class MicroservicesDefinition {
             'assets': {
                 label: 'Assets',
                 entrypoint: {
-                    url: `${scheme}://api.assets.ds/${pathPrefix}/`, // Formerly `:8053`
-                    host: 'api.assets.ds',
+                    url: scheme + '://' + (dsDiscoveryEnv['assets'] ? dsDiscoveryEnv['assets'].host : '') + '/' + pathPrefix + '/', // Formerly `:8053`
                 },
                 entities: {
                     'assets': {
@@ -301,8 +294,7 @@ export class MicroservicesDefinition {
             'topics': {
                 label: 'Topics',
                 entrypoint: {
-                    url: `${scheme}://api.topics.ds/${pathPrefix}/`, // Formerly `:8016`
-                    host: 'api.topics.ds',
+                    url: scheme + '://' + (dsDiscoveryEnv['topics'] ? dsDiscoveryEnv['topics'].host : '') + '/' + pathPrefix + '/', // Formerly `:8016`
                 },
                 entities: {
                     'topics': {
@@ -322,8 +314,7 @@ export class MicroservicesDefinition {
             'tasks': {
                 label: 'Tasks',
                 entrypoint: {
-                    url: `${scheme}://api.tasks.ds/${pathPrefix}/`, // Formerly `:8060`
-                    host: 'api.tasks.ds',
+                    url: scheme + '://' + (dsDiscoveryEnv['tasks'] ? dsDiscoveryEnv['tasks'].host : '') + '/' + pathPrefix + '/', // Formerly `:8060`
                 },
                 entities: {
                     'tasks': {
@@ -414,8 +405,7 @@ export class MicroservicesDefinition {
             'records': {
                 label: 'Records',
                 entrypoint: {
-                    url: `${scheme}://api.records.ds/${pathPrefix}/`, // Formerly `:8052`
-                    host: 'api.records.ds',
+                    url: scheme + '://' + (dsDiscoveryEnv['records'] ? dsDiscoveryEnv['records'].host : '') + '/' + pathPrefix + '/', // Formerly `:8052`
                 },
                 entities: {
                     'records': {
@@ -435,8 +425,7 @@ export class MicroservicesDefinition {
             'interactions': {
                 label: 'Interactions',
                 entrypoint: {
-                    url: `${scheme}://api.interactions.ds/${pathPrefix}/`, // Formerly `:8017`
-                    host: 'api.interactions.ds',
+                    url: scheme + '://' + (dsDiscoveryEnv['interactions'] ? dsDiscoveryEnv['interactions'].host : '') + '/' + pathPrefix + '/', // Formerly `:8017`
                 },
                 entities: {
                     'communications': {
@@ -505,8 +494,7 @@ export class MicroservicesDefinition {
             'identities': {
                 label: 'Identities',
                 entrypoint: {
-                    url: `${scheme}://api.identities.ds/${pathPrefix}/`, // Formerly `:8054`
-                    host: 'api.identities.ds',
+                    url: scheme + '://' + (dsDiscoveryEnv['identities'] ? dsDiscoveryEnv['identities'].host : '') + '/' + pathPrefix + '/', // Formerly `:8054`
                 },
                 entities: {
                     'individuals': {
