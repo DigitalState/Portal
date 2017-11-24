@@ -1,10 +1,8 @@
 version: '2.1'
 
 services:
-    portal_ng2admin:
+    ng2admin:
         build: .
-#        volumes:
-#            - '${DIRECTORY}/ng2-admin/src:/var/www/src'
         environment:
             - VIRTUAL_HOST
             - DISCOVERY
@@ -24,7 +22,6 @@ services:
             - 'api.tasks.ds:${PROXY_HOST}'
             - 'api.topics.ds:${PROXY_HOST}'
         working_dir: /var/www
-#        command: bash -c /var/www/run-prod.sh
 
 networks:
     default:
