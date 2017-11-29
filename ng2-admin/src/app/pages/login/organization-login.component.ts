@@ -24,8 +24,4 @@ export class OrganizationLogin extends Login {
         this.authEndpoint = this.appState.get('microservices').authentication.paths.orgnaization;
     }
 
-    ngOnInit() {
-        super.ngOnInit();
-        console.log('This is the OrgnizationLogin component');
-    }
 }
