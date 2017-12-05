@@ -1,4 +1,0 @@
-[submodule "ng2-admin/src/app/shared"]
-	path = ng2-admin/src/app/shared
-	url = https://baddlan@github.com/DigitalState/Ui.git
-	branch = develop
