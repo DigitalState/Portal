@@ -1,0 +1,32 @@
+<div class="modal-header container-fluid">
+	<div class="row position-relative">
+		<div class="col position-absolute">
+			<button class="close btn btn-with-icon ml-auto" aria-label="Close" (click)="closeModal()">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="col-11 col-sm-8">
+			<h4 class="modal-title">{{ modalHeader }}</h4>
+			<div class="modal-breadcrumbs">{{ modalBreadcrumbs }}</div>
+		</div>
+		<div class="col-sm-3 mt-3 mt-sm-0">
+			<ds-language-switcher-dropdown
+					*ngIf="isFormioFormReady"
+					(onLanguageChange)="switchLanguage($event)"
+					class="float-sm-right">
+			</ds-language-switcher-dropdown>
+		</div>
+	</div>
+</div>
+<div class="modal-body">
+	<md-progress-spinner [hidden]="isFormioFormReady || modalContent" mode="indeterminate"></md-progress-spinner>
+	<div class="modal-body-content container-fluid" [innerHTML]="modalContent">
+		{{modalContent}}
+	</div>
+	<iframe #iframe [src]="frameSrc"></iframe>
+</div>
+<div *ngIf="actions" class="modal-footer">
+	<button *ngFor="let action of actions" class="btn confirm-btn" (click)="closeModal(action)">{{ action.label }}
+	</button>
+	<!--<button class="btn btn-primary confirm-btn" (click)="closeModal()">Save changes</button>-->
+</div>
