@@ -7,8 +7,14 @@
 
 // Styles specific to the Organization Login component
 
+.individual-login {
+  #individual-link {
+    display: none;
+  }
+}
+
 .organization-login {
-  #organiztion-link-container {
+  #organization-link {
     display: none;
   }
 }

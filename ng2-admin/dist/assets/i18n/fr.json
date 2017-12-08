@@ -6,6 +6,8 @@
   },
   "login": {
     "title": "Se connecter",
+    "individualFormTitle": "Connexion individuelle",
+    "individualLoginLink": "Connexion individuelle",
     "organizationFormTitle": "Organisation Connexion",
     "organizationLoginLink": "Connexion à l'organisation",
     "signUpPrompt": "Vous n'avez pas de compte?",

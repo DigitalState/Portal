@@ -17,6 +17,7 @@ import { Subscription } from 'rxjs/Subscription';
     templateUrl: './login.html',
     host: {
         id: 'login',
+        class: 'individual-login'
     }
 })
 export class Login extends DsCmsContentSubscriber {

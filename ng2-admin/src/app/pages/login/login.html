@@ -59,10 +59,11 @@
       </div>
     </div>
 
-    <div id="organiztion-link-container" class="auth-sep mt-0">
+    <div class="auth-sep mt-0">
       <span>
-        <span translate>
-          <a routerLink="/login/organization">{{ 'login.organizationLoginLink' | translate }}</a>
+        <span>
+          <a id="organization-link" routerLink="/login/organization">{{ 'login.organizationLoginLink' | translate }}</a>
+          <a id="individual-link" routerLink="/login">{{ 'login.individualLoginLink' | translate }}</a>
         </span>
       </span>
     </div>

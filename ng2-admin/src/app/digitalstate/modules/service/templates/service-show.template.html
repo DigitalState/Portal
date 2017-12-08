@@ -5,7 +5,7 @@
 <md-progress-spinner [hidden]="entity" mode="indeterminate"></md-progress-spinner>
 
 <div *ngIf="entity" class="pb-4">
-	<p class="lead ws-pre-line">{{ entity.description[lang] }}</p>
+	<p class="lead ws-pre-line">{{ entity.presentation[lang] }}</p>
 </div>
 
 <div *ngIf="entity && scenarios.length > 0" class="animated fadeIn">
@@ -20,7 +20,7 @@
 					</h2>
 					<div id="tab-{{scenario.uuid}}" class="card p-0 tabs-container__panel animated fadeIn">
 						<div class="card-block">
-							<p class="lead ws-pre-line mt-2">{{scenario.description | entityTranslate}}</p>
+							<p class="lead ws-pre-line mt-2">{{ scenario.presentation[lang] }}</p>
 							<div class="actions btn-group pt-4">
 								<a class="btn btn-default"
 								   (click)="copyScenarioUrlToClipboard(scenario.uuid)"

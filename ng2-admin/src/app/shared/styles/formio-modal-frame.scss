@@ -1,0 +1,69 @@
+@import "../../../app/theme/sass/conf/conf";
+
+.modal.formio-modal-frame {
+  font: 18px/1.5em $font-family;
+  color: $default-text;
+
+  .modal-dialog {
+    max-width: 100%;
+    margin: 0px;
+    height: 100%;
+    padding-top: 65px;
+
+    @include media-breakpoint-up(sm) {
+      max-width: 100%;
+      margin: 0px;
+      height: 100%;
+      padding-top: 65px;
+    }
+
+    .modal-content {
+      height: 100%;
+
+      .formio-modal-frame-component {
+        @include display(flex);
+        @include flex-direction(column);
+        height: 100%;
+
+        .modal-header {
+          display: block;
+          margin: 0;
+          padding: 15px 15px 30px;
+
+          .modal-title {
+
+          }
+          .close {
+
+          }
+        }
+
+        .modal-body {
+          @include display(flex);
+          @include flex-direction(column);
+          padding: 0px;
+
+          .modal-body-content {
+
+          }
+          .ds-language-switcher-dropdown {
+            @include display(flex);
+            @include align-self(flex-end);
+
+            .dropdown-menu {
+              min-width: 7.5rem;
+              left: auto;
+              right: 0;
+            }
+          }
+
+          iframe {
+            @include flex-grow(1);
+            border: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
