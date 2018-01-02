@@ -83,7 +83,7 @@ export class App {
     private loadContent(): void {
         const contentSlugs = {
             'texts[]': ['portal-title'],
-            'files[]': ['portal-logo-login', 'xportal-logo-header'],
+            'files[]': ['portal-logo-login', 'portal-logo-header'],
         };
 
         let cmsContentLoader: Observable<any> = this.cms.getContentBySlugs(contentSlugs).flatMap(content => {
