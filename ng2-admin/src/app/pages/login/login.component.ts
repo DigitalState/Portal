@@ -33,6 +33,7 @@ export class Login extends DsCmsContentSubscriber {
 
     protected formTitle: string = 'login.title'; // Translation key
     protected appTitle: any; // Translation Object
+    protected appLogo: any; // Translated String
 
     protected router: Router;
     protected route: ActivatedRoute;
@@ -91,8 +92,8 @@ export class Login extends DsCmsContentSubscriber {
     }
 
     protected onAppCmsContent() {
-        console.log('appCmsContent: ', this.appState.get('appCmsContent'));
         this.appTitle = this.appState.get('appCmsContent', {})['texts']['portal-title'];
+        this.appLogo = this.appState.get('appCmsContent', {})['files']['portal-logo-login'];
     }
 
     onSubmit(values):void {

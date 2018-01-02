@@ -1,9 +1,9 @@
 <div class="page-top clearfix" baScrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)"
      [ngClass]="{scrolled: isScrolled}">
   <a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
-  <a routerLink="/pages/dashboard" class="al-logo clearfix">
-    <!--<span>ng2-</span>admin-->
-    <img src="{{ ( 'app/digitalstate-logo-dark.png' | baAppPicture ) }}" />
+  <a routerLink="/pages/dashboard" class="al-logo clearfix" [hidden]="!appLogo || !appLogo[lang]">
+    <!--<img src="{{ ( 'app/digitalstate-logo-dark.png' | baAppPicture ) }}" />-->
+    <img [src]="'data:image/png;base64,' + (appLogo ? appLogo[lang]: '')" />
   </a>
 
   <!--<div class="search">-->
