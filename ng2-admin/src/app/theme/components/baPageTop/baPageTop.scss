@@ -23,10 +23,11 @@ $menu-button-trigger-width: 50px;
     margin-right: 15%;
 
     img {
-      width: 100%;
+      //width: 100%;
       height: auto;
       margin-left: 0;
-      max-width: 255px;
+      max-width: 225px;
+      max-height: 60px;
     }
   }
 
@@ -280,6 +281,7 @@ a.collapse-menu-link {
         width: auto;
         //height: 26px;
         margin-left: 16px;
+        max-width: 255px;
       }
     }
   }
