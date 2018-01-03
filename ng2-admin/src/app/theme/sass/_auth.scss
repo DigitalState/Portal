@@ -34,7 +34,8 @@ $font-size-default: 18px;
 
     img {
       margin-left: 0;
-      height: 26px;
+      //height: 26px;
+      max-width: 255px;
     }
   }
 }

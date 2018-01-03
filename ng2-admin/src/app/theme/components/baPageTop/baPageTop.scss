@@ -19,13 +19,14 @@ $menu-button-trigger-width: 50px;
   a.al-logo {
     @include centerer(false, true);
     left: 0px;
-    margin-left: 15%;
+    margin-left: 50px;
     margin-right: 15%;
 
     img {
       width: 100%;
       height: auto;
       margin-left: 0;
+      max-width: 255px;
     }
   }
 
