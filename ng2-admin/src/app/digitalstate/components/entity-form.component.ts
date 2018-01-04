@@ -19,6 +19,7 @@ import 'rxjs/Rx';
 })
 export class DsEntityFormComponent implements AfterContentInit, AfterViewChecked {
 
+    @Input() pageTitle: string;
     @Input() headerTitle: string;
     @Input() headerSubtitle: string;
     @Input() entity: any;

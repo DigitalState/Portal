@@ -18,13 +18,28 @@ import { Observable } from 'rxjs/Observable';
 export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
 
     /**
-     * Determines the default visibilty of action buttons
-     * @type { [s: string]: boolean }
+     * Descriptor of entity action buttons in the page.
+     * @type  Array<object>
      */
-    actions: { [s: string]: boolean } = {
-        edit: true,
-        delete: true,
-    };
+    actions: Array<any> = [
+        {
+            name: 'edit',
+            title: 'ds.microservices.entity.action.edit',
+            class: 'btn btn-primary btn-with-icon',
+            iconClass: 'ion-edit',
+            visible: true,
+            routerLink: ['../edit'],
+            region: 'header',
+        },
+        {
+            name: 'delete',
+            title: 'ds.microservices.entity.action.delete',
+            class: 'btn btn-danger btn-with-icon',
+            iconClass: 'ion-android-delete',
+            visible: true,
+            region: 'footer',
+        },
+    ];
 
     /**
      * A shortcut to the entity's metadata from the MicroserviceConfig.
@@ -132,7 +147,25 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
         this.toastr.error(message);
     }
 
-    onDelete(event) {
+    /**
+     * Handle header actions.
+     * By default this method attempts to use the routerLink (if any) in the action and navigate to it.
+     * @param event { action: object }
+     */
+    protected handleEntityEvent(event: any) {
+        switch (event.action.name) {
+            case 'delete':
+                this.onDelete();
+                break;
+            default:
+                if (event.action.routerLink) {
+                    this.router.navigate(event.action.routerLink, { relativeTo: this.route });
+                }
+                break;
+        }
+    }
+
+    onDelete() {
         const modal = this.modal.open(DefaultModal, {size: 'lg'});
         modal.componentInstance.modalHeader = 'Confirm';
         modal.componentInstance.modalContent = `Are you sure you want to delete this entity?`;
@@ -203,5 +236,22 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
                 this.pageTitle = this.entity.title;
             }
         }
+    }
+
+    /**
+     * Change visibility of action buttons.
+     * @param actionName
+     * @param isVisible
+     */
+    protected setActionVisibility(actionName: string, isVisible: boolean) {
+        this.actions = this.actions.map(action => {
+            switch (action.name) {
+                case actionName:
+                    action.visible = isVisible;
+                    break;
+            }
+
+            return action;
+        });
     }
 }
