@@ -19,6 +19,7 @@ export class BaPageTop extends DsCmsContentSubscriber {
 
   protected appTitle: any;
   protected appLogo: any;
+  protected appLogoType: any;
 
   constructor(private injector: Injector,
               private _state: GlobalState,
@@ -33,7 +34,10 @@ export class BaPageTop extends DsCmsContentSubscriber {
 
   protected onAppCmsContent() {
     this.appTitle = this.appState.get('appCmsContent', {})['texts']['portal-title'];
-    this.appLogo = this.appState.get('appCmsContent', {})['files']['portal-logo-header'];
+
+    const appLogoObj = this.appState.get('appCmsContent', {})['files']['portal-logo-header'];
+    this.appLogo = appLogoObj && appLogoObj.hasOwnProperty('presentation') ? appLogoObj['presentation'] : null;
+    this.appLogoType = appLogoObj && appLogoObj.hasOwnProperty('type') ? appLogoObj['type'] : 'image/png';
   }
 
   public toggleMenu() {

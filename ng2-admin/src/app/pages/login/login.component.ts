@@ -34,6 +34,7 @@ export class Login extends DsCmsContentSubscriber {
     protected formTitle: string = 'login.title'; // Translation key
     protected appTitle: any; // Translation Object
     protected appLogo: any; // Translated String
+    protected appLogoType;
 
     protected router: Router;
     protected route: ActivatedRoute;
@@ -93,7 +94,10 @@ export class Login extends DsCmsContentSubscriber {
 
     protected onAppCmsContent() {
         this.appTitle = this.appState.get('appCmsContent', {})['texts']['portal-title'];
-        this.appLogo = this.appState.get('appCmsContent', {})['files']['portal-logo-login'];
+
+        const appLogoObj = this.appState.get('appCmsContent', {})['files']['portal-logo-login'];
+        this.appLogo = appLogoObj &&  appLogoObj.hasOwnProperty('presentation') ? appLogoObj['presentation'] : null;
+        this.appLogoType = appLogoObj && appLogoObj.hasOwnProperty('type') ? appLogoObj['type'] : 'image/png';
     }
 
     onSubmit(values):void {

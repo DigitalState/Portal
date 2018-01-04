@@ -3,7 +3,7 @@
   <a href (click)="toggleMenu()" class="collapse-menu-link ion-navicon"></a>
   <a routerLink="/pages/dashboard" class="al-logo clearfix" [hidden]="!appLogo || !appLogo[lang]">
     <!--<img src="{{ ( 'app/digitalstate-logo-dark.png' | baAppPicture ) }}" />-->
-    <img [src]="'data:image/png;base64,' + (appLogo ? appLogo[lang]: '')" />
+    <img [src]="'data:' + appLogoType + ';base64,' + (appLogo ? appLogo[lang]: 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')" />
   </a>
 
   <!--<div class="search">-->
