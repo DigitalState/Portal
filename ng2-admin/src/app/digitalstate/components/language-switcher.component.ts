@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
 		<div *ngIf="languages" class="dropdown al-dropdown">
 			<a class="toggle-link dropdown-toggle" id="language-dd" data-toggle="dropdown" aria-expanded="false" tabindex="0">
 				<i class="fa fa-globe"></i>
-				<span class="language-name">{{currentLanguage.name}}</span>
+				<span class="language-name">{{ currentLanguage.name | translate }}</span>
 			</a>
 			<ul class="dropdown-menu top-dropdown-menu language-dropdown" aria-labelledby="language-dd">
 				<li *ngFor="let lang of getListedLanguages()" class="dropdown-item">
 					<a href="javascript:;" (click)="switchLang(lang.key)">
 						<!--<i class="fa fa-flag"></i>-->
-						{{lang.name}}
+						{{ lang.name | translate }}
 					</a>
 				</li>
 			</ul>
