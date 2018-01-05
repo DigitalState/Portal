@@ -1,51 +1,23 @@
 <form #entityForm="ngForm" *ngIf="active" (ngSubmit)="onSubmit()">
-	<div *ngIf="entity" class="card entity-card animated fadeIn">
-		<div class="card-header">
-			<div class="row justify-content-between">
-				<div class="col-6">
-					<back-link [link]="backLink"></back-link>
-					<h3 class="card-title" translate="" ng-reflect-translate="">{{headerTitle}}</h3>
-					<h4 class="card-subtitle" translate="" ng-reflect-translate="">{{headerSubtitle}}</h4>
-				</div>
-				<div class="col-6">
-					<div class="container">
-						<ul class="row btn-list clearfix float-right">
-							<li class="col-12">
-								<button type="submit" [disabled]="!entityForm.form.valid" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-circled">{{'ds.microservices.entity.action.save' | translate}}</i></button>
-								<button type="button" (click)="cancelForm()" class="btn btn-secondary">{{'ds.microservices.entity.action.cancel' | translate}}</button>
-							</li>
-							<!--li class="col-6 align-right">
-								<button *ngIf="!isNew" (click)="deleteEntity()" type="button" class="btn btn-danger btn-with-icon"><i class="ion-android-delete">Delete</i></button>
-							</li-->
-						</ul>
-					</div>
-				</div>
-			</div>
+	<div class="d-flex mb-4">
+		<div>
+			<h1 class="al-title">{{ pageTitle | translate }}</h1>
+			<back-link *ngIf="backLink" [link]="backLink" class="pb-0"></back-link>
 		</div>
 
-		<div class="card-block">
-			<div class="row">
-				<div class="col">
-					<!-- Form Language Switch -->
-					<div class="dropdown">
-						<a class="btn btn-outline-secondary dropdown-toggle" id="form-language-dd" data-toggle="dropdown" aria-expanded="false" tabindex="0">
-							<i class="fa fa-globe"></i>
-							<span class="form-language-name">{{formLanguage.name}}</span>
-						</a>
-						<ul class="dropdown-menu form-language-dropdown" aria-labelledby="form-language-dd">
-							<li *ngFor="let lang of getListedLanguages()" class="dropdown-item">
-								<a href="javascript:" (click)="switchLang(lang.key)">
-									<!--<i class="fa fa-flag"></i>-->
-									{{lang.name}}
-								</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
+		<span class="ml-auto">
+			<button type="submit" class="btn btn-primary btn-with-icon"><i class="ion-checkmark-circled">{{'ds.microservices.entity.action.save' | translate}}</i></button>
+			<button type="button" (click)="cancelForm()" class="btn btn-secondary">{{'ds.microservices.entity.action.cancel' | translate}}</button>
+		</span>
+	</div>
+
+	<div *ngIf="entity">
+		<!-- Form Language Switch -->
+		<div class="position-relative zindex-1">
+			<ds-language-switcher-tabs (onLanguageChange)="switchLang($event)"></ds-language-switcher-tabs>
 		</div>
-
-		<ng-content></ng-content>
-
+		<div class="card entity-card animated fadeIn">
+			<ng-content></ng-content>
+		</div>
 	</div>
 </form>
