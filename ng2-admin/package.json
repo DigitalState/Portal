@@ -57,6 +57,7 @@
     "ng2-smart-table": "1.0.3",
     "ng2-toastr": "4.1.2",
     "ng2-tree": "2.0.0-alpha.5",
+    "ng2-validation": "4.2.0",
     "ngx-clipboard": "8.1.0",
     "ngx-infinite-scroll": "^0.5.2",
     "ngx-pipes": "1.6.1",
