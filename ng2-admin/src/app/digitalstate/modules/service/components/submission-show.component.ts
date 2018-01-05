@@ -27,7 +27,7 @@ export class DsSubmissionShowComponent extends DsBaseEntityShowComponent {
     }
 
     ngOnInit(): any {
-        this.actions.edit = false;
+        // this.actions.edit = false;
 
         return super.ngOnInit();
     }

@@ -28,11 +28,11 @@ export class DsSubmissionListComponent extends DsBaseEntityListComponent {
 
 
     ngOnInit(): any {
-        this.datatableAttributes.headerHeight = 45;
-
-        this.actions.refresh = false;
-        this.actions.create = false;
-        this.actions.edit = false;
+        // this.datatableAttributes.headerHeight = 45;
+        //
+        // this.actions.refresh = false;
+        // this.actions.create = false;
+        // this.actions.edit = false;
 
         return super.ngOnInit();
     }
