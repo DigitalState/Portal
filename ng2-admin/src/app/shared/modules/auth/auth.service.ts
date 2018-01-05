@@ -1,6 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { tokenNotExpired, AuthHttp, JwtHelper } from 'angular2-jwt';
 import { Locker } from 'angular-safeguard';
@@ -36,6 +37,7 @@ export class AuthService {
 
     constructor(protected appState: AppState,
                 protected router: Router,
+                protected location: Location,
                 protected http: Http,
                 protected authHttp: AuthHttp,
                 protected locker: Locker,
@@ -230,8 +232,10 @@ export class AuthService {
         const tokenName = this.appState.get('jwtTokenName');
         localStorage.removeItem(tokenName);
         this.authUser = null;
-        this.locker.remove('user-extra')
-        this.router.navigate(['/login'], { queryParams: { redirectUrl: '/' }});
+        this.locker.remove('user-extra');
+        // this.router.navigate(['/login'], { queryParams: { redirectUrl: '/' }});
+        this.location.go('/login');
+        window.location.reload(true);
     }
 
     protected saveToken(token: string) {
