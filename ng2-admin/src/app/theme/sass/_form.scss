@@ -31,6 +31,29 @@
 }
 
 .form-group {
+  position: relative;
+
+  > label {
+    width: 100%;
+    position: relative;
+  }
+  &.required > label {
+    &:after {
+      content: ' *';
+      color: $danger;
+    }
+  }
+
+  &.translatable {
+    .translation-icon {
+      @include fa-icon();
+      @extend .fa-globe;
+      position: absolute;
+      right: 5px; // 3px;
+      top: 5px; // 125%;
+    }
+  }
+
   label {
     margin-bottom: 5px;
     color: $content-text;
