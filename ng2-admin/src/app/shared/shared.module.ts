@@ -30,6 +30,7 @@ import { DsEntityTranslationService } from './services/entity-translation.servic
 import { DsStaticTranslationService } from './services/static-translation.service';
 import { DsStaticTranslatePipe } from './components/pipes/static-translate.pipe';
 import { DsClipboardCopyComponent } from './components/directives/ds-clipboard-copy.component';
+import { DsShortUuidComponent } from './components/short-uuid.component';
 import { DsFileUploadComponent } from './components/file-upload.component';
 
 import { authHttpServiceFactory, DsAuthModule } from './modules/auth/auth.module';
@@ -59,6 +60,7 @@ import { Http, RequestOptions } from '@angular/http';
         DsRelativeTimeComponent,
         DsLanguageSwitcherDropdownComponent,
         DsClipboardCopyComponent,
+        DsShortUuidComponent,
         DsFileUploadComponent,
         FormioModalFrameComponent,
     ],
@@ -84,6 +86,7 @@ import { Http, RequestOptions } from '@angular/http';
         DsRelativeTimeComponent,
         DsLanguageSwitcherDropdownComponent,
         DsClipboardCopyComponent,
+        DsShortUuidComponent,
         DsFileUploadComponent,
     ]
 })
