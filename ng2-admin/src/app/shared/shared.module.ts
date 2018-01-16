@@ -21,6 +21,7 @@ import { IdentityApiService } from './services/identity.service';
 import { UserApiService } from './services/user-api.service';
 import { FormioApiService } from './services/formio-api.service';
 import { FormioModalFrameComponent } from './components/modals/formio-modal-frame.component';
+import { CredentialsVerificationModalComponent } from './components/modals/credentials-verification-modal/credentials-verification-modal.component';
 import { DsRelativeTimeComponent } from './components/relative-time.component';
 import { DsLanguageSwitcherDropdownComponent } from './components/language-switcher-dropdown.component';
 import { KeyValuePipe } from './components/pipes/KeyValue.pipe';
@@ -63,9 +64,11 @@ import { Http, RequestOptions } from '@angular/http';
         DsShortUuidComponent,
         DsFileUploadComponent,
         FormioModalFrameComponent,
+        CredentialsVerificationModalComponent,
     ],
     entryComponents: [
         FormioModalFrameComponent,
+        CredentialsVerificationModalComponent,
     ],
     providers: [
         DateFormatPipe,
