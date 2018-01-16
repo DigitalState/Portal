@@ -22,7 +22,8 @@
     "signInFacebook": "Sign in with Facebook",
     "signInGooglePlus": "Sign in with Google Plus",
     "signInTwitter": "Sign in with Twitter",
-    "signInLinkedIn": "Sign in with LinkedIn"
+    "signInLinkedIn": "Sign in with LinkedIn",
+    "verifyIdentity": "Verify Identity"
   },
   "register": {
     "title": "Sign Up",
@@ -252,7 +253,8 @@
           "save": "Save",
           "cancel": "Cancel",
           "back": "Back",
-          "actions": "Actions"
+          "actions": "Actions",
+          "confirm": "Confirm"
         },
         "validation": {
           "required": "Required field.",
@@ -287,6 +289,9 @@
       "registrationFailed": "Registration failed.",
       "loginSucceeded": "You have been successfully signed in.",
       "loginFailed": "Sign in failed.",
+      "credentialsVerificationFailed": "Verification failed.",
+      "tokenUpdateSucceeded": "Token updated successfully.",
+      "tokenUpdateFailed": "Token update failed.",
       "formActivationError": "Form activation error",
       "formSubmissionError": "Form submission error",
       "formInvalid": "The form contains invalid fields.",

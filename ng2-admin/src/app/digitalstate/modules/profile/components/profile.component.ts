@@ -2,14 +2,18 @@ import { Component, Injector } from '@angular/core';
 
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 import { ToastsManager } from 'ng2-toastr';
+import { NgbModal, NgbModalOptions, NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 
-import { GlobalState } from '../../../../global.state';
 import { AuthService } from '../../../../shared/modules/auth/auth.service';
 import { MicroserviceConfig } from '../../../../shared/providers/microservice.provider';
-import { EntityApiService, IdentityApiService } from '../entity-api.service';
 import { User } from '../../../../shared/modules/auth/user';
 import { Persona } from '../../../../shared/modules/auth/persona';
 import { IdentityUtils } from '../../../../shared/utils/identity.utils';
+import { CredentialsVerificationModalComponent } from '../../../../shared/components/modals/credentials-verification-modal/credentials-verification-modal.component';
+
+import { EntityApiService, IdentityApiService } from '../entity-api.service';
+import { GlobalState } from '../../../../global.state';
+import { AppState } from '../../../../app.service';
 
 import { Subscriber } from 'rxjs/Subscriber';
 import assign from 'lodash/assign';
@@ -18,7 +22,10 @@ import assign from 'lodash/assign';
     selector: 'ds-profile',
     templateUrl: '../templates/profile.template.html',
 })
-export class DsProfileComponent{
+export class DsProfileComponent {
+
+    authEndpoint: string;
+    credentialsModal: NgbModalRef;
 
     user: User;
     persona: Persona | any; // Restangularized Entity
@@ -27,9 +34,9 @@ export class DsProfileComponent{
      * Account information that can be updated such as e-mail, password, etc...
      * These are submitted to the endpoint: authentication/users
      */
-    identityFormData: {
+    userFormData: {
         'email'?: string,
-        'plainPassword'?: string
+        // 'plainPassword'?: string
     };
 
     /**
@@ -44,16 +51,20 @@ export class DsProfileComponent{
 
     constructor(protected injector: Injector,
                 protected globalState: GlobalState,
+                protected appState: AppState,
                 protected translate: TranslateService,
+                protected modal: NgbModal,
                 protected auth: AuthService,
                 protected identityApiService: IdentityApiService,
                 protected microserviceConfig: MicroserviceConfig,
                 protected toastr: ToastsManager) {
 
         this.user = this.auth.getAuthUser();
-        this.identityFormData = {
-            'email': this.user.username
+        this.userFormData = {
+            'email': ''
         };
+
+        this.authEndpoint = this.appState.get('microservices').authentication.paths.individual;
     }
 
     ngOnInit() {
@@ -79,6 +90,14 @@ export class DsProfileComponent{
             });
         });
 
+        // Fetch actual User object and merge its contents with the one extracted from the token
+        this.auth.fetchUser().subscribe(user => {
+            if (this.user) {
+                this.user.email = user.email;
+                this.userFormData.email = this.user.email;
+            }
+        });
+
         if (this.user) {
             this.loadPersona();
         }
@@ -97,7 +116,7 @@ export class DsProfileComponent{
             if (personas.length > 0) {
                 this.persona = personas[0];
                 this.persona.route += '/' + this.persona.uuid;
-                console.log(this.persona);
+                // console.log(this.persona);
             }
         });
     }
@@ -125,14 +144,51 @@ export class DsProfileComponent{
 
     /**
      * Save user-related info such as e-mail and password
+     * @param password {string} is used to re-issue the auth token
      */
-    saveUser() {
-        // @todo: This is a stub implementation that has not been tested. Awaiting API requests on Authentication MS to be finalized.
-        // this.auth.updateUser(this.identityFormData).subscribe((response) => {
-        //     this.toastr.success(this.translate.instant('ds.messages.identitySaveSucceeded'));
-        // }, (error) => {
-        //     this.toastr.error(this.translate.instant('ds.messages.identitySaveFailed'));
-        // });
+    saveUser(password: any) {
+        this.auth.updateUser(this.userFormData).subscribe((response) => {
+            this.toastr.success(this.translate.instant('ds.messages.identitySaveSucceeded'));
+
+            // Log the user back in to update the auth token
+            this.auth.login(this.authEndpoint, this.user.username, password)
+                .finally(() => {
+
+                })
+                .subscribe(
+                    isSuccess => {
+                        if (isSuccess) {
+                            this.toastr.success(this.translate.instant('ds.messages.tokenUpdateSucceeded'));
+                        }
+                    },
+                    errorJson => {
+                        // console.error('Login error response', errorJson)
+                        this.toastr.error(this.translate.instant('ds.messages.tokenUpdateFailed') + ' ' + errorJson.message);
+                    }
+                );
+        }, (error) => {
+            this.toastr.error(this.translate.instant('ds.messages.identitySaveFailed'));
+        });
     }
 
+    /**
+     * Build Credentials Modal and handle its result.
+     */
+    protected openCredentialsModal() {
+        const modalOptions: NgbModalOptions = {
+            size: 'sm',
+            windowClass: 'credentials-modal',
+        };
+
+        this.credentialsModal = this.modal.open(CredentialsVerificationModalComponent, modalOptions);
+        this.credentialsModal.componentInstance.authEndpoint = this.authEndpoint;
+        this.credentialsModal.componentInstance.username = this.user.username;
+        this.credentialsModal.result.then((modalResult) => {
+            if (modalResult && modalResult.status === 'success') {
+                this.saveUser(modalResult.password);
+            }
+        }, (modalRejection) => {
+            // handle the case where the user naturally exits the modal dialog
+        });
+    }
 }

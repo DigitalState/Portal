@@ -12,7 +12,7 @@
 						<div class="col-sm-6 mt-3 mt-sm-0">
 							<ul class="btn-list clearfix">
 								<li class="float-right">
-									<button disabled (click)="saveUser($event)" type="button" class="btn btn-primary btn-with-icon"><i class="ion-edit">{{'ds.microservices.entity.action.save' | translate}}</i></button>
+									<button (click)="openCredentialsModal($event)" type="button" class="btn btn-primary btn-with-icon"><i class="ion-edit">{{'ds.microservices.entity.action.save' | translate}}</i></button>
 									<ng-content select="button.entity-action"></ng-content>
 									<!--<button (click)="" type="button" class="btn btn-danger btn-with-icon"><i class="ion-android-delete">{{'ds.microservices.entity.action.delete' | translate}}</i></button>-->
 								</li>
@@ -36,12 +36,12 @@
 					</div>
 					<div class="form-group">
 						<label for="email">{{ 'login.email' | translate }}</label>
-						<input id="email" name="email" type="email" [(ngModel)]="identityFormData.email" class="form-control">
+						<input id="email" name="email" type="email" [(ngModel)]="userFormData.email" class="form-control">
 					</div>
-					<div class="form-group">
-						<label for="plainPassword">{{ 'login.password' | translate }}</label>
-						<input id="plainPassword" name="plainPassword" type="password" [(ngModel)]="identityFormData.plainPassword" class="form-control">
-					</div>
+					<!--<div class="form-group">-->
+						<!--<label for="plainPassword">{{ 'login.password' | translate }}</label>-->
+						<!--<input iuserFormData" name="plainPassword" type="password" [(ngModel)]="identityFormData.plainPassword" class="form-control">-->
+					<!--</div>-->
 				</div>
 			</form>
 
@@ -68,9 +68,9 @@
 					<div class="row">
 						<div class="col">
 							<div class="form-group" *ngFor="let item of persona.data | keyValue" [ngSwitch]="item.key">
-								<label [for]="item.key">{{ ('ds.microservices.entity.property.' + item.key) | translate }}</label>
-								<input *ngSwitchDefault [id]="item.key" [name]="item.key" type="text" [(ngModel)]="persona.data[item.key]" class="form-control" placeholder="">
-								<textarea *ngSwitchCase="'address'" [id]="item.key" [name]="item.key" [(ngModel)]="persona.data[item.key]" class="form-control" placeholder=""></textarea>
+								<label [for]="'data-' + item.key">{{ ('ds.microservices.entity.property.' + item.key) | translate }}</label>
+								<input *ngSwitchDefault [id]="'data-' + item.key" [name]="item.key" type="text" [(ngModel)]="persona.data[item.key]" class="form-control" placeholder="">
+								<textarea *ngSwitchCase="'address'" [id]="'data-' + item.key" [name]="item.key" [(ngModel)]="persona.data[item.key]" class="form-control" placeholder=""></textarea>
 							</div>
 						</div>
 					</div>

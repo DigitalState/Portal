@@ -22,7 +22,8 @@
     "signInFacebook": "Connectez-vous avec Facebook",
     "signInTwitter": "Connectez-vous avec Twitter",
     "signInGooglePlus": "Connectez-vous avec Google Plus",
-    "signInLinkedIn": "Connectez-vous avec LinkedIn"
+    "signInLinkedIn": "Connectez-vous avec LinkedIn",
+    "verifyIdentity": "Vérifier l'identité"
   },
   "register": {
     "title": "Enregistrement",
@@ -252,7 +253,8 @@
           "save": "Enregistrer",
           "cancel": "Annuler",
           "back": "Retour",
-          "actions": "Actes"
+          "actions": "Actes",
+          "confirm": "Confirmer"
         },
         "validation": {
           "required": "Champs requis.",
@@ -287,6 +289,9 @@
       "registrationFailed": "Échec de l'enregistrement",
       "loginSucceeded": "Vous avez été connecté avec succès.",
       "loginFailed": "Échec de la connexion.",
+      "credentialsVerificationFailed": "Échec de la vérification.",
+      "tokenUpdateSucceeded": "Jeton mis à jour avec succès.",
+      "tokenUpdateFailed": "Échec de la mise à jour du jeton.",
       "formActivationError": "Erreur d'activation de formulaire",
       "formSubmissionError": "Erreur de soumission de formulaire",
       "formInvalid": "Le formulaire contient des champs non valides.",
