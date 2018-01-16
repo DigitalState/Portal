@@ -21,7 +21,7 @@ export class OrganizationLogin extends Login {
         super(injector);
 
         // Initialize the Authentication endpoint
-        this.authEndpoint = this.appState.get('microservices').authentication.paths.orgnaization;
+        this.authEndpoint = this.appState.get('microservices').authentication.paths.organization;
     }
 
 }

@@ -21,7 +21,7 @@ export class MicroservicesDefinition {
                     registration: 'registrations',
                     individual: 'tokens/individual',
                     anonymous: 'tokens/anonymous',
-                    orgnaization: 'tokens/organization',
+                    organization: 'tokens/organization',
                 },
             },
             'cms': {
