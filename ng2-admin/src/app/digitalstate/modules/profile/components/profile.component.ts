@@ -64,7 +64,7 @@ export class DsProfileComponent {
             'email': ''
         };
 
-        this.authEndpoint = this.appState.get('microservices').authentication.paths.individual;
+        this.authEndpoint = this.appState.get('microservices').authentication.paths[this.user.identity.toLowerCase()];
     }
 
     ngOnInit() {
