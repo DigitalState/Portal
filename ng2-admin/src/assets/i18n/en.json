@@ -227,13 +227,20 @@
           "button_text": "Button Text",
           "process_definition_key": "Process definition key",
           "processDefinitionKey": "Process definition key",
-          "first_name": "First Name",
-          "last_name": "Last Name",
+          "firstName": "First Name",
+          "lastName": "Last Name",
           "suffix": "Suffix",
           "address": "Address",
+          "street": "Street",
+          "city": "City",
+          "province": "Province",
+          "country": "Country",
           "phone": "Phone",
           "email": "E-mail",
-          "birth_date": "Date of Birth"
+          "birthDate": "Date of Birth",
+          "postalCode": "Postal Code",
+          "businessNumber": "Business Number",
+          "anniversary": "Anniversary"
         },
         "action": {
           "create": "Create",

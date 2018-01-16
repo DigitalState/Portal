@@ -11,7 +11,7 @@
 
     <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)" class="form-horizontal">
       <div class="form-group row" [ngClass]="{'has-error': (!firstName.valid && firstName.touched), 'has-success': (firstName.valid && firstName.touched)}">
-        <label for="firstName" class="col-sm-3 control-label">{{ 'ds.microservices.entity.property.first_name' | translate }}</label>
+        <label for="firstName" class="col-sm-3 control-label">{{ 'ds.microservices.entity.property.firstName' | translate }}</label>
 
         <div class="col-sm-9">
           <input [formControl]="firstName" [(ngModel)]="registration.data.firstName" type="text" class="form-control" id="firstName">
@@ -19,7 +19,7 @@
       </div>
 
       <div class="form-group row" [ngClass]="{'has-error': (!lastName.valid && lastName.touched), 'has-success': (lastName.valid && lastName.touched)}">
-        <label for="lastName" class="col-sm-3 control-label">{{ 'ds.microservices.entity.property.last_name' | translate }}</label>
+        <label for="lastName" class="col-sm-3 control-label">{{ 'ds.microservices.entity.property.lastName' | translate }}</label>
 
         <div class="col-sm-9">
           <input [formControl]="lastName" [(ngModel)]="registration.data.lastName" type="text" class="form-control" id="lastName">

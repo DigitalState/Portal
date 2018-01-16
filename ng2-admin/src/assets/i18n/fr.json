@@ -227,13 +227,20 @@
           "button_text": "Texte du bouton",
           "process_definition_key": "Clé de définition de processus",
           "processDefinitionKey": "Clé de définition de processus",
-          "first_name": "Prénom",
-          "last_name": "Nom de famille",
+          "firstName": "Prénom",
+          "lastName": "Nom de famille",
           "suffix": "Suffixe",
           "address": "Adresse",
+          "street": "Rue",
+          "city": "Ville",
+          "province": "Province",
+          "country": "Pays",
           "phone": "Téléphone",
           "email": "Email",
-          "birth_date": "Date de naissance"
+          "birthDate": "Date de naissance",
+          "postalCode": "Code Postal",
+          "businessNumber": "Business Number",
+          "anniversary": "Anniversaire"
         },
         "action": {
           "create": "Créer",
