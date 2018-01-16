@@ -4,6 +4,7 @@ export class User {
 
     uuid: string;
     username: string;
+    email: string;
     identity: string;
     identityUuid: string;
     roles: Array<string>;

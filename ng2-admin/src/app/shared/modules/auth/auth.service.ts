@@ -177,6 +177,72 @@ export class AuthService {
     }
 
     /**
+     * Submit a login request to simply verify whether the email/password combination is valid.
+     *
+     * @param relativeAuthUrl A relative URL to the authentication endpoint (e.g: `tokens/individual`)
+     * @param email
+     * @param password
+     * @return Observable
+     */
+    loginVerify(relativeAuthUrl: string, email: string, password: string): Observable<any> {
+        let url = this.authUrlPrefix + relativeAuthUrl;
+        let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
+        let options = new RequestOptions({ headers: headers });
+
+        let body = new URLSearchParams();
+        body.set('username', email);
+        body.set('password', password);
+
+        return this.http.post(url, body.toString(), options)
+            .flatMap(response => {
+                if (response && response instanceof Response && response.ok) {
+                    return Observable.of(response.json());
+                }
+                else {
+                    return Observable.of(null);
+                }
+            })
+            .catch((response: Response) => Observable.throw(response.json()));
+    }
+
+    /**
+     * uuid {String}: User UUID
+     * @returns {Observable<R|T>}
+     */
+    fetchUser(uuid?: string): Observable<User> {
+        if (!uuid && this.authUser) {
+            uuid = this.authUser.uuid;
+        }
+
+        let url = this.authUrlPrefix + 'users/' + uuid;
+        let headers = new Headers({
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'Authorization': 'Bearer ' + this.getToken()
+        });
+        let options = new RequestOptions({ headers: headers });
+
+        return this.http.get(url, options)
+            .map((response: Response) => {
+                if (response.ok) {
+                    const responseJson = response.json();
+                    let tmpUser = new User;
+                    tmpUser.uuid = responseJson['uuid'];
+                    tmpUser.username = responseJson['username'];
+                    tmpUser.email = responseJson['email'];
+                    tmpUser.identity = responseJson['identity'];
+                    tmpUser.identityUuid = responseJson['identityUuid'];
+                    tmpUser.roles = responseJson['roles'];
+                    return tmpUser;
+                }
+                else {
+                    Observable.throw(response.json());
+                }
+            })
+            .catch((response: Response) => Observable.throw(response.json()));
+    }
+
+    /**
      *
      * @returns {Observable<R|T>}
      */
@@ -215,12 +281,12 @@ export class AuthService {
      * @param userData Object containing account info to be updated.
      */
     updateUser(userData: any) {
-        let url = this.authUrlPrefix + 'users';
+        let url = this.authUrlPrefix + 'users/' + this.authUser.uuid;
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
         let body = userData;
 
-        return this.authHttp.post(url, body, options)
+        return this.authHttp.put(url, body, options)
             .catch((response: Response) => Observable.throw(response.json()));
     }
 
