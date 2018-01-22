@@ -21,6 +21,7 @@ import { IdentityApiService } from './services/identity.service';
 import { UserApiService } from './services/user-api.service';
 import { FormioApiService } from './services/formio-api.service';
 import { FormioModalFrameComponent } from './components/modals/formio-modal-frame.component';
+import { CredentialsVerificationModalComponent } from './components/modals/credentials-verification-modal/credentials-verification-modal.component';
 import { DsRelativeTimeComponent } from './components/relative-time.component';
 import { DsLanguageSwitcherDropdownComponent } from './components/language-switcher-dropdown.component';
 import { KeyValuePipe } from './components/pipes/KeyValue.pipe';
@@ -30,6 +31,7 @@ import { DsEntityTranslationService } from './services/entity-translation.servic
 import { DsStaticTranslationService } from './services/static-translation.service';
 import { DsStaticTranslatePipe } from './components/pipes/static-translate.pipe';
 import { DsClipboardCopyComponent } from './components/directives/ds-clipboard-copy.component';
+import { DsShortUuidComponent } from './components/short-uuid.component';
 import { DsFileUploadComponent } from './components/file-upload.component';
 
 import { authHttpServiceFactory, DsAuthModule } from './modules/auth/auth.module';
@@ -59,11 +61,14 @@ import { Http, RequestOptions } from '@angular/http';
         DsRelativeTimeComponent,
         DsLanguageSwitcherDropdownComponent,
         DsClipboardCopyComponent,
+        DsShortUuidComponent,
         DsFileUploadComponent,
         FormioModalFrameComponent,
+        CredentialsVerificationModalComponent,
     ],
     entryComponents: [
         FormioModalFrameComponent,
+        CredentialsVerificationModalComponent,
     ],
     providers: [
         DateFormatPipe,
@@ -84,6 +89,7 @@ import { Http, RequestOptions } from '@angular/http';
         DsRelativeTimeComponent,
         DsLanguageSwitcherDropdownComponent,
         DsClipboardCopyComponent,
+        DsShortUuidComponent,
         DsFileUploadComponent,
     ]
 })
