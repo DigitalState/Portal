@@ -228,6 +228,7 @@
           "button_text": "Texte du bouton",
           "process_definition_key": "Clé de définition de processus",
           "processDefinitionKey": "Clé de définition de processus",
+          "name": "Nom",
           "firstName": "Prénom",
           "lastName": "Nom de famille",
           "suffix": "Suffixe",
