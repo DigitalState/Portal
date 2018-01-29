@@ -44,13 +44,21 @@
       form.on('submit', function(submission) {
         console.log('IFrame: submitting form', submission);
         sendMessage('formSubmit', submission);
+
+        // Prevent Submit button from hanging in a loading and/or disabled state
+        // in case the form submission fails in the backend
+        form.emit('submitDone');
       });
 
       form.on('error', (errors) => {
         console.log('IFrame: we have errors!', errors);
         sendMessage('formError', errors);
 
-        $('button[type="submit"]').removeAttr('disabled');
+        // Scroll to top of the iFrame where the error messages are shown
+        window.scrollTo(0, 0);
+
+        // Prevent Submit button from hanging in a disabled state
+        form.emit('submitDone');
       })
     }).catch(function(e) {
       console.log('IFrame: caught formio error in promise', e);
