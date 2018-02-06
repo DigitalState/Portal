@@ -30,6 +30,14 @@
   var handleMessageFormData = function(messageData) {
     console.log('IFrame: received form schema', messageData);
 
+    // Cleanup form schema before passing it to the Formio renderer
+    FormioUtils.eachComponent(messageData.form.schema, function(component) {
+      // Set `input` property in Buttons to `false` so it does not show up in the form Submission
+      if (component.type === 'button') {
+        component.input = false;
+      }
+    });
+
     Formio.createForm(document.getElementById('formio'), { // Form object
       components: messageData.form.schema
     }, { // Form options
@@ -44,13 +52,21 @@
       form.on('submit', function(submission) {
         console.log('IFrame: submitting form', submission);
         sendMessage('formSubmit', submission);
+
+        // Prevent Submit button from hanging in a loading and/or disabled state
+        // in case the form submission fails in the backend
+        form.emit('submitDone');
       });
 
       form.on('error', (errors) => {
         console.log('IFrame: we have errors!', errors);
         sendMessage('formError', errors);
 
-        $('button[type="submit"]').removeAttr('disabled');
+        // Scroll to top of the iFrame where the error messages are shown
+        window.scrollTo(0, 0);
+
+        // Prevent Submit button from hanging in a disabled state
+        form.emit('submitDone');
       })
     }).catch(function(e) {
       console.log('IFrame: caught formio error in promise', e);
@@ -61,7 +77,7 @@
     formioForm.language = messageData;
   };
 
-    /**
+  /**
    * Window messaging triage.
    * First, filter-out messages that are addressed to this window using proper channel and tag.
    */

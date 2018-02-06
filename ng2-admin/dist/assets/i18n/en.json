@@ -228,6 +228,7 @@
           "button_text": "Button Text",
           "process_definition_key": "Process definition key",
           "processDefinitionKey": "Process definition key",
+          "name": "Name",
           "firstName": "First Name",
           "lastName": "Last Name",
           "suffix": "Suffix",
