@@ -30,6 +30,14 @@
   var handleMessageFormData = function(messageData) {
     console.log('IFrame: received form schema', messageData);
 
+    // Cleanup form schema before passing it to the Formio renderer
+    FormioUtils.eachComponent(messageData.form.schema, function(component) {
+      // Set `input` property in Buttons to `false` so it does not show up in the form Submission
+      if (component.type === 'button') {
+        component.input = false;
+      }
+    });
+
     Formio.createForm(document.getElementById('formio'), { // Form object
       components: messageData.form.schema
     }, { // Form options
@@ -69,7 +77,7 @@
     formioForm.language = messageData;
   };
 
-    /**
+  /**
    * Window messaging triage.
    * First, filter-out messages that are addressed to this window using proper channel and tag.
    */
