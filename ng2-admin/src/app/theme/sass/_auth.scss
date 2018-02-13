@@ -25,7 +25,7 @@ $font-size-default: 18px;
   @include auth-block();
   margin: 0 auto;
   border-radius: 5px;
-  background-color: $white;
+  //background-color: $white;
   padding: 32px;
 
   a.al-logo {
@@ -110,7 +110,7 @@ $font-size-default: 18px;
     display: flex;
     align-self: center;
     padding-top: 11px;
-    color: $text-color;
+    color: inherit;
   }
 
   .form-group {
@@ -159,7 +159,7 @@ a.forgot-pass {
     width: 30%;
     white-space: nowrap;
     padding: 0 24px;
-    color: $text-color;
+    color: inherit;
     & > span {
       margin-top: -12px;
       display: block;
