@@ -2,7 +2,7 @@ import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule }  from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { MdProgressSpinnerModule } from '@angular/material';
+import { MdProgressSpinnerModule, MdSelect, MdSelectModule } from '@angular/material';
 import { MdProgressBarModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
 import { MomentModule, DateFormatPipe, LocalTimePipe, LocalePipe, TimeAgoPipe } from 'angular2-moment';
@@ -19,6 +19,7 @@ import { CmsApiService } from './services/cms.service';
 import { CmsTranslateLoader } from './services/cms-translation-loader.service';
 import { IdentityApiService } from './services/identity.service';
 import { UserApiService } from './services/user-api.service';
+import { ThemerService } from './services/themer.service';
 import { FormioApiService } from './services/formio-api.service';
 import { FormioModalFrameComponent } from './components/modals/formio-modal-frame.component';
 import { CredentialsVerificationModalComponent } from './components/modals/credentials-verification-modal/credentials-verification-modal.component';
@@ -33,6 +34,9 @@ import { DsStaticTranslatePipe } from './components/pipes/static-translate.pipe'
 import { DsClipboardCopyComponent } from './components/directives/ds-clipboard-copy.component';
 import { DsShortUuidComponent } from './components/short-uuid.component';
 import { DsFileUploadComponent } from './components/file-upload.component';
+import { DsThemerPipe } from './components/pipes/themer.pipe';
+import { OwnerSelectComponent } from './components/form/owner-select.component';
+import { IdentityLinkComponent } from './components/identity-link.component';
 
 import { authHttpServiceFactory, DsAuthModule } from './modules/auth/auth.module';
 import { AuthService } from './modules/auth/auth.service';
@@ -47,6 +51,7 @@ import { Http, RequestOptions } from '@angular/http';
         RouterModule,
         FormsModule,
         MdProgressSpinnerModule,
+        MdSelectModule,
         TranslateModule,
         MomentModule,
         MomentTimezoneModule,
@@ -63,8 +68,11 @@ import { Http, RequestOptions } from '@angular/http';
         DsClipboardCopyComponent,
         DsShortUuidComponent,
         DsFileUploadComponent,
+        DsThemerPipe,
         FormioModalFrameComponent,
         CredentialsVerificationModalComponent,
+        OwnerSelectComponent,
+        IdentityLinkComponent,
     ],
     entryComponents: [
         FormioModalFrameComponent,
@@ -76,6 +84,7 @@ import { Http, RequestOptions } from '@angular/http';
     ],
     exports: [
         MdProgressSpinnerModule,
+        MdSelectModule,
         TranslateModule,
         ClipboardModule,
         IsEmpty, IsNotEmpty, // lodash helpers
@@ -91,6 +100,9 @@ import { Http, RequestOptions } from '@angular/http';
         DsClipboardCopyComponent,
         DsShortUuidComponent,
         DsFileUploadComponent,
+        DsThemerPipe,
+        OwnerSelectComponent,
+        IdentityLinkComponent,
     ]
 })
 export class DsSharedModule {
@@ -110,6 +122,7 @@ export class DsSharedModule {
                 IdentityApiService,
                 UserApiService,
                 FormioApiService,
+                ThemerService,
 
                 // Adopted submodules providers
                 AuthService,

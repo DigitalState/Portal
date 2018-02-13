@@ -35,6 +35,10 @@ export class DsFileUploadComponent {
     }
 
     onButtonClick(event) {
+        // Reset the value of the file input field so it can trigger file-change events
+        // Note: this only works in modern browsers (and IE11+)
+        this.fileInputRef.nativeElement.value = null;
+
         jQuery(this.fileInputRef.nativeElement).trigger('click');
         this.buttonClickEmitter.emit(event);
     }
