@@ -347,6 +347,14 @@ export class ThemerService {
             `;
         }
 
+        if (this.get('auth.logoMaxWidth')) {
+            style += `
+                .header-block a.al-logo img {
+                    max-width: ${this.get('auth.logoMaxWidth')}px !important;
+                }
+            `;
+        }
+
         return style;
     }
 }
