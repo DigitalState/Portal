@@ -1,4 +1,4 @@
-import { Component, ViewContainerRef } from '@angular/core';
+import { Component, Renderer2, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { GlobalState } from './global.state';
@@ -10,6 +10,7 @@ import { layoutPaths } from './theme/theme.constants';
 import { ToastsManager, Toast } from 'ng2-toastr'
 
 import { CmsApiService } from './shared/services/cms.service';
+import { ThemerService } from './shared/services/themer.service';
 
 import { Observable } from 'rxjs/Observable';
 
@@ -34,7 +35,8 @@ export class App {
 
     isMenuCollapsed: boolean = false;
 
-    constructor(private router: Router,
+    constructor(private renderer: Renderer2,
+                private router: Router,
                 private _state: GlobalState,
                 private appState: AppState,
                 private _imageLoader: BaImageLoaderService,
@@ -42,8 +44,10 @@ export class App {
                 private viewContainerRef: ViewContainerRef,
                 private themeConfig: BaThemeConfig,
                 private toastr: ToastsManager,
-                private cms: CmsApiService) {
+                private cms: CmsApiService,
+                private themer: ThemerService) {
 
+        this.themer.init(renderer);
         this.toastr.setRootViewContainerRef(viewContainerRef);
         themeConfig.config();
         this.loadImages();
@@ -84,13 +88,26 @@ export class App {
         const contentSlugs = {
             'texts[]': ['portal-title'],
             'files[]': ['portal-logo-login', 'portal-logo-header'],
+            'datas[]': ['portal-theme'],
         };
 
-        let cmsContentLoader: Observable<any> = this.cms.getContentBySlugs(contentSlugs).flatMap(content => {
-            // console.log('AppState in loadContent', this.appState);
-            this.appState.set('appCmsContent', content);
-            return Observable.of(true);
-        });
+        let cmsContentLoader: Observable<any> = this.cms.getContentBySlugs(contentSlugs)
+            .catch(error => {
+                // Errors cannot be translated yet at this point
+                const errMessage = 'Unable to load initial content from CMS.';
+                this.toastr.error(errMessage, null, { 'dismiss': 'click' });
+                return Observable.throw({
+                    message: errMessage,
+                } as DsError);
+            })
+            .flatMap(content => {
+                // console.log('AppState in loadContent', this.appState);
+                this.appState.set('appCmsContent', content);
+
+                // Notify Themer about theme data being available
+                this.themer.onThemeDataLoaded();
+                return Observable.of(true);
+            });
 
         BaThemePreloader.registerLoader(cmsContentLoader);
     }
