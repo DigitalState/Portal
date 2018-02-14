@@ -9,7 +9,8 @@ import { AppState } from '../../app.service';
 import { Observable } from 'rxjs/Observable';
 
 import lodashGet from 'lodash/get';
-
+import reduce from 'lodash/reduce';
+import flatten from 'flat';
 
 const THEME_KEY_SUFFIX = '-theme';
 
@@ -23,6 +24,7 @@ export class ThemerService {
     };
 
     protected renderer: Renderer2;
+    protected styleGenerator: BaseThemerStyleGenerator;
 
     protected defaultThemeKey: string;
 
@@ -39,8 +41,9 @@ export class ThemerService {
      * Called by root component that loads the Renderer and passes to Themer in order to give it various DOM utilities.
      * @param renderer
      */
-    init(renderer: Renderer2): void {
+    init(renderer: Renderer2, styleGenerator: BaseThemerStyleGenerator): void {
         this.renderer = renderer;
+        this.styleGenerator = styleGenerator;
     }
 
     /**
@@ -75,7 +78,8 @@ export class ThemerService {
         this.removeThemerStyle();
 
         // Apply new Themer styles
-        const styleTagContent = this.generateThemeStyle();
+        const theme = this.getTheme();
+        const styleTagContent = this.styleGenerator.generateThemeStyle(theme);
         this.createThemerStyle(styleTagContent);
     }
 
@@ -89,18 +93,19 @@ export class ThemerService {
     }
 
     /**
-     * Pick the value of a theme
+     * Pick a single style value from a theme
      * @param propPath
      * @param themeKey
      */
     get(propPath: string, defaultValue?: string, themeKey: string = this.defaultThemeKey): any {
         try {
             //@Fixme @workaround: The hardcoded `en` property below in entity `data` object is used due to the translation requirement of the backend API.
-            const theme = this.appState.get('appCmsContent', {})['datas'][themeKey]['en'];
+            const theme = this.getTheme(themeKey);
             return lodashGet(theme, propPath, defaultValue);
         }
-        catch (e) {
-            return null;
+        catch (error) {
+            console.warn(`Cannot get Themer style value for ${propPath}`, error);
+            return defaultValue;
         }
     }
 
@@ -118,9 +123,9 @@ export class ThemerService {
      * @param themeKey
      * @return {any}
      */
-    getAppliedTheme(themeKey: string = this.defaultThemeKey): any {
+    getTheme(themeKey: string = this.defaultThemeKey): any {
         try {
-            return this.appState.get('appCmsContent', {})['datas'][themeKey];
+            return this.appState.get('appCmsContent', {})['datas'][themeKey]['en'];
         }
         catch (e) {
             return null;
@@ -179,182 +184,182 @@ export class ThemerService {
         this.renderer.appendChild(this.themerStyleNode, styleText);
         this.renderer.appendChild(document.body, this.themerStyleNode);
     }
+}
+
+
+/**
+ * Generate the contents of the Themer style tag.
+ */
+export class BaseThemerStyleGenerator {
+
+    /** CSS breakpoints from the app.config */
+    protected breakpoints: any;
+
+    constructor(protected appState: AppState,
+                protected themer: ThemerService) {
+
+        this.breakpoints = this.appState.get('config').breakpoints;
+    }
 
     /**
-     * Generate the contents of the style tag.
-     * @Todo Refactor the responsibility of generating the contents of the Themer style tag to each SPA instead of having the ThemerService do it (Possibly a default Theme Generator can be in the shared between SPAs).
+     * Build the entire style set of a theme.
+     * This method flattens the theme object and calls `generatePropertyStyle()` method
+     * on individual style properties then accumulates and returns the output.
      *
-     * @param themeKey
+     * @param theme
      * @return {string}
      */
-    generateThemeStyle(themeKey: string = this.defaultThemeKey) {
-        const breakpoints = this.appState.get('config').breakpoints;
-        let style = '';
+    generateThemeStyle(theme: any): string {
+        const flattenedTheme = flatten(theme) || {};
+        return reduce(flattenedTheme, (accum, propValue, propKey) => {
+            const propStyle = this.generatePropertyStyle(propKey, propValue);
+            return propStyle ? (accum + propStyle + '\n') : accum;
+        }, '');
+    }
 
-        // Global
+    /**
+     * Render the styles of a single style property given it's value.
+     *
+     * @param key Flattened path of the property as in `prop.subProp`.
+     * @param value
+     * @return {any}
+     */
+    generatePropertyStyle(key: string, value: any): string {
+        switch(key) {
 
-        if (this.get('global.bgColor')) {
-            style += `
+            // Global
+
+            case 'global.bgColor':
+                return `
                 body, main {
-                   background-color: ${this.get('global.bgColor')};
-                }
-            `;
-        }
+                   background-color: ${value};
+                }`;
 
-        if (this.get('global.textColor')) {
-            style += `
+            case 'global.textColor':
+                return `
                 body, 
                 main,
                 .content-top > *,
                 .auth-block {
-                    color: ${this.get('global.textColor')} !important;
-                }
-            `;
-        }
+                    color: ${value} !important;
+                }`;
 
-        // Header
+            // Header
 
-        if (this.get('header.bgColor')) {
-            style += `
+            case 'header.bgColor':
+                return `
                 .page-top {
-                    background-color: ${this.get('header.bgColor')};
-                }
-            `;
-        }
+                    background-color: ${value};
+                }`;
 
-        if (this.get('header.textColor')) {
-            style += `
+            case 'header.textColor':
+                return `
                 .page-top,
                 .page-top a {
-                    color: ${this.get('header.textColor')};
-                }
-            `;
-        }
+                    color: ${value};
+                }`;
 
-        if (this.get('header.linkHoverColor')) {
-            style += `
+            case 'header.linkHoverColor':
+                return `
                 .page-top a:hover {
-                    color: ${this.get('header.linkHoverColor')} !important;
-                }
-            `;
-        }
+                    color: ${value} !important;
+                }`;
 
-        if (this.get('header.dropdownBgColor')) {
-            style += `
+            case 'header.dropdownBgColor':
+                return `
                 .page-top .side-menu .al-dropdown.show .dropdown-toggle,
                 .page-top .side-menu .al-dropdown ul.dropdown-menu {
-                    background-color: ${this.get('header.dropdownBgColor')} !important;
-                }
-            `;
-        }
+                    background-color: ${value} !important;
+                }`;
 
-        if (this.get('header.dropdownTextColor')) {
-            style += `
+            case 'header.dropdownTextColor':
+                return `
                 .page-top .side-menu .al-dropdown.show a {
-                    color: ${this.get('header.dropdownTextColor')} !important;
-                }
-            `;
-        }
+                    color: ${value} !important;
+                }`;
 
-        if (this.get('header.dropdownHighlight')) {
-            style += `
+            case 'header.dropdownHighlight':
+                return `
                 .page-top .side-menu .al-dropdown ul.dropdown-menu .dropdown-item:hover {
-                    background-color: ${this.get('header.dropdownHighlight')} !important;
-                }
-            `;
-        }
+                    background-color: ${value} !important;
+                }`;
 
-        if (this.get('header.logoMaxWidth')) {
-            style += `
+            case 'header.logoMaxWidth':
+                return `
                 .page-top a.al-logo img {
-                    max-width: ${this.get('header.logoMaxWidth')}px !important;
-                }
-            `;
-        }
+                    max-width: ${value}px !important;
+                }`;
 
-        if (this.get('header.logoMaxWidthSm')) {
-            style += `
-                @media (max-width: ${breakpoints.xs}px) {
+            case 'header.logoMaxWidthSm':
+                return `
+                @media (max-width: ${this.breakpoints.xs}px) {
                     .page-top a.al-logo img {
-                        max-width: ${this.get('header.logoMaxWidthSm')}px !important;
+                        max-width: ${value}px !important;
                     }
+                }`;
+
+            case 'header.showProfilePic':
+                if (value === false) {
+                    return `
+                    .page-top .profile-dropdown .my-account-text { display: block; }
+                    .page-top .profile-dropdown img.profile-pic { display: none; }
+                    .page-top .profile-dropdown .user-identity { display: none; }`;
                 }
-            `;
-        }
+                else {
+                    return `
+                    .page-top .profile-dropdown .my-account-text { display: none; }
+                    .page-top .profile-dropdown img.profile-pic { display: block; }
+                    .page-top .profile-dropdown .user-identity { display: block; }`;
+                }
 
-        if (this.get('header.showProfilePic') === false) {
-            style += `
-                .page-top .profile-dropdown .my-account-text { display: block; }
-                .page-top .profile-dropdown img.profile-pic { display: none; }
-                .page-top .profile-dropdown .user-identity { display: none; }
-            `;
-        }
-        else {
-            style += `
-                .page-top .profile-dropdown .my-account-text { display: none; }
-                .page-top .profile-dropdown img.profile-pic { display: block; }
-                .page-top .profile-dropdown .user-identity { display: block; }
-            `;
-        }
+            // Sidear
 
-        // Sidebar
-
-        if (this.get('sidebar.bgColor')) {
-            style += `
+            case 'sidebar.bgColor':
+                return `
                 .al-sidebar {
-                    background-color: ${this.get('sidebar.bgColor')};
-                }
-            `;
-        }
+                    background-color: ${value};
+                }`;
 
-        if (this.get('sidebar.textColor')) {
-            style += `
+            case 'sidebar.textColor':
+                return `
                 .al-sidebar > *, 
                 .al-sidebar a.al-sidebar-list-link, 
                 .al-sidebar a.al-sidebar-list-link b {
-                    color: ${this.get('sidebar.textColor')} !important;
-                }
-            `;
-        }
+                    color: ${value} !important;
+                }`;
 
-        if (this.get('sidebar.linkHoverColor')) {
-            style += `
+            case 'sidebar.linkHoverColor':
+                return `
                 .al-sidebar a.al-sidebar-list-link:hover,
                 .al-sidebar a.al-sidebar-list-link:hover b {
-                    color: ${this.get('sidebar.linkHoverColor')} !important;
+                    color: ${value} !important;
                 }
                 .al-sidebar .sidebar-hover-elem {
-                    background: ${this.get('sidebar.linkHoverColor')};
-                }
-            `;
-        }
+                    background: ${value};
+                }`;
 
-        // Login and Registration pages
+            // Login and Registration pages
 
-        if (this.get('auth.formBgColor')) {
-            style += `
+            case 'auth.formBgColor':
+                return `
                 .auth-block {
-                    background-color: ${this.get('auth.formBgColor')};
-                }
-            `;
-        }
+                    background-color: ${value};
+                }`;
 
-        if (this.get('auth.formTextColor')) {
-            style += `
+            case 'auth.formTextColor':
+                return `
                 .auth-block {
-                    color: ${this.get('auth.formTextColor')} !important;
-                }
-            `;
-        }
+                    color: ${value} !important;
+                }`;
 
-        if (this.get('auth.logoMaxWidth')) {
-            style += `
+            case 'auth.logoMaxWidth':
+                return `
                 .header-block a.al-logo img {
-                    max-width: ${this.get('auth.logoMaxWidth')}px !important;
-                }
-            `;
-        }
+                    max-width: ${value}px !important;
+                }`;
 
-        return style;
+            default:
+                return null;
+        }
     }
 }
