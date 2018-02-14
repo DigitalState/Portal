@@ -9,8 +9,10 @@ import { ToastsManager } from 'ng2-toastr/src/toast-manager';
 import { AuthService } from '../../shared/modules/auth/auth.service';
 import { DsCmsContentSubscriber } from '../../shared/components/cms-content-subscriber.component';
 
-import 'style-loader!./login.scss';
 import { Subscription } from 'rxjs/Subscription';
+
+import 'style-loader!./login.scss';
+
 
 @Component({
     selector: 'login',
