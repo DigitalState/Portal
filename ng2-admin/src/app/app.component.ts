@@ -1,13 +1,14 @@
 import { Component, Renderer2, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ToastsManager, Toast } from 'ng2-toastr';
+
 import { GlobalState } from './global.state';
 import { AppState } from './app.service';
 import { BaImageLoaderService, BaThemePreloader, BaThemeSpinner } from './theme/services';
 import { BaThemeConfig } from './theme/theme.config';
 import { layoutPaths } from './theme/theme.constants';
-
-import { ToastsManager, Toast } from 'ng2-toastr'
+import { ThemerStyleGenerator } from './digitalstate/utils/ThemerStyleGenerator';
 
 import { CmsApiService } from './shared/services/cms.service';
 import { ThemerService } from './shared/services/themer.service';
@@ -47,7 +48,10 @@ export class App {
                 private cms: CmsApiService,
                 private themer: ThemerService) {
 
-        this.themer.init(renderer);
+        // Create a local instance of the ThemeStyleGenerator and inject it into the ThemerService
+        let themerStyleGenerator = new ThemerStyleGenerator(this.appState, this.themer);
+        this.themer.init(renderer, themerStyleGenerator);
+
         this.toastr.setRootViewContainerRef(viewContainerRef);
         themeConfig.config();
         this.loadImages();
