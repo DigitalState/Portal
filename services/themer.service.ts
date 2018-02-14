@@ -93,7 +93,7 @@ export class ThemerService {
      * @param propPath
      * @param themeKey
      */
-    get(propPath: string, defaultValue?: string, themeKey: string = this.defaultThemeKey): string|null {
+    get(propPath: string, defaultValue?: string, themeKey: string = this.defaultThemeKey): any {
         try {
             //@Fixme @workaround: The hardcoded `en` property below in entity `data` object is used due to the translation requirement of the backend API.
             const theme = this.appState.get('appCmsContent', {})['datas'][themeKey]['en'];
@@ -282,18 +282,18 @@ export class ThemerService {
             `;
         }
 
-        if (this.get('header.showProfilePic')) {
-            style += `
-                .page-top .profile-dropdown .my-account-text { display: none; }
-                .page-top .profile-dropdown img.profile-pic { display: block; }
-                .page-top .profile-dropdown .user-identity { display: block; }
-            `;
-        }
-        else {
+        if (this.get('header.showProfilePic') === false) {
             style += `
                 .page-top .profile-dropdown .my-account-text { display: block; }
                 .page-top .profile-dropdown img.profile-pic { display: none; }
                 .page-top .profile-dropdown .user-identity { display: none; }
+            `;
+        }
+        else {
+            style += `
+                .page-top .profile-dropdown .my-account-text { display: none; }
+                .page-top .profile-dropdown img.profile-pic { display: block; }
+                .page-top .profile-dropdown .user-identity { display: block; }
             `;
         }
 
