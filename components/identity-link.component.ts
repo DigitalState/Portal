@@ -12,7 +12,7 @@ import find from 'lodash/find';
     template:
         `<a [routerLink]="identityLink?.routerLink">
             <span class="identity-type">{{ identityType }}</span>
-            <span *ngIf="identity" class="identity-title">({{ identity.title ? identity.title[language] : 'N/A' }})</span>
+            <span *ngIf="identity && identity.title" class="identity-title">({{ identity.title ? identity.title[language] : 'N/A' }})</span>
         </a>`,
 })
 export class IdentityLinkComponent {

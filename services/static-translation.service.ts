@@ -26,4 +26,20 @@ export class DsStaticTranslationService {
     public instant(lang: string, key: string, interpolateParams?: Object): string | any {
         return this.translate.getParsedResult(this.translate.translations[lang], key, interpolateParams);
     }
+
+    /**
+     * Convenience method to fetch the translations of `key` in all languages.
+     *
+     * @param key Translation key
+     * @param Optional interpolateParams
+     * @return {[lang]: translatedValue}
+     */
+    public instantAll(key: string, interpolateParams?: Object): any {
+        let translations = this.translate.getLangs().reduce((accum, lang) => {
+            accum[lang] = this.instant(lang, key, interpolateParams);
+            return accum;
+        }, {});
+
+        return translations;
+    }
 }
