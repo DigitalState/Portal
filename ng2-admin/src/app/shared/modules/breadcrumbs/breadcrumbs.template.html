@@ -1,0 +1,40 @@
+<!--<pre>{{ crumbs | json }}</pre>-->
+<perfect-scrollbar #perfectScrollbar class="scroll-container breadcrumb" [config]="config">
+	<ol *ngIf="crumbs && crumbs.length" class="">
+		<!--<li class="breadcrumb-item" ng-reflect-klass="breadcrumb-item" ng-reflect-ng-class="[object Object]">-->
+			<!--<a ng-reflect-router-link="/pages/services/list" href="#/pages/services/list">-->
+				<!--<span class="crumb-title" translate="">general.menu.services</span>-->
+			<!--</a>-->
+		<!--</li>-->
+		<!--<li class="breadcrumb-item" ng-reflect-klass="breadcrumb-item" ng-reflect-ng-class="[object Object]">-->
+			<!--<a ng-reflect-router-link="/pages/services/9ed44d24-b2e1-" href="#/pages/services/9ed44d24-b2e1-4882-82f9-7e4c2c8bf73d/show">-->
+				<!--<span class="crumb-title" translate="">Service</span>-->
+				<!--<span class="crumb-subtitle">(Report a Pothole)</span>-->
+			<!--</a>-->
+		<!--</li>-->
+		<!--<li class="breadcrumb-item" ng-reflect-klass="breadcrumb-item" ng-reflect-ng-class="[object Object]">-->
+
+			<!--<a ng-reflect-router-link="/pages/services/9ed44d24-b2e1-" href="#/pages/services/9ed44d24-b2e1-4882-82f9-7e4c2c8bf73d/scenarios/e049f2b4-b249-48c2-850c-64d4c4b39527/show">-->
+				<!--<span class="crumb-title" translate="">Scenario</span>-->
+				<!--<span class="crumb-subtitle">(Report a Pothole Online)</span>-->
+			<!--</a>-->
+		<!--</li>-->
+		<!--<li class="breadcrumb-item active" ng-reflect-klass="breadcrumb-item" ng-reflect-ng-class="[object Object]">-->
+			<!--<a ng-reflect-router-link="/pages/identities/business-uni" href="#/pages/identities/business-units/a9d68bf7-5000-49fe-8b00-33dde235b327/show">-->
+				<!--<span class="crumb-title" translate="">Business Unit</span>-->
+				<!--<span class="crumb-subtitle">(Backoffice)</span>-->
+			<!--</a>-->
+		<!--</li>-->
+
+
+
+		<li *ngFor="let crumb of crumbs; let last = last" [ngClass]="{ 'active': last }" class="breadcrumb-item">
+			<!--<a *ngIf="!last" [href]="crumb.link">{{ crumb.title[lang] }}</a>-->
+			<a [routerLink]="crumb.link">
+				<span class="crumb-title">{{ crumb.title[lang] | translate }}</span>
+				<span *ngIf="crumb.subtitle" class="crumb-subtitle">({{ crumb.subtitle[lang] | translate }})</span>
+			</a>
+			<!--<span *ngIf="last">{{ crumb.text }}</span>-->
+		</li>
+	</ol>
+</perfect-scrollbar>
