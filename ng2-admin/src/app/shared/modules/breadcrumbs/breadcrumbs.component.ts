@@ -74,9 +74,11 @@ export class BreadcrumbsComponent {
     }
 
     protected updateScrollable() {
-        setTimeout(() => {
-            this.perfectScrollbar.directiveRef.update();
-            this.perfectScrollbar.directiveRef.scrollToRight();
-        }, 250);
+        if (this.perfectScrollbar) {
+            setTimeout(() => {
+                this.perfectScrollbar.directiveRef.update();
+                this.perfectScrollbar.directiveRef.scrollToRight();
+            }, 250);
+        }
     }
 }

@@ -5,7 +5,7 @@ import { Location } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 
 import { DsStaticTranslationService } from '../services/static-translation.service';
-import { BreadcrumbsService } from '../modules/breadcrumbs/breadcrumbs.service';
+import { BreadcrumbPushOptions, BreadcrumbsService } from '../modules/breadcrumbs/breadcrumbs.service';
 import { Breadcrumb } from '../modules/breadcrumbs/breadcrumb';
 
 import { GlobalState } from "../../global.state";
@@ -77,12 +77,14 @@ export class DsPageComponent {
     }
 
     /**
-     * Commit the page's breadcrumb data to the Breadcrumb service.
+     * Generate a breadcrumb based on data defaults from this page component.
+     * @return {Breadcrumb}
      */
-    commitBreadcrumb(): void {
+    protected buildBreadcrumb(): Breadcrumb {
         // Break path components to be used in tags
         let tags = this.location.path().split('/').slice(2, 3).map(cmp => 'path-' + cmp);
 
+        // if the title or subtitle is a translation key, convert it to a translation object with language keys
         let crumb = {
             'title': (typeof this.pageBreadcrumbData.title) === 'string'
                 ? this.staticTranslate.instantAll(this.pageBreadcrumbData.title)
@@ -97,8 +99,21 @@ export class DsPageComponent {
             'tags': [].concat(tags, this.pageBreadcrumbData.tags),
 
             'routeData': this.route.snapshot.data,
-        } as Breadcrumb;
+        };
 
-        this.breadcrumbService.push(crumb);
+        return crumb as Breadcrumb;
+    }
+
+    /**
+     * Commit a breadcrumb to the Breadcrumb service. If no custom breadcrumb is provided,
+     * generate a default breadcrumb.
+     * @param crumb {Breadcrumb} The breadcrumb to commit.
+     */
+    commitBreadcrumb(crumb?: Breadcrumb, options?: BreadcrumbPushOptions): void {
+        if (!crumb) {
+            crumb = this.buildBreadcrumb();
+        }
+
+        this.breadcrumbService.push(crumb, options);
     }
 }
