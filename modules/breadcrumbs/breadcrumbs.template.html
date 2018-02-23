@@ -1,6 +1,8 @@
 <!--<pre>{{ crumbs | json }}</pre>-->
-<perfect-scrollbar #perfectScrollbar class="scroll-container breadcrumb" [config]="config">
-	<ol *ngIf="crumbs && crumbs.length" class="">
+<perfect-scrollbar #perfectScrollbar *ngIf="crumbs && crumbs.length"
+				   class="scroll-container breadcrumb"
+				   [config]="config">
+	<ol>
 		<!--<li class="breadcrumb-item" ng-reflect-klass="breadcrumb-item" ng-reflect-ng-class="[object Object]">-->
 			<!--<a ng-reflect-router-link="/pages/services/list" href="#/pages/services/list">-->
 				<!--<span class="crumb-title" translate="">general.menu.services</span>-->
