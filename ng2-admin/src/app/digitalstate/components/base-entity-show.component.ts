@@ -14,6 +14,8 @@ import { DsEntityCrudComponent } from '../../shared/components/base-entity-crud-
 import 'rxjs/Rx';
 import { Subscriber } from 'rxjs/Subscriber';
 import { Observable } from 'rxjs/Observable';
+import { Subscription } from 'rxjs/Subscription';
+
 
 export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
 
@@ -47,9 +49,10 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
     protected entityMetadata = {};
 
     /**
-     * Language change observer
+     * Component subscriptions
+     * @type {Subscription[]}
      */
-    protected languageChangeSubscriber: Subscriber<LangChangeEvent>;
+    protected subscriptions: { [subName: string]: Subscription } = {};
 
     /**
      * Alias for the current interface language. Ex: `en`, `fr`, ec...
@@ -85,20 +88,19 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
         this.lang = this.translate.currentLang;
 
         // Subscribe to language-change events
-        this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+        this.subscriptions['lang'] = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
             this.lang = event.lang;
             this.updateTranslations(event.lang);
+            this.subscriptions['entity'] = this.prepareEntity().subscribe(result => this.prepareEntitySubscriptionHandler(result));
         });
 
-        this.prepareEntity().subscribe();
+        this.subscriptions['entity'] = this.prepareEntity().subscribe(result => this.prepareEntitySubscriptionHandler(result));
     }
 
     ngOnDestroy() {
-        // Unsubscribe from language-change events
-        if (this.languageChangeSubscriber) {
-            this.languageChangeSubscriber.unsubscribe();
-            this.languageChangeSubscriber = undefined;
-        }
+        // Unsubscribe from all subscriptions
+        Object.keys(this.subscriptions).forEach(key => this.subscriptions[key].unsubscribe());
+        this.subscriptions = undefined;
     }
 
     protected prepareEntity(): Observable<{'entity': any, 'entityParent'?: any}> {
@@ -112,7 +114,7 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
 
                 return this.entityApiService.getOne(this.entityUrlPrefix, uuid).flatMap(entity => {
                     this.entity = entity;
-                    this.onEntityPrepared();
+                    // this.onEntityPrepared();
 
                     return this.prepareEntityParent(this.entityParentUrlPrefix, parentUuid).flatMap(entityParent => {
                         return Observable.of({'entity': entity, 'entityParent': entityParent});
@@ -215,26 +217,39 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
     }
 
     /**
-     * Stub called when the entity is fetched.
+     * Called from the Observer that waits for entity preparation to complete.
+     * @param result
      */
-    onEntityPrepared() {
-        // if (this.pageTitle !== null && this.entity && this.entity.title) {
-        //     // If title is translated, show it in current language
-        //     if (this.entity.title.hasOwnProperty(this.translate.currentLang)) {
-        //         this.applyPageTitle(this.entity.title[this.translate.currentLang]);
-        //     }
-        //     else {
-        //         this.applyPageTitle(this.entity.title);
-        //     }
-        // }
-        if (this.pageTitle !== '' && this.entity && this.entity.title) {
+    prepareEntitySubscriptionHandler(preparedEntity: any) {
+        this.onEntityPrepared(preparedEntity);
+
+        this.setBreadcrumbData();
+
+        // This is where we commit the breadcrumb after subclasses are done overriding `onEntityPrepared()`
+        this.commitBreadcrumb();
+    }
+
+    /**
+     * Stub called when the entity is prepared.
+     */
+    onEntityPrepared(preparedEntity?: any): void {
+        if (this.pageTitle !== '' && preparedEntity.entity && preparedEntity.entity.title) {
             // If title is translated, show it in current language
-            if (this.entity.title.hasOwnProperty(this.translate.currentLang)) {
-                this.pageTitle = this.entity.title[this.translate.currentLang];
+            if (preparedEntity.entity.title.hasOwnProperty(this.translate.currentLang)) {
+                this.pageTitle = preparedEntity.entity.title[this.translate.currentLang];
             }
             else {
-                this.pageTitle = this.entity.title;
+                this.pageTitle = preparedEntity.entity.title;
             }
+        }
+    }
+
+    protected setBreadcrumbData(): void {
+        if (this.entity) {
+            // this.pageBreadcrumbData.title = this.headerTitle;
+            // this.pageBreadcrumbData.subtitle = this.entity.title;
+            this.pageBreadcrumbData.title = this.entity.title;
+            this.pageBreadcrumbData.tags = ['crud-show'];
         }
     }
 

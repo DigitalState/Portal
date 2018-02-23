@@ -1,0 +1,35 @@
+perfect-scrollbar > .ps.ps--active-x > .ps__rail-x {
+  visibility: hidden;
+}
+
+.breadcrumb {
+  padding: 0px;
+
+  .breadcrumb-item {
+    &:first-child {
+      padding-left: $grid-gutter-width-base / 3 * 2;
+    }
+    &:last-child {
+      padding-right: $grid-gutter-width-base / 3 * 2;
+    }
+
+    padding-top: $grid-gutter-width-base / 3;
+    padding-bottom: $grid-gutter-width-base / 3;
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    padding-left: 0.75rem;
+    content: '›';
+  }
+}
+
+.scroll-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+
+  ul, ol {
+    margin: 0px;
+    padding: 0px;
+  }
+}

@@ -17,7 +17,7 @@ import isEmpty from 'lodash/isEmpty';
 export class DsCaseShowComponent extends DsBaseEntityShowComponent {
 
     entityUrlPrefix = 'cases';
-    headerTitle = 'Case Details';
+    headerTitle = 'ds.microservices.entity.types.case';
 
     statuses: Array<any> = [];
     loadingStatuses: boolean;

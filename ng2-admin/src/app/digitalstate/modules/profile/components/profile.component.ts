@@ -10,6 +10,7 @@ import { User } from '../../../../shared/modules/auth/user';
 import { Persona } from '../../../../shared/modules/auth/persona';
 import { IdentityUtils } from '../../../../shared/utils/identity.utils';
 import { CredentialsVerificationModalComponent } from '../../../../shared/components/modals/credentials-verification-modal/credentials-verification-modal.component';
+import { DsPageComponent } from '../../../../shared/components/page-component';
 
 import { EntityApiService, IdentityApiService } from '../entity-api.service';
 import { GlobalState } from '../../../../global.state';
@@ -22,7 +23,9 @@ import assign from 'lodash/assign';
     selector: 'ds-profile',
     templateUrl: '../templates/profile.template.html',
 })
-export class DsProfileComponent {
+export class DsProfileComponent extends DsPageComponent {
+
+    protected pageTitle = 'general.menu.profile';
 
     authEndpoint: string;
     credentialsModal: NgbModalRef;
@@ -58,6 +61,7 @@ export class DsProfileComponent {
                 protected identityApiService: IdentityApiService,
                 protected microserviceConfig: MicroserviceConfig,
                 protected toastr: ToastsManager) {
+        super(injector);
 
         this.user = this.auth.getAuthUser();
         this.userFormData = {
@@ -68,6 +72,9 @@ export class DsProfileComponent {
     }
 
     ngOnInit() {
+        super.ngOnInit();
+        this.commitBreadcrumb();
+
         // Subscribe to language-change events
         this.languageChangeSubscriber = this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
             this.init();
