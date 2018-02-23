@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 
 import { LangChangeEvent, TranslateService } from '@ngx-translate/core';
 
@@ -15,10 +15,26 @@ import { PerfectScrollbarComponent } from 'ngx-perfect-scrollbar';
 })
 export class BreadcrumbsComponent {
 
+    /**
+     * The number of most recent breadcrumbs to show.
+     */
+    @Input('limit')
+    protected limit: number = 5;
+
+    /**
+     * Internal reference to the PerfectScrollbarComponent instance to update properties, listen for events, etc...
+     */
     @ViewChild('perfectScrollbar')
     protected perfectScrollbar: PerfectScrollbarComponent;
 
-    protected lang: any;
+    /**
+     * Current interface language key
+     */
+    protected lang: string;
+
+    /**
+     * List of Breadcrumbs to display.
+     */
     protected crumbs: Breadcrumb[];
 
     /**
@@ -63,7 +79,7 @@ export class BreadcrumbsComponent {
 
         // Subscribe to breadcrumbs changes
         this.subscriptions['crumbs'] = this.breadcrumbsService.crumbs.subscribe((crumbs) => {
-            this.crumbs = crumbs;
+            this.crumbs = crumbs.slice(this.limit * -1);
             this.updateScrollable();
         });
     }

@@ -13,10 +13,23 @@ import defaults from 'lodash/defaults';
 @Injectable()
 export class BreadcrumbsService {
 
-    protected maxNumOfCrumbs = 5;
+    /**
+     * Size of the breadcrumbs FILO container. When the size of the container reaches this limit
+     * older breadcrumbs will be discarded.
+     * @type {number}
+     */
+    protected cacheCapacity: number = 10;
 
-    protected crumbsSubject = new BehaviorSubject<Breadcrumb[]>([]);
+    /**
+     * Observable to notify about new breadcrumbs pushed in the container.
+     * @type {BehaviorSubject<Breadcrumb[]>}
+     */
+    protected crumbsSubject: BehaviorSubject<Breadcrumb[]> = new BehaviorSubject<Breadcrumb[]>([]);
 
+    /**
+     * Default options used when pushing new breadcrumbs. BreadcrumbPushOptions
+     * @type {BreadcrumbPushOptions}
+     */
     protected defaultBreadcrumbPushOptions: BreadcrumbPushOptions = {
         forceIdenticalLink: false,
     };
@@ -38,7 +51,7 @@ export class BreadcrumbsService {
         options = defaults(options, this.defaultBreadcrumbPushOptions);
 
         if (isEmpty(newCrumb.title) || isEmpty(newCrumb.link)) {
-            console.warn('Skipped pushing invalid breadcrumb', newCrumb);
+            // console.warn('Skipped pushing invalid breadcrumb', newCrumb);
             return;
         }
 
@@ -48,14 +61,14 @@ export class BreadcrumbsService {
             //     return;
             // }
             if (options.forceIdenticalLink === false && isEqual(last(crumbs).link, newCrumb.link)) {
-                console.warn('Skipped pushing breadcrumb with link identical to the last breadcrumb', newCrumb.link);
+                // console.warn('Skipped pushing breadcrumb with link identical to the last breadcrumb', newCrumb.link);
                 return;
             }
         }
 
         crumbs.push(newCrumb);
 
-        if (crumbs.length > this.maxNumOfCrumbs) {
+        if (crumbs.length > this.cacheCapacity) {
             crumbs.shift();
         }
 
