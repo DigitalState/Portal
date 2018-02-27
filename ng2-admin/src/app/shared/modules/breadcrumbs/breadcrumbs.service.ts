@@ -39,10 +39,19 @@ export class BreadcrumbsService {
 
     }
 
+    /**
+     * Return the breadcrumbs' observable for listeners to subscribe to.
+     * @return {BehaviorSubject<Breadcrumb[]>}
+     */
     get crumbs(): Observable<Breadcrumb[]> {
         return this.crumbsSubject;
     }
 
+    /**
+     * Add a new breadcrumb instance to the breadcrumbs trail.
+     * @param newCrumb {Breadcrumb}
+     * @param options
+     */
     push(newCrumb: Breadcrumb, options?: BreadcrumbPushOptions): void {
         // Validate the breadcrumb by checking its `title` and `link`
         let crumbs = this.crumbsSubject.getValue();
@@ -73,6 +82,13 @@ export class BreadcrumbsService {
         }
 
         this.crumbsSubject.next(crumbs);
+    }
+
+    /**
+     * Remove all breadcrumbs.
+     */
+    clear(): void {
+        this.crumbsSubject.next([]);
     }
 }
 
