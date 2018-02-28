@@ -1,0 +1,14 @@
+<!--<pre>{{ crumbs | json }}</pre>-->
+<perfect-scrollbar #perfectScrollbar
+				   class="scroll-container breadcrumb"
+				   [config]="config">
+	<ol *ngIf="crumbs && crumbs.length">
+		<li *ngFor="let crumb of crumbs; let last = last" [ngClass]="{ 'active': last }" class="breadcrumb-item">
+			<a [routerLink]="crumb.link">
+				<span class="crumb-title">{{ crumb.title[lang] | translate }}</span>
+				<span *ngIf="crumb.subtitle" class="crumb-subtitle">({{ crumb.subtitle[lang] | translate }})</span>
+			</a>
+			<!--<span *ngIf="last">{{ crumb.text }}</span>-->
+		</li>
+	</ol>
+</perfect-scrollbar>

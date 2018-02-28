@@ -3,6 +3,9 @@ import { CommonModule }  from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { NgUploaderModule } from 'ngx-uploader';
+
+import { BreadcrumbsModule } from '../shared/modules/breadcrumbs/breadcrumbs.module';
+
 import { AppTranslationModule } from '../app.translation.module';
 
 import {
@@ -115,6 +118,7 @@ const NGA_VALIDATORS = [
     AppTranslationModule,
     NgUploaderModule,
     DsMicroservicesModule,
+    BreadcrumbsModule,
   ],
   exports: [
     ...NGA_PIPES,

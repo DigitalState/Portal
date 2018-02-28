@@ -165,6 +165,10 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
 
         // Run the initial fetch query
         this.setPage({offset: 1});
+
+        // Push breadcrumb
+        this.pageBreadcrumbData.title = this.pageTitle;
+        this.pageBreadcrumbData.tags = ['crud-list'];
     }
 
     ngOnDestroy() {
@@ -173,7 +177,7 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
     }
 
     ngAfterViewInit() {
-
+        this.commitBreadcrumb();
     }
 
     /**

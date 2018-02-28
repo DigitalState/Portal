@@ -42,6 +42,7 @@ export const PAGES_MENU = [
         path: '',
         data: {
           menu: {
+            url: '#/pages/dashboard',
             title: 'general.menu.dashboard',
             icon: 'ion-ios-speedometer',
             path: ['dashboard'],
@@ -66,6 +67,7 @@ export const PAGES_MENU = [
             path: ['services/list'],
             data: {
               menu: {
+                url: '#/pages/services/list',
                 title: 'general.menu.directory'
               }
             }
@@ -74,8 +76,8 @@ export const PAGES_MENU = [
             path: '',
             data: {
               menu: {
+                url: '#',
                 title: 'general.menu.lifeEvents',
-                url: '#'
               }
             }
           },
@@ -83,8 +85,8 @@ export const PAGES_MENU = [
             path: '',
             data: {
               menu: {
+                url: '#',
                 title: 'general.menu.secureDocuments',
-                url: '#'
               }
             }
           },
@@ -95,6 +97,7 @@ export const PAGES_MENU = [
         path: 'cases',
         data: {
           menu: {
+            url: '#/pages/cases/list',
             title: 'general.menu.cases',
             icon: 'ion-ios-list-outline',
             pathMatch: 'prefix', // use it if item children not displayed in menu
@@ -109,6 +112,7 @@ export const PAGES_MENU = [
         path: 'tasks',
         data: {
           menu: {
+            url: '#/pages/tasks/list',
             title: 'general.menu.tasks',
             icon: 'ion-clipboard',
             pathMatch: 'prefix', // use it if item children not displayed in menu
@@ -123,9 +127,9 @@ export const PAGES_MENU = [
         path: '',
         data: {
           menu: {
+            url: '#',
             title: 'Notifications',
             icon: 'ion-android-notifications-none',
-            url: '#'
           }
         },
       },
@@ -134,9 +138,9 @@ export const PAGES_MENU = [
         path: '',
         data: {
           menu: {
+            url: '#',
             title: 'general.menu.messages',
             icon: 'ion-email',
-            url: '#'
           }
         },
       },
@@ -155,6 +159,7 @@ export const PAGES_MENU = [
         path: ['profile'],
         data: {
           menu: {
+            url: '#/pages/profile',
             title: 'general.menu.settings',
             icon: 'ion-settings',
             pathMatch: 'prefix', // use it if item children not displayed in menu
@@ -169,6 +174,7 @@ export const PAGES_MENU = [
         path: ['logout'],
         data: {
           menu: {
+            url: '#/pages/logout',
             title: 'login.signOut',
             icon: 'ion-log-out',
           }
@@ -179,9 +185,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'Reminders',
       //       icon: 'ion-android-alarm-clock',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -189,9 +195,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'My Identities',
       //       icon: 'ion-ios-people',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -199,9 +205,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'Calendar',
       //       icon: 'ion-ios-calendar-outline',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -210,9 +216,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'Records',
       //       icon: 'ion-ios-briefcase-outline',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -220,9 +226,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'Assets',
       //       icon: 'ion-card',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -230,9 +236,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'Interactions',
       //       icon: 'ion-android-textsms',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -240,9 +246,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'News',
       //       icon: 'ion-ios-paper-outline',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -250,9 +256,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'Events',
       //       icon: 'ion-android-calendar',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -260,9 +266,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'APIs',
       //       icon: 'ion-ios-cloud-outline',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -270,9 +276,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'Open Data',
       //       icon: 'ion-ios-analytics-outline',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -293,8 +299,8 @@ export const PAGES_MENU = [
       //       path: '',
       //       data: {
       //         menu: {
+      //           url: '#',
       //           title: 'Account',
-      //           url: '#'
       //         }
       //       }
       //     },
@@ -302,8 +308,8 @@ export const PAGES_MENU = [
       //       path: '',
       //       data: {
       //         menu: {
+      //           url: '#',
       //           title: 'Privacy Settings',
-      //           url: '#'
       //         }
       //       }
       //     },
@@ -313,9 +319,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'Support',
       //       icon: 'ion-help-buoy',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -323,9 +329,9 @@ export const PAGES_MENU = [
       //   path: '',
       //   data: {
       //     menu: {
+      //       url: '#',
       //       title: 'Contact',
       //       icon: 'ion-ios-chatboxes-outline',
-      //       url: '#'
       //     }
       //   },
       // },
@@ -346,8 +352,8 @@ export const PAGES_MENU = [
       //       path: '',
       //       data: {
       //         menu: {
+      //           url: '#',
       //           title: 'Systems',
-      //           url: '#'
       //         }
       //       }
       //     },
@@ -355,8 +361,8 @@ export const PAGES_MENU = [
       //       path: '',
       //       data: {
       //         menu: {
+      //           url: '#',
       //           title: 'Demo',
-      //           url: '#'
       //         }
       //       }
       //     },

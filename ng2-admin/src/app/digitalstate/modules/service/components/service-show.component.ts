@@ -30,7 +30,8 @@ import findIndex from 'lodash/findIndex';
 export class DsServiceShowComponent extends DsBaseEntityShowComponent implements FormioController {
 
     entityUrlPrefix = 'services';
-    headerTitle = 'Service Details';
+    headerTitle = 'ds.microservices.entity.types.service';
+
     scenarios: Array<any> = [];
     loadingScenarios: boolean;
 
@@ -118,11 +119,23 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
                     // Pick default scenario index based on the scenario UUID passed in the URL
                     const defaultScenarioIndex = findIndex(this.scenarios, { 'uuid': defaultScenarioUuid });
                     this.createTabs(defaultScenarioIndex);
+                    this.commitScenarioBreadcrumb(defaultScenarioIndex);
                 }
             });
         }).unsubscribe();
     }
 
+    /**
+     * Build a breadcrumb for the selected scenario
+     * @param scenarioIndex
+     */
+    protected commitScenarioBreadcrumb(scenarioIndex: number): void {
+        if (scenarioIndex >= 0 && this.scenarios[scenarioIndex]) {
+            let breadcrumb = this.buildBreadcrumb();
+            breadcrumb.title = this.scenarios[scenarioIndex].title;
+            this.commitBreadcrumb(breadcrumb, {forceIdenticalLink: true});
+        }
+    }
     /**
      *
      * @param defaultScenarioIndex
@@ -154,6 +167,9 @@ export class DsServiceShowComponent extends DsBaseEntityShowComponent implements
         if (tabIndex != this.defaultTabIndex && tabIndex < this.scenarios.length) {
             const currentScenarioUuid = this.scenarios[tabIndex].uuid;
             this.location.go(`/pages/services/${this.entity.uuid}/show/scenarios/${currentScenarioUuid}`);
+
+            // Create and push a breadcrumb for the selected scenario
+            this.commitScenarioBreadcrumb(tabIndex);
         }
 
         this.defaultTabIndex = tabIndex;

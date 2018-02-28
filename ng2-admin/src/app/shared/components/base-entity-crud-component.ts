@@ -7,6 +7,7 @@ import { ToastsManager } from 'ng2-toastr';
 import { GlobalState } from "../../global.state";
 import { AppState } from '../../app.service';
 
+import { DsPageComponent } from './page-component';
 import { DsBaseEntityApiService } from '../services/base-entity-api.service';
 import { Link } from '../../digitalstate/models/link';
 
@@ -15,7 +16,7 @@ import { Subscriber} from 'rxjs/Subscriber';
 
 import isObject from 'lodash/isObject';
 
-export abstract class DsEntityCrudComponent {
+export abstract class DsEntityCrudComponent extends DsPageComponent {
 
     /**
      * Set to TRUE in ngOnInit to indicate that the component has been initialized.
@@ -86,6 +87,8 @@ export abstract class DsEntityCrudComponent {
 
 
     constructor(protected injector: Injector) {
+        super(injector);
+
         this.router = injector.get(Router);
         this.route = injector.get(ActivatedRoute);
         this.globalState = this.injector.get(GlobalState);
@@ -98,30 +101,8 @@ export abstract class DsEntityCrudComponent {
     }
 
     ngOnInit() {
-        if (this.pageTitle) {
-            this.applyPageTitle();
-        }
-
+        super.ngOnInit()
         this.isInitialized = true;
-    }
-
-    /**
-     * Update the page title via a global-state notification. The function looks for the provided title string
-     * first, if not provided it tries to use the `pageTitle` property. If none of those is set it exists and the
-     * currently active title remains.
-     *
-     * @param title
-     */
-    applyPageTitle(title?: string) {
-        let pageTitle = title || this.pageTitle;
-
-        if (pageTitle) {
-            setTimeout(() => {
-                this.globalState.notifyDataChanged('menu.activeLink', {
-                    'title': pageTitle
-                });
-            });
-        }
     }
 
     /**
