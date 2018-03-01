@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { Http, Response, Headers, RequestOptions, ResponseOptions } from '@angular/http';
 
 import { AppState } from '../../app.service';
+import { GlobalState } from '../../global.state';
 import { AuthService } from '../modules/auth/auth.service';
 import { DsBaseEntityApiService } from './base-entity-api.service';
 
@@ -30,10 +31,19 @@ export class CmsApiService extends DsBaseEntityApiService<any> {
 
     constructor(protected http: Http,
                 protected appState: AppState,
+                protected globalState: GlobalState,
                 protected auth: AuthService) {
         super();
 
-        this.config = appState.get('microservices').cms;
+        globalState.subscribe('auth.token.anonymous.loaded', () => {
+            console.log('CmsApiService received `auth.token.anonymous.loaded`');
+            this.init();
+            this.globalState.notify('cms.ready');
+        });
+    }
+
+    init(): void {
+        this.config = this.appState.get('microservices').cms;
         this.cmsUrlPrefix = this.config.entrypoint.url;
         this.contentPath = this.cmsUrlPrefix + this.config.paths.content;
         this.datasPath = this.cmsUrlPrefix + this.config.paths.datas;

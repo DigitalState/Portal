@@ -3,7 +3,7 @@
  */
 export class DsEnvironmentConfig {
     msUrlScheme: string = 'http';
-    dsDiscoveryEnv: any = {};
+    discovery: any = {};
 }
 
 /**
