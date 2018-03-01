@@ -8,18 +8,16 @@ import { Locker } from 'angular-safeguard';
 import { WINDOW } from 'ngx-window-token';
 
 import { AppState } from '../../../app.service';
+import { GlobalState } from '../../../global.state';
 import { Registration } from './registration';
 import { User } from './user';
 import { IdentityUtils } from '../../utils/identity.utils';
-import { DsEnvironmentConfig } from '../../providers/environment.provider';
-import { MicroservicesDefinition } from '../../../digitalstate/microservices';
 
 import 'rxjs/Rx';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
 import isEmpty from 'lodash/isEmpty';
-import forEach from 'lodash/forEach';
 
 
 @Injectable()
@@ -36,22 +34,23 @@ export class AuthService {
     protected anonymousTokenSubject: Subject<string>;
 
     constructor(protected appState: AppState,
+                protected globalState: GlobalState,
                 protected router: Router,
                 protected location: Location,
                 protected http: Http,
                 protected authHttp: AuthHttp,
                 protected locker: Locker,
-                @Inject(WINDOW) protected window,
-                dsEnv: DsEnvironmentConfig) {
+                @Inject(WINDOW) protected window) {
 
-        // Set the dynamically injected Microservices hosts before passing it to the definition builder
-        dsEnv.dsDiscoveryEnv = this.window['dsDiscoveryEnv'];
+        console.log('AuthService registering retrospectively for `appInit.discovery.complete`');
+        globalState.subscribeRetro('appInit.discovery.complete', (eventData) => {
+            console.log('AuthService received `appInit.discovery.complete`', eventData);
+            this.init();
+        });
+    }
 
-        // Load the microservices settings here since the AuthService is a super dependency
-        let microservices = new MicroservicesDefinition(dsEnv).getAll();
-        appState.set('microservices', microservices);
-
-        const config = appState.get('microservices').authentication;
+    init(): void {
+        const config = this.appState.get('microservices').authentication;
         this.authUrlPrefix = config.entrypoint.url;
         this.registrationPath = this.authUrlPrefix + config.paths.registration;
         this.anonymousPath = this.authUrlPrefix + config.paths.anonymous;
@@ -67,26 +66,31 @@ export class AuthService {
 
         // Initialize the anonymous token subject with an empty value
         this.anonymousTokenSubject = new Subject();
-        this.loadAnonymousToken();
+        this.loadAnonymousToken().subscribe(() => {
+            this.globalState.notify('auth.token.anonymous.loaded');
+        });
     }
 
-    loadAnonymousToken(): void {
+    loadAnonymousToken(): Observable<string | DsError> {
         let url = this.anonymousPath;
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
         let options = new RequestOptions({ headers: headers });
 
-        this.http.post(url, '', options)
-            .subscribe(
-                (response: Response) => {
-                    this.anonymousToken = response.json().token;
-                    this.anonymousTokenSubject.next(this.anonymousToken);
-                    this.anonymousTokenSubject.complete();
-                },
-                (error: any) => {
-                    console.error('Error while requesting anonymous token', error);
-                    alert('Error while requesting anonymous token');
-                }
-            );
+        return this.http.post(url, '', options)
+            .catch(error => {
+                const message = 'Error while requesting anonymous token';
+                console.error(message, error);
+                alert(message);
+                return Observable.throw({
+                    message: message,
+                } as DsError);
+            })
+            .flatMap((response: Response) => {
+                this.anonymousToken = response.json().token;
+                this.anonymousTokenSubject.next(this.anonymousToken);
+                this.anonymousTokenSubject.complete();
+                return Observable.of(this.anonymousToken);
+            });
         // return this.http.post(url, '', options)
         //     .map((response: Response) => {
         //         return response.json().token;
