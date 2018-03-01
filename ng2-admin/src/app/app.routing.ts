@@ -10,3 +10,4 @@ export const routing: ModuleWithProviders = RouterModule.forRoot(routes, {
   useHash: true,
   initialNavigation: false
 });
+

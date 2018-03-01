@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Routes, RouterModule }  from '@angular/router';
+import { RouterModule }  from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { MdProgressBarModule, MdListModule, MdTabsModule, MdToolbarModule } from '@angular/material';
 import { TranslateModule } from '@ngx-translate/core';
@@ -9,13 +9,10 @@ import { NgArrayPipesModule } from 'ngx-pipes';
 // import { FilterByPipe } from 'ngx-pipes';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 
-import { AppState } from '../app.service';
 import { NgaModule } from '../../theme/nga.module';
 
-import { DsEnvironmentConfig } from '../shared/providers/environment.provider';
 import { DsSharedModule } from '../shared/shared.module';
 
-import { MicroservicesDefinition } from './microservices';
 import { TemplateStorage } from './services/template-storage.service';
 import { TemplateStorageComponent } from './components/template-storage.component';
 import { DsMicroservicesComponent } from './components/microservices.component';
@@ -88,10 +85,5 @@ import { DsTimelineComponent } from './components/timeline.component';
     ]
 })
 export class DsMicroservicesModule {
-
-    constructor(private appState: AppState, dsEnv: DsEnvironmentConfig) {
-        let msDefinition = new MicroservicesDefinition(dsEnv);
-        appState.set('microservices', msDefinition.getAll());
-    }
 
 }

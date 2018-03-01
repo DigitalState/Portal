@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 
+import { AppState } from '../app.service';
 import { BaMenuService } from '../theme';
-import { PAGES_MENU } from './pages.menu';
+import { PagesMenu } from './pages.menu';
 
 @Component({
   selector: 'pages',
@@ -36,10 +37,15 @@ import { PAGES_MENU } from './pages.menu';
 })
 export class Pages {
 
-  constructor(private _menuService: BaMenuService,) {
+  constructor(protected appState: AppState,
+              protected menuService: BaMenuService,
+              protected pagesMenu: PagesMenu) {
   }
 
   ngOnInit() {
-    this._menuService.updateMenuByRoutes(<Routes>PAGES_MENU);
+    // Inject discovery data manually into the `getMenu()` method of PagesMenu since it
+    // fails to accept automatically injected dependencies in the constructor
+    const discovery = this.appState.get('discovery');
+    this.menuService.updateMenuByRoutes(<Routes>this.pagesMenu.getMenu(discovery));
   }
 }

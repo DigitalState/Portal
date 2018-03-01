@@ -1,6 +1,7 @@
 import { Component, Renderer2, ViewContainerRef } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { TranslateService } from '@ngx-translate/core';
 import { ToastsManager, Toast } from 'ng2-toastr';
 
 import { GlobalState } from './global.state';
@@ -35,40 +36,64 @@ import 'style-loader!./theme/initial.scss';
 export class App {
 
     isMenuCollapsed: boolean = false;
+    private supportedLanguages: Array<string> = ['en', 'fr'];
+
 
     constructor(private renderer: Renderer2,
                 private router: Router,
-                private _state: GlobalState,
+                private globalState: GlobalState,
                 private appState: AppState,
                 private _imageLoader: BaImageLoaderService,
                 private _spinner: BaThemeSpinner,
                 private viewContainerRef: ViewContainerRef,
                 private themeConfig: BaThemeConfig,
                 private toastr: ToastsManager,
+                private translate: TranslateService,
                 private cms: CmsApiService,
                 private themer: ThemerService) {
 
         // Create a local instance of the ThemeStyleGenerator and inject it into the ThemerService
         let themerStyleGenerator = new ThemerStyleGenerator(this.appState, this.themer);
-        this.themer.init(renderer, themerStyleGenerator);
+        this.themer.init(this.renderer, themerStyleGenerator);
 
-        this.toastr.setRootViewContainerRef(viewContainerRef);
-        themeConfig.config();
+        this.toastr.setRootViewContainerRef(this.viewContainerRef);
+        this.themeConfig.config();
+    }
+
+    protected ngAfterViewInit(): void {
+        // Wait for CmsApiService to be ready, then load the Theme Preloader
+        if (this.globalState.valueOf('cms.ready')) {
+            this.onCmsReady();
+        }
+        else {
+            this.globalState.subscribe('cms.ready', () => {
+                this.onCmsReady();
+                // console.log('AppComponent received `cms.ready`');
+            });
+        }
+    }
+
+    protected onCmsReady(): void {
+        this.registerLoaders();
+        this.runPreloader();
+    }
+
+    protected registerLoaders(): void {
         this.loadImages();
         this.loadContent();
+        this.loadTranslations();
 
-        this._state.subscribe('menu.isCollapsed', (isCollapsed) => {
+        this.globalState.subscribe('menu.isCollapsed', (isCollapsed) => {
             this.isMenuCollapsed = isCollapsed;
         });
     }
 
-    public ngAfterViewInit(): void {
+    protected runPreloader() {
         // hide spinner once all loaders are completed
         // The parameter `results` contains all results of observables
         // in the order in which they registered in the preloader
         BaThemePreloader.load().subscribe((results: Array<any>) => {
-            // console.log('Results', results);
-            this._spinner.hide();
+            this._spinner.hide(1000);
             this.router.initialNavigation();
         }, (error) => {
             console.error('Theme preloading error', error);
@@ -111,8 +136,35 @@ export class App {
                 // Notify Themer about theme data being available
                 this.themer.onThemeDataLoaded();
                 return Observable.of(true);
-            });
+        });
 
         BaThemePreloader.registerLoader(cmsContentLoader);
+    }
+
+    protected loadTranslations(): void {
+        const translationsLoader = Observable.create(observer => {
+            // Get default or previously used language (if any) from localStorage
+            const defaultLang = localStorage.getItem('lang') || this.supportedLanguages[0];
+            this.translate.addLangs(this.supportedLanguages);
+
+            // Preload other translations so the app can support multiple translations in a single page
+            this.supportedLanguages.forEach(lang => {
+              if (lang !== defaultLang) {
+                this.translate.getTranslation(lang);
+              }
+            });
+
+            // Now, preload the default language's translations to overcome the Translation Service issue which
+            // causes UI translation synchronization problems
+            this.translate.getTranslation(defaultLang);
+
+            this.translate.setDefaultLang(defaultLang);
+            this.translate.use(defaultLang);
+
+            observer.next();
+            observer.complete();
+        });
+
+        BaThemePreloader.registerLoader(translationsLoader);
     }
 }
