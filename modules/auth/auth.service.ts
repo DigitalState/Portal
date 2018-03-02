@@ -42,9 +42,9 @@ export class AuthService {
                 protected locker: Locker,
                 @Inject(WINDOW) protected window) {
 
-        console.log('AuthService registering retrospectively for `appInit.discovery.complete`');
+        // console.log('AuthService registering retrospectively for `appInit.discovery.complete`');
         globalState.subscribeRetro('appInit.discovery.complete', (eventData) => {
-            console.log('AuthService received `appInit.discovery.complete`', eventData);
+            // console.log('AuthService received `appInit.discovery.complete`', eventData);
             this.init();
         });
     }
