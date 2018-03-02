@@ -36,7 +36,7 @@ export class CmsApiService extends DsBaseEntityApiService<any> {
         super();
 
         globalState.subscribe('auth.token.anonymous.loaded', () => {
-            console.log('CmsApiService received `auth.token.anonymous.loaded`');
+            // console.log('CmsApiService received `auth.token.anonymous.loaded`');
             this.init();
             this.globalState.notify('cms.ready');
         });
