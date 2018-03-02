@@ -5,7 +5,7 @@ services:
         build: .
         environment:
             - VIRTUAL_HOST
-            - DISCOVERY
+            - DISCOVERY_HOST
         extra_hosts:
             - 'api.assets.lab.ds:${PROXY_HOST}'
             - 'api.authentication.lab.ds:${PROXY_HOST}'
