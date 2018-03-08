@@ -68,6 +68,8 @@ export class AuthService {
         this.anonymousTokenSubject = new Subject();
         this.loadAnonymousToken().subscribe(() => {
             this.globalState.notify('auth.token.anonymous.loaded');
+        }, error => {
+            this.globalState.notify('global.notification', error);
         });
     }
 
@@ -77,12 +79,18 @@ export class AuthService {
         let options = new RequestOptions({ headers: headers });
 
         return this.http.post(url, '', options)
+            .timeout(10000)
             .catch(error => {
-                const message = 'Error while requesting anonymous token';
+                let message = 'Error while requesting anonymous token';
+                if (error && error.message) {
+                    message += ` (${error.message})`;
+                }
+
                 console.error(message, error);
-                alert(message);
+
                 return Observable.throw({
                     message: message,
+                    type: 'error'
                 } as DsError);
             })
             .flatMap((response: Response) => {
@@ -91,11 +99,6 @@ export class AuthService {
                 this.anonymousTokenSubject.complete();
                 return Observable.of(this.anonymousToken);
             });
-        // return this.http.post(url, '', options)
-        //     .map((response: Response) => {
-        //         return response.json().token;
-        //     })
-        //     .catch((response: Response) => Observable.throw(response.json()));
     }
 
     getAnonymousToken(): Observable<string> {
