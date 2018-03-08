@@ -1,4 +1,6 @@
 import { AfterViewInit, Injector, TemplateRef, ViewChild } from '@angular/core';
+import { Response } from '@angular/http';
+
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 // import 'style-loader!../styles/style.scss';
@@ -125,6 +127,11 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
      */
     lang: string;
 
+    /**
+     * Holds the toastr promise to avoid queueing multiple toasts for the same error.
+     */
+    protected listRefershErrorToastrPromise: any;
+
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
     constructor(injector: Injector, protected microserviceConfig: MicroserviceConfig) {
@@ -242,6 +249,26 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
             }
 
             this.loading = false;
+        }, error => {
+            if (error instanceof Response) {
+                this.handleListRefreshError(error);
+            } else {
+                console.error('Unexpected error occurred while fetching list: ', error);
+            }
+            this.loading = false;
+        });
+    }
+
+    protected handleListRefreshError(response: Response): void {
+        if (this.listRefershErrorToastrPromise) {
+            return;
+        }
+
+        const title = this.translate.instant('ds.messages.http.' + response.status);
+        const data = response.json()
+        const message = (data && data.error) ? data.error : '';
+        this.listRefershErrorToastrPromise = this.toastr.error(message, title, {
+            'dismiss': 'click'
         });
     }
 
