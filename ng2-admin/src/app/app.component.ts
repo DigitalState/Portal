@@ -16,6 +16,8 @@ import { ThemerService } from './shared/services/themer.service';
 
 import { Observable } from 'rxjs/Observable';
 
+import defaults from 'lodash/defaults';
+
 import 'style-loader!./app.scss';
 import 'style-loader!./theme/initial.scss';
 
@@ -51,6 +53,11 @@ export class App {
                 private translate: TranslateService,
                 private cms: CmsApiService,
                 private themer: ThemerService) {
+
+        // Listen for global notifications
+        globalState.subscribeRetro('global.notification', (event) => {
+            this.showGlobalNotification(event)
+        });
 
         // Create a local instance of the ThemeStyleGenerator and inject it into the ThemerService
         let themerStyleGenerator = new ThemerStyleGenerator(this.appState, this.themer);
@@ -166,5 +173,33 @@ export class App {
         });
 
         BaThemePreloader.registerLoader(translationsLoader);
+    }
+
+    protected showGlobalNotification(event: DsError | any): void {
+        event = event || {};
+
+        // Apply translations to title and message
+        let title = event.title ? this.translate.instant(event.title) : null;
+        let message = event.message ? this.translate.instant(event.message) : null;
+
+        let toastOptions = defaults(event.options, {
+            'dismiss': 'click'
+        });
+
+        if (event && event.hasOwnProperty('type')) {
+            switch (event.type) {
+                case 'error':
+                    this.toastr.error(message, title, toastOptions);
+                    break;
+
+                case 'success':
+                    this.toastr.success(message, title, toastOptions);
+                    break;
+
+                default:
+                    this.toastr.info(message, title, toastOptions);
+                    break;
+            }
+        }
     }
 }
