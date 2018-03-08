@@ -282,6 +282,7 @@
     "messages": {
       "http": {
         "400": "Données invalides",
+        "401": "L'accès non autorisé",
         "404": "Entité introuvable",
         "500": "Erreur du serveur"
       },

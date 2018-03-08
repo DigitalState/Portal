@@ -282,6 +282,7 @@
     "messages": {
       "http": {
         "400": "Invalid data",
+        "401": "Unauthorized access",
         "404": "Entity not found",
         "500": "Server error"
       },
