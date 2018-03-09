@@ -73,6 +73,10 @@ export class AuthService {
         });
     }
 
+    /**
+     * Request an anonymous token from the Authentication microservice.
+     * @return {Observable<R>} An observable of the loaded token or an error object.
+     */
     loadAnonymousToken(): Observable<string | DsError> {
         let url = this.anonymousPath;
         let headers = new Headers({ 'Content-Type': 'application/x-www-form-urlencoded' });
@@ -101,6 +105,12 @@ export class AuthService {
             });
     }
 
+    /**
+     * Returns the anonymous token wrapped in an observable if already loaded,
+     * otherwise, returns an observable of the token subject which can be used
+     * to wait for the token to be loaded.
+     * @return {Observable<string>}
+     */
     getAnonymousToken(): Observable<string> {
         if (this.anonymousToken) {
             return Observable.of(this.anonymousToken);
@@ -110,6 +120,10 @@ export class AuthService {
         }
     }
 
+    /**
+     * Gets the current User object or creates one based on the contents of the JWT token.
+     * @return {User}
+     */
     getAuthUser(): User {
         if (this.authUser == null) {
             const token = this.getToken();
@@ -120,12 +134,19 @@ export class AuthService {
         return this.authUser;
     }
 
-    getToken() {
-        // @todo: change this to the real token
+    /**
+     * Gets the JWT token from local data store.
+     * @return {string|null}
+     */
+    getToken(): string | null {
         const tokenName = this.appState.get('jwtTokenName');
         return localStorage.getItem(tokenName);
     }
 
+    /**
+     * @deprecated
+     * @return {any}
+     */
     getDecodedToken() {
         return this.jwtHelper.decodeToken(this.getToken());
     }

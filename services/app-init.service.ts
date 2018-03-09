@@ -38,8 +38,12 @@ export class AppInitService {
                 this.setDiscoveryData(discoveryData);
                 this.globalState.notify('appInit.discovery.complete');
                 resolve(true);
-            }, error => {
-                console.error('Error while fetching discovery data', error);
+            }, (error: DsError) => {
+                // Since there is no application component loaded yet,
+                // we have to simply show an alert
+                if (error.message) {
+                    alert(error.message);
+                }
                 reject(false);
             });
         })
@@ -68,6 +72,20 @@ export class AppInitService {
 
         return this.http
             .get(discoveryHost, options)
+            .timeout(10000)
+            .catch(error => {
+                let message = 'Error while fetching discovery data';
+                if (error && error.message) {
+                    message += ` (${error.message})`;
+                }
+
+                console.error(message, error);
+
+                return Observable.throw({
+                    message: message,
+                    type: 'error'
+                } as DsError);
+            })
             .map(response => response.json())
             .flatMap(discoveryData => {
                 console.log('Discovery data fetched', discoveryData);
