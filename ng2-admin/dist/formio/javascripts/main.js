@@ -21,6 +21,7 @@
   /**
    * Build the Formio form using the following properties provided in `data`:
    * - form: object
+   *   - display: string
    *   - schema: object
    * - translations: object
    * - language: string   // current UI language
@@ -39,6 +40,7 @@
     });
 
     Formio.createForm(document.getElementById('formio'), { // Form object
+      display: messageData.form.display,
       components: messageData.form.schema
     }, { // Form options
       i18n: messageData.translations

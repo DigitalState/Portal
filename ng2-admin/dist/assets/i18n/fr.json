@@ -264,14 +264,14 @@
           "json": "Valeur JSON invalide."
         },
         "scenario": {
-          "activationFailure": "<h4>Activation echouée</h4> <div>Please try again later.</div>",
-          "submissionFailure": "<h4>Submission failed!</h4> <div>Please try again later or use a different method.</div>",
-          "submissionSuccess": "<h4>Soumission réussie!</h4> <div>Vous recevrez bientôt un e-mail de suivi.</div>"
+          "activationFailure": "Activation echouée",
+          "submissionFailure": "Submission failed",
+          "submissionSuccess": "Soumission réussie"
         },
         "task": {
-          "activationFailure": "<h4>Activation echouée</h4>",
-          "submissionFailure": "<h4>Submission echouée</h4>",
-          "submissionSuccess": "<h4>Soumission réussie</h4>",
+          "activationFailure": "Activation echouée",
+          "submissionFailure": "Submission echouée",
+          "submissionSuccess": "Soumission réussie",
           "claimSuccess": "Tâche réclamée avec succès",
           "claimFailure": "Échec de la réclamation de la tâche",
           "unclaimSuccess": "Tâche non réclamée avec succès",
@@ -282,6 +282,7 @@
     "messages": {
       "http": {
         "400": "Données invalides",
+        "401": "L'accès non autorisé",
         "404": "Entité introuvable",
         "500": "Erreur du serveur"
       },
