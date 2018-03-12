@@ -264,14 +264,14 @@
           "json": "Invalid JSON value."
         },
         "scenario": {
-          "activationFailure": "<h4>Activation failed!</h4> <div>Please try again later.</div>",
-          "submissionFailure": "<h4>Submission failed!</h4> <div>Please try again later or use a different method.</div>",
-          "submissionSuccess": "<h4>Submission succeeded!</h4> <div>You will receive a follow-up e-mail soon.</div>"
+          "activationFailure": "Activation failed!",
+          "submissionFailure": "Submission failed!",
+          "submissionSuccess": "Submission succeeded!"
         },
         "task": {
-          "activationFailure": "<h4>Activation failed!</h4>",
-          "submissionFailure": "<h4>Submission failed!</h4>",
-          "submissionSuccess": "<h4>Submission succeeded!</h4>",
+          "activationFailure": "Activation failed!",
+          "submissionFailure": "Submission failed!",
+          "submissionSuccess": "Submission succeeded!",
           "claimSuccess": "Task claimed successfully",
           "claimFailure": "Failed to claim Task",
           "unclaimSuccess": "Task unclaimed successfully",
