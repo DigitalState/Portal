@@ -265,7 +265,7 @@ export class DsBaseEntityListComponent extends DsEntityCrudComponent implements 
         }
 
         const title = this.translate.instant('ds.messages.http.' + response.status);
-        const data = response.json()
+        const data = response.json();
         const message = (data && data.error) ? data.error : '';
         this.listRefershErrorToastrPromise = this.toastr.error(message, title, {
             'dismiss': 'click'
