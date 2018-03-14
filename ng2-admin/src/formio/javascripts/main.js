@@ -41,14 +41,24 @@
 
     Formio.createForm(document.getElementById('formio'), { // Form object
       display: messageData.form.display,
-      components: messageData.form.schema
+      components: messageData.form.schema,
     }, { // Form options
-      i18n: messageData.translations
+      i18n: messageData.translations,
+      breadcrumbSettings: {
+        clickable: false
+      },
     }).then(function(form) { // on form ready
       formioForm = form;
 
       setTimeout(function() {
         formioForm.language = messageData.language;
+      });
+
+      form.on('render', function() {
+        console.log('Form rendered');
+        if (formioForm.wizard) {
+          updatePagerStyles();
+        }
       });
 
       form.on('submit', function(submission) {
@@ -113,6 +123,26 @@
   };
 
   /**
+   *
+   */
+  var updatePagerStyles = function() {
+    var $form = $(formioForm.element);
+    var hasNextPage = formioForm.pages.length > (formioForm.page + 1);
+    var hasPreviousPage = formioForm.page > 0;
+
+    $form.removeClass('has-next-page');
+    $form.removeClass('has-previous-page');
+
+    if (hasNextPage) {
+      $form.addClass('has-next-page');
+    }
+
+    if (hasPreviousPage) {
+      $form.addClass('has-previous-page');
+    }
+  };
+
+  /**
    * Load form using parameters passed in the URL
    */
   $(document).ready(() => {
@@ -120,10 +150,11 @@
 
     $('button#send').on('click', () => {
       sendMessage('formSubmit', {
-        'formData': 'blabla'
+        'formData': ''
       });
     });
 
     sendMessage('ready');
   });
+
 })(jQuery, _);

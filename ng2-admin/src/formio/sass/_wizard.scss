@@ -1,0 +1,185 @@
+$wiz-theme-color: $brand-primary;
+$wiz-page-default-text-color: inherit;
+$wiz-page-active-text-color: $link-color;
+$wiz-page-unvisited-text-color: $nav-disabled-link-color;        // Unvisited pager items that are ahead of the active item
+
+
+@mixin pager-icon-commons() {
+  position: relative;
+  margin: 0 auto 0.5em;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  border-radius: 30px;
+  border-width: 0px;
+  border-style: solid;
+}
+
+.formio-form {
+  // Wizard steps
+  nav {
+    position: relative;
+    display: table;
+    width: 100%;
+    padding-bottom: 2em;
+
+    ul.pagination {
+      display: table-row;
+
+      &:before { // Thick line across round dots
+        content: '';
+        display: block;
+        position: absolute;
+        margin: 0 auto;
+        width: 100%;
+        height: 10px;
+        top: 10px;
+        background-color: $wiz-theme-color;
+        border-color: greenyellow;
+        border-radius: 3px;
+        border-width: 10px;
+      }
+
+      li.page-item {
+        text-align: center;
+
+        // Disable navigation via pager
+        //pointer-events: none;
+
+        &:before, &:after {
+          @include fa-icon();
+          @include pager-icon-commons();
+          content: $fa-var-ellipsis-h;
+          position: absolute;
+          top: 0px;
+          background-color: white;
+          border-color: $wiz-theme-color;
+          color: $wiz-theme-color;
+          display: none;
+        }
+
+        &:not(.active) {
+          display: none;
+        }
+
+        &.active {
+          display: table-cell;
+
+          .page-link {
+            //color: $wiz-page-active-text-color;
+            font-weight: bold;
+
+            &:before { // Round dots above page name
+              //content: "SM Active";
+              content: $fa-var-circle;
+              color: $wiz-theme-color;
+              background-color: white;
+            }
+          }
+        }
+
+        &.active ~ .page-item {
+          .page-link {
+            color: $wiz-page-unvisited-text-color;
+
+            &:before { // Round dots above page name
+              //border-width: 1px;
+              //content: "SM Unvisited";
+              background-color: white;
+              color: $wiz-theme-color;
+            }
+          }
+        }
+
+        // Normalize page-link
+        .page-link {
+          color: $wiz-page-default-text-color;
+          background-color: transparent;
+          font-size: 0.9em;
+          float: none;
+          padding: 0;
+          margin: 0;
+          border: 0;
+
+          &:before { // Round dots above page name
+            @include fa-icon();
+            content: $fa-var-circle;
+            //content: "SM Normal";
+            display: block;
+            position: relative;
+            margin: 0 auto 0.5em;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 30px;
+            border-width: 0px;
+            border-style: solid;
+            background-color: white;
+            border-color: $wiz-theme-color;
+            color: $wiz-theme-color;
+          }
+        }
+      }
+    }
+  }
+}
+
+.has-previous-page nav ul.pagination li.page-item.active {
+  &:before {
+    display: inline-block;
+    left: 0px;
+  }
+}
+
+.has-next-page nav ul.pagination li.page-item.active {
+  &:after {
+    display: inline-block;
+    right: 0px;
+  }
+}
+
+@media (min-width: $screen-sm-min) {
+  .formio-form {
+    nav {
+      ul.pagination {
+        li.page-item {
+
+          &:before, &:after {
+            display: none !important;
+          }
+
+          &:not(.active) {
+            display: table-cell;
+          }
+
+          &.active {
+            .page-link {
+              &:before {
+                //content: "LG Active";
+              }
+            }
+          }
+
+          &.active ~ .page-item {
+            .page-link {
+
+              &:before {
+                //content: "LG Unvisited";
+                color: transparent;
+              }
+            }
+          }
+
+          .page-link {
+
+            &:before {
+              //content: "LG Normal";
+              background-color: $wiz-theme-color;
+              color: transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+}
