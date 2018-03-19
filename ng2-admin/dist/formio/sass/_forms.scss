@@ -3,6 +3,27 @@ label {
   font-weight: normal;
 }
 
+#formio-forms-container {
+  .form-primary, .form-secondary {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-secondary {
+    background-color: lighten($gray-lighter, 2%);
+
+    .formio-form {
+      min-height: 0;
+    }
+
+    .form-data-wrapper {
+      padding-top: 0.5em;
+      padding-bottom: 1em;
+    }
+  }
+}
+
+
 .form-control {
   color: #666666;
   border: 1px solid #cbcbcb;
@@ -24,7 +45,7 @@ label {
 }
 
 .radio label, .checkbox label {
-  font-size: $font-size-base;
+  //font-size: $font-size-base;
 }
 
 .help-block {

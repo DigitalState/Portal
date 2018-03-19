@@ -7,8 +7,13 @@
 // Import Bootstrap for Sass
 @import 'bootstrap';
 
+// Import Font-Awesome
+$fa-font-path: '/assets/fonts';
+@import "../../../node_modules/font-awesome/scss/font-awesome";
+
 // Overrides
 @import 'html';
 @import 'panel';
 @import 'forms';
+@import 'wizard';
 @import 'formio-overrides';

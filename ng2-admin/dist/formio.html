@@ -13,17 +13,20 @@
 	<link rel='stylesheet' href='https://unpkg.com/formiojs@latest/dist/formio.full.min.css'>
 	<link rel='stylesheet' href='./formio/stylesheets/styles.css'>
 
-	<script src='https://unpkg.com/formiojs@latest/dist/formio.full.min.js'></script>
+	<script src='https://unpkg.com/formiojs@latest/dist/formio.full.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
 
+	<script src="formio/javascripts/bootstrap.js"></script>
 	<script src="formio/javascripts/utils.js"></script>
+	<script src="formio/javascripts/mock.js"></script>
 
 </head>
 <body>
 	<!--<button id="send">Send</button>-->
+	<!--<div class="alert alert-warning">Mock data being used at <pre>main.js:37</pre></div>-->
 	<main>
-		<div id="formio" class="container-fluid"></div>
+		<div id="formio-forms-container"></div>
 	</main>
 
 	<script src="./formio/javascripts/main.js"></script>
