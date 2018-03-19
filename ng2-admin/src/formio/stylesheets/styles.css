@@ -12569,7 +12569,26 @@ label {
   font-weight: normal;
 }
 
-/* line 6, ../sass/_forms.scss */
+/* line 7, ../sass/_forms.scss */
+#formio-forms-container .form-primary, #formio-forms-container .form-secondary {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+/* line 12, ../sass/_forms.scss */
+#formio-forms-container .form-secondary {
+  background-color: #f4f4f4;
+}
+/* line 15, ../sass/_forms.scss */
+#formio-forms-container .form-secondary .formio-form {
+  min-height: 0;
+}
+/* line 19, ../sass/_forms.scss */
+#formio-forms-container .form-secondary .form-data-wrapper {
+  padding-top: 0.5em;
+  padding-bottom: 1em;
+}
+
+/* line 27, ../sass/_forms.scss */
 .form-control {
   color: #666666;
   border: 1px solid #cbcbcb;
@@ -12580,22 +12599,17 @@ label {
   padding: 0.75rem 0.75rem;
 }
 
-/* line 16, ../sass/_forms.scss */
+/* line 37, ../sass/_forms.scss */
 .form-control.textarea {
   height: 96px;
 }
 
-/* line 21, ../sass/_forms.scss */
+/* line 42, ../sass/_forms.scss */
 .choices .form-control {
   padding-top: 0.25rem;
 }
 
-/* line 26, ../sass/_forms.scss */
-.radio label, .checkbox label {
-  font-size: 18px;
-}
-
-/* line 30, ../sass/_forms.scss */
+/* line 51, ../sass/_forms.scss */
 .help-block {
   font-size: 16px;
 }
@@ -12628,9 +12642,8 @@ label {
 /* line 43, ../sass/_wizard.scss */
 .formio-form nav ul.pagination li.page-item {
   text-align: center;
-  cursor: default !important;
 }
-/* line 50, ../sass/_wizard.scss */
+/* line 49, ../sass/_wizard.scss */
 .formio-form nav ul.pagination li.page-item:before, .formio-form nav ul.pagination li.page-item:after {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -12654,34 +12667,34 @@ label {
   color: #67a4c8;
   display: none;
 }
-/* line 62, ../sass/_wizard.scss */
+/* line 61, ../sass/_wizard.scss */
 .formio-form nav ul.pagination li.page-item:not(.active) {
   display: none;
 }
-/* line 66, ../sass/_wizard.scss */
+/* line 65, ../sass/_wizard.scss */
 .formio-form nav ul.pagination li.page-item.active {
   display: table-cell;
 }
-/* line 69, ../sass/_wizard.scss */
+/* line 68, ../sass/_wizard.scss */
 .formio-form nav ul.pagination li.page-item.active .page-link {
   font-weight: bold;
 }
-/* line 73, ../sass/_wizard.scss */
+/* line 72, ../sass/_wizard.scss */
 .formio-form nav ul.pagination li.page-item.active .page-link:before {
   content: "";
   color: #67a4c8;
   background-color: white;
 }
-/* line 83, ../sass/_wizard.scss */
+/* line 82, ../sass/_wizard.scss */
 .formio-form nav ul.pagination li.page-item.active ~ .page-item .page-link {
   color: #777777;
 }
-/* line 86, ../sass/_wizard.scss */
+/* line 85, ../sass/_wizard.scss */
 .formio-form nav ul.pagination li.page-item.active ~ .page-item .page-link:before {
   background-color: white;
   color: #67a4c8;
 }
-/* line 96, ../sass/_wizard.scss */
+/* line 95, ../sass/_wizard.scss */
 .formio-form nav ul.pagination li.page-item .page-link {
   color: inherit;
   background-color: transparent;
@@ -12691,7 +12704,7 @@ label {
   margin: 0;
   border: 0;
 }
-/* line 105, ../sass/_wizard.scss */
+/* line 104, ../sass/_wizard.scss */
 .formio-form nav ul.pagination li.page-item .page-link:before {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
@@ -12714,32 +12727,32 @@ label {
   color: #67a4c8;
 }
 
-/* line 129, ../sass/_wizard.scss */
+/* line 128, ../sass/_wizard.scss */
 .has-previous-page nav ul.pagination li.page-item.active:before {
   display: inline-block;
   left: 0px;
 }
 
-/* line 136, ../sass/_wizard.scss */
+/* line 135, ../sass/_wizard.scss */
 .has-next-page nav ul.pagination li.page-item.active:after {
   display: inline-block;
   right: 0px;
 }
 
 @media (min-width: 768px) {
-  /* line 148, ../sass/_wizard.scss */
+  /* line 147, ../sass/_wizard.scss */
   .formio-form nav ul.pagination li.page-item:before, .formio-form nav ul.pagination li.page-item:after {
     display: none !important;
   }
-  /* line 152, ../sass/_wizard.scss */
+  /* line 151, ../sass/_wizard.scss */
   .formio-form nav ul.pagination li.page-item:not(.active) {
     display: table-cell;
   }
-  /* line 167, ../sass/_wizard.scss */
+  /* line 166, ../sass/_wizard.scss */
   .formio-form nav ul.pagination li.page-item.active ~ .page-item .page-link:before {
     color: transparent;
   }
-  /* line 176, ../sass/_wizard.scss */
+  /* line 175, ../sass/_wizard.scss */
   .formio-form nav ul.pagination li.page-item .page-link:before {
     background-color: #67a4c8;
     color: transparent;
