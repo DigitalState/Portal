@@ -2,7 +2,7 @@ version: '2.1'
 
 services:
     ng2admin:
-        image: digitalstate/portal:0.1.2
+        image: digitalstate/portal:0.1.3
         environment:
             - VIRTUAL_HOST
             - DISCOVERY_HOST
