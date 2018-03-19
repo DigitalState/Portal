@@ -39,7 +39,7 @@ export class FormioApiService {
      * @param id
      */
     getForm(route: string, id: string): Observable<{ form?: any, translations?: any }> {
-        return this.entityApiService.one(route, id).customGET('form').flatMap(form => {
+        return this.entityApiService.one(route, id).customGET('forms').flatMap(form => {
             // Remove Restangular's functions and metadata from entity
             if (isFunction(form.plain)) {
                 form = form.plain();
@@ -57,7 +57,7 @@ export class FormioApiService {
             // });
             return this.cms.getFormioFormTranslations(form.id).flatMap((translations) => {
                 return Observable.of({
-                    form: form,
+                    forms: form,
                     translations: translations
                 });
             }).catch((error) => {
