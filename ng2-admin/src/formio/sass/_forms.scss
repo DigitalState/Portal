@@ -4,13 +4,16 @@ label {
 }
 
 #formio-forms-container {
+  .secondary-forms-col {
+    background-color: lighten($gray-lighter, 2%);
+  }
+
   .form-primary, .form-secondary {
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
 
   .form-secondary {
-    background-color: lighten($gray-lighter, 2%);
 
     .formio-form {
       min-height: 0;

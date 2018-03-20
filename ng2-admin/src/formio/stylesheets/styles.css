@@ -12570,25 +12570,25 @@ label {
 }
 
 /* line 7, ../sass/_forms.scss */
+#formio-forms-container .secondary-forms-col {
+  background-color: #f4f4f4;
+}
+/* line 11, ../sass/_forms.scss */
 #formio-forms-container .form-primary, #formio-forms-container .form-secondary {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
-/* line 12, ../sass/_forms.scss */
-#formio-forms-container .form-secondary {
-  background-color: #f4f4f4;
-}
-/* line 15, ../sass/_forms.scss */
+/* line 18, ../sass/_forms.scss */
 #formio-forms-container .form-secondary .formio-form {
   min-height: 0;
 }
-/* line 19, ../sass/_forms.scss */
+/* line 22, ../sass/_forms.scss */
 #formio-forms-container .form-secondary .form-data-wrapper {
   padding-top: 0.5em;
   padding-bottom: 1em;
 }
 
-/* line 27, ../sass/_forms.scss */
+/* line 30, ../sass/_forms.scss */
 .form-control {
   color: #666666;
   border: 1px solid #cbcbcb;
@@ -12599,17 +12599,17 @@ label {
   padding: 0.75rem 0.75rem;
 }
 
-/* line 37, ../sass/_forms.scss */
+/* line 40, ../sass/_forms.scss */
 .form-control.textarea {
   height: 96px;
 }
 
-/* line 42, ../sass/_forms.scss */
+/* line 45, ../sass/_forms.scss */
 .choices .form-control {
   padding-top: 0.25rem;
 }
 
-/* line 51, ../sass/_forms.scss */
+/* line 54, ../sass/_forms.scss */
 .help-block {
   font-size: 16px;
 }
