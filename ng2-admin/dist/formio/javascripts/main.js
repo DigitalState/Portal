@@ -6,6 +6,7 @@
   var commChannel = 'ds.formio';
   var targetWindow = window.parent;
   var formioForms = [];
+  var $formsContainer = null;
 
   var sendMessage = function(type, payload) {
     targetWindow.postMessage({
@@ -42,6 +43,9 @@
 
     // Change the rendering order of the forms by sorting their schema entries
     sortSchemas(messageData);
+
+    // Create the HTML layout of the form(s)
+    buildFormsLayout(messageData);
 
     // Create Formio instances for each form schema
     createForms(messageData);
@@ -131,14 +135,12 @@
    * @param messageData
    */
   function createForms(messageData) {
-    var $formsContainer = $('#formio-forms-container');
     // Cycle through array of forms, that is `messageData.form`
     _.forEach(messageData.forms, function(form, formIndex) {
+      // Query the layout for the wrapper of the current form
+      var formWrapperElement = getFormWrapperElement(formIndex);
 
-      $formElement = buildFormHtmlElement(form, formIndex);
-      $formsContainer.append($formElement);
-
-      Formio.createForm($formElement.find('.form-wrapper').get(0), { // Form object
+      Formio.createForm(formWrapperElement, { // Form object
         display: form.display,
         components: form.schema,
       }, { // Form options
@@ -200,30 +202,80 @@
   }
 
   /**
+   * Returns the HTML element that wraps a form given its index.
+   * @param formIndex {int} Zero-based index of the required form element
+   * @return HTMLElement
+   */
+  var getFormWrapperElement = function(formIndex) {
+    var formWrapperId = 'form-' + formIndex;
+    return $formsContainer.find('#' + formWrapperId).get(0);
+  };
+
+  /**
+   * Build the entire layout of all provided forms
+   * @param messageData {object} Message payload which contains and array of form schemas in the `forms` property
+   */
+  var buildFormsLayout = function(messageData) {
+    var primaryFormsHtml = '';
+    var secondaryFormsHtml = '';
+    var $html = $('<div class="row"></div>');
+
+    _.forEach(messageData.forms, function (form, formIndex) {
+      var formHtml = buildFormHtml(form, formIndex);
+
+      if (form.primary === true) {
+        primaryFormsHtml += formHtml;
+      }
+      else if (form.primary === false) {
+        secondaryFormsHtml += formHtml;
+      }
+      else {
+        console.error('Unable to determine form classification (whether primary or not): ', form.primary);
+      }
+    });
+
+    if (primaryFormsHtml.length > 0) {
+      var $primaryFormsHtml = $('<div>' + primaryFormsHtml + '</div>')
+        .addClass('primary-forms-col')
+        .addClass((secondaryFormsHtml.length > 0) ? 'col-md-7' : 'col-md-12');
+      $html.append($primaryFormsHtml);
+    }
+
+    if (secondaryFormsHtml.length > 0) {
+      var $secondaryFormsHtml = $('<div>' + secondaryFormsHtml + '</div>')
+        .addClass('secondary-forms-col')
+        .addClass((primaryFormsHtml.length > 0) ? 'col-md-5' : 'col-md-12');
+      $html.append($secondaryFormsHtml);
+    }
+
+    $formsContainer.append($html);
+  };
+
+  /**
    * Build the HTML markup of a Formio form wrapper. The actual form will later be injected within `.formio-wrapper` div
    * in the markup.
    *
    * @param form The form schema.
    * @param formIndex Form index in the form schemas array.
-   * @return {JQuery|HTMLElement}
+   * @return {string} HTML markup of the element
    */
-  var buildFormHtmlElement = function(form, formIndex) {
+  var buildFormHtml = function(form, formIndex) {
     var formWrapperId = 'form-' + formIndex;
     var html = '';
 
     if (form.primary === true) {
-      html += '<div class="form-primary container-fluid">';
-      html += '  <div class="form-wrapper"></div>';
+      html += '<div id="' + form.id + '" class="form-primary">';
+      html += '  <div id="' + formWrapperId + '" class="form-wrapper"></div>';
       html += '</div>';
     }
     else {
-      html += '<div class="form-secondary container-fluid">';
+      html += '<div id="' + form.id + '" class="form-secondary">';
       html += '  <a class="collapse-trigger" role="button" data-toggle="collapse" href="#' + formWrapperId + '-collpase" aria-expanded="true" aria-controls="' + formWrapperId + '-collpase">';
       html += '    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>';
       html += '        <span class="header">Form</span>';
       html += '  </a>';
       html += '  <div id="' + formWrapperId + '-collpase" aria-expanded="true" class="collapse in">';
-      html += '    <div class="form-wrapper"></div>';
+      html += '    <div id="' + formWrapperId + '" class="form-wrapper"></div>';
       html += '    <div class="form-data-wrapper">';
       html += '      <a class="collapse-trigger" role="button" data-toggle="collapse" href="#' + formWrapperId + '-data-collpase" aria-expanded="false" aria-controls="' + formWrapperId + '-data-collpase">';
       html += '        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>';
@@ -237,7 +289,7 @@
       html += '</div>';
     }
 
-    return $(html);
+    return html;
   };
 
   /**
@@ -294,6 +346,7 @@
       });
     });
 
+    $formsContainer = $('#formio-forms-container');
     sendMessage('ready');
   });
 
