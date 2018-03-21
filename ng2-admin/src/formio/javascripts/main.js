@@ -34,7 +34,7 @@
    */
   var handleMessageFormData = function(messageData) {
     // @Todo Mock data being used here
-    messageData = FORMIO_MOCK.simple.messageData;   // ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅
+    // messageData = FORMIO_MOCK.simple.messageData;   // ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅ ⬅
 
     console.log('IFrame: received messageData', messageData);
 
