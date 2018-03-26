@@ -14,9 +14,8 @@ body {
 main {
   position: relative;
   //display: flex;
-  flex-direction: column;
-  //height: 100%;
-  min-height: 100%;
+  //flex-direction: column;
+  height: 100%;
   position: relative;
   font-size: $font-size-base;
   font-family: $font-family-base;

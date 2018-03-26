@@ -12553,15 +12553,14 @@ html {
 /* line 14, ../sass/_html.scss */
 main {
   position: relative;
-  flex-direction: column;
-  min-height: 100%;
+  height: 100%;
   position: relative;
   font-size: 18px;
   font-family: "Roboto", sans-serif;
   line-height: 1.5;
 }
 
-/* line 28, ../sass/_html.scss */
+/* line 27, ../sass/_html.scss */
 a:hover, a:focus {
   text-decoration: none;
 }
@@ -12639,20 +12638,26 @@ label {
 @media (min-width: 992px) {
   /* line 87, ../sass/_forms.scss */
   #formio-forms-container {
-    display: flex;
-    flex-direction: column;
+    height: 100%;
   }
   /* line 97, ../sass/_forms.scss */
   #formio-forms-container > .row {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
+    position: relative;
+    height: 100%;
+    overflow: hidden;
   }
-  /* line 104, ../sass/_forms.scss */
+  /* line 106, ../sass/_forms.scss */
+  #formio-forms-container .primary-forms-col {
+    position: absolute;
+    overflow-y: scroll;
+    height: 100%;
+  }
+  /* line 112, ../sass/_forms.scss */
   #formio-forms-container .secondary-forms-col {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
+    position: absolute;
+    right: 0px;
+    height: 100%;
+    overflow-y: scroll;
     border-left: 3px solid #eeeeee;
   }
 }
