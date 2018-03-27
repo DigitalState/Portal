@@ -39,7 +39,10 @@ export class BaMenuItem {
         return false;
       }
 
-      if (menuItem.url !== ('#' + this.location.path())) {
+      // Clear Breadcrumbs when navigating using the sidebar menu
+      // Exceptions are: current menu item and external links
+      if (menuItem.url !== ('#' + this.location.path()) &&
+          menuItem.target !== '_blank') {
         this.breadcrumbsService.clear();
       }
     }
