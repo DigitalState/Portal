@@ -229,12 +229,12 @@ export class MicroservicesDefinition {
                             'identity': {
                                 label: 'Identity',
                                 type: 'string',
-                                default: 'Individual',
+                                default: '',
                             },
                             'identityUuid': {
                                 label: 'Identity UUID',
                                 type: 'string',
-                                default: 'd0daa7e4-07d1-47e6-93f2-0629adaa3b49',
+                                default: '',
                             },
                             'owner': {
                                 label: 'Owner',
@@ -250,7 +250,7 @@ export class MicroservicesDefinition {
                                 validation: {
                                     'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
                                 },
-                                default: '8454c987-cbc5-4a24-ba1a-d420283caabd',
+                                default: '',
                             },
                             'statuses': {
                                 label: 'Status',
@@ -364,7 +364,7 @@ export class MicroservicesDefinition {
                                 validation: {
                                     'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
                                 },
-                                default: '8454c987-cbc5-4a24-ba1a-d420283caabd',
+                                default: '',
                             },
                             'createdAt': {
                                 label: 'Created At',
@@ -517,7 +517,7 @@ export class MicroservicesDefinition {
                                 validation: {
                                     'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
                                 },
-                                default: '8454c987-cbc5-4a24-ba1a-d420283caabd',
+                                default: '',
                             },
                             'createdAt': {
                                 label: 'Created At',
@@ -549,7 +549,7 @@ export class MicroservicesDefinition {
                                 validation: {
                                     'required': {message: 'required'}, // translation key prefixed by 'ds.microservices.entity.validation'
                                 },
-                                default: '8454c987-cbc5-4a24-ba1a-d420283caabd',
+                                default: '',
                             },
                             'createdAt': {
                                 label: 'Created At',
