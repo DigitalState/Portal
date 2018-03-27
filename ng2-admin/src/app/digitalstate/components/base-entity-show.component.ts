@@ -233,7 +233,7 @@ export abstract class DsBaseEntityShowComponent extends DsEntityCrudComponent {
      * Stub called when the entity is prepared.
      */
     onEntityPrepared(preparedEntity?: any): void {
-        if (this.pageTitle !== '' && preparedEntity.entity && preparedEntity.entity.title) {
+        if (this.pageTitle !== '' && preparedEntity && preparedEntity.entity && preparedEntity.entity.title) {
             // If title is translated, show it in current language
             if (preparedEntity.entity.title.hasOwnProperty(this.translate.currentLang)) {
                 this.pageTitle = preparedEntity.entity.title[this.translate.currentLang];
