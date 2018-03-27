@@ -3,7 +3,441 @@
  */
 var FORMIO_MOCK = {};
 
-FORMIO_MOCK.simple = {
+FORMIO_MOCK.basic = {
+  messageData: {
+    language: 'en',
+    translations: null,
+    forms: [
+      {
+        "id": "subFormTest",
+        "primary": true,
+        "method": "POST",
+        "action": "/scenarios/e049f2b4-b249-48c2-850c-64d4c4b39527/submissions",
+        "type": "formio",
+        "display": "form",
+        "schema": [
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "Description",
+            "key": "description",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": []
+          },
+          {
+            "input": true,
+            "tableView": true,
+            "label": "Approved",
+            "key": "approved",
+            "values": [
+              {
+                "value": "yes",
+                "label": "yes",
+                "shortcut": ""
+              },
+              {
+                "value": "no",
+                "label": "no",
+                "shortcut": ""
+              }
+            ],
+            "inline": false,
+            "protected": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": true
+            },
+            "type": "selectboxes",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "optionsLabelPosition": "right",
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            }
+          },
+          {
+            "properties": {},
+            "conditional": {
+              "eq": "",
+              "when": null,
+              "show": ""
+            },
+            "tags": [],
+            "labelPosition": "top",
+            "hideLabel": false,
+            "project": "",
+            "type": "form",
+            "persistent": true,
+            "unique": false,
+            "protected": false,
+            "label": "mySubForm",
+            "path": "",
+            "form": {
+              "_id": "5aa6b4a29b2ab1003d686e21",
+              "machineName": "payTaxes",
+              "modified": "2018-03-14T16:53:19.934Z",
+              "display": "form",
+              "title": "Pay Taxes",
+              "name": "payTaxes",
+              "path": "pay-taxes",
+              "created": "2018-03-12T17:10:58.168Z",
+              "components": [
+                {
+                  "input": true,
+                  "tableView": true,
+                  "inputType": "text",
+                  "inputMask": "",
+                  "label": "Tax ID",
+                  "key": "taxId",
+                  "placeholder": "",
+                  "prefix": "",
+                  "suffix": "",
+                  "multiple": false,
+                  "defaultValue": "",
+                  "protected": false,
+                  "unique": false,
+                  "persistent": true,
+                  "hidden": false,
+                  "clearOnHide": true,
+                  "validate": {
+                    "required": false,
+                    "minLength": "",
+                    "maxLength": "",
+                    "pattern": "",
+                    "custom": "",
+                    "customPrivate": false
+                  },
+                  "conditional": {
+                    "show": "",
+                    "when": null,
+                    "eq": ""
+                  },
+                  "type": "textfield",
+                  "hideLabel": false,
+                  "labelPosition": "top",
+                  "tags": [],
+                  "properties": {},
+                  "lockKey": true
+                },
+                {
+                  "clearOnHide": false,
+                  "input": false,
+                  "tableView": false,
+                  "key": "columns",
+                  "columns": [
+                    {
+                      "components": [
+                        {
+                          "input": true,
+                          "tableView": true,
+                          "label": "Taxation year",
+                          "key": "taxationYear",
+                          "placeholder": "",
+                          "data": {
+                            "values": [
+                              {
+                                "value": "2017",
+                                "label": "2017"
+                              },
+                              {
+                                "value": "2016",
+                                "label": "2016"
+                              },
+                              {
+                                "value": "2015",
+                                "label": "2015"
+                              }
+                            ],
+                            "json": "",
+                            "url": "",
+                            "resource": "",
+                            "custom": ""
+                          },
+                          "dataSrc": "values",
+                          "valueProperty": "",
+                          "defaultValue": "",
+                          "refreshOn": "",
+                          "filter": "",
+                          "authenticate": false,
+                          "template": "<span>{{ item.label }}</span>",
+                          "multiple": false,
+                          "protected": false,
+                          "unique": false,
+                          "persistent": true,
+                          "hidden": false,
+                          "clearOnHide": true,
+                          "validate": {
+                            "required": false
+                          },
+                          "type": "select",
+                          "hideLabel": false,
+                          "labelPosition": "top",
+                          "tags": [],
+                          "conditional": {
+                            "show": "",
+                            "when": null,
+                            "eq": ""
+                          },
+                          "properties": {},
+                          "lockKey": true
+                        },
+                        {
+                          "input": true,
+                          "tableView": true,
+                          "inputType": "number",
+                          "label": "Paid amount",
+                          "key": "paidamount",
+                          "placeholder": "",
+                          "prefix": "",
+                          "suffix": "",
+                          "defaultValue": "",
+                          "protected": false,
+                          "persistent": true,
+                          "hidden": false,
+                          "clearOnHide": true,
+                          "validate": {
+                            "required": false,
+                            "min": "",
+                            "max": "",
+                            "step": "any",
+                            "integer": "",
+                            "multiple": "",
+                            "custom": ""
+                          },
+                          "type": "number",
+                          "labelPosition": "top",
+                          "tags": [],
+                          "conditional": {
+                            "show": "",
+                            "when": null,
+                            "eq": ""
+                          },
+                          "properties": {},
+                          "hideLabel": false
+                        }
+                      ],
+                      "width": 6,
+                      "offset": 0,
+                      "push": 0,
+                      "pull": 0
+                    },
+                    {
+                      "components": [
+                        {
+                          "clearOnHide": false,
+                          "key": "columnsWell",
+                          "input": false,
+                          "components": [
+                            {
+                              "key": "columnsWellHtml",
+                              "input": false,
+                              "tag": "p",
+                              "attrs": [
+                                {
+                                  "value": "",
+                                  "attr": ""
+                                }
+                              ],
+                              "className": "small",
+                              "content": "Caeleste terras deus ad ambitae effervescere. Zonae dominari formas nullo erant sidera praeter amphitrite. Tumescere quinta valles facientes quisque numero.",
+                              "type": "htmlelement",
+                              "hideLabel": false,
+                              "tags": [],
+                              "conditional": {
+                                "show": "",
+                                "when": null,
+                                "eq": ""
+                              },
+                              "properties": {}
+                            }
+                          ],
+                          "tableView": false,
+                          "type": "well",
+                          "hideLabel": false,
+                          "tags": [],
+                          "conditional": {
+                            "show": "",
+                            "when": null,
+                            "eq": ""
+                          },
+                          "properties": {}
+                        },
+                        {
+                          "input": true,
+                          "inputType": "checkbox",
+                          "tableView": true,
+                          "label": "Exempted for this taxation year.",
+                          "datagridLabel": true,
+                          "key": "exemptedForThisTaxationYear",
+                          "defaultValue": false,
+                          "protected": false,
+                          "persistent": true,
+                          "hidden": false,
+                          "name": "",
+                          "value": "",
+                          "clearOnHide": true,
+                          "validate": {
+                            "required": false
+                          },
+                          "type": "checkbox",
+                          "labelPosition": "right",
+                          "hideLabel": false,
+                          "tags": [],
+                          "conditional": {
+                            "show": "",
+                            "when": null,
+                            "eq": ""
+                          },
+                          "properties": {},
+                          "lockKey": true
+                        }
+                      ],
+                      "width": 6,
+                      "offset": 0,
+                      "push": 0,
+                      "pull": 0
+                    }
+                  ],
+                  "type": "columns",
+                  "hideLabel": false,
+                  "tags": [],
+                  "conditional": {
+                    "show": "",
+                    "when": null,
+                    "eq": ""
+                  },
+                  "properties": {}
+                },
+                {
+                  "input": true,
+                  "label": "Submit",
+                  "tableView": false,
+                  "key": "submit",
+                  "size": "md",
+                  "leftIcon": "",
+                  "rightIcon": "",
+                  "block": false,
+                  "action": "submit",
+                  "disableOnInvalid": false,
+                  "theme": "primary",
+                  "type": "button",
+                  "hideLabel": false
+                }
+              ],
+              "owner": "5aa07191ae3478003d02ccb1",
+              "submissionAccess": [
+                {
+                  "type": "create_all",
+                  "roles": []
+                },
+                {
+                  "type": "read_all",
+                  "roles": []
+                },
+                {
+                  "type": "update_all",
+                  "roles": []
+                },
+                {
+                  "type": "delete_all",
+                  "roles": []
+                },
+                {
+                  "type": "create_own",
+                  "roles": [
+                    "5aa07190ae3478003d02cca4"
+                  ]
+                },
+                {
+                  "type": "read_own",
+                  "roles": []
+                },
+                {
+                  "type": "update_own",
+                  "roles": []
+                },
+                {
+                  "type": "delete_own",
+                  "roles": []
+                }
+              ],
+              "access": [
+                {
+                  "type": "read_all",
+                  "roles": [
+                    "5aa07190ae3478003d02cca2",
+                    "5aa07190ae3478003d02cca3",
+                    "5aa07190ae3478003d02cca4"
+                  ]
+                }
+              ],
+              "tags": [
+                "common"
+              ],
+              "type": "form"
+            },
+            "reference": true,
+            "src": "",
+            "key": "mySubForm",
+            "tableView": true,
+            "input": true,
+            "clearOnHide": true
+          },
+          {
+            "input": true,
+            "label": "Submit",
+            "tableView": false,
+            "key": "submit",
+            "size": "md",
+            "leftIcon": "",
+            "rightIcon": "",
+            "block": false,
+            "action": "submit",
+            "disableOnInvalid": false,
+            "theme": "primary",
+            "type": "button",
+            "hideLabel": false
+          }
+        ]
+      }
+    ]
+  }
+};
+
+
+FORMIO_MOCK.twoColumns = {
   messageData: {
     language: 'en',
     translations: {
@@ -259,6 +693,573 @@ FORMIO_MOCK.simple = {
             "properties": {}
           },
           {
+            "clearOnHide": false,
+            "input": false,
+            "tableView": false,
+            "key": "columns",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "input": true,
+                    "tableView": true,
+                    "label": "Taxation year",
+                    "key": "taxationYear",
+                    "placeholder": "",
+                    "data": {
+                      "values": [
+                        {
+                          "value": "2017",
+                          "label": "2017"
+                        },
+                        {
+                          "value": "2016",
+                          "label": "2016"
+                        },
+                        {
+                          "value": "2015",
+                          "label": "2015"
+                        }
+                      ],
+                      "json": "",
+                      "url": "",
+                      "resource": "",
+                      "custom": ""
+                    },
+                    "dataSrc": "values",
+                    "valueProperty": "",
+                    "defaultValue": "",
+                    "refreshOn": "",
+                    "filter": "",
+                    "authenticate": false,
+                    "template": "<span>{{ item.label }}</span>",
+                    "multiple": false,
+                    "protected": false,
+                    "unique": false,
+                    "persistent": true,
+                    "hidden": false,
+                    "clearOnHide": true,
+                    "validate": {
+                      "required": false
+                    },
+                    "type": "select",
+                    "hideLabel": false,
+                    "labelPosition": "top",
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {},
+                    "lockKey": true
+                  },
+                  {
+                    "input": true,
+                    "tableView": true,
+                    "inputType": "number",
+                    "label": "Paid amount",
+                    "key": "paidamount",
+                    "placeholder": "",
+                    "prefix": "",
+                    "suffix": "",
+                    "defaultValue": "",
+                    "protected": false,
+                    "persistent": true,
+                    "hidden": false,
+                    "clearOnHide": true,
+                    "validate": {
+                      "required": false,
+                      "min": "",
+                      "max": "",
+                      "step": "any",
+                      "integer": "",
+                      "multiple": "",
+                      "custom": ""
+                    },
+                    "type": "number",
+                    "labelPosition": "top",
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {},
+                    "hideLabel": false
+                  }
+                ],
+                "width": 6,
+                "offset": 0,
+                "push": 0,
+                "pull": 0
+              },
+              {
+                "components": [
+                  {
+                    "clearOnHide": false,
+                    "key": "columnsWell",
+                    "input": false,
+                    "components": [
+                      {
+                        "key": "columnsWellHtml",
+                        "input": false,
+                        "tag": "p",
+                        "attrs": [
+                          {
+                            "value": "",
+                            "attr": ""
+                          }
+                        ],
+                        "className": "small",
+                        "content": "Caeleste terras deus ad ambitae effervescere. Zonae dominari formas nullo erant sidera praeter amphitrite. Tumescere quinta valles facientes quisque numero.",
+                        "type": "htmlelement",
+                        "hideLabel": false,
+                        "tags": [],
+                        "conditional": {
+                          "show": "",
+                          "when": null,
+                          "eq": ""
+                        },
+                        "properties": {}
+                      }
+                    ],
+                    "tableView": false,
+                    "type": "well",
+                    "hideLabel": false,
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {}
+                  },
+                  {
+                    "input": true,
+                    "inputType": "checkbox",
+                    "tableView": true,
+                    "label": "Exempted for this taxation year.",
+                    "datagridLabel": true,
+                    "key": "exemptedForThisTaxationYear",
+                    "defaultValue": false,
+                    "protected": false,
+                    "persistent": true,
+                    "hidden": false,
+                    "name": "",
+                    "value": "",
+                    "clearOnHide": true,
+                    "validate": {
+                      "required": false
+                    },
+                    "type": "checkbox",
+                    "labelPosition": "right",
+                    "hideLabel": false,
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {},
+                    "lockKey": true
+                  }
+                ],
+                "width": 6,
+                "offset": 0,
+                "push": 0,
+                "pull": 0
+              }
+            ],
+            "type": "columns",
+            "hideLabel": false,
+            "tags": [],
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "properties": {}
+          },
+          {
+            "clearOnHide": false,
+            "input": false,
+            "tableView": false,
+            "key": "columns",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "input": true,
+                    "tableView": true,
+                    "label": "Taxation year",
+                    "key": "taxationYear",
+                    "placeholder": "",
+                    "data": {
+                      "values": [
+                        {
+                          "value": "2017",
+                          "label": "2017"
+                        },
+                        {
+                          "value": "2016",
+                          "label": "2016"
+                        },
+                        {
+                          "value": "2015",
+                          "label": "2015"
+                        }
+                      ],
+                      "json": "",
+                      "url": "",
+                      "resource": "",
+                      "custom": ""
+                    },
+                    "dataSrc": "values",
+                    "valueProperty": "",
+                    "defaultValue": "",
+                    "refreshOn": "",
+                    "filter": "",
+                    "authenticate": false,
+                    "template": "<span>{{ item.label }}</span>",
+                    "multiple": false,
+                    "protected": false,
+                    "unique": false,
+                    "persistent": true,
+                    "hidden": false,
+                    "clearOnHide": true,
+                    "validate": {
+                      "required": false
+                    },
+                    "type": "select",
+                    "hideLabel": false,
+                    "labelPosition": "top",
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {},
+                    "lockKey": true
+                  },
+                  {
+                    "input": true,
+                    "tableView": true,
+                    "inputType": "number",
+                    "label": "Paid amount",
+                    "key": "paidamount",
+                    "placeholder": "",
+                    "prefix": "",
+                    "suffix": "",
+                    "defaultValue": "",
+                    "protected": false,
+                    "persistent": true,
+                    "hidden": false,
+                    "clearOnHide": true,
+                    "validate": {
+                      "required": false,
+                      "min": "",
+                      "max": "",
+                      "step": "any",
+                      "integer": "",
+                      "multiple": "",
+                      "custom": ""
+                    },
+                    "type": "number",
+                    "labelPosition": "top",
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {},
+                    "hideLabel": false
+                  }
+                ],
+                "width": 6,
+                "offset": 0,
+                "push": 0,
+                "pull": 0
+              },
+              {
+                "components": [
+                  {
+                    "clearOnHide": false,
+                    "key": "columnsWell",
+                    "input": false,
+                    "components": [
+                      {
+                        "key": "columnsWellHtml",
+                        "input": false,
+                        "tag": "p",
+                        "attrs": [
+                          {
+                            "value": "",
+                            "attr": ""
+                          }
+                        ],
+                        "className": "small",
+                        "content": "Caeleste terras deus ad ambitae effervescere. Zonae dominari formas nullo erant sidera praeter amphitrite. Tumescere quinta valles facientes quisque numero.",
+                        "type": "htmlelement",
+                        "hideLabel": false,
+                        "tags": [],
+                        "conditional": {
+                          "show": "",
+                          "when": null,
+                          "eq": ""
+                        },
+                        "properties": {}
+                      }
+                    ],
+                    "tableView": false,
+                    "type": "well",
+                    "hideLabel": false,
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {}
+                  },
+                  {
+                    "input": true,
+                    "inputType": "checkbox",
+                    "tableView": true,
+                    "label": "Exempted for this taxation year.",
+                    "datagridLabel": true,
+                    "key": "exemptedForThisTaxationYear",
+                    "defaultValue": false,
+                    "protected": false,
+                    "persistent": true,
+                    "hidden": false,
+                    "name": "",
+                    "value": "",
+                    "clearOnHide": true,
+                    "validate": {
+                      "required": false
+                    },
+                    "type": "checkbox",
+                    "labelPosition": "right",
+                    "hideLabel": false,
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {},
+                    "lockKey": true
+                  }
+                ],
+                "width": 6,
+                "offset": 0,
+                "push": 0,
+                "pull": 0
+              }
+            ],
+            "type": "columns",
+            "hideLabel": false,
+            "tags": [],
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "properties": {}
+          },
+          {
+            "clearOnHide": false,
+            "input": false,
+            "tableView": false,
+            "key": "columns",
+            "columns": [
+              {
+                "components": [
+                  {
+                    "input": true,
+                    "tableView": true,
+                    "label": "Taxation year",
+                    "key": "taxationYear",
+                    "placeholder": "",
+                    "data": {
+                      "values": [
+                        {
+                          "value": "2017",
+                          "label": "2017"
+                        },
+                        {
+                          "value": "2016",
+                          "label": "2016"
+                        },
+                        {
+                          "value": "2015",
+                          "label": "2015"
+                        }
+                      ],
+                      "json": "",
+                      "url": "",
+                      "resource": "",
+                      "custom": ""
+                    },
+                    "dataSrc": "values",
+                    "valueProperty": "",
+                    "defaultValue": "",
+                    "refreshOn": "",
+                    "filter": "",
+                    "authenticate": false,
+                    "template": "<span>{{ item.label }}</span>",
+                    "multiple": false,
+                    "protected": false,
+                    "unique": false,
+                    "persistent": true,
+                    "hidden": false,
+                    "clearOnHide": true,
+                    "validate": {
+                      "required": false
+                    },
+                    "type": "select",
+                    "hideLabel": false,
+                    "labelPosition": "top",
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {},
+                    "lockKey": true
+                  },
+                  {
+                    "input": true,
+                    "tableView": true,
+                    "inputType": "number",
+                    "label": "Paid amount",
+                    "key": "paidamount",
+                    "placeholder": "",
+                    "prefix": "",
+                    "suffix": "",
+                    "defaultValue": "",
+                    "protected": false,
+                    "persistent": true,
+                    "hidden": false,
+                    "clearOnHide": true,
+                    "validate": {
+                      "required": false,
+                      "min": "",
+                      "max": "",
+                      "step": "any",
+                      "integer": "",
+                      "multiple": "",
+                      "custom": ""
+                    },
+                    "type": "number",
+                    "labelPosition": "top",
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {},
+                    "hideLabel": false
+                  }
+                ],
+                "width": 6,
+                "offset": 0,
+                "push": 0,
+                "pull": 0
+              },
+              {
+                "components": [
+                  {
+                    "clearOnHide": false,
+                    "key": "columnsWell",
+                    "input": false,
+                    "components": [
+                      {
+                        "key": "columnsWellHtml",
+                        "input": false,
+                        "tag": "p",
+                        "attrs": [
+                          {
+                            "value": "",
+                            "attr": ""
+                          }
+                        ],
+                        "className": "small",
+                        "content": "Caeleste terras deus ad ambitae effervescere. Zonae dominari formas nullo erant sidera praeter amphitrite. Tumescere quinta valles facientes quisque numero.",
+                        "type": "htmlelement",
+                        "hideLabel": false,
+                        "tags": [],
+                        "conditional": {
+                          "show": "",
+                          "when": null,
+                          "eq": ""
+                        },
+                        "properties": {}
+                      }
+                    ],
+                    "tableView": false,
+                    "type": "well",
+                    "hideLabel": false,
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {}
+                  },
+                  {
+                    "input": true,
+                    "inputType": "checkbox",
+                    "tableView": true,
+                    "label": "Exempted for this taxation year.",
+                    "datagridLabel": true,
+                    "key": "exemptedForThisTaxationYear",
+                    "defaultValue": false,
+                    "protected": false,
+                    "persistent": true,
+                    "hidden": false,
+                    "name": "",
+                    "value": "",
+                    "clearOnHide": true,
+                    "validate": {
+                      "required": false
+                    },
+                    "type": "checkbox",
+                    "labelPosition": "right",
+                    "hideLabel": false,
+                    "tags": [],
+                    "conditional": {
+                      "show": "",
+                      "when": null,
+                      "eq": ""
+                    },
+                    "properties": {},
+                    "lockKey": true
+                  }
+                ],
+                "width": 6,
+                "offset": 0,
+                "push": 0,
+                "pull": 0
+              }
+            ],
+            "type": "columns",
+            "hideLabel": false,
+            "tags": [],
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "properties": {}
+          },
+          {
             "input": true,
             "label": "Submit",
             "tableView": false,
@@ -276,6 +1277,612 @@ FORMIO_MOCK.simple = {
         ],
         "data": [],
         "primary": true
+      },
+      {
+        "id": "address",
+        "method": null,
+        "action": null,
+        "type": "formio",
+        "display": "form",
+        "schema": [
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "City",
+            "key": "city",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "Country",
+            "key": "country",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "label": "Submit",
+            "tableView": false,
+            "key": "submit",
+            "size": "md",
+            "leftIcon": "",
+            "rightIcon": "",
+            "block": false,
+            "action": "submit",
+            "disableOnInvalid": false,
+            "theme": "primary",
+            "type": "button",
+            "hideLabel": false
+          }
+        ],
+        "data": {
+          "city": "Ottawa",
+          "country": "Canada"
+        },
+        "primary": false
+      },
+      {
+        "id": "address",
+        "method": null,
+        "action": null,
+        "type": "formio",
+        "display": "form",
+        "schema": [
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "City",
+            "key": "city",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "Country",
+            "key": "country",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "label": "Submit",
+            "tableView": false,
+            "key": "submit",
+            "size": "md",
+            "leftIcon": "",
+            "rightIcon": "",
+            "block": false,
+            "action": "submit",
+            "disableOnInvalid": false,
+            "theme": "primary",
+            "type": "button",
+            "hideLabel": false
+          }
+        ],
+        "data": {
+          "city": "Ottawa",
+          "country": "Canada"
+        },
+        "primary": false
+      },
+      {
+        "id": "address",
+        "method": null,
+        "action": null,
+        "type": "formio",
+        "display": "form",
+        "schema": [
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "City",
+            "key": "city",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "Country",
+            "key": "country",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "label": "Submit",
+            "tableView": false,
+            "key": "submit",
+            "size": "md",
+            "leftIcon": "",
+            "rightIcon": "",
+            "block": false,
+            "action": "submit",
+            "disableOnInvalid": false,
+            "theme": "primary",
+            "type": "button",
+            "hideLabel": false
+          }
+        ],
+        "data": {
+          "city": "Ottawa",
+          "country": "Canada"
+        },
+        "primary": false
+      },
+      {
+        "id": "address",
+        "method": null,
+        "action": null,
+        "type": "formio",
+        "display": "form",
+        "schema": [
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "City",
+            "key": "city",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "Country",
+            "key": "country",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "label": "Submit",
+            "tableView": false,
+            "key": "submit",
+            "size": "md",
+            "leftIcon": "",
+            "rightIcon": "",
+            "block": false,
+            "action": "submit",
+            "disableOnInvalid": false,
+            "theme": "primary",
+            "type": "button",
+            "hideLabel": false
+          }
+        ],
+        "data": {
+          "city": "Ottawa",
+          "country": "Canada"
+        },
+        "primary": false
+      },
+      {
+        "id": "address",
+        "method": null,
+        "action": null,
+        "type": "formio",
+        "display": "form",
+        "schema": [
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "City",
+            "key": "city",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "Country",
+            "key": "country",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "label": "Submit",
+            "tableView": false,
+            "key": "submit",
+            "size": "md",
+            "leftIcon": "",
+            "rightIcon": "",
+            "block": false,
+            "action": "submit",
+            "disableOnInvalid": false,
+            "theme": "primary",
+            "type": "button",
+            "hideLabel": false
+          }
+        ],
+        "data": {
+          "city": "Ottawa",
+          "country": "Canada"
+        },
+        "primary": false
+      },
+      {
+        "id": "address",
+        "method": null,
+        "action": null,
+        "type": "formio",
+        "display": "form",
+        "schema": [
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "City",
+            "key": "city",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "tableView": true,
+            "inputType": "text",
+            "inputMask": "",
+            "label": "Country",
+            "key": "country",
+            "placeholder": "",
+            "prefix": "",
+            "suffix": "",
+            "multiple": false,
+            "defaultValue": "",
+            "protected": false,
+            "unique": false,
+            "persistent": true,
+            "hidden": false,
+            "clearOnHide": true,
+            "validate": {
+              "required": false,
+              "minLength": "",
+              "maxLength": "",
+              "pattern": "",
+              "custom": "",
+              "customPrivate": false
+            },
+            "conditional": {
+              "show": "",
+              "when": null,
+              "eq": ""
+            },
+            "type": "textfield",
+            "hideLabel": false,
+            "labelPosition": "top",
+            "tags": [],
+            "properties": {}
+          },
+          {
+            "input": true,
+            "label": "Submit",
+            "tableView": false,
+            "key": "submit",
+            "size": "md",
+            "leftIcon": "",
+            "rightIcon": "",
+            "block": false,
+            "action": "submit",
+            "disableOnInvalid": false,
+            "theme": "primary",
+            "type": "button",
+            "hideLabel": false
+          }
+        ],
+        "data": {
+          "city": "Ottawa",
+          "country": "Canada"
+        },
+        "primary": false
       },
       {
         "id": "address",
