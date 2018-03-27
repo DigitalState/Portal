@@ -15,19 +15,19 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-6">
+			<div *ngIf="entity.createdAt" class="col-sm-6">
 				<dl translate>
 					<dt>{{ 'ds.microservices.entity.property.createdAt' | translate }}</dt>
 					<dd><relative-time [timeInput]="entity.createdAt"></relative-time></dd>
 				</dl>
 			</div>
-			<div class="col-sm-6">
+			<div *ngIf="entity.followUpAt" class="col-sm-6">
 				<dl>
 					<dt>{{ 'ds.microservices.entity.property.followUpAt' | translate }}</dt>
 					<dd><relative-time [timeInput]="entity.followUpAt"></relative-time></dd>
 				</dl>
 			</div>
-			<div class="col-sm-6">
+			<div *ngIf="entity.dueAt" class="col-sm-6">
 				<dl>
 					<dt>{{ 'ds.microservices.entity.property.dueAt' | translate }}</dt>
 					<dd><relative-time [timeInput]="entity.dueAt"></relative-time></dd>
