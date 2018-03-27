@@ -22,7 +22,7 @@
 							</div>
 							<div class="col-md-4">
 								<!--<div class="small text-grayed-out v-center no-transform position-md-right-0 position-relative position-md-absolute">{{row.customId}}</div>-->
-								<div class="small text-grayed-out mt-0 v-center-md float-md-right position-right-md-0">
+								<div *ngIf="row.dueAt" class="small text-grayed-out mt-0 v-center-md float-md-right position-right-md-0">
 									<span class="nowrap">
 										{{ 'general.due' | translate }}
 										<relative-time [timeInput]="row.dueAt"></relative-time>
