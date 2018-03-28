@@ -3,10 +3,10 @@
     "js": "vendor.a7996227553977a7962e.bundle.js"
   },
   "main": {
-    "js": "main.1b035614e3a678aa016e.bundle.js",
+    "js": "main.2bc120ef4af07f0252ba.bundle.js",
     "css": "initial.css"
   },
   "polyfills": {
-    "js": "polyfills.b90de4162660e9088a0b.bundle.js"
+    "js": "polyfills.45c9bf1ec7c4b30d1967.bundle.js"
   }
 }
