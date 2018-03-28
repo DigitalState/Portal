@@ -25,7 +25,7 @@ export class AppInitService {
                 @Inject(WINDOW) protected window,
                 protected dsEnv: DsEnvironmentConfig) {
 
-        this.dsEnv.discovery = this.window['discovery'];
+        this.dsEnv.isDev = this.window.dsIsDev === true;
     }
 
     /**

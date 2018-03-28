@@ -2,6 +2,7 @@
  * Provider of default DigitalState environment/deployment variables.
  */
 export class DsEnvironmentConfig {
+    isDev: boolean = false;
     msUrlScheme: string = 'http';
     discovery: any = {};
 }
