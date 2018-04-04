@@ -1,23 +1,26 @@
 # Portal
 Frontend Administration based on Angular admin dashboard framework (ng2-admin) [http://akveo.com/ng2-admin]()
 
-Run the following command from the project directory:
+### Development
+Run DEV mode from the `ng2-admin` directory:
 
 ```
-cd ng2-admin
 npm start
 ```
 
 Then point your browser to:
 ```
-http://localhost:3000/
+http://localhost:2999/
 ```
 
-##### Docker
+While in DEV mode, all updates to (*.ts, *.scss, etc..) files under the `src` directory will cause Webpack Dev Server to compile the changes and reload the app.
+
+
+### Production
+Compile PROD distribution from the `ng2-admin` directory:
+
 ```
-docker-compose up
+npm run build:prod
 ```
 
-Notes: 
-- The docker container takes a long time to download, build and compile dependencies.
-- All instructions above run the "dev" mode which syncs `src` directory changes with the browser sessoin.
+The `build:prod` command erases the contents of the `dist` directory and compiles the newly built app in there.
