@@ -1,6 +1,12 @@
 # Portal
 Frontend Administration based on Angular admin dashboard framework (ng2-admin) [http://akveo.com/ng2-admin]()
 
+
+### Requirements
+
+Refer to *ng2-admin* Documentation and Installation Guide: https://akveo.github.io/ng2-admin/
+
+
 ### Development
 Run DEV mode from the `ng2-admin` directory:
 
