@@ -30,3 +30,8 @@ npm run build:prod
 ```
 
 The `build:prod` command erases the contents of the `dist` directory and compiles the newly built app in there.
+
+
+### Common UI
+
+UI components and services that are shared between SPAs are pulled from https://github.com/DigitalState/Ui as a Subtree under `ng2-admin/src/app/shared` directory.
