@@ -1,5 +1,10 @@
 # Portal
+
 Frontend Administration based on Angular admin dashboard framework (ng2-admin) [http://akveo.com/ng2-admin]()
+
+[![Build Status](https://travis-ci.org/DigitalState/Portal.svg?branch=develop)](https://travis-ci.org/DigitalState/Portal)
+[![Coverage Status](https://coveralls.io/repos/github/DigitalState/Portal/badge.svg?branch=develop)](https://coveralls.io/github/DigitalState/Portal?branch=develop)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/DigitalState/Portal/badges/quality-score.png?b=develop)](https://scrutinizer-ci.com/g/DigitalState/Portal/?branch=develop)
 
 
 ### Requirements
